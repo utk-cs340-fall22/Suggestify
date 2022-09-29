@@ -1,17 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="bg-slate-900">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Suggestify</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="index.js" defer></script>
 </head>
 <body>
-    <h1>Hello World!</h1>
+  <nav>
+    <div class="navbar bg-[#8437c8] text-white">
+      <div class="navbar-start">
+        <div>
+          <a class="btn btn-ghost normal-case text-l">Movies</a>
+          <a class="btn btn-ghost normal-case text-l">TV-Shows</a>
+        </div>
+      </div>
+      <div class="navbar-center">
+        <a class="btn btn-ghost normal-case text-xl">Suggestify</a>
+      </div>
+      <div class="navbar-end">
+        <button class="btn btn-ghost capitalize mr-8 text-l">
+          My list
+        </button>
+        <button class="btn btn-ghost btn-circle mr-4">
+          <div class="indicator">
+              <img src="/assets/user.png" alt="account-icon">
+          </div>
+        </button>
+      </div>
+    </div>
+   </nav>
 </body>
 </html>
