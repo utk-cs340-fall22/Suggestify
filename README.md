@@ -14,6 +14,12 @@ git clone git@github.com:utk-cs340-fall22/Suggestify.git
   Open index.html in any browser of choice
 ```
 
+**Hosting**
+
+```
+  Suggestify is being hosted using GitHub Pages. Visit this URL: https://utk-cs340-fall22.github.io/suggestify.github.io/
+```
+
 **Home Page**
 
 ![Landing page design](/assets/landing_page_design.png)
