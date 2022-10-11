@@ -1,5 +1,11 @@
 # Project Name: Suggestify
 
+## Summary
+The project would be an application where users will be able to find a movie or tv show that they would like to watch according to their mood and choice at that time. 
+
+## Problem to solve
+Oftentimes, people sit down by themselves or with a group of friends, and they end up spending too long trying to find the perfect movie or show to watch by sifting through Google and all of their streaming services. This project would help users quickly find something to watch based on the user’s inputs. The application will be designed to be used by anyone.
+
 ## Installation
 
 **Clone the repository**
