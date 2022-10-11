@@ -10,17 +10,16 @@ fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=bb1d4e0661af455e02af1
 })
 .then(data => {
     console.log(data);
-    /* Uncomment to display info on page */
-    // for (const element of data.results) {
-    //     const id = element.poster_path;
-    //     let poster_url = 'https://image.tmdb.org/t/p/original/';
-    //     poster_url = poster_url.concat(id);
+    for (const element of data.results) {
+        const id = element.poster_path;
+        let poster_url = 'https://image.tmdb.org/t/p/original/';
+        poster_url = poster_url.concat(id);
 
-    //     const markup = `<li><b>${element.title}</b> -- ${element.release_date}</li> <br> <li>${element.overview}</li> <br>`;
+        const markup = `<li><b>${element.title}</b> -- ${element.release_date}</li> <br> <li>${element.overview}</li> <br>`;
         
-    //     document.getElementById('movie-data').insertAdjacentHTML('beforeEnd', markup);
-    //     // document.getElementById('movie-image').src = poster_url;
-    // }
+        document.getElementById('movie-data').insertAdjacentHTML('beforeEnd', markup);
+        // document.getElementById('movie-image').src = poster_url;
+    }
 })
 .catch(error => {
     console.log(error);
