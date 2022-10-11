@@ -1,9 +1,9 @@
 :root {
-	height: 100%;
 	background-image: linear-gradient(
 		to bottom,
-		#5d2067 50%,
-		#21252b 70%
+		#5d2067,
+		#231625,
+    #21252b
 	) !important;
 }
 
