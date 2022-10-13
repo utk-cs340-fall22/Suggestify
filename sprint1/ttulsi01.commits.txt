@@ -1,0 +1,197 @@
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400   9) 		<script src="https://kit.fontawesome.com/4ea5866b14.js" crossorigin="anonymous"></script>
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400 110) 	<div class="search-box">
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400 111) 		<input class="search-text" type="text" name="" placeholder="Type to search">
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400 112) 		<a class="search-btn" href="#">
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400 113) 			<img class="search-icon" src="assets/search.png"/>
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400 114) 		</a>
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400 115) 	</div> 
+db7089b0 (tulsitailor      2022-10-13 08:15:44 -0400 116) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  1) <html lang="en">
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  2) 	<head>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  6) 		<title>Suggestify/login</title>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  8) 		<script src="index.js" defer></script>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  9) 	</head>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 10) 	<body>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 11) 		<div class="hero">
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 12) 			<div class="form-box">
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 13) 				<div class="button-box">
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 14) 					<div id="btn"></div>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 21) 				</div>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 22) 				<div class="social-icons">
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 25) 				</div>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 26) 				<form id="login" class="input-group">
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 41) 					<button type="submit" class="submit-btn">Log in</button>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 42) 				</form>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 43) 				<form id="register" class="input-group">
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 64) 					<button type="submit" class="submit-btn">Register</button>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 65) 				</form>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 66) 			</div>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 67) 		</div>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 68) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 69) 		<script>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 73) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 74) 			function register() {
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 78) 			}
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 79) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 80) 			function login() {
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 84) 			}
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 85) 		</script>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 86) 	</body>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 87) </html>
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   1) *{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   2)     margin: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   3)     padding: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   4) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   5) .hero{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   6)     height: 100%;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   7)     width: 100%;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   8)     background-image: linear-gradient(0deg, rgb(0, 0, 0),  rgba(93, 32, 103, 1));
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400   9)     /* background: rgba(93, 32, 103, 1); */
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  10)     background-position: center;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  11)     background-size: cover;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  12)     position: absolute;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  13)     font-family: sans-serif;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  14) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  15) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  16) .form-box{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  17)     width: 380px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  18)     height: 480px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  19)     position: relative;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  20)     margin: 6% auto;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  21)     background-image: linear-gradient(0deg, rgb(0, 0, 0),  rgba(93, 32, 103, 1));
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  22)     /* background: #fff; */
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  23)     padding: 5px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  24)     overflow: hidden;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  25) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  26) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  27) .button-box{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  28)     width: 220px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  29)     margin: 35px auto;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  30)     position: relative;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  31)     box-shadow: 0 0 20px 9px #ff61241f;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  32)     border-radius: 30px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  33) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  34) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  35) .toggle-btn{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  36)     padding: 10px 30px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  37)     cursor: pointer;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  38)     background: transparent;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  39)     /* background-color: #faf7ff; */
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  40)     border: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  41)     outline: none;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  42)     position: relative;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  43) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  44) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  45) #btn{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  46)     top: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  47)     left: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  48)     position: absolute;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  49)     width: 110px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  50)     height: 100%;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  51)     background: linear-gradient(to right, #6629bb, #eca30f);
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  52)     border-radius: 30px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  53)     transition: .5s;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  54) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  55) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  56) .social-icons{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  57)     margin: 30px auto;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  58)     text-align: center;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  59) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  60) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  61) .social-icons img{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  62)     width: 30px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  63)     margin: 0 12px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  64)     box-shadow: 0 0 20px 0 #ff61241f;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  65)     cursor: pointer;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  66)     border-radius: 50%;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  67) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  68) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  69) .input-group{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  70)     top: 180px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  71)     position: absolute;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  72)     width: 280px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  73)     transition: .5s;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  74) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  75) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  76) .input-field{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  77)     width: 100%;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  78)     padding: 10px 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  79)     margin: 5px 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  80)     border-left: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  81)     border-top: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  82)     border-right: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  83)     border-bottom: 1px solid #999;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  84)     outline: none;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  85)     background-color: transparent;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  86) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  87) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  88) .submit-btn{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  89)     width: 85%;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  90)     padding: 10px 30px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  91)     cursor: pointer;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  92)     display: block;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  93)     margin: auto;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  94)     background: linear-gradient(to right,#6629bb, #eca30f);
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  95)     border: 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  96)     outline: none;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  97)     border-radius: 30px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  98) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400  99) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 100) .check-box{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 101)     margin: 30px 10px 30px 0;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 102) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 103) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 104) span{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 105)     color: #777;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 106)     font-size: 12px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 107)     bottom: 68px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 108)     position: absolute;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 109) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 110) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 111) #login{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 112)     left: 50px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 113) }
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 114) 
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 115) #register{
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 116)     left: 450px;
+9596abcf (tulsitailor 2022-10-09 17:30:48 -0400 117) }
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 32) 
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 33) .search-box{
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 34)   position: absolute;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 35)   top: 58%;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 36)   left: 50%;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 37)   transform: translate(-50%, -50%);
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 38)   background: #373338;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 39)   height: 50px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 40)   border-radius: 40px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 41)   padding: 10px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 42) }
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 43) 
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 44) .search-btn{
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 45)   color: #6c56c7;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 46)   float: right;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 47)   width: 40px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 48)   height: 30px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 49)   border-radius: 50%;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 50)   /* background: #3f3640; */
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 51)   display: flex;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 52)   justify-content: center;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 53)   align-items: center;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 54) }
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 55) 
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 56) .search-text{
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 57)   border: none;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 58)   background: none;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 59)   outline: none;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 60)   float: left;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 61)   padding: 0;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 62)   color: #fff;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 63)   font-size: 20px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 64)   transition: 0.4s;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 65)   line-height: 25px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 66)   width: 300px;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 67) }
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 68) 
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 69) .search-icon{
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 70)   border: none;
+db7089b0 (tulsitailor 2022-10-13 08:15:44 -0400 71) }

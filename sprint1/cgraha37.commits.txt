@@ -1,0 +1,31 @@
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  79) 		<div class="carousel w-full">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  80) 			<div id="slide1" class="carousel-item relative w-full">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  81) 			  <img src="https://placeimg.com/800/200/arch" class="w-full" />
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  82) 			  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  83) 				<a href="#slide4" class="btn btn-circle">❮</a> 
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  84) 				<a href="#slide2" class="btn btn-circle">❯</a>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  85) 			  </div>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  86) 			</div> 
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  87) 			<div id="slide2" class="carousel-item relative w-full">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  88) 			  <img src="https://placeimg.com/800/200/arch" class="w-full" />
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  89) 			  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  90) 				<a href="#slide1" class="btn btn-circle">❮</a> 
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  91) 				<a href="#slide3" class="btn btn-circle">❯</a>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  92) 			  </div>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  93) 			</div> 
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  94) 			<div id="slide3" class="carousel-item relative w-full">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  95) 			  <img src="https://placeimg.com/800/200/arch" class="w-full" />
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  96) 			  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  97) 				<a href="#slide2" class="btn btn-circle">❮</a> 
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  98) 				<a href="#slide4" class="btn btn-circle">❯</a>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400  99) 			  </div>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 100) 			</div> 
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 101) 			<div id="slide4" class="carousel-item relative w-full">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 102) 			  <img src="https://placeimg.com/800/200/arch" class="w-full" />
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 103) 			  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 104) 				<a href="#slide3" class="btn btn-circle">❮</a> 
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 105) 				<a href="#slide1" class="btn btn-circle">❯</a>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 106) 			  </div>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 107) 			</div>
+24a5d540 (Christian Graham 2022-10-09 17:02:03 -0400 108) 		</div>
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 35) * Christian Graham - cgraha37

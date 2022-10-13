@@ -1,0 +1,170 @@
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400   1) <!DOCTYPE html>
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400   2) <html lang="en">
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400   3) 	<head>
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400   4) 		<meta charset="UTF-8" />
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400   5) 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400   6) 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400   7) 		<title>Suggestify</title>
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400   8) 		<link rel="stylesheet" href="styles.css" />
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  10) 		<link
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  11) 			href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  12) 			rel="stylesheet"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  13) 			type="text/css"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  14) 		/>
+1f642f1a (mpatel65         2022-09-29 09:14:09 -0400  15) 		<script src="https://cdn.tailwindcss.com"></script>
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400  16) 		<script src="index.js" defer></script>
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400  17) 	</head>
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400  18) 	<body>
+f180cbf5 (mpatel65         2022-10-04 21:34:39 -0400  19) 		<nav class="navbar bg-[#21252b] text-slate-300">
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  20) 			<div class="navbar-start">
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  21) 				<div class="dropdown">
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  22) 					<label tabindex="0" class="btn btn-ghost btn-circle">
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  23) 						<svg
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  24) 							xmlns="http://www.w3.org/2000/svg"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  25) 							class="h-5 w-5"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  26) 							fill="none"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  27) 							viewBox="0 0 24 24"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  28) 							stroke="currentColor"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  29) 						>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  30) 							<path
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  31) 								stroke-linecap="round"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  32) 								stroke-linejoin="round"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  33) 								stroke-width="2"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  34) 								d="M4 6h16M4 12h16M4 18h7"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  35) 							/>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  36) 						</svg>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  37) 					</label>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  38) 					<ul
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  39) 						tabindex="0"
+f180cbf5 (mpatel65         2022-10-04 21:34:39 -0400  40) 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  41) 					>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  42) 						<li><a href="#">Movies</a></li>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  43) 						<li><a href="#">TV-Shows</a></li>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  44) 						<li><a href="#">My List</a></li>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  45) 						<li><a href="#" class="mt-[12rem]">Settings</a></li>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  46) 						<li><a href="#">Account</a></li>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  47) 					</ul>
+3fdca4d1 (mpatel65         2022-10-02 14:01:12 -0400  48) 				</div>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  49) 				<div>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  50) 					<a class="btn btn-ghost normal-case text-l">Movies</a>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  51) 					<a class="btn btn-ghost normal-case text-l">TV-Shows</a>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  52) 				</div>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  53) 			</div>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  54) 			<div class="navbar-center">
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  55) 				<a href="#" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  56) 			</div>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  57) 			<div class="navbar-end">
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  58) 				<button class="btn btn-ghost normal-case mr-8 text-l">My List</button>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  59) 				<button class="btn btn-ghost btn-circle mr-4">
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  60) 					<div>
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  61) 						<svg
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  62) 							xmlns="http://www.w3.org/2000/svg"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  63) 							fill="none"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  64) 							viewBox="0 0 24 24"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  65) 							stroke-width="0.5"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  66) 							stroke="currentColor"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  67) 							class="w-12 h-12"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  68) 						>
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  69) 							<path
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  70) 								stroke-linecap="round"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  71) 								stroke-linejoin="round"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  72) 								d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  73) 							/>
+12ea6213 (mpatel65         2022-10-02 13:28:57 -0400  74) 						</svg>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  75) 					</div>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  76) 				</button>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  77) 			</div>
+ef5b9a26 (mpatel65         2022-09-29 17:40:52 -0400  78) 		</nav>
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400 210) 	</body>
+2efc48b1 (mpatel65         2022-09-22 08:43:51 -0400 211) </html>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400  3) 		<meta charset="UTF-8" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400  4) 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400  5) 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400  7) 		<link rel="stylesheet" type="text/css" href="loginstyles.css" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 15) 					<button type="button" class="toggle-btn" onclick="login()">
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 16) 						Log In
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 17) 					</button>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 18) 					<button type="button" class="toggle-btn" onclick="register()">
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 19) 						Register
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 20) 					</button>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 23) 					<img src="./assets/gp.png" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 24) 					<img src="./assets/fp.png" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 27) 					<input
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 28) 						type="text"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 29) 						class="input-field"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 30) 						placeholder="User Id"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 31) 						required
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 32) 					/>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 33) 					<input
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 34) 						type="text"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 35) 						class="input-field"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 36) 						placeholder="Enter Password"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 37) 						required
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 38) 					/>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 39) 					<input type="checkbox" class="check-box" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 40) 					<span>Remember Password</span>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 44) 					<input
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 45) 						type="text"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 46) 						class="input-field"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 47) 						placeholder="User Id"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 48) 						required
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 49) 					/>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 50) 					<input
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 51) 						type="email"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 52) 						class="input-field"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 53) 						placeholder="Email Id"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 54) 						required
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 55) 					/>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 56) 					<input
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 57) 						type="text"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 58) 						class="input-field"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 59) 						placeholder="Enter Password"
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 60) 						required
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 61) 					/>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 62) 					<input type="checkbox" class="check-box" />
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 63) 					<span>I agree to the terms & conditions</span>
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 70) 			var x = document.getElementById('login');
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 71) 			var y = document.getElementById('register');
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 72) 			var z = document.getElementById('btn');
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 75) 				x.style.left = '-400px';
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 76) 				y.style.left = '50px';
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 77) 				z.style.left = '110px';
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 81) 				x.style.left = '50px';
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 82) 				y.style.left = '450px';
+bbdd38ce (mpatel65    2022-10-11 08:28:03 -0400 83) 				z.style.left = '0';
+12ea6213 (mpatel65    2022-10-02 13:28:57 -0400  1) :root {
+12ea6213 (mpatel65    2022-10-02 13:28:57 -0400  2) 	background-image: linear-gradient(
+12ea6213 (mpatel65    2022-10-02 13:28:57 -0400  3) 		to bottom,
+12ea6213 (mpatel65    2022-10-02 13:28:57 -0400  7) 	) !important;
+12ea6213 (mpatel65    2022-10-02 13:28:57 -0400  8) }
+65ee2d1a (mpatel65 2022-10-04 21:35:04 -0400 1) module.exports = {
+65ee2d1a (mpatel65 2022-10-04 21:35:04 -0400 2) 	content: ['./src/**/*.{html,js}'],
+65ee2d1a (mpatel65 2022-10-04 21:35:04 -0400 3) 	theme: {
+65ee2d1a (mpatel65 2022-10-04 21:35:04 -0400 4) 		extend: {},
+65ee2d1a (mpatel65 2022-10-04 21:35:04 -0400 5) 	},
+65ee2d1a (mpatel65 2022-10-04 21:35:04 -0400 6) 	plugins: [],
+65ee2d1a (mpatel65 2022-10-04 21:35:04 -0400 7) };
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400  1) # Project Name: Suggestify
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400  2) 
+1ee449e5 (mpatel65      2022-09-29 11:19:36 -0400  9) ## Installation
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 10) 
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 11) **Clone the repository**
+1ee449e5 (mpatel65      2022-09-29 11:19:36 -0400 12) 
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 13) ```sh
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 14) git clone git@github.com:utk-cs340-fall22/Suggestify.git
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 15) ```
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 16) 
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 17) **Open File**
+1ee449e5 (mpatel65      2022-09-29 11:19:36 -0400 18) 
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 19) ```sh
+1ee449e5 (mpatel65      2022-09-29 11:19:36 -0400 20)   Open index.html in any browser of choice
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 21) ```
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 22) 
+1ee449e5 (mpatel65      2022-09-29 11:19:36 -0400 31) ![Landing page design](/assets/landing_page_design.png)
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 33) ## Contributors (Name & Github ID)
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 34) 
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 35) * Christian Graham - cgraha37
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 36) * Riya Patel - rpatel90
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 37) * Manan Patel - manan-dev
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 38) * Tulsi Tailor - ttulsi01
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 39) * Zachary Perry - zperry4
