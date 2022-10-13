@@ -1,0 +1,112 @@
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 108) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 109)     <br><br>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 110)     <h1 style="font-size:30px;">TRENDING</h1>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 111)     <div class="carousel rounded-box">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 112)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 113)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 114)           <img src="https://media1.citybeat.com/citybeat/imager/u/zoom/13852906/dont-worry-darling.jpg?cb=1663232148" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 115)         </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 116)       </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 117) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 118)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 119)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 120)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWsNhTsRFsqj4YIL4ClubNE1tVaRbkXEwLK8AjH9aa1XpbzxeR" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 121)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 122)       </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 123) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 124)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 125)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 126)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSsb_4zvHo_naaktE9hFBJHVNee2i-O5I74mnyYNJhKWQf039p" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 127)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 128)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 129) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 130)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 131)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 132)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfbwniK5xxGTYRXttN-c286JlX6QBi0XS5tsF97aJ6bAWIv5HE" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 133)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 134)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 135) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 136)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 137)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 138)           <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQbNJAbGvuIaKs4Gorgdmu0F64RJzUgMK13glIwNpCWmtcp2UAN" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 139)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 140)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 141) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 142)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 143)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 144)           <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRsKaCeVjWLIVjuPriyFDRn4NNMF0wbS-6ZKGRDK83hqH16J-GW" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 145)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 146)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 147) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 148)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 149)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 150)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjkbBqL3POWZb7EJmte1wpdZRJkE5_pkV532SF_-zl8LH2mN3a" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 151)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 152)       </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 153) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 154)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 155)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 156)           <img src="https://media1.citybeat.com/citybeat/imager/u/zoom/13852906/dont-worry-darling.jpg?cb=1663232148" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 157)         </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 158)       </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 159) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 160)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 161)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 162)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWsNhTsRFsqj4YIL4ClubNE1tVaRbkXEwLK8AjH9aa1XpbzxeR" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 163)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 164)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 165) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 166)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 167)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 168)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSsb_4zvHo_naaktE9hFBJHVNee2i-O5I74mnyYNJhKWQf039p" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 169)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 170)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 171) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 172)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 173)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 174)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfbwniK5xxGTYRXttN-c286JlX6QBi0XS5tsF97aJ6bAWIv5HE" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 175)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 176)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 177) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 178)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 179)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 180)           <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQbNJAbGvuIaKs4Gorgdmu0F64RJzUgMK13glIwNpCWmtcp2UAN" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 181)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 182)       </div> 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 183) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 184)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 185)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 186)           <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRsKaCeVjWLIVjuPriyFDRn4NNMF0wbS-6ZKGRDK83hqH16J-GW" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 187)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 188)       </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 189) 
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 190)       <div class="carousel-item">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 191)         <div class="carousel-item hover:opacity-60">
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 192)           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjkbBqL3POWZb7EJmte1wpdZRJkE5_pkV532SF_-zl8LH2mN3a" alt="Burger" />
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 193)         </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 194)       </div>
+f46cc61e (rpatel90         2022-10-09 17:15:58 -0400 195)     </div>
+
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400  9) 
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 10) img {
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 11)   border: 1px solid #ddd;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 12)   border-radius: 4px;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 13)   padding: 5px;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 14)   width: 150px;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 15)   margin-right: 20px;   /* Horizontal Space */
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 16) }
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 17) 
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 18) img:hover {
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 19)   box-shadow: 0 0 8px 4px rgba(83, 84, 86, 0.5);
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 20) }
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 21) 
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 22) .content {
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 23)   display: inline-block;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 24)   position: relative;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 25) }
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 26) 
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 27) .content svg {
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 28)   position: absolute;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 29)   bottom: 5px;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 30)   right: 5px;
+f46cc61e (rpatel90 2022-10-09 17:15:58 -0400 31) }
