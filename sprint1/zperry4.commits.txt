@@ -1,0 +1,46 @@
+0633853d (zperry4     2022-10-11 08:23:35 -0400  4) 		#5d2067,
+0633853d (zperry4     2022-10-11 08:23:35 -0400  5) 		#231625,
+0633853d (zperry4     2022-10-11 08:23:35 -0400  6)     #21252b
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 13)     for (const element of data.results) {
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 14)         const id = element.poster_path;
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 15)         let poster_url = 'https://image.tmdb.org/t/p/original/';
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 16)         poster_url = poster_url.concat(id);
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 18)         const markup = `<li><b>${element.title}</b> -- ${element.release_date}</li> <br> <li>${element.overview}</li> <br>`;
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 20)         document.getElementById('movie-data').insertAdjacentHTML('beforeEnd', markup);
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 21)         // document.getElementById('movie-image').src = poster_url;
+7d8c91be (zperry4   2022-10-11 08:23:54 -0400 22)     }
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 39) * Zachary Perry - zperry4
+8b5e6369 (Zac Perry        2022-10-09 17:39:54 -0400 204) 	<!-- <h1><b>Trending Movies</b></h1> -->
+8b5e6369 (Zac Perry        2022-10-09 17:39:54 -0400 205) 		<br>
+8b5e6369 (Zac Perry        2022-10-09 17:39:54 -0400 206) 		<ul id="movie-data">
+8b5e6369 (Zac Perry        2022-10-09 17:39:54 -0400 207) 			<!-- <img id="movie-image" style="width:200px;height:200px;"/> -->
+8b5e6369 (Zac Perry        2022-10-09 17:39:54 -0400 208) 		</ul>
+8b5e6369 (Zac Perry        2022-10-09 17:39:54 -0400 209) 
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  1) fetch('https://api.themoviedb.org/3/movie/upcoming?api_key=bb1d4e0661af455e02af1ea99fb85fcb&language=en-US&page=1')
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  2) .then(response => {
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  3) 
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  4)     /* guard clause : Make sure the data is actually returning with a 200 status */
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  5)     if (!response.ok) {
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  6)         console.log('Problem obtaining a response from API');
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  7)         return;
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  8)     }
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400  9)     return response.json()
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 10) })
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 11) .then(data => {
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 12)     console.log(data);
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 17) 
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 19)         
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 23) })
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 24) .catch(error => {
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 25)     console.log(error);
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 26) })
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 27) 
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 28) // path for images
+8b5e6369 (Zac Perry 2022-10-09 17:39:54 -0400 29) // https://image.tmdb.org/t/p/original/[poster_path]
+14bce1e3 (Zachary Perry 2022-10-02 16:41:13 -0400 23) **Hosting**
+14bce1e3 (Zachary Perry 2022-10-02 16:41:13 -0400 24) 
+14bce1e3 (Zachary Perry 2022-10-02 16:41:13 -0400 25) ```
+14bce1e3 (Zachary Perry 2022-10-02 16:41:13 -0400 26)   Suggestify is being hosted using GitHub Pages. Visit this URL: https://utk-cs340-fall22.github.io/suggestify.github.io/
+14bce1e3 (Zachary Perry 2022-10-02 16:41:13 -0400 27) ```
+14bce1e3 (Zachary Perry 2022-10-02 16:41:13 -0400 28) 
+3e58787f (mpatel65      2022-09-27 19:59:24 -0400 39) * Zachary Perry - zperry4
