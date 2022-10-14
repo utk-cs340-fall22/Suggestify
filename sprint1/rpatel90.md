@@ -1,7 +1,7 @@
 # Sprint 1
-name: Riya Patel
-github id: rpatel90
-group name: Suggestify
+- name: Riya Patel
+- github id: rpatel90
+- group name: Suggestify
 
 ### What you planned to do
 * Issue #2: [Upload Figma Design to Repo](https://github.com/utk-cs340-fall22/suggestify.github.io/issues/2)
