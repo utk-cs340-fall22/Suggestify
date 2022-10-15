@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Suggestify</title>
+		<link rel="stylesheet" href="../CSS/styles.css" />
+		<script
+			src="https://kit.fontawesome.com/4ea5866b14.js"
+			crossorigin="anonymous"
+		></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="../JS/index.js" defer></script>
+	</head>
+	<body>
+		<nav class="navbar bg-[#21252b] text-slate-300">
+			<div class="navbar-start">
+				<div class="dropdown">
+					<label tabindex="0" class="btn btn-ghost btn-circle">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h7"
+							/>
+						</svg>
+					</label>
+					<ul
+						tabindex="0"
+						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
+					>
+						<li><a href="#">Movies</a></li>
+						<li><a href="#">TV-Shows</a></li>
+						<li><a href="#">My List</a></li>
+						<li><a href="#" class="mt-[12rem]">Settings</a></li>
+						<li><a href="#">Account</a></li>
+					</ul>
+				</div>
+				<div>
+					<a class="btn btn-ghost normal-case text-l">Movies</a>
+					<a class="btn btn-ghost normal-case text-l">TV-Shows</a>
+				</div>
+			</div>
+			<div class="navbar-center">
+				<a href="#" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+			</div>
+			<div class="navbar-end">
+				<button class="btn btn-ghost normal-case mr-8 text-l">My List</button>
+				<button class="btn btn-ghost btn-circle mr-4">
+					<div>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="0.5"
+							stroke="currentColor"
+							class="w-12 h-12"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+							/>
+						</svg>
+					</div>
+				</button>
+			</div>
+		</nav>
+		<div class="carousel w-full">
+			<div id="slide1" class="carousel-item relative w-full">
+				<img src="https://placeimg.com/800/200/arch" class="w-full" />
+				<div
+					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+				>
+					<a href="#slide4" class="btn btn-circle">❮</a>
+					<a href="#slide2" class="btn btn-circle">❯</a>
+				</div>
+			</div>
+			<div id="slide2" class="carousel-item relative w-full">
+				<img src="https://placeimg.com/800/200/arch" class="w-full" />
+				<div
+					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+				>
+					<a href="#slide1" class="btn btn-circle">❮</a>
+					<a href="#slide3" class="btn btn-circle">❯</a>
+				</div>
+			</div>
+			<div id="slide3" class="carousel-item relative w-full">
+				<img src="https://placeimg.com/800/200/arch" class="w-full" />
+				<div
+					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+				>
+					<a href="#slide2" class="btn btn-circle">❮</a>
+					<a href="#slide4" class="btn btn-circle">❯</a>
+				</div>
+			</div>
+			<div id="slide4" class="carousel-item relative w-full">
+				<img src="https://placeimg.com/800/200/arch" class="w-full" />
+				<div
+					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+				>
+					<a href="#slide3" class="btn btn-circle">❮</a>
+					<a href="#slide1" class="btn btn-circle">❯</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="search-box">
+			<input
+				class="search-text"
+				type="text"
+				name=""
+				placeholder="Type to search"
+			/>
+			<a class="search-btn" href="#">
+				<img class="search-icon" src="../../assets/search.png" />
+			</a>
+		</div>
+
+		<br /><br />
+		<h1 style="font-size: 30px">TRENDING</h1>
+		<div class="carousel rounded-box">
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://media1.citybeat.com/citybeat/imager/u/zoom/13852906/dont-worry-darling.jpg?cb=1663232148"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWsNhTsRFsqj4YIL4ClubNE1tVaRbkXEwLK8AjH9aa1XpbzxeR"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSsb_4zvHo_naaktE9hFBJHVNee2i-O5I74mnyYNJhKWQf039p"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfbwniK5xxGTYRXttN-c286JlX6QBi0XS5tsF97aJ6bAWIv5HE"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQbNJAbGvuIaKs4Gorgdmu0F64RJzUgMK13glIwNpCWmtcp2UAN"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRsKaCeVjWLIVjuPriyFDRn4NNMF0wbS-6ZKGRDK83hqH16J-GW"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjkbBqL3POWZb7EJmte1wpdZRJkE5_pkV532SF_-zl8LH2mN3a"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://media1.citybeat.com/citybeat/imager/u/zoom/13852906/dont-worry-darling.jpg?cb=1663232148"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWsNhTsRFsqj4YIL4ClubNE1tVaRbkXEwLK8AjH9aa1XpbzxeR"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSsb_4zvHo_naaktE9hFBJHVNee2i-O5I74mnyYNJhKWQf039p"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfbwniK5xxGTYRXttN-c286JlX6QBi0XS5tsF97aJ6bAWIv5HE"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQbNJAbGvuIaKs4Gorgdmu0F64RJzUgMK13glIwNpCWmtcp2UAN"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRsKaCeVjWLIVjuPriyFDRn4NNMF0wbS-6ZKGRDK83hqH16J-GW"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+
+			<div class="carousel-item">
+				<div class="carousel-item hover:opacity-60">
+					<img
+						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjkbBqL3POWZb7EJmte1wpdZRJkE5_pkV532SF_-zl8LH2mN3a"
+						alt="Burger"
+					/>
+				</div>
+			</div>
+		</div>
+		<br />
+		<ul id="movie-data">
+			<!-- <img id="movie-image" style="width:200px;height:200px;"/> -->
+		</ul>
+	</body>
+</html>
