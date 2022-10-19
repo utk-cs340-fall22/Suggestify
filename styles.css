@@ -7,6 +7,20 @@
 	) !important;
 }
 
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 10px #21252b;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgb(122, 38, 122);
+	border-radius: 5px;
+}
+
 img {
 	border: 1px solid #ddd;
 	border-radius: 4px;
