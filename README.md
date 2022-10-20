@@ -16,19 +16,18 @@ git clone git@github.com:utk-cs340-fall22/Suggestify.git
 
 **Open File**
 
-```sh
-  Open index.html in any browser of choice
+```
+  Open index.html in any browser
 ```
 
 **Hosting**
 
-```
-  Suggestify is being hosted using GitHub Pages. Visit this URL: https://utk-cs340-fall22.github.io/suggestify.github.io/
-```
+Suggestify is being hosted using GitHub Pages. Visit this URL: https://utk-cs340-fall22.github.io/suggestify.github.io/
+
 
 **Home Page**
 
-![Landing page design](/assets/landing_page_design.png)
+![Landing page design](landing_page_design.png)
 
 ## Contributors (Name & Github ID)
 
@@ -37,3 +36,6 @@ git clone git@github.com:utk-cs340-fall22/Suggestify.git
 * Manan Patel - manan-dev
 * Tulsi Tailor - ttulsi01
 * Zachary Perry - zperry4
+
+## License
+*Suggestify is available under the MIT license. See the LICENSE file for more info*

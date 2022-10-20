@@ -3,32 +3,32 @@
 		to bottom,
 		#5d2067,
 		#231625,
-    #21252b
+		#21252b
 	) !important;
 }
 
 
 img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 150px;
-  margin-right: 20px;   /* Horizontal Space */
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+	width: 150px;
+	margin-right: 20px;
 }
 
 img:hover {
-  box-shadow: 0 0 8px 4px rgba(83, 84, 86, 0.5);
+	box-shadow: 0 0 8px 4px rgba(83, 84, 86, 0.5);
 }
 
 .content {
-  display: inline-block;
-  position: relative;
+	display: inline-block;
+	position: relative;
 }
 
 .content svg {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
 }
 .container{
   display: flex;
@@ -66,20 +66,19 @@ img:hover {
   justify-content: center;
   align-items: center;
 }
-
-.search-text{
-  border: none;
-  background: none;
-  outline: none;
-  float: left;
-  padding: 0;
-  color: #fff;
-  font-size: 20px;
-  transition: 0.4s;
-  line-height: 25px;
-  width: 300px;
+.search-text {
+	border: none;
+	background: none;
+	outline: none;
+	float: left;
+	padding: 0;
+	color: #fff;
+	font-size: 20px;
+	transition: 0.4s;
+	line-height: 25px;
+	width: 300px;
 }
 
-.search-icon{
-  border: none;
+.search-icon {
+	border: none;
 }
