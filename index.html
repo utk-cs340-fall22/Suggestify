@@ -16,7 +16,7 @@
 		<script src="index.js" defer></script>
 	</head>
 	<body>
-		<nav class="navbar bg-[#21252b] text-slate-300">
+		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
 			<div class="navbar-start">
 				<div class="dropdown">
 					<label tabindex="0" class="btn btn-ghost btn-circle">
@@ -43,7 +43,7 @@
 						<li><a href="#">TV-Shows</a></li>
 						<li><a href="#">My List</a></li>
 						<li><a href="#" class="mt-[12rem]">Settings</a></li>
-						<li><a href="#">Account</a></li>
+						<li><a href="login.html">Account</a></li>
 					</ul>
 				</div>
 				<div>
@@ -58,32 +58,36 @@
 				<button class="btn btn-ghost normal-case mr-8 text-l">My List</button>
 				<button class="btn btn-ghost btn-circle mr-4">
 					<div>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							stroke-width="0.5"
-							stroke="currentColor"
-							class="w-12 h-12"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
-							/>
-						</svg>
+						<a href="login.html">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="0.5"
+								stroke="currentColor"
+								class="w-12 h-12"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+								/>
+							</svg>
+						</a>
 					</div>
 				</button>
 			</div>
 		</nav>
-		<div class="carousel w-full">
-			<div id="slide1" class="carousel-item relative w-full">
-			  <img src="https://placeimg.com/800/200/arch" class="w-full" />
-			  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-				<a href="#slide4" class="btn btn-circle">❮</a> 
-				<a href="#slide2" class="btn btn-circle">❯</a>
-			  </div>
-			</div> 
+		<div class="carousel w-full mt-[100px]">
+			<div id="slide1" class="carousel-item w-full">
+				<img src="https://placeimg.com/800/200/arch" class="w-full" />
+				<div
+					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
+				>
+					<a href="#slide4" class="btn btn-circle">❮</a>
+					<a href="#slide2" class="btn btn-circle">❯</a>
+				</div>
+			</div>
 			<div id="slide2" class="carousel-item relative w-full">
 			  <img src="https://placeimg.com/800/200/arch" class="w-full" />
 			  <div class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
