@@ -36,6 +36,7 @@
     padding: 10px 30px;
     cursor: pointer;
     background: transparent;
+    color: white;
     /* background-color: #faf7ff; */
     border: 0;
     outline: none;
@@ -83,6 +84,7 @@
     border-bottom: 1px solid #999;
     outline: none;
     background-color: transparent;
+    color: white;
 }
 
 .submit-btn{
@@ -95,6 +97,7 @@
     border: 0;
     outline: none;
     border-radius: 30px;
+    color: white;
 }
 
 .check-box{
