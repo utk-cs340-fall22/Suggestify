@@ -165,3 +165,8 @@ img:hover {
     flex-wrap: wrap;
     justify-content: center;
 }
+
+nav{
+  position: fixed;
+  z-index: 3;
+}
