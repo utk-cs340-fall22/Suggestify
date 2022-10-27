@@ -20,8 +20,9 @@
 					</button>
 				</div>
 				<div class="social-icons">
-					<img src="google_icon.png" />
-					<img src="facebook_icon.png" />
+					<!-- <img src="google_icon.png" /> -->
+					<button type="submit" class="google-btn" id="googleLogIn" > <a href="" id="gLogIn" >G</a></button>
+					<!-- <img src="facebook_icon.png" /> -->
 				</div>
 				<form id="login" class="input-group">
 					<input
@@ -38,18 +39,13 @@
 					/>
 						<input type="checkbox" class="check-box" />
 						<span>Remember Password</span>
-					<button type="submit" class="submit-btn">Log in</button>
+					<button type="submit" class="submit-btn" >Log in</button>
 				</form>
 				<form id="register" class="input-group">
 					<input
-						type="text"
-						class="input-field"
-						placeholder="Username"
-						required
-					/>
-					<input
 						type="email"
 						class="input-field"
+						id="email"
 						placeholder="Email address"
 						required
 					/>
@@ -57,13 +53,87 @@
 						type="text"
 						class="input-field"
 						placeholder="Password"
+						id="psw"
 						required
 					/>
 					<input type="checkbox" class="check-box" />
 					<span>I agree to the terms & conditions</span>
-					<button type="submit" class="submit-btn">Register</button>
+					<button type="submit" class="submit-btn" id="createUser" > <a href="" id="log">Register</a></button>
 				</form>
 			</div>
 		</div>
+
+
+		<script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+			import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+			import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+			  apiKey: "AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg",
+			  authDomain: "suggestify-6b974.firebaseapp.com",
+			  projectId: "suggestify-6b974",
+			  storageBucket: "suggestify-6b974.appspot.com",
+			  messagingSenderId: "287553553595",
+			  appId: "1:287553553595:web:c5e8adde4ca305cfaad59e",
+			  measurementId: "G-30270TW59M"
+			};
+		  
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			const provider = new GoogleAuthProvider(app);
+			const auth = getAuth(app);
+			
+			createUser.addEventListener('click', (e) => {
+				e.preventDefault();
+				var email = document.getElementById('email').value;
+				var password = document.getElementById('psw').value;
+				var log_user = document.getElementById('log').href;
+				createUserWithEmailAndPassword(auth, email, password)
+					.then((userCredential) => {
+						// Signed in 
+						const user = userCredential.user;
+						// ...
+						alert('user created successfully');
+					})
+					.catch((error) => {
+						const errorCode = error.code;
+						const errorMessage = error.message;
+						// ..
+						alert(errorMessage);
+					});
+			});
+
+			googleLogIn.addEventListener('click', (e) => {
+				e.preventDefault();
+				signInWithRedirect(auth, provider);
+				getRedirectResult(auth)
+					.then((result) => {
+						// This gives you a Google Access Token. You can use it to access Google APIs.
+						const credential = GoogleAuthProvider.credentialFromResult(result);
+						const token = credential.accessToken;
+
+						// The signed-in user info.
+						const user = result.user;
+					}).catch((error) => {
+						// Handle Errors here.
+						const errorCode = error.code;
+						const errorMessage = error.message;
+						// The email of the user's account used.
+						const email = error.customData.email;
+						// The AuthCredential type that was used.
+						const credential = GoogleAuthProvider.credentialFromError(error);
+						// ...
+					});
+			});
+			
+
+		  </script>
 	</body>
+
 </html>
