@@ -159,3 +159,9 @@ img:hover {
     -webkit-filter: opacity(100%);
     -webkit-filter: brightness(100%);
   }
+
+  main{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
