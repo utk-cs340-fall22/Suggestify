@@ -1,0 +1,405 @@
+
+-> index.html
+
+
+0be95206 (tulsitailor      2022-10-20 08:55:00 -0400 138) 		<div class="container">
+^e228f30 (tulsitailor      2022-10-13 09:19:04 -0400 139) 			<div class="search-box">
+^e228f30 (tulsitailor      2022-10-13 09:19:04 -0400 146) 				<a class="search-btn" href="#">
+0be95206 (tulsitailor      2022-10-20 08:55:00 -0400 147) 					<img class="search-icon" src="search_icon.png" />
+^e228f30 (tulsitailor      2022-10-13 09:19:04 -0400 148) 				</a>
+^e228f30 (tulsitailor      2022-10-13 09:19:04 -0400 149) 			</div>
+0be95206 (tulsitailor      2022-10-20 08:55:00 -0400 150) 		</div>
+
+
+-> login.html
+
+
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400   1) <html lang="en">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400   2) 	<head>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400   3) 		<meta charset="UTF-8" />
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400   4) 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400   5) 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400   9) 	</head>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  10) 	<body>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  11) 		<div class="hero">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  12) 			<div class="form-box">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  13) 				<div class="button-box">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  14) 					<div id="btn"></div>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  15) 					<button type="button" class="toggle-btn" onclick="login()">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  16) 						Log In
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  17) 					</button>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  18) 					<button type="button" class="toggle-btn" onclick="register()">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  19) 						Register
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  20) 					</button>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  21) 				</div>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  22) 				<div class="social-icons">
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  23) 					<!-- <img src="google_icon.png" /> -->
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  24) 					<button type="submit" class="google-btn" id="googleLogIn" > <a href="" id="gLogIn" >G</a></button>
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400  25) 					<button type="submit" class="facebook-btn" id="facebookLogIn" > <a href="" id="fLogIn" >F</a></button>
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  26) 					<!-- <img src="facebook_icon.png" /> -->
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  27) 				</div>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  28) 				<form id="login" class="input-group">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  29) 					<input
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  30) 						type="text"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  31) 						class="input-field"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  33) 						required
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  34) 					/>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  35) 					<input
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  36) 						type="text"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  37) 						class="input-field"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  39) 						required
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  40) 					/>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  41) 						<input type="checkbox" class="check-box" />
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  42) 						<span>Remember Password</span>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  43) 					<button type="submit" class="submit-btn" >Log in</button>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  44) 				</form>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  45) 				<form id="register" class="input-group">
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  46) 					<input
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  47) 						type="email"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  48) 						class="input-field"
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  49) 						id="email"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  51) 						required
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  52) 					/>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  53) 					<input
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  54) 						type="text"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  55) 						class="input-field"
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  57) 						id="psw"
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  58) 						required
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  59) 					/>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  60) 					<input type="checkbox" class="check-box" />
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  61) 					<span>I agree to the terms & conditions</span>
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  62) 					<button type="submit" class="submit-btn" id="createUser" > <a href="" id="log">Register</a></button>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  63) 				</form>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  64) 			</div>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400  65) 		</div>
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  66) 
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  67) 
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  68) 		<script type="module">
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  69) 			// Import the functions you need from the SDKs you need
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  70) 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400  71) 			import { getAuth, createUserWithEmailAndPassword, signInWithRedirect, getRedirectResult, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  72) 			// TODO: Add SDKs for Firebase products that you want to use
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  73) 			// https://firebase.google.com/docs/web/setup#available-libraries
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  74) 		  
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  75) 			// Your web app's Firebase configuration
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  76) 			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  77) 			const firebaseConfig = {
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  78) 			  apiKey: "AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg",
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  79) 			  authDomain: "suggestify-6b974.firebaseapp.com",
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  80) 			  projectId: "suggestify-6b974",
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  81) 			  storageBucket: "suggestify-6b974.appspot.com",
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  82) 			  messagingSenderId: "287553553595",
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  83) 			  appId: "1:287553553595:web:c5e8adde4ca305cfaad59e",
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  84) 			  measurementId: "G-30270TW59M"
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  85) 			};
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  86) 		  
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  87) 			// Initialize Firebase
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  88) 			const app = initializeApp(firebaseConfig);
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400  89) 			const googleProvider = new GoogleAuthProvider(app);
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400  90) 			const facebookProvider = new FacebookAuthProvider(app);
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  91) 			const auth = getAuth(app);
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  92) 			
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  93) 			createUser.addEventListener('click', (e) => {
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  94) 				e.preventDefault();
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  95) 				var email = document.getElementById('email').value;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  96) 				var password = document.getElementById('psw').value;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  97) 				var log_user = document.getElementById('log').href;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  98) 				createUserWithEmailAndPassword(auth, email, password)
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400  99) 					.then((userCredential) => {
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 100) 						// Signed in 
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 101) 						const user = userCredential.user;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 102) 						// ...
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 103) 						alert('user created successfully');
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 104) 					})
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 105) 					.catch((error) => {
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 106) 						const errorCode = error.code;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 107) 						const errorMessage = error.message;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 108) 						// ..
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 109) 						alert(errorMessage);
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 110) 					});
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 111) 			});
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 112) 
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 113) 			googleLogIn.addEventListener('click', (e) => {
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 114) 				e.preventDefault();
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 115) 				signInWithRedirect(auth, googleProvider);
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 116) 				getRedirectResult(auth)
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 117) 					.then((result) => {
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 118) 						// This gives you a Google Access Token. You can use it to access Google APIs.
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 119) 						const credential = GoogleAuthProvider.credentialFromResult(result);
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 120) 						const token = credential.accessToken;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 121) 
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 122) 						// The signed-in user info.
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 123) 						const user = result.user;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 124) 					}).catch((error) => {
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 125) 						// Handle Errors here.
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 126) 						const errorCode = error.code;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 127) 						const errorMessage = error.message;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 128) 						// The email of the user's account used.
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 129) 						const email = error.customData.email;
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 130) 						// The AuthCredential type that was used.
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 131) 						const credential = GoogleAuthProvider.credentialFromError(error);
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 132) 						// ...
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 133) 					});
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 134) 			});
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 135) 			
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 136) 			facebookLogIn.addEventListener('click', (e) => {
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 137) 				e.preventDefault();
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 138) 				signInWithRedirect(auth, facebookProvider);
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 139) 				getRedirectResult(auth)
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 140) 				.then((result) => {
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 141) 					// This gives you a Facebook Access Token. You can use it to access the Facebook API.
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 142) 					const credential = FacebookAuthProvider.credentialFromResult(result);
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 143) 					const token = credential.accessToken;
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 144) 
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 145) 					const user = result.user;
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 146) 				}).catch((error) => {
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 147) 					// Handle Errors here.
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 148) 					const errorCode = error.code;
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 149) 					const errorMessage = error.message;
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 150) 					// The email of the user's account used.
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 151) 					const email = error.customData.email;
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 152) 					// AuthCredential type that was used.
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 153) 					const credential = FacebookAuthProvider.credentialFromError(error);
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 154) 					// ...
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 155) 				});
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 156) 			});
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 157) 
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 158) 			
+a811f41d login.html          (tulsitailor 2022-10-27 14:21:44 -0400 159) 
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 160) 
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 161) 		  </script>
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400 162) 	</body>
+2cbfed26 login.html          (tulsitailor 2022-10-27 14:03:19 -0400 163) 
+^e228f30 login.html          (tulsitailor 2022-10-13 09:19:04 -0400 164) </html>
+
+
+-> loginstyles.css
+
+
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   1) * {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   2) 	margin: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   3) 	padding: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   4) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   5) .hero {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   6) 	height: 100%;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   7) 	width: 100%;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   8) 	background-image: linear-gradient(0deg, rgb(0, 0, 0), rgba(93, 32, 103, 1));
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400   9) 	background-position: center;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  10) 	background-size: cover;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  11) 	position: absolute;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  12) 	font-family: sans-serif;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  13) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  14) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  15) .form-box {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  16) 	width: 380px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  17) 	height: 480px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  18) 	position: relative;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  19) 	margin: 6% auto;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  20) 	background-image: linear-gradient(0deg, rgb(0, 0, 0), rgba(93, 32, 103, 1));
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  21) 	padding: 5px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  22) 	overflow: hidden;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  23) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  24) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  25) .button-box {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  26) 	width: 220px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  27) 	margin: 35px auto;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  28) 	position: relative;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  29) 	box-shadow: 0 0 20px 9px #ff61241f;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  30) 	border-radius: 30px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  31) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  32) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  43) .toggle-btn{
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  44)     padding: 10px 30px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  45)     cursor: pointer;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  46)     background: transparent;
+d9949ecc loginstyles.css         (tulsitailor 2022-10-20 08:31:56 -0400  47)     color: white;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  48)     /* background-color: #faf7ff; */
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  49)     border: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  50)     outline: none;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  51)     position: relative;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  52) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  53) #btn {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  54) 	top: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  55) 	left: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  56) 	position: absolute;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  57) 	width: 110px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  58) 	height: 100%;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  59) 	background: linear-gradient(to right, #6629bb, #eca30f);
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  60) 	border-radius: 30px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  62) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  63) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  64) .social-icons {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  65) 	margin: 30px auto;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  66) 	text-align: center;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  67) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  68) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  69) .social-icons img {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  70) 	width: 30px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  71) 	margin: 0 12px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  72) 	box-shadow: 0 0 20px 0 #ff61241f;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  73) 	cursor: pointer;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  74) 	border-radius: 50%;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  75) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  76) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  81) .input-group {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  82) 	top: 180px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  83) 	position: absolute;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  84) 	width: 280px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  86) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  87) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  88) .input-field{
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  89)     width: 100%;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  90)     padding: 10px 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  91)     margin: 5px 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  92)     border-left: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  93)     border-top: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  94)     border-right: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  95)     border-bottom: 1px solid #999;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  96)     outline: none;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  97)     background-color: transparent;
+d9949ecc loginstyles.css         (tulsitailor 2022-10-20 08:31:56 -0400  98)     color: white;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400  99) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 100) 
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 101) .google-btn{
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 102)     width: 10%;
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 103)     padding: 10px 20px;
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 104)     cursor: pointer;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 105)     display: inline-block;
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 106)     margin: auto;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 107)     background: rgba(255, 255, 255, 0.768) ;
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 108)     border: 0;
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 109)     outline: none;
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 110)     border-radius: 30px;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 111)     color: linear-gradient(to right,#6629bb, #eca30f);
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 112) }
+2cbfed26 loginstyles.css         (tulsitailor 2022-10-27 14:03:19 -0400 113) 
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 114) .facebook-btn{
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 115)     width: 10%;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 116)     padding: 10px 20px;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 117)     cursor: pointer;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 118)     display: inline-block;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 119)     margin: auto;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 120)     background: rgba(255, 255, 255, 0.768) ;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 121)     border: 0;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 122)     outline: none;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 123)     border-radius: 30px;
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 124)     color: linear-gradient(to right,#6629bb, #eca30f);
+a811f41d loginstyles.css         (tulsitailor 2022-10-27 14:21:44 -0400 125) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 126) .submit-btn{
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 127)     width: 85%;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 128)     padding: 10px 30px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 129)     cursor: pointer;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 130)     display: block;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 131)     margin: auto;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 132)     background: linear-gradient(to right,#6629bb, #eca30f);
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 133)     border: 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 134)     outline: none;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 135)     border-radius: 30px;
+d9949ecc loginstyles.css         (tulsitailor 2022-10-20 08:31:56 -0400 136)     color: white;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 137) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 138) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 139) .check-box {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 140) 	margin: 30px 10px 30px 0;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 141) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 142) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 143) span {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 144) 	color: #777;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 145) 	font-size: 12px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 147) 	position: absolute;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 148) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 149) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 150) #login {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 151) 	left: 50px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 152) }
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 153) 
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 154) #register {
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 155) 	left: 450px;
+^e228f30 loginstyles.css         (tulsitailor 2022-10-13 09:19:04 -0400 156) }
+
+
+-> styles.css
+
+
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   1) :root {
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   2) 	background-image: linear-gradient(
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   3) 		to bottom,
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   5) 		#231625,
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   6) 		#21252b
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   7) 	) !important;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   8) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400   9) 
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  23) 
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  24) img {
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  25) 	border: 1px solid #ddd;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  26) 	border-radius: 4px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  27) 	padding: 5px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  28) 	width: 150px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  31) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  32) 
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  33) img:hover {
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  34) 	box-shadow: 0 0 8px 4px rgba(83, 84, 86, 0.5);
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  36) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  37) 
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  38) .content {
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  39) 	display: inline-block;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  40) 	position: relative;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  41) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  42) 
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  43) .content svg {
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  44) 	position: absolute;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  45) 	bottom: 5px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  46) 	right: 5px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  47) }
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  48) .container{
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  49)   display: flex;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  50)   justify-content: center;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  51)   align-items: center;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  52)   height: 100%;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  53)   width: 100%;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  54) }
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  55) @media (min-width: 1280px) {
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  56)   .container {
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  57)       max-width: 100% !important;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  58)   }
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  59) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  60) 
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  61) .search-box{
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  62)   display: flex;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  63)   justify-content: center;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  64)   align-items: center;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  65)   background: #373338;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  66)   height: 40px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  67)   border-radius: 40px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  68)   padding: 10px;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  69)   margin-top: 50px;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  70)   border: 2px solid white;
+d9949ecc styles.css         (tulsitailor      2022-10-20 08:31:56 -0400  71)   width: 340px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  72) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  73) 
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  74) .search-btn{
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  75)   color: #6c56c7;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  76)   float: right;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  77)   width: 40px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  78)   height: 30px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  79)   border-radius: 50%;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  80)   display: flex;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  81)   justify-content: center;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  82)   align-items: center;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  83) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  84) .search-text {
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  85) 	border: none;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  86) 	background: none;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  87) 	outline: none;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  88) 	float: left;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  89) 	padding: 0;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  90) 	color: #fff;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  91) 	font-size: 20px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  92) 	transition: 0.4s;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  93) 	line-height: 25px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  94) 	width: 300px;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  95) }
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  96) 
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  97) .search-icon {
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  98) 	border: none;
+^e228f30 styles.css         (tulsitailor      2022-10-13 09:19:04 -0400  99) }
+

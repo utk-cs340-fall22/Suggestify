@@ -1,0 +1,340 @@
+
+-> index.html
+
+
+101c930c (zperry4          2022-10-27 13:36:57 -0400  45) 						<li><a href="movies.html">Movies</a></li>
+101c930c (zperry4          2022-10-27 13:36:57 -0400  46) 						<li><a href="tv.html">TV-Shows</a></li>
+
+
+-> movies.html
+
+
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  1) <!DOCTYPE html>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  2) <html lang="en">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  3) 	<head>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  4) 		<meta charset="UTF-8" />
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  5) 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  6) 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  7) 		<title>Suggestify</title>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  8) 		<link rel="stylesheet" href="styles.css" />
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  9) 		<script
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 10) 			src="https://kit.fontawesome.com/4ea5866b14.js"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 11) 			crossorigin="anonymous"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 12) 		></script>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 13) 		<link
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 14) 			href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 15) 			rel="stylesheet"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 16) 			type="text/css"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 17) 		/>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 18) 		<script src="https://cdn.tailwindcss.com"></script>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 19) 		<script src="movies.js" defer></script>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 20) 	</head>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 21) 	<body>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 22) 		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 23) 			<div class="navbar-start">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 24) 				<div class="dropdown">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 25) 					<label tabindex="0" class="btn btn-ghost btn-circle">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 26) 						<svg
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 27) 							xmlns="http://www.w3.org/2000/svg"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 28) 							class="h-5 w-5"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 29) 							fill="none"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 30) 							viewBox="0 0 24 24"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 31) 							stroke="currentColor"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 32) 						>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 33) 							<path
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 34) 								stroke-linecap="round"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 35) 								stroke-linejoin="round"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 36) 								stroke-width="2"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 37) 								d="M4 6h16M4 12h16M4 18h7"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 38) 							/>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 39) 						</svg>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 40) 					</label>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 41) 					<ul
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 42) 						tabindex="0"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 43) 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 44) 					>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 45) 						<li><a href="movies.html">Movies</a></li>
+101c930c (zperry4  2022-10-27 13:36:57 -0400 46) 						<li><a href="tv.html">TV-Shows</a></li>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 49) 						<li><a href="login.html">Account</a></li>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 50) 					</ul>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 51) 				</div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 52) 				<div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 59) 				</div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 60) 			</div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 61) 			<div class="navbar-center">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 62) 				<a href="#" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 63) 			</div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 64) 			<div class="navbar-end">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 70) 				<button class="btn btn-ghost btn-circle mr-4">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 71) 					<div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 72) 						<a href="login.html">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 73) 							<svg
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 74) 								xmlns="http://www.w3.org/2000/svg"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 75) 								fill="none"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 76) 								viewBox="0 0 24 24"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 77) 								stroke-width="0.5"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 78) 								stroke="currentColor"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 79) 								class="w-12 h-12"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 80) 							>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 81) 								<path
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 82) 									stroke-linecap="round"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 83) 									stroke-linejoin="round"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 84) 									d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 85) 								/>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 86) 							</svg>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 87) 						</a>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 88) 					</div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 89) 				</button>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 90) 			</div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 91) 		</nav>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 94) 		<main id="main"></main>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 95) 	</body>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 96) </html>
+
+
+-> tv.html
+
+
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  1) <!DOCTYPE html>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  2) <html lang="en">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  3) 	<head>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  4) 		<meta charset="UTF-8" />
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  5) 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  6) 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  7) 		<title>Suggestify</title>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  8) 		<link rel="stylesheet" href="styles.css" />
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  9) 		<script
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 10) 			src="https://kit.fontawesome.com/4ea5866b14.js"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 11) 			crossorigin="anonymous"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 12) 		></script>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 13) 		<link
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 14) 			href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 15) 			rel="stylesheet"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 16) 			type="text/css"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 17) 		/>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 18) 		<script src="https://cdn.tailwindcss.com"></script>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 19) 		<script src="tv.js" defer></script>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 20) 	</head>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 21) 	<body>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 22) 		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 23) 			<div class="navbar-start">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 24) 				<div class="dropdown">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 25) 					<label tabindex="0" class="btn btn-ghost btn-circle">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 26) 						<svg
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 27) 							xmlns="http://www.w3.org/2000/svg"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 28) 							class="h-5 w-5"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 29) 							fill="none"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 30) 							viewBox="0 0 24 24"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 31) 							stroke="currentColor"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 32) 						>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 33) 							<path
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 34) 								stroke-linecap="round"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 35) 								stroke-linejoin="round"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 36) 								stroke-width="2"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 37) 								d="M4 6h16M4 12h16M4 18h7"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 38) 							/>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 39) 						</svg>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 40) 					</label>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 41) 					<ul
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 42) 						tabindex="0"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 43) 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 44) 					>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 45) 						<li><a href="movies.html">Movies</a></li>
+101c930c (zperry4  2022-10-27 13:36:57 -0400 46) 						<li><a href="tv.html">TV-Shows</a></li>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 49) 						<li><a href="login.html">Account</a></li>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 50) 					</ul>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 51) 				</div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 52) 				<div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 59) 				</div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 60) 			</div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 61) 			<div class="navbar-center">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 62) 				<a href="#" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 63) 			</div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 64) 			<div class="navbar-end">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 70) 				<button class="btn btn-ghost btn-circle mr-4">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 71) 					<div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 72) 						<a href="login.html">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 73) 							<svg
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 74) 								xmlns="http://www.w3.org/2000/svg"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 75) 								fill="none"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 76) 								viewBox="0 0 24 24"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 77) 								stroke-width="0.5"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 78) 								stroke="currentColor"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 79) 								class="w-12 h-12"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 80) 							>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 81) 								<path
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 82) 									stroke-linecap="round"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 83) 									stroke-linejoin="round"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 84) 									d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 85) 								/>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 86) 							</svg>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 87) 						</a>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 88) 					</div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 89) 				</button>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 90) 			</div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 91) 		</nav>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 94) 		<main id="main"></main>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 95) 	</body>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 96) </html>
+
+
+-> styles.css
+
+
+bbb5b7c2 styles.css         (zperry4          2022-10-26 21:29:43 -0400 162) 
+bbb5b7c2 styles.css         (zperry4          2022-10-26 21:29:43 -0400 163)   main{
+bbb5b7c2 styles.css         (zperry4          2022-10-26 21:29:43 -0400 164)     display:flex;
+bbb5b7c2 styles.css         (zperry4          2022-10-26 21:29:43 -0400 165)     flex-wrap: wrap;
+bbb5b7c2 styles.css         (zperry4          2022-10-26 21:29:43 -0400 166)     justify-content: center;
+bbb5b7c2 styles.css         (zperry4          2022-10-26 21:29:43 -0400 167) }
+
+
+-> index.js
+
+
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  20) /* This will need to be stored somewhere else at some point for security reasons */
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  21) const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb'; 
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  22) const BASE_URL = 'https://api.themoviedb.org/3/';
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  23) 
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  24) /* This can be formatted to include whatever you want -- 'movie/upcoming' is just a placeholder for now */
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  26) 
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  27) /* After this URL, add the posterURL return from the API */
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  28) const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  29) 
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  30) getMovies(API_URL);
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  31) 
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  32) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  33) function getMovies(url) {
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  35)         console.log(data.results);
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  36)         displayMovies(data.results);
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  42) /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  43) function displayMovies(data) {
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400  47)     data.forEach(movies => {
+dc9027d5 index.js        (zperry4          2022-10-18 12:57:03 -0400 102) }
+
+
+-> movies.js
+
+
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  1) /* This will need to be stored somewhere else at some point for security reasons */
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  2) const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  3) const BASE_URL = 'https://api.themoviedb.org/3/';
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  4) /* This can be formatted to include whatever you want -- 'movie/upcoming' is just a placeholder for now */
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  7) /* After this URL, add the posterURL return from the API */
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  8) const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400  9) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 10) /* After the v= comes the key returned by the api call to get all videos for the movie */
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 11) const YOUTUBE_TRAILER_URL = 'https://youtube.com/watch?v=';
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 12) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 13) getMovies(API_URL);
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 14) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 15) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 16) function getMovies(url) {
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 20) 			displayMovies(data.results);
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 21) 		})
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 25) }
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 26) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 27) /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 28) function displayMovies(data) {
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 29) 	main.innerHTML = '';
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 30) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 41) 		const backdropURL = POSTER_URL + backdrop_path;
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 42) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 43) 		const movieEl = document.createElement('div');
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 44) 		movieEl.classList.add('movie');
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 45) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 46) 		movieEl.innerHTML = `
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 47)         <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 51)         </label>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 53)         <input type="checkbox" id="${title}" class="modal-toggle" />
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 54)         <div class="modal">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 55)             <div class="modal-box w-full max-w-5xl h-full">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 56) 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 57)                 <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 58)                     <figure>            
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 59)                         <img src="${backdropURL}" alt="backDrop" style="width: 970px !important; height: 500px !important; margin-right: 0px !important; border-radius: 0px !important; border-width: 0px !important; padding: 1px 0px 1px 1px !important;"></img>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 60)                     </figure>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 61)                     <div class="card-body">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 62)                         <h1 class="card-title" style="text-align: center !important;">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 63)                             <font size="+100">${title}</font> 
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 64)                         </h1>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 65)                         <br/>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 66)                         <h3> <b> Overview </b> </h3>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 67)                         <p>${overview}</p>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 68)                         <br /> <br />
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 69)                         <p><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10</p>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 70)                     </div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 71)                 </div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 72)                 <div class="modal-action">
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 73)                      <label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 74)                 </div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 75)             </div>
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 76)         </div>`;
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 77) 		main.appendChild(movieEl);
+5e96d3db (zperry4  2022-10-26 21:29:16 -0400 79) }
+
+
+-> tv.js
+
+
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  1) /* This will need to be stored somewhere else at some point for security reasons */
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  2) const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  3) const BASE_URL = 'https://api.themoviedb.org/3/';
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  4) /* This can be formatted to include whatever you want -- 'movie/upcoming' is just a placeholder for now */
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  5) const API_URL = BASE_URL + 'tv/popular?' + API_KEY + '&language=en-US&page=1';
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  6) /* After this URL, add the posterURL return from the API */
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  7) const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  8) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400  9) /* After the v= comes the key returned by the api call to get all videos for the movie */
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 10) const YOUTUBE_TRAILER_URL = 'https://youtube.com/watch?v=';
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 11) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 12) getTvShows(API_URL);
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 13) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 14) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 15) function getTvShows(url) {
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 19) 			console.log(data.results);
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 20) 			displayTvShows(data.results);
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 21) 		})
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 25) }
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 26) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 27) function displayTvShows(data) {
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 38) 		const backdropURL = POSTER_URL + backdrop_path;
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 39) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 40) 		/* Use append to response to make another API call and get all of the other info needed */
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 41) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 42) 		const tvEl = document.createElement('div');
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 43) 		tvEl.classList.add('tv');
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 44) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 45) 		tvEl.innerHTML = `
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 46)         <label for="${name}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 50)         </label>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 52)         <input type="checkbox" id="${name}" class="modal-toggle" />
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 53)         <div class="modal">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 54)             <div class="modal-box w-full max-w-5xl h-full">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 55) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 56)                 <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 57)                     <figure>            
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 58)                         <img src="${backdropURL}" alt="backDrop" style="width: 970px !important; height: 500px !important; margin-right: 0px !important; border-radius: 0px !important; border-width: 0px !important; padding: 1px 0px 1px 1px !important;"></img>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 59)                     </figure>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 60)                     <div class="card-body">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 61)                         <h1 class="card-title" style="text-align: center !important;">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 62)                             <font size="+100">${name}</font> 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 63)                         </h1>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 64)                         <br/>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 65)                         <h3> <b> Overview </b> </h3>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 66)                         <p>${overview}</p>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 67) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 68)                         <br /> <br />
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 69)                         <p><b>Release Date:</b> ${first_air_date} | <b>Rating:</b> ${vote_average} / 10</p>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 70)                     </div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 71)                 </div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 72)                 <div class="modal-action">
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 73)                      <label for="${name}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 74)                 </div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 75)             </div>
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 76)         </div>`;
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 77) 
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 78) 		main.appendChild(tvEl);
+7e80de3e (zperry4  2022-10-26 21:29:35 -0400 80) }
+2d189d79 (mpatel65    2022-10-26 19:43:35 -0400 51) - Zachary Perry - zperry4
+2d189d79 (mpatel65    2022-10-26 19:43:35 -0400 51) - Zachary Perry - zperry4

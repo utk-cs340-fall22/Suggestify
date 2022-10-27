@@ -1,0 +1,146 @@
+
+-> index.html
+
+
+b3b7c691 (rpatel90         2022-10-26 20:33:47 -0400  22) 		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
+77e180e7 (rpatel90         2022-10-27 11:38:11 -0400 153) 		<h1><font size="+100">Trending</font></h1>
+b3b7c691 (rpatel90         2022-10-26 20:33:47 -0400 154) 		<div class="carousel" id="movieCarousel"></div>
+
+
+-> styles.css
+
+
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400   4) 		#3c1542,
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400  30)   -webkit-filter: brightness(100%);
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400  35)   -webkit-filter: brightness(65%);
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 100) 
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 101)   .button {
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 102)     position: relative;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 103)   }
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 104)   
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 105)   .carousel {
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 106)     height: 250px;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 107)   }
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 108) 
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 109)   .trending-image {
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 110)     border: 1px solid #ddd;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 111)     border-radius: 4px;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 112)     padding: 5px;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 113)     width: 160px;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 114)     margin-right: 20px;   /* Horizontal Space */ 
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 115)   }
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 116) 
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 117)   .modal-button {
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 118)     background-position: center;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 119)     background-size: cover;
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 120)     width: 150px;
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 121)     height: 100px;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 122)     background-repeat: no-repeat;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 123)   }
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 124) 
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 125)   .addtolist {
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 126)     position: absolute;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 127)     right: 0;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 128)     bottom: 0;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 129) 	  background: #fff;
+b2c3a013 styles.css         (rpatel90         2022-10-20 09:16:30 -0400 130)   }
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 131) 
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 132)   .carousel {
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 133) 	  height: 500px;
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 134)   }
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 135) 
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 136)   .card {
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 137) 	  width: 970px;
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 138) 	  height: 400px;
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 139)   }
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 140) 
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 141)   .tabs {
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 142)     object-position: 50%;
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 143)   }
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 144) 
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 145)   .card-trailer {
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 146)     height: 170px;
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 147)     width: 300px;
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 148)   }
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 149) 
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 150)   .container-trailer {
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 151)     object-position: right;
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 152)   }
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 153) 
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 154)   .trailer-btn {
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 155)     -webkit-filter: opacity(0%);
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 156)   }
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 157) 
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 158)   .trailer-btn:hover{
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 159)     -webkit-filter: opacity(100%);
+77e180e7 styles.css         (rpatel90         2022-10-27 11:38:11 -0400 160)     -webkit-filter: brightness(100%);
+b3b7c691 styles.css         (rpatel90         2022-10-26 20:33:47 -0400 161)   }
+
+
+-> index.js
+
+
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400   1) 
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  19) 
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  25) const API_URL = BASE_URL + 'movie/upcoming?' + API_KEY + '&language=en-US&page=1';
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  34)     fetch(url).then(res => res.json()).then(data => {
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  37)     }).catch(error => {
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  39)     })
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  44)     let i = 0;
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  45)     movieCarousel.innerHTML = '';
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  46) 
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  48)         const {title, poster_path, vote_average, overview, backdrop_path} = movies;
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  49)         const backdrop_url = POSTER_URL + backdrop_path;
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  50)         console.log(movies.title);
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  51)   
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  52)         const movieEl = `
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  53)         <div class="carousel-item">
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  54)             <label for="my-modal-${i}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  55)             <img src="${POSTER_URL + poster_path}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  56)             </label>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  57)             <input type="checkbox" class="modal-toggle" id="my-modal-${i}" />
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  58)             <div class="modal">
+50117153 index.js        (rpatel90         2022-10-26 21:01:36 -0400  59)                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  60)                     <label
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  61)                         for="my-modal-${i}"
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  62)                         class="btn btn-sm btn-circle absolute right-2 top-2"
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  63)                         >✕
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  64)                     </label>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  65)                     <div class="card bg-base-100 shadow-xl image-full">
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  66)                         <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 970px !important;"></img> </figure>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  67)                         <div class="card-body">
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  68)                             <h1 class="card-title style="text-align: center !important;">
+50117153 index.js        (rpatel90         2022-10-26 21:01:36 -0400  69)                                 <font size="+100">${title}</font>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  70)                             </h1>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  71)                             <br/>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  72)                             <h3><b>Overview</b></h3>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  73)                             <p>${overview}</p>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  74)                             <br /><br />
+50117153 index.js        (rpatel90         2022-10-26 21:01:36 -0400  75)                             <p class="info"><b>Release Date:</b> ${movies.release_date} | <b>Rating:</b> ${vote_average} / 10</p>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  76)                         </div>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  77)                     </div>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  78) 
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  79)                     <div class="tabs tabs-center">
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  80)                         <a class="tab tab-lg tab-bordered">See Also</a>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  81)                         <a class="tab tab-lg tab-bordered tab-active">More Info</a> 
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  82)                         <a class="tab tab-lg tab-bordered">Reviews</a>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  83)                     </div>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  84) 
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  85)                     <br/><br/>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  86)                     <div class="absolute right-10">
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  87)                         <p><b>Trailer</b></p>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  88)                         <div class="card-trailer bg-base-100 shadow-xl image-full">
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  89)                             <figure><img src="${backdrop_url}" alt="trailer" style="!important; height: 170 !important; width: 300px"/></figure>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  90)                             
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  91)                             <div class="card-trailer-body">
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  92)                                 <button class="trailer-btn btn-circle">▶</button>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  93)                             </div>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  94)                         </div>
+77e180e7 index.js        (rpatel90         2022-10-27 11:38:11 -0400  95)                     </div>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  96)                 </div>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  97)             </div>
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  98)         </div>`
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400  99)         movieCarousel.innerHTML += movieEl;
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400 100)         i++;
+b3b7c691 index.js        (rpatel90         2022-10-26 20:33:47 -0400 101)     })
+2d189d79 (mpatel65    2022-10-26 19:43:35 -0400 48) - Riya Patel - rpatel90
