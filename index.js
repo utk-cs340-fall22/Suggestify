@@ -68,7 +68,7 @@ function displayMovies(data) {
             </label>
             <input type="checkbox" class="modal-toggle" id="my-modal-${i}" />
             <div class="modal">
-                <div class="modal-box relative w-full max-w-4xl h-full">
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${i}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -76,15 +76,16 @@ function displayMovies(data) {
                     </label>
 
                     <div class="card bg-base-100 shadow-xl image-full">
-                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 500px !important; width: 825px !important;"></img> </figure>
+                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 380px !important; width: 960px !important;"></img> </figure>
                         <div class="card-body">
                             <h1 class="card-title style="text-align: center !important;">
-                                <font size+=100>${title}</font>
+                                <font size="+100">${title}</font>
                             </h1>
                             <br/>
                             <h3><b>Overview</b></h3>
                             <p>${overview}</p>
                             <br /><br />
+                            <p class="info"><b>Release Date:</b> ${movies.release_date} | <b>Rating:</b> ${vote_average} / 10</p>
                         </div>
                     </div>
                 </div>
