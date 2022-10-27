@@ -1,7 +1,7 @@
 :root {
 	background-image: linear-gradient(
 		to bottom,
-		#5d2067,
+		#3c1542,
 		#231625,
 		#21252b
 	) !important;
@@ -27,10 +27,12 @@ img {
 	padding: 5px;
 	width: 150px;
 	margin-right: 20px;
+  -webkit-filter: brightness(100%);
 }
 
 img:hover {
 	box-shadow: 0 0 8px 4px rgba(83, 84, 86, 0.5);
+  -webkit-filter: brightness(65%);
 }
 
 .content {
@@ -113,65 +115,10 @@ img:hover {
   }
 
   .modal-button {
-    background-image: url(https://media1.citybeat.com/citybeat/imager/u/zoom/13852906/dont-worry-darling.jpg?cb=1663232148);
     background-position: center;
     background-size: cover;
-    width: 160px;
-    height: 250px;
-    background-repeat: no-repeat;
-  }
-
-  .modal-button1 {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWsNhTsRFsqj4YIL4ClubNE1tVaRbkXEwLK8AjH9aa1XpbzxeR);
-    background-position: center;
-    background-size: cover;
-    width: 160px;
-    height: 250px;
-    background-repeat: no-repeat;
-  }
-
-  .modal-button2 {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSsb_4zvHo_naaktE9hFBJHVNee2i-O5I74mnyYNJhKWQf039p);
-    background-position: center;
-    background-size: cover;
-    width: 160px;
-    height: 250px;
-    background-repeat: no-repeat;
-  }
-
-  .modal-button3 {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfbwniK5xxGTYRXttN-c286JlX6QBi0XS5tsF97aJ6bAWIv5HE);
-    background-position: center;
-    background-size: cover;
-    width: 160px;
-    height: 250px;
-    background-repeat: no-repeat;
-  }
-
-  .modal-button4 {
-    background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQbNJAbGvuIaKs4Gorgdmu0F64RJzUgMK13glIwNpCWmtcp2UAN);
-    background-position: center;
-    background-size: cover;
-    width: 160px;
-    height: 250px;
-    background-repeat: no-repeat;
-  }
-
-  .modal-button5 {
-    background-image: url(https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRsKaCeVjWLIVjuPriyFDRn4NNMF0wbS-6ZKGRDK83hqH16J-GW);
-    background-position: center;
-    background-size: cover;
-    width: 160px;
-    height: 250px;
-    background-repeat: no-repeat;
-  }
-
-  .modal-button6 {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjkbBqL3POWZb7EJmte1wpdZRJkE5_pkV532SF_-zl8LH2mN3a);
-    background-position: center;
-    background-size: cover;
-    width: 160px;
-    height: 250px;
+    width: 150px;
+    height: 100px;
     background-repeat: no-repeat;
   }
 
@@ -180,6 +127,37 @@ img:hover {
     right: 0;
     bottom: 0;
 	  background: #fff;
+  }
+
+  .carousel {
+	  height: 500px;
+  }
+
+  .card {
+	  width: 970px;
+	  height: 400px;
+  }
+
+  .tabs {
+    object-position: 50%;
+  }
+
+  .card-trailer {
+    height: 170px;
+    width: 300px;
+  }
+
+  .container-trailer {
+    object-position: right;
+  }
+
+  .trailer-btn {
+    -webkit-filter: opacity(0%);
+  }
+
+  .trailer-btn:hover{
+    -webkit-filter: opacity(100%);
+    -webkit-filter: brightness(100%);
   }
 
   main{
