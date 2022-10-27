@@ -1,5 +1,5 @@
 /* This will need to be stored somewhere else at some point for security reasons */
-const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb'; 
+const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 /* This can be formatted to include whatever you want -- 'movie/upcoming' is just a placeholder for now */
 const API_URL = BASE_URL + 'tv/popular?' + API_KEY + '&language=en-US&page=1';
@@ -13,28 +13,42 @@ getTvShows(API_URL);
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 function getTvShows(url) {
-    fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results);
-        displayTvShows(data.results);
-    }).catch(error => {
-        console.log(error);
-    })
+	fetch(url)
+		.then(res => res.json())
+		.then(data => {
+			console.log(data.results);
+			displayTvShows(data.results);
+		})
+		.catch(error => {
+			console.log(error);
+		});
 }
 
 function displayTvShows(data) {
-    data.forEach((tv) => {
-        const { name, poster_path, vote_average, overview, backdrop_path, id, first_air_date} = tv;
-        const backdropURL = POSTER_URL + backdrop_path;
+	data.forEach(tv => {
+		const {
+			name,
+			poster_path,
+			vote_average,
+			overview,
+			backdrop_path,
+			id,
+			first_air_date,
+		} = tv;
+		const backdropURL = POSTER_URL + backdrop_path;
 
-        /* Use append to response to make another API call and get all of the other info needed */
-        
-        const tvEl = document.createElement('div');
-        tvEl.classList.add('tv');
+		/* Use append to response to make another API call and get all of the other info needed */
 
-        tvEl.innerHTML = `
+		const tvEl = document.createElement('div');
+		tvEl.classList.add('tv');
+
+		tvEl.innerHTML = `
         <label for="${name}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
-            <img src="${POSTER_URL + poster_path}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
+            <img src="${
+							POSTER_URL + poster_path
+						}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
         </label>
+        <i id="heart-icon" class="fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
         <input type="checkbox" id="${name}" class="modal-toggle" />
         <div class="modal">
             <div class="modal-box w-full max-w-5xl h-full">
@@ -52,7 +66,7 @@ function displayTvShows(data) {
                         <p>${overview}</p>
 
                         <br /> <br />
-                        <p><b>Release Date:</b> ${first_air_date    } | <b>Rating:</b> ${vote_average} / 10</p>
+                        <p><b>Release Date:</b> ${first_air_date} | <b>Rating:</b> ${vote_average} / 10</p>
                     </div>
                 </div>
                 <div class="modal-action">
@@ -60,7 +74,7 @@ function displayTvShows(data) {
                 </div>
             </div>
         </div>`;
-        
-        main.appendChild(tvEl);
-    })
+
+		main.appendChild(tvEl);
+	});
 }
