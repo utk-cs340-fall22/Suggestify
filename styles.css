@@ -1,12 +1,25 @@
 :root {
 	background-image: linear-gradient(
 		to bottom,
-		#5d2067,
+		#3c1542,
 		#231625,
 		#21252b
 	) !important;
 }
 
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 10px #21252b;
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: rgb(122, 38, 122);
+	border-radius: 5px;
+}
 
 img {
 	border: 1px solid #ddd;
@@ -14,10 +27,12 @@ img {
 	padding: 5px;
 	width: 150px;
 	margin-right: 20px;
+  -webkit-filter: brightness(100%);
 }
 
 img:hover {
 	box-shadow: 0 0 8px 4px rgba(83, 84, 86, 0.5);
+  -webkit-filter: brightness(65%);
 }
 
 .content {
@@ -81,4 +96,77 @@ img:hover {
 
 .search-icon {
 	border: none;
+}
+
+  .button {
+    position: relative;
+  }
+  
+  .carousel {
+    height: 250px;
+  }
+
+  .trending-image {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 160px;
+    margin-right: 20px;   /* Horizontal Space */ 
+  }
+
+  .modal-button {
+    background-position: center;
+    background-size: cover;
+    width: 150px;
+    height: 100px;
+    background-repeat: no-repeat;
+  }
+
+  .addtolist {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+	  background: #fff;
+  }
+
+  .carousel {
+	  height: 500px;
+  }
+
+  .card {
+	  width: 970px;
+	  height: 400px;
+  }
+
+  .tabs {
+    object-position: 50%;
+  }
+
+  .card-trailer {
+    height: 170px;
+    width: 300px;
+  }
+
+  .container-trailer {
+    object-position: right;
+  }
+
+  .trailer-btn {
+    -webkit-filter: opacity(0%);
+  }
+
+  .trailer-btn:hover{
+    -webkit-filter: opacity(100%);
+    -webkit-filter: brightness(100%);
+  }
+
+  main{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+nav{
+  position: fixed;
+  z-index: 3;
 }

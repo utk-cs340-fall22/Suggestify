@@ -16,8 +16,7 @@
 			type="text/css"
 		/>
 		<script src="https://cdn.tailwindcss.com"></script>
-		<script src="index.js" defer></script>
-
+		<script src="movies.js" defer></script>
 	</head>
 	<body>
 		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
@@ -43,7 +42,7 @@
 						tabindex="0"
 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
 					>
-						<li><a href="#">Movies</a></li>
+						<li><a href="movies.html">Movies</a></li>
 						<li><a href="#">TV-Shows</a></li>
 						<li><a href="#">My List</a></li>
 						<li><a href="#" class="mt-[12rem]">Settings</a></li>
@@ -51,7 +50,7 @@
 					</ul>
 				</div>
 				<div>
-					<a class="btn btn-ghost normal-case text-l">Movies</a>
+					<a href="movies.html" class="btn btn-ghost normal-case text-l">Movies</a>
 					<a class="btn btn-ghost normal-case text-l">TV-Shows</a>
 				</div>
 			</div>
@@ -82,53 +81,7 @@
 				</button>
 			</div>
 		</nav>
-		<div class="relative w-full mx-auto mt-[64px]">
-			<div class="slide relative">
-				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/mkomfZHG5q4?autoplay=1&mute=1&controls=0" title="Black Adam - Official Trailer 2" 
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen></iframe>
-			</div>
-      
-			<div class="slide relative">
-				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/_Z3QKkl1WyM?autoplay=1&mute=1&controls=0" title="Marvel Studios’ Black Panther: Wakanda Forever | Official Trailer" 
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen></iframe>
-			</div>
-
-			<div class="slide relative">
-				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/DpZ3yZhsWZE?autoplay=1&mute=1&controls=0" title="Black Beauty | Official Trailer | Disney+" 
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen></iframe>
-			</div>
-
-			<a
-				class="absolute left-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-				onclick="moveSlide(-1)"
-				>❮</a
-			>
-			<a
-				class="absolute right-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-				onclick="moveSlide(1)"
-				>❯</a
-			>
-		</div>
-
-		<div class="container">
-			<div class="search-box">
-				<input
-					class="search-text"
-					type="text"
-					name=""
-					placeholder="Type to search"
-				/>
-				<a class="search-btn" href="#">
-					<img class="search-icon" src="search_icon.png" />
-				</a>
-			</div>
-		</div>
-
-		<br /><br />
-		<h1><font size="+100">Trending</font></h1>
-		<div class="carousel" id="movieCarousel"></div>
-	</body>
+        <br /><br /><br /> <br />
+        <main id="main"></main>
+    </body>
 </html>
