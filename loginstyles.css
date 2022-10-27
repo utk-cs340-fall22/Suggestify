@@ -98,6 +98,31 @@
     color: white;
 }
 
+.google-btn{
+    width: 10%;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.768) ;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: linear-gradient(to right,#6629bb, #eca30f);
+}
+
+.facebook-btn{
+    width: 10%;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-block;
+    margin: auto;
+    background: rgba(255, 255, 255, 0.768) ;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: linear-gradient(to right,#6629bb, #eca30f);
+}
 .submit-btn{
     width: 85%;
     padding: 10px 30px;
