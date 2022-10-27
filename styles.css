@@ -1,7 +1,7 @@
 :root {
 	background-image: linear-gradient(
 		to bottom,
-		#5d2067,
+		#3c1542,
 		#231625,
 		#21252b
 	) !important;
@@ -27,10 +27,12 @@ img {
 	padding: 5px;
 	width: 150px;
 	margin-right: 20px;
+  -webkit-filter: brightness(100%);
 }
 
 img:hover {
 	box-shadow: 0 0 8px 4px rgba(83, 84, 86, 0.5);
+  -webkit-filter: brightness(65%);
 }
 
 .content {
@@ -132,6 +134,28 @@ img:hover {
   }
 
   .card {
-	  width: 960px;
-	  height: 380px;
+	  width: 970px;
+	  height: 400px;
+  }
+
+  .tabs {
+    object-position: 50%;
+  }
+
+  .card-trailer {
+    height: 170px;
+    width: 300px;
+  }
+
+  .container-trailer {
+    object-position: right;
+  }
+
+  .trailer-btn {
+    -webkit-filter: opacity(0%);
+  }
+
+  .trailer-btn:hover{
+    -webkit-filter: opacity(100%);
+    -webkit-filter: brightness(100%);
   }

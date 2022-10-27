@@ -40,18 +40,6 @@ function getMovies(url) {
 }
 
 /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
-    // Back drop path can be used in modal
-    // <img src="${POSTER_URL + backdrop_path}" alt="title">
-    //     <img src="${POSTER_URL + poster_path}" alt="title">
-    //     <div class="movieInfo">
-    //         <h2><b>${title}</b></h2>
-    //         <h3><b>Rating -- ${vote_average}/10 </b></h3>
-    //     </div>
-    //     <div class="overview">
-    //         <h3>Overview</h3>
-    //         ${overview}
-    //     </div>
-    //     <br></br>
 function displayMovies(data) {
     let i = 0;
     movieCarousel.innerHTML = '';
@@ -74,9 +62,8 @@ function displayMovies(data) {
                         class="btn btn-sm btn-circle absolute right-2 top-2"
                         >✕
                     </label>
-
                     <div class="card bg-base-100 shadow-xl image-full">
-                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 380px !important; width: 960px !important;"></img> </figure>
+                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 970px !important;"></img> </figure>
                         <div class="card-body">
                             <h1 class="card-title style="text-align: center !important;">
                                 <font size="+100">${title}</font>
@@ -86,6 +73,24 @@ function displayMovies(data) {
                             <p>${overview}</p>
                             <br /><br />
                             <p class="info"><b>Release Date:</b> ${movies.release_date} | <b>Rating:</b> ${vote_average} / 10</p>
+                        </div>
+                    </div>
+
+                    <div class="tabs tabs-center">
+                        <a class="tab tab-lg tab-bordered">See Also</a>
+                        <a class="tab tab-lg tab-bordered tab-active">More Info</a> 
+                        <a class="tab tab-lg tab-bordered">Reviews</a>
+                    </div>
+
+                    <br/><br/>
+                    <div class="absolute right-10">
+                        <p><b>Trailer</b></p>
+                        <div class="card-trailer bg-base-100 shadow-xl image-full">
+                            <figure><img src="${backdrop_url}" alt="trailer" style="!important; height: 170 !important; width: 300px"/></figure>
+                            
+                            <div class="card-trailer-body">
+                                <button class="trailer-btn btn-circle">▶</button>
+                            </div>
                         </div>
                     </div>
                 </div>
