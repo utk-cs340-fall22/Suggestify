@@ -181,3 +181,9 @@ img:hover {
     bottom: 0;
 	  background: #fff;
   }
+
+  main{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
