@@ -22,6 +22,7 @@
 				<div class="social-icons">
 					<!-- <img src="google_icon.png" /> -->
 					<button type="submit" class="google-btn" id="googleLogIn" > <a href="" id="gLogIn" >G</a></button>
+					<button type="submit" class="facebook-btn" id="facebookLogIn" > <a href="" id="fLogIn" >F</a></button>
 					<!-- <img src="facebook_icon.png" /> -->
 				</div>
 				<form id="login" class="input-group">
@@ -67,8 +68,7 @@
 		<script type="module">
 			// Import the functions you need from the SDKs you need
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-			import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
-			import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+			import { getAuth, createUserWithEmailAndPassword, signInWithRedirect, getRedirectResult, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
 			// TODO: Add SDKs for Firebase products that you want to use
 			// https://firebase.google.com/docs/web/setup#available-libraries
 		  
@@ -86,7 +86,8 @@
 		  
 			// Initialize Firebase
 			const app = initializeApp(firebaseConfig);
-			const provider = new GoogleAuthProvider(app);
+			const googleProvider = new GoogleAuthProvider(app);
+			const facebookProvider = new FacebookAuthProvider(app);
 			const auth = getAuth(app);
 			
 			createUser.addEventListener('click', (e) => {
@@ -111,7 +112,7 @@
 
 			googleLogIn.addEventListener('click', (e) => {
 				e.preventDefault();
-				signInWithRedirect(auth, provider);
+				signInWithRedirect(auth, googleProvider);
 				getRedirectResult(auth)
 					.then((result) => {
 						// This gives you a Google Access Token. You can use it to access Google APIs.
@@ -132,6 +133,30 @@
 					});
 			});
 			
+			facebookLogIn.addEventListener('click', (e) => {
+				e.preventDefault();
+				signInWithRedirect(auth, facebookProvider);
+				getRedirectResult(auth)
+				.then((result) => {
+					// This gives you a Facebook Access Token. You can use it to access the Facebook API.
+					const credential = FacebookAuthProvider.credentialFromResult(result);
+					const token = credential.accessToken;
+
+					const user = result.user;
+				}).catch((error) => {
+					// Handle Errors here.
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// The email of the user's account used.
+					const email = error.customData.email;
+					// AuthCredential type that was used.
+					const credential = FacebookAuthProvider.credentialFromError(error);
+					// ...
+				});
+			});
+
+			
+
 
 		  </script>
 	</body>
