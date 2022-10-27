@@ -17,7 +17,6 @@
 		/>
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="index.js" defer></script>
-
 	</head>
 	<body>
 		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
@@ -45,21 +44,29 @@
 					>
 						<li><a href="movies.html">Movies</a></li>
 						<li><a href="tv.html">TV-Shows</a></li>
-						<li><a href="#">My List</a></li>
-						<li><a href="#" class="mt-[12rem]">Settings</a></li>
+						<li><a href="my-list.html">My List</a></li>
+						<li><a href="settings.html" class="mt-[12rem]">Settings</a></li>
 						<li><a href="login.html">Account</a></li>
 					</ul>
 				</div>
 				<div>
-					<a href="movies.html" class="btn btn-ghost normal-case text-l">Movies</a>
-					<a href="tv.html" class="btn btn-ghost normal-case text-l">TV-Shows</a>
+					<a href="movies.html" class="btn btn-ghost normal-case text-l"
+						>Movies</a
+					>
+					<a href="tv.html" class="btn btn-ghost normal-case text-l"
+						>TV-Shows</a
+					>
 				</div>
 			</div>
 			<div class="navbar-center">
 				<a href="#" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
 			</div>
 			<div class="navbar-end">
-				<button class="btn btn-ghost normal-case mr-8 text-l">My List</button>
+				<div>
+					<a href="my-list.html" class="btn btn-ghost normal-case mr-8 text-l">
+						My List</a
+					>
+				</div>
 				<button class="btn btn-ghost btn-circle mr-4">
 					<div>
 						<a href="login.html">
@@ -84,21 +91,36 @@
 		</nav>
 		<div class="relative w-full mx-auto mt-[64px]">
 			<div class="slide relative">
-				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/mkomfZHG5q4?autoplay=1&mute=1&controls=0" title="Black Adam - Official Trailer 2" 
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen></iframe>
-			</div>
-      
-			<div class="slide relative">
-				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/_Z3QKkl1WyM?autoplay=1&mute=1&controls=0" title="Marvel Studios’ Black Panther: Wakanda Forever | Official Trailer" 
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen></iframe>
+				<iframe
+					class="w-full h-[300px] object-cover"
+					src="https://www.youtube.com/embed/mkomfZHG5q4?autoplay=1&mute=1&controls=0"
+					title="Black Adam - Official Trailer 2"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
 			</div>
 
 			<div class="slide relative">
-				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/DpZ3yZhsWZE?autoplay=1&mute=1&controls=0" title="Black Beauty | Official Trailer | Disney+" 
-				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-				allowfullscreen></iframe>
+				<iframe
+					class="w-full h-[300px] object-cover"
+					src="https://www.youtube.com/embed/_Z3QKkl1WyM?autoplay=1&mute=1&controls=0"
+					title="Marvel Studios’ Black Panther: Wakanda Forever | Official Trailer"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			</div>
+
+			<div class="slide relative">
+				<iframe
+					class="w-full h-[300px] object-cover"
+					src="https://www.youtube.com/embed/DpZ3yZhsWZE?autoplay=1&mute=1&controls=0"
+					title="Black Beauty | Official Trailer | Disney+"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
 			</div>
 
 			<a
@@ -131,4 +153,89 @@
 		<h1><font size="+100">Trending</font></h1>
 		<div class="carousel" id="movieCarousel"></div>
 	</body>
+	<script type="module">
+		/* Import necessary content */
+		import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js';
+		import {
+			deleteDoc,
+			doc,
+			setDoc,
+			getDoc,
+			getFirestore,
+			updateDoc,
+		} from 'https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js';
+
+		/* Confidential keys */
+		const firebaseConfig = {
+			apiKey: 'AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg',
+			authDomain: 'suggestify-6b974.firebaseapp.com',
+			databaseURL: 'https://suggestify-6b974-default-rtdb.firebaseio.com',
+			projectId: 'suggestify-6b974',
+			storageBucket: 'suggestify-6b974.appspot.com',
+			messagingSenderId: '287553553595',
+			appId: '1:287553553595:web:c5e8adde4ca305cfaad59e',
+			measurementId: 'G-30270TW59M',
+		};
+
+		/* Initialize app with firebase firestore */
+		const app = initializeApp(firebaseConfig);
+		const db = getFirestore(app);
+
+		/* Add movie to My List table */
+		async function addMovieToFirestore(movieTitle, releaseDate, overview) {
+			try {
+				const docRef = await setDoc(doc(db, 'My List', movieTitle), {
+					overview: overview,
+					release_date: releaseDate,
+					title: movieTitle,
+				});
+				console.log('Document written with id:', movieTitle);
+			} catch (e) {
+				console.error('Error adding document: ', e);
+			}
+		}
+		// addMovieToFirestore('movie name', 'release date', 'overview');
+
+		/* Get movies from My List table */
+		async function getMoviesFromFirestore(docName) {
+			const docRef = doc(db, 'My List', docName);
+			const docSnap = await getDoc(docRef);
+
+			if (docSnap.exists()) {
+				console.log('Document data:', docSnap.data());
+			} else {
+				// doc.data() will be undefined in this case
+				console.error('No such document!');
+			}
+		}
+		// getMoviesFromFirestore('movie name');
+
+		/* Update fields of a movie from My List table */
+		async function updateMovieFromFirestore(docName, newValue) {
+			const docRef = doc(db, 'My List', docName);
+			try {
+				await updateDoc(docRef, {
+					// only one field at a time can be updated
+					title: newValue,
+					// release_date: 'newValue',
+					// overview: 'newValue',
+				});
+				console.log('updated value');
+			} catch (e) {
+				console.error('Error updating document: ', e);
+			}
+		}
+		// updateMovieFromFirestore('The Matrix', 'field value');
+
+		/* Delete movie from My List table */
+		async function deleteMovieFromFirestore(docName) {
+			try {
+				await deleteDoc(doc(db, 'My List', docName));
+				console.log('deleted', docName);
+			} catch (e) {
+				console.error('Error deleting document: ', e);
+			}
+		}
+		// deleteMovieFromFirestore('movie name');
+	</script>
 </html>
