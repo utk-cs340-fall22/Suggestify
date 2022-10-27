@@ -82,43 +82,35 @@
 				</button>
 			</div>
 		</nav>
-		<div class="carousel w-full mt-[100px]">
-			<div id="slide1" class="carousel-item w-full">
-				<img src="https://placeimg.com/800/200/arch" class="w-full" />
-				<div
-					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-				>
-					<a href="#slide4" class="btn btn-circle">❮</a>
-					<a href="#slide2" class="btn btn-circle">❯</a>
-				</div>
+		<div class="relative w-full mx-auto mt-[64px]">
+			<div class="slide relative">
+				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/mkomfZHG5q4?autoplay=1&mute=1&controls=0" title="Black Adam - Official Trailer 2" 
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
 			</div>
-			<div id="slide2" class="carousel-item relative w-full">
-				<img src="https://placeimg.com/800/200/arch" class="w-full" />
-				<div
-					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-				>
-					<a href="#slide1" class="btn btn-circle">❮</a>
-					<a href="#slide3" class="btn btn-circle">❯</a>
-				</div>
+
+			<div class="slide relative">
+				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/_Z3QKkl1WyM?autoplay=1&mute=1&controls=0" title="Marvel Studios’ Black Panther: Wakanda Forever | Official Trailer" 
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
 			</div>
-			<div id="slide3" class="carousel-item relative w-full">
-				<img src="https://placeimg.com/800/200/arch" class="w-full" />
-				<div
-					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-				>
-					<a href="#slide2" class="btn btn-circle">❮</a>
-					<a href="#slide4" class="btn btn-circle">❯</a>
-				</div>
+
+			<div class="slide relative">
+				<iframe class="w-full h-[300px] object-cover" src="https://www.youtube.com/embed/DpZ3yZhsWZE?autoplay=1&mute=1&controls=0" title="Black Beauty | Official Trailer | Disney+" 
+				frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+				allowfullscreen></iframe>
 			</div>
-			<div id="slide4" class="carousel-item relative w-full">
-				<img src="https://placeimg.com/800/200/arch" class="w-full" />
-				<div
-					class="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2"
-				>
-					<a href="#slide3" class="btn btn-circle">❮</a>
-					<a href="#slide1" class="btn btn-circle">❯</a>
-				</div>
-			</div>
+
+			<a
+				class="absolute left-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+				onclick="moveSlide(-1)"
+				>❮</a
+			>
+			<a
+				class="absolute right-0 top-1/2 p-4 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+				onclick="moveSlide(1)"
+				>❯</a
+			>
 		</div>
 
 		<div class="container">
