@@ -52,7 +52,7 @@ function displayMovies(data) {
         const movieEl = `
         <div class="carousel-item">
             <label for="my-modal-${i}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${POSTER_URL + poster_path}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+                <img src="${POSTER_URL + poster_path}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
             <input type="checkbox" class="modal-toggle" id="my-modal-${i}" />
             <div class="modal">
