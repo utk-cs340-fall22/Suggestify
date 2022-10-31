@@ -64,6 +64,7 @@
 .social-icons {
 	margin: 30px auto;
 	text-align: center;
+	background-color: transparent;
 }
 
 .social-icons img {
@@ -76,6 +77,30 @@
 
 .social-icons img:hover {
 	box-shadow: 1px 0px 0px 11px #ff61241f;
+}
+
+.google-btn{
+    width: 15%;
+    cursor: pointer;
+    display: inline-block;
+    margin: auto;
+    background: transparent ;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: linear-gradient(to right,#6629bb, #eca30f);
+}
+
+.facebook-btn{
+    width: 15%;
+    cursor: pointer;
+    display: inline-block;
+    margin: auto;
+    background: transparent;
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+    color: linear-gradient(to right,#6629bb, #eca30f);
 }
 
 .input-group {
@@ -98,31 +123,6 @@
     color: white;
 }
 
-.google-btn{
-    width: 10%;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: inline-block;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.768) ;
-    border: 0;
-    outline: none;
-    border-radius: 30px;
-    color: linear-gradient(to right,#6629bb, #eca30f);
-}
-
-.facebook-btn{
-    width: 10%;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: inline-block;
-    margin: auto;
-    background: rgba(255, 255, 255, 0.768) ;
-    border: 0;
-    outline: none;
-    border-radius: 30px;
-    color: linear-gradient(to right,#6629bb, #eca30f);
-}
 .submit-btn{
     width: 85%;
     padding: 10px 30px;
