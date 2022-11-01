@@ -28,6 +28,8 @@ const API_URL = BASE_URL + 'movie/upcoming?' + API_KEY + '&language=en-US&page=1
 const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
 
 getMovies(API_URL);
+const API_URL2 = BASE_URL + 'movie/top_rated?' + API_KEY + '&language=en-US&page=1';
+getMovies2(API_URL2);
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 function getMovies(url) {
@@ -47,7 +49,7 @@ function displayMovies(data) {
     data.forEach(movies => {
         const {title, poster_path, vote_average, overview, backdrop_path} = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-        console.log(movies.title);
+        // console.log(movies.title);
   
         const movieEl = `
         <div class="carousel-item">
@@ -99,4 +101,119 @@ function displayMovies(data) {
         movieCarousel.innerHTML += movieEl;
         i++;
     })
+}
+
+/* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+function getMovies2(url) {
+    fetch(url).then(res => res.json()).then(data => {
+        console.log(data.results);
+        displayMovies2(data.results);
+    }).catch(error => {
+        console.log(error);
+    })
+}
+
+/* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
+function displayMovies2(data) {
+    let i2 = 0;
+    movieCarousel2.innerHTML = '';
+
+    data.forEach(movies => {
+        const {title, poster_path, vote_average, overview, backdrop_path} = movies;
+        const backdrop_url = POSTER_URL + backdrop_path;
+  
+        const movieEl2 = `
+        <div class="carousel-item">
+            <label for="my-modal2-${i2}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+            <img src="${POSTER_URL + poster_path}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+            </label>
+            <input type="checkbox" class="modal-toggle" id="my-modal2-${i2}" />
+            <div class="modal">
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                    <label
+                        for="my-modal2-${i2}"
+                        class="btn btn-sm btn-circle absolute right-2 top-2"
+                        >✕
+                    </label>
+                    <div class="card bg-base-100 shadow-xl image-full">
+                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 970px !important;"></img> </figure>
+                        <div class="card-body">
+                            <h1 class="card-title style="text-align: center !important;">
+                                <font size="+100">${title}</font>
+                            </h1>
+                            <br/>
+                            <h3><b>Overview</b></h3>
+                            <p>${overview}</p>
+                            <br /><br />
+                            <p class="info"><b>Release Date:</b> ${movies.release_date} | <b>Rating:</b> ${vote_average} / 10</p>
+                        </div>
+                    </div>
+
+                    <div class="tabs tabs-center">
+                        <a class="tab tab-lg tab-bordered">See Also</a>
+                        <a class="tab tab-lg tab-bordered tab-active">More Info</a> 
+                        <a class="tab tab-lg tab-bordered">Reviews</a>
+                    </div>
+
+                    <br/><br/>
+                    <div class="absolute right-10">
+                        <p><b>Trailer</b></p>
+                        <div class="card-trailer bg-base-100 shadow-xl image-full">
+                            <figure><img src="${backdrop_url}" alt="trailer" style="!important; height: 170 !important; width: 300px"/></figure>
+                            
+                            <div class="card-trailer-body">
+                                <button class="trailer-btn btn-circle">▶</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`
+        movieCarousel2.innerHTML += movieEl2;
+        i2++;
+    })
+}
+
+let slideIndex = 1;
+showSlide(slideIndex);
+
+// change slide with the prev/next button
+function moveSlide(moveStep) {
+	showSlide((slideIndex += moveStep));
+}
+
+// change slide with the dots
+function currentSlide(n) {
+	showSlide((slideIndex = n));
+}
+
+function showSlide(n) {
+	let i;
+	const slides = document.getElementsByClassName('slide');
+	const dots = document.getElementsByClassName('dot');
+
+	if (n > slides.length) {
+		slideIndex = 1;
+	}
+	if (n < 1) {
+		slideIndex = slides.length;
+	}
+
+	// hide all slides
+	for (i = 0; i < slides.length; i++) {
+		slides[i].classList.add('hidden');
+	}
+
+	// remove active status from all dots
+	for (i = 0; i < dots.length; i++) {
+		dots[i].classList.remove('bg-yellow-500');
+		dots[i].classList.add('bg-green-600');
+	}
+
+	// show the active slide
+	slides[slideIndex - 1].classList.remove('hidden');
+
+	// highlight the active dot
+	dots[slideIndex - 1].classList.remove('bg-green-600');
+	dots[slideIndex - 1].classList.add('bg-yellow-500');
 }
