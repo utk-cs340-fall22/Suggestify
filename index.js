@@ -5,15 +5,15 @@ var y = document.getElementById('register');
 var z = document.getElementById('btn');
 
 function register() {
-	x.style.left = '-400px';
-	y.style.left = '50px';
-	z.style.left = '110px';
+    x.style.left = '-400px';
+    y.style.left = '50px';
+    z.style.left = '110px';
 }
 
 function login() {
-	x.style.left = '50px';
-	y.style.left = '450px';
-	z.style.left = '0';
+    x.style.left = '50px';
+    y.style.left = '450px';
+    z.style.left = '0';
 }
 
 let tabs = [
@@ -22,7 +22,7 @@ let tabs = [
     "Tab 3",
 ]
 let activeTab = 1;
- 
+
 function activateTabs() {
 
 }
@@ -30,11 +30,11 @@ function activateTabs() {
 
 
 /* This will need to be stored somewhere else at some point for security reasons */
-const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb'; 
+const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 
 /* This can be formatted to include whatever you want -- 'movie/upcoming' is just a placeholder for now */
-const API_URL_ = BASE_URL + '/movie/popular?/similar' + API_KEY + '&language=en-US&page=1';
+//const API_URL_ = BASE_URL + '/movie/popular?/similar' + API_KEY + '&language=en-US&page=1';
 
 const API_URL = BASE_URL + 'movie/popular?' + API_KEY + '&language=en-US&page=1';
 getTrendingMovies(API_URL);
@@ -63,71 +63,82 @@ getAiringTV(API_URL8);
 /* After this URL, add the posterURL return from the API */
 const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
 
-
 let slideIndex = 1;
 showSlide(slideIndex);
 
 // change slide with the prev/next button
 function moveSlide(moveStep) {
-	showSlide((slideIndex += moveStep));
+    showSlide((slideIndex = moveStep + 5));
 }
-
 // change slide with the dots
 function currentSlide(n) {
-	showSlide((slideIndex = n));
+    showSlide((slideIndex = n));
 }
 
 function showSlide(n) {
-	let i;
-	const slides = document.getElementsByClassName('carousel-item');
-	const dots = document.getElementsByClassName('dot');
+    let i;
+    const slides = document.getElementsByClassName('carousel-item');
+    const dots = document.getElementsByClassName('dot');
 
-	if (n > slides.length) {
-		slideIndex = 1;
-	}
-	if (n < 1) {
-		slideIndex = slides.length;
-	}
+    if (n > slides.length) {
+        slideIndex = 1;
+    }
 
-	// hide all slides
-	for (i = 0; i < slides.length; i++) {
-		slides[i].classList.add('hidden');
-	}
+    if (n < 1) {
+        slideIndex = slides.length;
+    }
 
-	// remove active status from all dots
-	for (i = 0; i < dots.length; i++) {
-		dots[i].classList.remove('bg-yellow-500');
-		dots[i].classList.add('bg-green-600');
-	}
+    // hide all slides
+    for (i = 0; i < slides.length; i++) {
+        slides[i].classList.add('hidden');
+    }
 
-	// show the active slide
-	slides[slideIndex - 1].classList.remove('hidden');
+    // remove active status from all dots
+    for (i = 0; i < dots.length; i++) {
+        dots[i].classList.remove('bg-yellow-500');
+        dots[i].classList.add('bg-green-600');
+    }
 
-	// highlight the active dot
-	dots[slideIndex - 1].classList.remove('bg-green-600');
-	dots[slideIndex - 1].classList.add('bg-yellow-500');
+    // show the active slide
+    slides[slideIndex - 1].classList.remove('hidden');
+
+    // highlight the active dot
+    dots[slideIndex - 1].classList.remove('bg-green-600');
+    dots[slideIndex - 1].classList.add('bg-yellow-500');
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 function getTrendingMovies(url) {
     fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results);
+        //console.log(data.results);
         displayTrendingMovies(data.results);
     }).catch(error => {
         console.log(error);
     })
 }
 
+
+
 /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
 function displayTrendingMovies(data) {
     let i = 0;
     movieCarousel.innerHTML = '';
-    
+    let rt = [];
+
     data.forEach(movies => {
-        const {title, poster_path, vote_average, overview, backdrop_path, original_language, runtime, revenue, release_date} = movies;
+        const { title, id, poster_path, vote_average, overview, backdrop_path, original_language, release_date } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-        // console.log(movies.title);
-  
+        //console.log(movies.runtime);
+
+        const API_URL_SINGLE = BASE_URL + `movie/${id}?` + API_KEY + '&language=en-US&page=1';
+        fetch(API_URL_SINGLE).then(res => res.json()).then(data2 => {
+            rt.push(data2.runtime);
+        }).catch(error => {
+            console.log(error);
+        })
+        
+
+
         const movieEl = `
         <div class="carousel-item">
             <label for="my-modal-${i}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
@@ -157,9 +168,9 @@ function displayTrendingMovies(data) {
 
                     <br></br>
                     <div>
-                        <p><b>Runtime: </b> ${runtime}m<p>
+                        <p><b>Runtime: </b>${rt[0]}m<p>
                         <p><b>Language: </b> ${original_language}<p>
-                        <p><b>Revenue: </b> ${revenue}<p>
+                        <p><b>Revenue: </b><p>
                     </div>
 
                     <div class="absolute right-10">
@@ -186,15 +197,17 @@ function displayTrendingMovies(data) {
                 >❯</a
             >
         </div>`
+        
         movieCarousel.innerHTML += movieEl;
         i++;
     })
+    console.log(rt[1]);
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 function getTopMovies(url) {
     fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results);
+        //console.log(data.results);
         displayTopMovies(data.results);
     }).catch(error => {
         console.log(error);
@@ -207,9 +220,9 @@ function displayTopMovies(data) {
     movieCarousel2.innerHTML = '';
 
     data.forEach(movies => {
-        const {title, poster_path, vote_average, overview, backdrop_path} = movies;
+        const { title, poster_path, vote_average, overview, backdrop_path } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-  
+
         const movieEl2 = `
         <div class="carousel-item">
             <label for="my-modal2-${i2}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
@@ -276,7 +289,7 @@ function displayTopMovies(data) {
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 function getPlayingMovies(url) {
     fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results);
+        //console.log(data.results);
         displayPlayingMovies(data.results);
     }).catch(error => {
         console.log(error);
@@ -289,9 +302,9 @@ function displayPlayingMovies(data) {
     movieCarousel6.innerHTML = '';
 
     data.forEach(movies => {
-        const {title, poster_path, vote_average, overview, backdrop_path} = movies;
+        const { title, poster_path, vote_average, overview, backdrop_path } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-  
+
         const movieEl2 = `
         <div class="carousel-item">
             <label for="my-modal6-${i2}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
@@ -358,7 +371,7 @@ function displayPlayingMovies(data) {
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 function getLatestMovies(url) {
     fetch(url).then(res => res.json()).then(data => {
-        console.log(data.results);
+        //console.log(data.results);
         displayLatestMovies(data.results);
     }).catch(error => {
         console.log(error);
@@ -371,9 +384,9 @@ function displayLatestMovies(data) {
     movieCarousel5.innerHTML = '';
 
     data.forEach(movies => {
-        const {title, poster_path, vote_average, overview, backdrop_path} = movies;
+        const { title, poster_path, vote_average, overview, backdrop_path } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-  
+
         const movieEl2 = `
         <div class="carousel-item">
             <label for="my-modal5-${i5}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
@@ -453,9 +466,9 @@ function displayUpcomingMovies(data) {
     movieCarousel7.innerHTML = '';
 
     data.forEach(movies => {
-        const {title, poster_path, vote_average, overview, backdrop_path} = movies;
+        const { title, poster_path, vote_average, overview, backdrop_path } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-  
+
         const movieEl2 = `
         <div class="carousel-item">
             <label for="my-modal7-${i7}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
@@ -535,9 +548,9 @@ function displayTrendingTV(data) {
     movieCarousel3.innerHTML = '';
 
     data.forEach(movies => {
-        const {name, poster_path, vote_average, overview, backdrop_path, first_air_date} = movies;
+        const { name, poster_path, vote_average, overview, backdrop_path, first_air_date } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-  
+
         const movieEl2 = `
         <div class="carousel-item">
             <label for="my-modal3-${i3}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
@@ -617,9 +630,9 @@ function displayTopTV(data) {
     movieCarousel4.innerHTML = '';
 
     data.forEach(movies => {
-        const {name, poster_path, vote_average, overview, backdrop_path, first_air_date} = movies;
+        const { name, poster_path, vote_average, overview, backdrop_path, first_air_date } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-  
+
         const movieEl2 = `
         <div class="carousel-item">
             <label for="my-modal4-${i4}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
@@ -699,9 +712,9 @@ function displayAiringTV(data) {
     movieCarousel8.innerHTML = '';
 
     data.forEach(movies => {
-        const {name, poster_path, vote_average, overview, backdrop_path, first_air_date} = movies;
+        const { name, poster_path, vote_average, overview, backdrop_path, first_air_date } = movies;
         const backdrop_url = POSTER_URL + backdrop_path;
-  
+
         const movieEl2 = `
         <div class="carousel-item">
             <label for="my-modal8-${i8}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
