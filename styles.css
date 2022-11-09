@@ -171,6 +171,18 @@ nav{
   z-index: 3;
 }
 
+#pageTitle {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; 
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-size: 60px;
+}
+
 #genreTags {
   width: 80%;
   display: flex;
