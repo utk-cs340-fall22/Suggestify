@@ -67,7 +67,7 @@ function getMovies(url) {
           movie.id +
           "?" +
           API_KEY +
-          "&language=en-US&append_to_response=videos,credits,similar,images";
+          "&language=en-US&append_to_response=videos,credits,similar,images,reviews";
         fetch(DETAIL_URL)
           .then((res) => res.json())
           .then((data) => {
@@ -90,6 +90,7 @@ function displayMovies(movie) {
     backdrop_path,
     release_date,
     runtime,
+    revenue,
   } = movie;
 
   const backdropURL = POSTER_URL + backdrop_path;
@@ -125,26 +126,36 @@ function displayMovies(movie) {
                 </div>
 				
 				<div class="flex justify-center w-full py-2 gap-2">
-					<a href="#item1" class="btn btn-xs">More Info</a> 
-					<a href="#item2" class="btn btn-xs">See Also</a> 
-					<a href="#item3" class="btn btn-xs">Reviews</a> 
+					<a href="#item1${title}" class="btn btn-xs">More Info</a> 
+					<a href="#item2${title}" class="btn btn-xs">See Also</a> 
+					<a href="#item3${title}" class="btn btn-xs">Reviews</a> 
 			  	</div>
 				
 				<div class="carousel w-full">
-					<div id="item1" class="carousel-item w-full">
+					<div id="item1${title}" class="carousel-item w-full">
 						<div class="card w-96 bg-base-100 shadow-xl">
 							<div class="card-body">
-								${title}
+								<h1><b>More Info</b></h1>
+								<p>Revenue: $${revenue}</p>
 							</div>
 						</div>
 					</div> 
-					<div id="item2" class="carousel-item w-full">
-					
+					<div id="item2${title}" class="carousel-item w-full">
+						<div class="card w-96 bg-base-100 shadow-xl">
+							<div class="card-body">
+							<h1><b>See Also</b></h1>
+							</div>
+						</div>
 					</div> 
-					<div id="item3" class="carousel-item w-full">
-						
+					<div id="item3${title}" class="carousel-item w-full">
+						<div class="card w-96 bg-base-100 shadow-xl">
+							<div class="card-body">
+							<h1><b>Reviews</b></h1>
+							</div>
+						</div>
 					</div> 
 			  	</div> 
+
                 <div class="modal-action">
                      <label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                 </div>
