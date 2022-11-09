@@ -15,40 +15,88 @@ const POSTER_URL = "https://image.tmdb.org/t/p/original/";
 const YOUTUBE_TRAILER_URL = "https://youtube.com/watch?v=";
 const GENRE_URL = BASE_URL + "genre/movie/list?" + API_KEY + "&language=en-US";
 
-/* Will hold the list of all Genres */
-let movieGenres = [];
-var movieList = [];
+/* Global genre array for filtering -- holds the id value of each genre selected by the user */
+var selectedGenreFilter = [];
 
-/* Could refactor to just have all of this store stuff -- then have one function to display all of it */
 getGenres(GENRE_URL);
 getMovies(API_URL);
 
-/* Function will call the API to get all available movie genres & store them into a global array */
+/* Function will call the API to get all available movie genres -- will then call displayGenres on the returned data */
 function getGenres(url) {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      movieGenres = data.genres;
-      console.log("Genres: ", movieGenres);
-      // displayGenres(movieGenres);
+      console.log("Genres: ", data.genres);
+      displayGenres(data.genres);
     })
     .catch((error) => {
       console.log(error);
     });
 }
 
+/* Function will create a button for each of the genres and display them */
+/* It also adds the button functionality and the filtering */
 function displayGenres(genres) {
   document.getElementById("genreTags").innerHTML = "";
+
   for (const element of genres) {
     const buttonEl = document.createElement("div");
-    buttonEl.classList.add("button");
+    buttonEl.classList.add("genreName");
 
+    /* *** Functionality for clicking a filter to 'activate it' and clicking it again to 'deactivate it' *** */
+    /* On 'click', if the global selectedGenreFilter array is empty, this will store the genre into the array */
+    /* Otherwise, if it already includes the genre in the array, you will loop through and remove it */
+    buttonEl.addEventListener("click", () => {
+      if (selectedGenreFilter.length == 0) {
+        selectedGenreFilter.push(element.id);
+      } else if (selectedGenreFilter.includes(element.id)) {
+        for (var i = 0; i < selectedGenreFilter.length; i++) {
+          if (selectedGenreFilter[i] == element.id) {
+            selectedGenreFilter.splice(i, 1);
+          }
+        }
+      } else selectedGenreFilter.push(element.id);
+
+      /* Constructs the new URL containing the filters */
+      /* Does this by connecting each genre in the array into one string, seperated by commas and appending it to the end of the API call */
+      const FILTERED_URL =
+        BASE_URL +
+        "discover/movie?" +
+        API_KEY +
+        "&language=en-US&sort_by=popularity.desc&page=1&with_genres=" +
+        selectedGenreFilter.join(",");
+
+      main.innerHTML = "";
+      getMovies(FILTERED_URL);
+
+      highlightSelectedFilter();
+    });
+
+    /* This just constructs the html for each of the filter buttons & inserts them into the genreTags div in movies.html */
     buttonEl.innerHTML = `
-		<button class="btn glass">
+	<button class="btn glass" id="${element.id}"style="margin-bottom: 10px !important; margin-right: 10px !important;">
 			<p>${element.name}</p>
 		</button>`;
 
     document.getElementById("genreTags").appendChild(buttonEl);
+  }
+}
+
+/* This function adds the functionality of clicking a filter button and having it highlighted to represent 'active' */
+function highlightSelectedFilter() {
+  /* Finds all filter buttons (under the class .btn.glass from daisyUI) and stores them into a variable */
+  const highlightedButtons = document.querySelectorAll(".btn.glass");
+
+  /* If the selected filter button was already highlighted, but deactivated, then this will 'un-highlight' it */
+  highlightedButtons.forEach((button) => {
+    button.classList.remove("highlight");
+  });
+
+  /* If there are filters active, this will loop through the global array and add the CSS class 'highlighted' to each button */
+  if (selectedGenreFilter.length != 0) {
+    selectedGenreFilter.forEach((genre) => {
+      document.getElementById(genre).classList.add("highlight");
+    });
   }
 }
 
@@ -172,14 +220,32 @@ function buttonForward() {
     pageNumber++;
 
     document.getElementById("pageNumberButton").textContent = pageNumber;
-    const API_URL =
-      BASE_URL +
-      "discover/movie?" +
-      API_KEY +
-      "&language=en-US&sort_by=popularity.desc&page=" +
-      pageNumber;
+
     main.innerHTML = "";
-    getMovies(API_URL);
+
+    /* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the next page */
+    if (selectedGenreFilter.length != 0) {
+      const FILTERED_URL =
+        BASE_URL +
+        "discover/movie?" +
+        API_KEY +
+        "&language=en-US&sort_by=popularity.desc&page=" +
+        pageNumber +
+        "&with_genres=" +
+        encodeURI(selectedGenreFilter.join(","));
+
+      console.log(FILTERED_URL);
+      getMovies(FILTERED_URL);
+    } else {
+      const API_URL =
+        BASE_URL +
+        "discover/movie?" +
+        API_KEY +
+        "&language=en-US&sort_by=popularity.desc&page=" +
+        pageNumber;
+
+      getMovies(API_URL);
+    }
   }
 }
 function buttonBackward() {
@@ -187,13 +253,31 @@ function buttonBackward() {
     pageNumber--;
 
     document.getElementById("pageNumberButton").textContent = pageNumber;
-    const API_URL =
-      BASE_URL +
-      "discover/movie?" +
-      API_KEY +
-      "&language=en-US&sort_by=popularity.desc&page=" +
-      pageNumber;
+
     main.innerHTML = "";
-    getMovies(API_URL);
+
+    /* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the prev page */
+    if (selectedGenreFilter.length != 0) {
+      const FILTERED_URL =
+        BASE_URL +
+        "discover/movie?" +
+        API_KEY +
+        "&language=en-US&sort_by=popularity.desc&page=" +
+        pageNumber +
+        "&with_genres=" +
+        encodeURI(selectedGenreFilter.join(","));
+
+      console.log(FILTERED_URL);
+      getMovies(FILTERED_URL);
+    } else {
+      const API_URL =
+        BASE_URL +
+        "discover/movie?" +
+        API_KEY +
+        "&language=en-US&sort_by=popularity.desc&page=" +
+        pageNumber;
+
+      getMovies(API_URL);
+    }
   }
 }
