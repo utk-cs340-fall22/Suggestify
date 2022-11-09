@@ -1,7 +1,7 @@
 /* This will need to be stored somewhere else at some point for security reasons */
 const API_KEY = "api_key=bb1d4e0661af455e02af1ea99fb85fcb";
 const BASE_URL = "https://api.themoviedb.org/3/";
-/* This can be formatted to include whatever you want -- 'movie/upcoming' is just a placeholder for now */
+/* This can be formatted to include whatever you want -- 'tv/upcoming' is just a placeholder for now */
 const API_URL =
   BASE_URL +
   "discover/tv?" +
@@ -10,7 +10,7 @@ const API_URL =
 /* After this URL, add the posterURL return from the API */
 const POSTER_URL = "https://image.tmdb.org/t/p/original/";
 
-/* After the v= comes the key returned by the api call to get all videos for the movie */
+/* After the v= comes the key returned by the api call to get all videos for the tv show */
 const YOUTUBE_TRAILER_URL = "https://youtube.com/watch?v=";
 const GENRE_URL = BASE_URL + "genre/tv/list?" + API_KEY + "&language=en-US";
 
@@ -19,7 +19,7 @@ var selectedGenreFilter = [];
 getGenres(GENRE_URL);
 getTvShows(API_URL);
 
-/* Function will call the API to get all available movie genres -- will then call displayGenres on the returned data */
+/* Function will call the API to get all available tv genres -- will then call displayGenres on the returned data */
 function getGenres(url) {
   fetch(url)
     .then((res) => res.json())
@@ -70,7 +70,7 @@ function displayGenres(genres) {
       highlightSelectedFilter();
     });
 
-    /* This just constructs the html for each of the filter buttons & inserts them into the genreTags div in movies.html */
+    /* This just constructs the html for each of the filter buttons & inserts them into the genreTags div in tv.html */
     buttonEl.innerHTML = `
 	  <button class="btn glass" id="${element.id}"style="margin-bottom: 10px !important; margin-right: 10px !important;">
 			  <p>${element.name}</p>
@@ -98,7 +98,7 @@ function highlightSelectedFilter() {
   }
 }
 
-/* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+/* Makes an API fetch call to get tv shows with whatever url you want -- this could be for upcoming shows, popular, etc */
 function getTvShows(url) {
   fetch(url)
     .then((res) => res.json())
@@ -106,7 +106,7 @@ function getTvShows(url) {
       console.log("shows: ", data);
       data.results.forEach((tv) => {
         /* Append to this response to get multiple things to return in one request */
-        /* This will get all details, credits, similar movies, and images */
+        /* This will get all details, credits, similar tv shows, and images */
         const DETAIL_URL =
           BASE_URL +
           "tv/" +
@@ -222,7 +222,7 @@ function buttonForward() {
 
     main.innerHTML = "";
 
-    /* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the next page */
+    /* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getTvShows call for the next page */
     if (selectedGenreFilter.length != 0) {
       const FILTERED_URL =
         BASE_URL +
@@ -255,7 +255,7 @@ function buttonBackward() {
 
     main.innerHTML = "";
 
-    /* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the prev page */
+    /* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getTvShows call for the prev page */
     if (selectedGenreFilter.length != 0) {
       const FILTERED_URL =
         BASE_URL +
