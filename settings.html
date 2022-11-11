@@ -12,34 +12,49 @@
     />
     <!-- CSS -->
     <link rel="stylesheet" href="settings.css" />
+    <script src="index.js" defer></script>
+    
   </head>
-  <body>
+  <body onload="openTab(event, 'account')">
+    
     <div class="container">
-
-      <div class="leftbox">
+      <div class="leftbox tab">
         <nav>
-          <a href="#" class="active">
+          <a href="#" class="active tablinks" id="first" onclick="openTab(event, 'account')">
             <i class="fa fa-user"></i>
           </a>
-          <a href="#">
-            <i class="fa fa-cog"></i>
+          <a href="#" class="tablinks" onclick="openTab(event, 'about')">
+            <i class="fa fa-book"></i>
+          </a>
+          <a href="index.html" class="tablinks">
+            <i class="fa fa-tv"></i>
           </a>
         </nav>
       </div>
 
       <div class="rightbox">
-        <div class="profile">
+        <div id="account" class="profile tabcontent">
           <h1>Personal Info</h1>
-          <h2>Full Name</h2>
-          <p>John Doe <button class="btn">update</button></p>
-          <h2>Birthday</h2>
-          <p>July 4</p>
-          <h2>Gender</h2>
-          <p>Man</p>
-          <h2>Email</h2>
-          <p>example@example.com <button class="btn">update</button></p>
-          <h2>Password</h2>
-          <p>******** <button class="btn">Change</button></p>
+          <h2>Full Name</h2><br>
+          <input type="name" placeholder="John Doe" id="userName"> <input type="submit" onclick="pass()">
+          <h2>Birthday</h2><br>
+          <input type="date" id="start userBirth" name="trip-start"
+       value="2018-07-22"
+       min="1918-01-01" max="2022-12-31"> <input type="submit" onclick="userBirth(userObject)">
+          <h2>Gender</h2><br>
+          <select id="gender">
+            <option value="Man">Man</option>
+            <option value="Women">Woman</option>
+            <option value="Non-Binary">Non-Binary</option>
+          </select> <input type="submit" onclick="userGender(userObject)">
+          <h2>Email</h2><br>
+          <input type="email" placeholder="example@example.com" id="userEmail"> <input type="submit" onclick="userEmail(userObject)">
+          <h2>Password</h2><br>
+          <input type="password" placeholder="(⌐■_■)" value ="" id="pwd" name="pwd" minlength="8"> <input type="submit" onclick="userPassword(userObject)"><br><br>
+        </div>
+        <div id="about" class="profile tabcontent">
+          <h1>About Us & Credits</h1>
+          <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde deserunt, architecto harum quam neque similique corporis quaerat, quas, odio omnis voluptates est ullam. Soluta in aperiam, dignissimos ipsa fuga dolorum.</h1>
         </div>
       </div>
     </div>

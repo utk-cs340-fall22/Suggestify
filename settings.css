@@ -73,8 +73,8 @@ nav a:first-child {
   margin-top: 7px;
 }
 
-.active {
-  color: #3fb6a8;
+nav a {
+  color: #ffffff;
 }
 
 .rightbox {
@@ -131,4 +131,28 @@ p {
 .btn:hover {
   text-decoration: underline;
   font-weight: 900;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: black;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.active {
+  color: #3fb6a8;
 }
