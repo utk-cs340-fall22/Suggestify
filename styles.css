@@ -134,7 +134,7 @@ img:hover {
   }
 
   .card {
-	  width: 970px;
+	  width: 960px;
 	  height: 400px;
   }
 
@@ -159,6 +159,19 @@ img:hover {
     -webkit-filter: opacity(100%);
     -webkit-filter: brightness(100%);
   }
+
+  .carousel-card-body {
+    height: 300;
+    width: 1000;
+  }
+
+  .carousel-card {
+    width: 700;
+  }
+ /*  .carousel-card {
+    height: 170px;
+    width: 300px;
+  } */
 
   main{
     display:flex;
