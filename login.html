@@ -12,12 +12,8 @@
 			<div class="form-box">
 				<div class="button-box">
 					<div id="btn"></div>
-					<button type="button" class="toggle-btn" onclick="login()">
-						Log In
-					</button>
-					<button type="button" class="toggle-btn" onclick="register()">
-						Register
-					</button>
+					<button type="button" class="toggle-btn" onclick="login()"> Log In </button>
+					<button type="button" class="toggle-btn" onclick="register()"> Register </button>
 				</div>
 				<div class="social-icons">
 					<!-- <img src="google_icon.png" /> -->
@@ -26,40 +22,19 @@
 					<!-- <img src="facebook_icon.png" /> -->
 				</div>
 				<form id="login" class="input-group">
-					<input
-						type="text"
-						class="input-field"
-						placeholder="Username"
-						required
-					/>
-					<input
-						type="text"
-						class="input-field"
-						placeholder="Password"
-						required
-					/>
-						<input type="checkbox" class="check-box" />
-						<span>Remember Password</span>
-					<button type="submit" class="submit-btn" >Log in</button>
+					<input type="text" class="input-field" placeholder="Username" id="email" required />
+					<input type="text" class="input-field" placeholder="Password" id="psw" required />
+					<input type="checkbox" class="check-box" />
+					<span>Remember Password</span>
+					<button type="submit" class="submit-btn" id="loginEmailPassword" >Log in</button>
 				</form>
 				<form id="register" class="input-group">
-					<input
-						type="email"
-						class="input-field"
-						id="email"
-						placeholder="Email address"
-						required
-					/>
-					<input
-						type="text"
-						class="input-field"
-						placeholder="Password"
-						id="psw"
-						required
-					/>
+					<input type="email" class="input-field"  placeholder="Email address" id="email" required />
+					<input type="text" class="input-field" placeholder="Password" id="psw" required />
 					<input type="checkbox" class="check-box" />
 					<span>I agree to the terms & conditions</span>
-					<button type="submit" class="submit-btn" id="createUser" > <a href="" id="log">Register</a></button>
+					<button type="submit" class="submit-btn" id="createUser"> Register</button>
+					
 				</form>
 			</div>
 		</div>
@@ -67,8 +42,19 @@
 
 		<script type="module">
 			// Import the functions you need from the SDKs you need
-			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
-			import { getAuth, createUserWithEmailAndPassword, signInWithRedirect, getRedirectResult, GoogleAuthProvider, FacebookAuthProvider } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-auth.js";
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+  			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+			//import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+			import { getAuth, 
+					onAuthStateChanged,
+					connectAuthEmulator,
+					signInWithEmailAndPassword,
+					createUserWithEmailAndPassword, 
+					signInWithRedirect, getRedirectResult, 
+					GoogleAuthProvider, 
+					FacebookAuthProvider 
+				} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+			
 			// TODO: Add SDKs for Firebase products that you want to use
 			// https://firebase.google.com/docs/web/setup#available-libraries
 		  
@@ -83,18 +69,38 @@
 			  appId: "1:287553553595:web:c5e8adde4ca305cfaad59e",
 			  measurementId: "G-30270TW59M"
 			};
-		  
+			
+			
 			// Initialize Firebase
 			const app = initializeApp(firebaseConfig);
+			const analytics = getAnalytics(app);
 			const googleProvider = new GoogleAuthProvider(app);
 			const facebookProvider = new FacebookAuthProvider(app);
 			const auth = getAuth(app);
 			
+			loginEmailPassword.addEventListener('click', (e)=> {
+				e.preventDefault();
+				var loginEmail = document.getElementById('email').value;
+				var loginPassword = document.getElementById('psw').value;
+
+				signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+				.then((userCredential) => {
+					// Signed in 
+					const user = userCredential.user;
+					// ...
+					alert('User signed in successfully')
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+				});
+			});
+
 			createUser.addEventListener('click', (e) => {
 				e.preventDefault();
 				var email = document.getElementById('email').value;
 				var password = document.getElementById('psw').value;
-				var log_user = document.getElementById('log').href;
+				// var log_user = document.getElementById('log').href;
 				createUserWithEmailAndPassword(auth, email, password)
 					.then((userCredential) => {
 						// Signed in 
@@ -110,6 +116,8 @@
 					});
 			});
 
+			
+			
 			googleLogIn.addEventListener('click', (e) => {
 				e.preventDefault();
 				signInWithRedirect(auth, googleProvider);
@@ -155,8 +163,13 @@
 				});
 			});
 
-			
-
+			onAuthStateChanged(auth, (user) => {
+				if(user) {
+					const uid = user.uid;
+				} else {
+					alert("user is signed out");
+				}
+			})
 
 		  </script>
 	</body>
