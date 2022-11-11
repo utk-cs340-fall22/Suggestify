@@ -45,7 +45,7 @@ img:hover {
 	bottom: 5px;
 	right: 5px;
 }
-.container{
+/* .container{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,42 +56,47 @@ img:hover {
   .container {
       max-width: 100% !important;
   }
-}
+} */
 
-.search-box{
-  display: flex;
+main{
+  display:flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  background: #373338;
-  height: 40px;
-  border-radius: 40px;
-  padding: 10px;
-  margin-top: 50px;
+}
+.search{
+  background-color: #373338;
   border: 2px solid white;
-  width: 340px;
+  padding:0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  color:rgb(16, 10, 10);
+  font-family: inherit;
 }
 
-.search-btn{
-  color: #6c56c7;
-  float: right;
-  width: 40px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
+/* .pagination{
+  display:flex;
+  margin:10px 30px;
   align-items: center;
+  justify-content: center;
+  color:white;
 }
-.search-text {
-	border: none;
-	background: none;
-	outline: none;
-	float: left;
-	padding: 0;
-	color: #fff;
-	font-size: 20px;
-	transition: 0.4s;
-	line-height: 25px;
-	width: 300px;
+
+.page{
+  padding:20px;
+  cursor:pointer;
+}
+
+.page.disabled{
+  cursor:not-allowed;
+  color:grey;
+} */
+.search:focus{
+  outline:0;
+  background-color: white;
+}
+
+.search::placeholder{
+  color: #e4e4e4;
 }
 
 .search-icon {
@@ -169,4 +174,57 @@ img:hover {
 nav{
   position: fixed;
   z-index: 3;
+}
+
+#footer {
+  background: linear-gradient(0deg, rgb(17, 7, 18), rgb(48, 24, 51));
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+footer .browse, footer .menu
+{
+  position: relative;
+  display: flex;  
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  flex-wrap: wrap;
+}
+
+footer .browse li,
+footer .menu li
+{
+  list-style: none;
+}
+
+footer .browse li a,
+footer .menu li a
+{
+  align-items: center;
+  color: #bab5cf;
+  margin: 0 10px;
+  display: inline-block;
+  transition: 0.5s;
+}
+
+footer .browse li a:hover,
+footer .menu li a:hover
+{
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+footer p{
+  color: #bab5cf;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
