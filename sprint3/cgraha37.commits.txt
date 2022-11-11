@@ -1,0 +1,721 @@
+
+
+->index.html
+
+
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  23) 	<body onclick="moveIt(1)">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  64) 				<a href="#" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  66) 			
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  68) 				<form  id="form">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  69) 					<input type="text" placeholder="Search" id="search" class="search">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  70) 				</form>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500  99) 		<div class="idk">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 100)             <div class="carousel w-full" id="poggers"></div>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 101)             <div class="flex justify-center w-full py-2 gap-2">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 113)         </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 115) 		<!-- <div class="wrapper">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 116) 			<div class="logo">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 118) 					<p>Movie<span>Corn.</span></p>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 119) 				</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 120) 			</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 121) 			<div class="search-container">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 122) 				<div class="search-element">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 123) 					<input type="text" class="form-control" placeholder="Type to search" id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()"/>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 127) 					<div class="search-list" id="search-list">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 128) 					</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 129) 				</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 130) 			</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 132) 			<div class="container">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 133) 				<div class="result-container">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 134) 					<div class="result-grid" id="result-grid">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 138) 			</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 139) 		</div> -->
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 140) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 141) 		<main id="main"></main>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 142) 		<!-- <div class="pagination">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 143) 			<div class="page" id="prev">Previous Page</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 144) 			<div class="current" id="current">1</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 145) 			<div class="page" id="next">Next Page</div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 147) 		</div> -->
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 148) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 149) 		<!-- movie app js -->
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 154) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 155) 		<footer id="footer">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 156) 			<ul class="browse">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 157) 				<li><a href="movies.html">Movies</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 158) 				<li><a href="tv.html">TV Shows</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 159) 				<li><a href="#">Kids</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 160) 				<li><a href="my-list.html">My List</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 161) 			</ul>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 162) 			<ul class="menu">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 163) 				<li><a href="index.html">Home</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 164) 				<li><a href="#">About</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 165) 				<li><a href="#">Services</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 166) 				<li><a href="#">Team</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 167) 				<li><a href="#">Contact</a></li>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 168) 			</ul>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 169) 			<p>Copyright © 2022 Suggestify</p>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 170) 		</footer>
+
+
+->login.html
+
+
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  15) 					<button type="button" class="toggle-btn" onclick="login()"> Log In </button>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  16) 					<button type="button" class="toggle-btn" onclick="register()"> Register </button>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  25) 					<input type="text" class="input-field" placeholder="Username" id="email" required />
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  26) 					<input type="text" class="input-field" placeholder="Password" id="psw" required />
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  29) 					<button type="submit" class="submit-btn" id="loginEmailPassword" >Log in</button>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  32) 					<input type="email" class="input-field"  placeholder="Email address" id="email" required />
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  33) 					<input type="text" class="input-field" placeholder="Password" id="psw" required />
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  36) 					<button type="submit" class="submit-btn" id="createUser"> Register</button>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  37) 					
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  45) 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  46)   			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  47) 			//import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  48) 			import { getAuth, 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  49) 					onAuthStateChanged,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  50) 					connectAuthEmulator,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  51) 					signInWithEmailAndPassword,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  52) 					createUserWithEmailAndPassword, 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  53) 					signInWithRedirect, getRedirectResult, 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  54) 					GoogleAuthProvider, 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  55) 					FacebookAuthProvider 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  56) 				} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  57) 			
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  73) 			
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  76) 			const analytics = getAnalytics(app);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  81) 			loginEmailPassword.addEventListener('click', (e)=> {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  82) 				e.preventDefault();
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  83) 				var loginEmail = document.getElementById('email').value;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  84) 				var loginPassword = document.getElementById('psw').value;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  85) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  86) 				signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  87) 				.then((userCredential) => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  88) 					// Signed in 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  89) 					const user = userCredential.user;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  90) 					// ...
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  91) 					alert('User signed in successfully')
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  92) 				})
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  93) 				.catch((error) => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  94) 					const errorCode = error.code;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  95) 					const errorMessage = error.message;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  96) 				});
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  97) 			});
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  98) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 103) 				// var log_user = document.getElementById('log').href;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 119) 			
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 120) 			
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 166) 			onAuthStateChanged(auth, (user) => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 167) 				if(user) {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 168) 					const uid = user.uid;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 169) 				} else {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 170) 					alert("user is signed out");
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 171) 				}
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 172) 			})
+
+
+->index.html
+
+
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  64) 				<a href="index.html" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 64) 				<a href="index.html" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+
+
+-> setting.html
+
+
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 15)     <script src="index.js" defer></script>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 16)     
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 18)   <body onload="openTab(event, 'account')">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 20)     <div class="container">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 21)       <div class="leftbox tab">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 23)           <a href="#" class="active tablinks" id="first" onclick="openTab(event, 'account')">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 26)           <a href="#" class="tablinks" onclick="openTab(event, 'about')">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 27)             <i class="fa fa-book"></i>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 28)           </a>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 29)           <a href="index.html" class="tablinks">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 30)             <i class="fa fa-tv"></i>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 36)         <div id="account" class="profile tabcontent">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 38)           <h2>Full Name</h2><br>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 39)           <input type="name" placeholder="John Doe" id="userName"> <input type="submit" onclick="pass()">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 40)           <h2>Birthday</h2><br>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 41)           <input type="date" id="start userBirth" name="trip-start"
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 42)        value="2018-07-22"
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 43)        min="1918-01-01" max="2022-12-31"> <input type="submit" onclick="userBirth(userObject)">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 44)           <h2>Gender</h2><br>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 45)           <select id="gender">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 46)             <option value="Man">Man</option>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 47)             <option value="Women">Woman</option>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 48)             <option value="Non-Binary">Non-Binary</option>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 49)           </select> <input type="submit" onclick="userGender(userObject)">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 50)           <h2>Email</h2><br>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 51)           <input type="email" placeholder="example@example.com" id="userEmail"> <input type="submit" onclick="userEmail(userObject)">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 52)           <h2>Password</h2><br>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 53)           <input type="password" placeholder="(⌐■_■)" value ="" id="pwd" name="pwd" minlength="8"> <input type="submit" onclick="userPassword(userObject)"><br><br>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 54)         </div>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 55)         <div id="about" class="profile tabcontent">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 56)           <h1>About Us & Credits</h1>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 57)           <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde deserunt, architecto harum quam neque similique corporis quaerat, quas, odio omnis voluptates est ullam. Soluta in aperiam, dignissimos ipsa fuga dolorum.</h1>
+
+
+-> settings.css
+
+
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500  76) nav a {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500  77)   color: #ffffff;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 135) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 136) /* Style the buttons that are used to open the tab content */
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 137) .tab button {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 138)   display: block;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 139)   background-color: inherit;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 140)   color: black;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 141)   padding: 22px 16px;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 142)   width: 100%;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 143)   border: none;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 144)   outline: none;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 145)   text-align: left;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 146)   cursor: pointer;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 147)   transition: 0.3s;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 148) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 149) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 150) /* Change background color of buttons on hover */
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 151) .tab button:hover {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 152)   background-color: #ddd;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 153) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 154) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 155) /* Create an active/current "tab button" class */
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 156) .active {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 157)   color: #3fb6a8;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 158) }
+
+
+-> styles.css
+
+
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  48) /* .container{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  59) } */
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  61) main{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  63)   flex-wrap: wrap;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  65) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  66) .search{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  67)   background-color: #373338;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  69)   padding:0.5rem 1rem;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  70)   border-radius: 50px;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  71)   font-size: 1rem;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  72)   color:rgb(16, 10, 10);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  73)   font-family: inherit;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  76) /* .pagination{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  78)   margin:10px 30px;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  80)   justify-content: center;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  81)   color:white;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  83) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  84) .page{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  85)   padding:20px;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  86)   cursor:pointer;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  87) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  88) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  89) .page.disabled{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  90)   cursor:not-allowed;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  91)   color:grey;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  92) } */
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  93) .search:focus{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  94)   outline:0;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  95)   background-color: white;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  96) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  97) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  98) .search::placeholder{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500  99)   color: #e4e4e4;
+
+
+-> styles.css
+
+
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 179) #footer {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 180)   background: linear-gradient(0deg, rgb(17, 7, 18), rgb(48, 24, 51));
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 181)   position: relative;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 182)   min-height: 100%;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 183)   width: 100%;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 184)   padding: 20px 50px;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 185)   display: flex;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 186)   justify-content: center;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 187)   align-items: center;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 188)   flex-direction: column;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 189) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 190) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 191) footer .browse, footer .menu
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 192) {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 193)   position: relative;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 194)   display: flex;  
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 195)   flex-direction: row;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 196)   justify-content: center;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 197)   align-items: center;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 198)   margin: 10px 0;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 199)   flex-wrap: wrap;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 200) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 201) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 202) footer .browse li,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 203) footer .menu li
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 204) {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 205)   list-style: none;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 206) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 207) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 208) footer .browse li a,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 209) footer .menu li a
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 210) {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 211)   align-items: center;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 212)   color: #bab5cf;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 213)   margin: 0 10px;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 214)   display: inline-block;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 215)   transition: 0.5s;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 216) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 217) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 218) footer .browse li a:hover,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 219) footer .menu li a:hover
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 220) {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 221)   transform: translateY(-2px);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 222)   opacity: 1;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 223) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 224) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 225) footer p{
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 226)   color: #bab5cf;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 227)   text-align: center;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 228)   margin-top: 15px;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 229)   margin-bottom: 10px;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 230) }
+
+
+-> index.js
+
+
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 113) const SEARCH_QUERY = '&query=searchTerm';
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 118) const searchURL = BASE_URL + '/search/multi?' + API_KEY + '&language=en-US&page=1&query=';
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 122) const form = document.getElementById('form');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 123) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 124) form.addEventListener('submit', (e) => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 125)     e.preventDefault();
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 126) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 127)     const searchTerm = search.value;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 128)     const url = searchURL + searchTerm + '&include_adult=false';
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 129)     if(searchTerm){
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 130)         fetch(url)
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 131) 		.then(res => res.json())
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 132) 		.then(data => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 133) 			// console.log('Movies: ', data);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 134) 			data.results.forEach(movie => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 135)                 search.innerHTML = "";
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 136) 				/* Append to this response to get multiple things to return in one request */
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 137) 				/* This will get all details, credits, similar movies, and images */
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 138) 				const DETAIL_URL =
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 139) 					BASE_URL +
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 140) 					'movie/' +
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 141) 					movie.id +
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 142) 					'?' +
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 143) 					API_KEY +
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 144) 					'&language=en-US&append_to_response=videos,credits,similar,images,reviews';
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 145) 				fetch(DETAIL_URL)
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 146) 					.then(res => res.json())
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 147) 					.then(data => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 148) 						displaySearchMovies(data);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 149) 					});
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 150) 			});
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 151) 		})
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 152) 		.catch(error => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 153) 			console.log(error);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 154) 		});
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 155)     }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 156) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 157) })
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 158) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 159) function displaySearchMovies(movie) {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 160) 	const {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 161) 		title,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 162) 		poster_path,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 163) 		vote_average,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 164) 		overview,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 165) 		backdrop_path,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 166) 		release_date,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 167) 		runtime,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 168) 		revenue,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 169) 	} = movie;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 170) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 171) 	const backdropURL = POSTER_URL + backdrop_path;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 172) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 173) 	const movieEl = document.createElement('div');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 174) 	movieEl.classList.add('movie');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 175) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 176) 	movieEl.innerHTML = `
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 177)     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 178)         <img src="${
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 179) 					POSTER_URL + poster_path
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 180) 				}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 181)         </label>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 182)         <i class="heart-icon fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 183)         <input type="checkbox" id="${title}" class="modal-toggle" />
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 184)         <div class="modal">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 185)           <div class="modal-box w-full max-w-5xl h-full">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 186)             <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 187)               <figure>            
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 188)                 <img src="${backdropURL}" alt="backDrop" style="width: 970px !important; height: 500px !important; margin-right: 0px !important; border-radius: 0px !important; border-width: 0px !important; padding: 1px 0px 1px 1px !important;"></img>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 189)               </figure>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 190)               <div class="card-body">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 191)                 <h1 class="card-title" style="text-align: center !important;">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 192)                 <font size="+100">${title}</font> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 193)                 </h1>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 194)                 <br/>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 195)                 <h3> <b> Overview </b> </h3>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 196)                 <p>${overview}</p>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 197)                 <br/><br/>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 198)                 <p><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 199)               </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 200)             </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 201)             <div class="flex justify-center w-full py-2 gap-2">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 202)               <a href="#item1${title}" class="btn btn-xs">More Info</a> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 203)               <a href="#item2${title}" class="btn btn-xs">See Also</a> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 204)               <a href="#item3${title}" class="btn btn-xs">Reviews</a> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 205)             </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 206)           <div class="carousel w-full">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 207)             <div id="item1${title}" class="carousel-item w-full">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 208)               <div class="card w-96 bg-base-100 shadow-xl">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 209)                 <div class="card-body">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 210)                   <h1><b>More Info</b></h1>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 211)                   <p>Revenue: $${revenue}</p>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 212)                 </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 213)               </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 214)             </div> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 215)             <div id="item2${title}" class="carousel-item w-full">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 216)               <div class="card w-96 bg-base-100 shadow-xl">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 217)                 <div class="card-body">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 218)                 <h1><b>See Also</b></h1>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 219)                 </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 220)               </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 221)             </div> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 222)             <div id="item3${title}" class="carousel-item w-full">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 223)             <div class="card w-96 bg-base-100 shadow-xl">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 224)               <div class="card-body">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 225)               <h1><b>Reviews</b></h1>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 226)               </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 227)             </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 228)           </div> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 229)         </div> 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 230)         <div class="modal-action">
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 231)           <label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 232)         </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 233)       </div>
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 234)     </div>`;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 235) 	main.appendChild(movieEl);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 236) 
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 237) 	/* Heart functionality */
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 238) 	let hIcon = document.querySelectorAll('.heart-icon');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 239) 	hIcon.forEach((icon, index) => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 240) 		icon.addEventListener('click', () => {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 241) 			if (icon.classList.contains('fa-regular')) {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 242) 				icon.classList.remove('fa-regular');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 243) 				icon.classList.add('fa-solid');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 244) 				addMovieToFirestore(
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 245) 					hearts[index].movieId,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 246) 					hearts[index].movieTitle,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 247) 					hearts[index].release,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 248) 					hearts[index].description,
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 249) 					'true'
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 250) 				);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 251) 				count++;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 252) 				document.getElementsByClassName('badge')[0].innerHTML = count;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 253) 			} else {
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 254) 				icon.classList.remove('fa-solid');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 255) 				icon.classList.add('fa-regular');
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 256) 				// deleteMovieFromFirestore(hearts[index].movieTitle);
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 257) 				count--;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 258) 				document.getElementsByClassName('badge')[0].innerHTML = count;
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 259) 			}
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 260) 		});
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 261) 	});
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 262) }
+0ce0ef69 (Christian Graham 2022-11-10 19:58:28 -0500 263) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 267) form.addEventListener('submit', (e) => {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 268)     e.preventDefault();
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 269) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 270)     const searchTerm = search.value;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 271)     const url = searchURL + searchTerm + '&include_adult=false';
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 272)     if(searchTerm){
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 273)         fetch(url)
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 274) 		.then(res => res.json())
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 275) 		.then(data => {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 276) 			// console.log('Movies: ', data);
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 277) 			data.results.forEach(movie => {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 278)                 search.innerHTML = "";
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 279) 				/* Append to this response to get multiple things to return in one request */
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 280) 				/* This will get all details, credits, similar movies, and images */
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 281) 				const DETAIL_URL =
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 282) 					BASE_URL +
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 283) 					'movie/' +
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 284) 					movie.id +
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 285) 					'?' +
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 286) 					API_KEY +
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 287) 					'&language=en-US&append_to_response=videos,credits,similar,images,reviews';
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 288) 				fetch(DETAIL_URL)
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 289) 					.then(res => res.json())
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 290) 					.then(data => {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 291) 						displaySearchMovies(data);
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 292) 					});
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 293) 			});
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 294) 		})
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 295) 		.catch(error => {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 296) 			console.log(error);
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 297) 		});
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 298)     }
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 299) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 300) })
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 301) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 302) function displaySearchMovies(movie) {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 303) 	const {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 304) 		title,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 305) 		poster_path,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 306) 		vote_average,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 307) 		overview,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 308) 		backdrop_path,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 309) 		release_date,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 310) 		runtime,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 311) 		revenue,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 312) 	} = movie;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 313) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 314) 	const backdropURL = POSTER_URL + backdrop_path;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 315) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 316) 	const movieEl = document.createElement('div');
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 317) 	movieEl.classList.add('movie');
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 318) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 319) 	movieEl.innerHTML = `
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 320)     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 321)         <img src="${
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 322) 					POSTER_URL + poster_path
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 323) 				}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 324)         </label>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 325)         <i class="heart-icon fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 326)         <input type="checkbox" id="${title}" class="modal-toggle" />
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 327)         <div class="modal">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 328)           <div class="modal-box w-full max-w-5xl h-full">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 329)             <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 330)               <figure>            
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 331)                 <img src="${backdropURL}" alt="backDrop" style="width: 970px !important; height: 500px !important; margin-right: 0px !important; border-radius: 0px !important; border-width: 0px !important; padding: 1px 0px 1px 1px !important;"></img>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 332)               </figure>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 333)               <div class="card-body">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 334)                 <h1 class="card-title" style="text-align: center !important;">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 335)                 <font size="+100">${title}</font> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 336)                 </h1>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 337)                 <br/>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 338)                 <h3> <b> Overview </b> </h3>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 339)                 <p>${overview}</p>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 340)                 <br/><br/>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 341)                 <p><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 342)               </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 343)             </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 344)             <div class="flex justify-center w-full py-2 gap-2">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 345)               <a href="#item1${title}" class="btn btn-xs">More Info</a> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 346)               <a href="#item2${title}" class="btn btn-xs">See Also</a> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 347)               <a href="#item3${title}" class="btn btn-xs">Reviews</a> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 348)             </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 349)           <div class="carousel w-full">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 350)             <div id="item1${title}" class="carousel-item w-full">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 351)               <div class="card w-96 bg-base-100 shadow-xl">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 352)                 <div class="card-body">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 353)                   <h1><b>More Info</b></h1>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 354)                   <p>Revenue: $${revenue}</p>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 355)                 </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 356)               </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 357)             </div> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 358)             <div id="item2${title}" class="carousel-item w-full">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 359)               <div class="card w-96 bg-base-100 shadow-xl">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 360)                 <div class="card-body">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 361)                 <h1><b>See Also</b></h1>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 362)                 </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 363)               </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 364)             </div> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 365)             <div id="item3${title}" class="carousel-item w-full">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 366)             <div class="card w-96 bg-base-100 shadow-xl">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 367)               <div class="card-body">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 368)               <h1><b>Reviews</b></h1>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 369)               </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 370)             </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 371)           </div> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 372)         </div> 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 373)         <div class="modal-action">
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 374)           <label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 375)         </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 376)       </div>
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 377)     </div>`;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 378) 	main.appendChild(movieEl);
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 379) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 380) 	/* Heart functionality */
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 381) 	let hIcon = document.querySelectorAll('.heart-icon');
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 382) 	hIcon.forEach((icon, index) => {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 383) 		icon.addEventListener('click', () => {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 384) 			if (icon.classList.contains('fa-regular')) {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 385) 				icon.classList.remove('fa-regular');
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 386) 				icon.classList.add('fa-solid');
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 387) 				addMovieToFirestore(
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 388) 					hearts[index].movieId,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 389) 					hearts[index].movieTitle,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 390) 					hearts[index].release,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 391) 					hearts[index].description,
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 392) 					'true'
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 393) 				);
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 394) 				count++;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 395) 				document.getElementsByClassName('badge')[0].innerHTML = count;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 396) 			} else {
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 397) 				icon.classList.remove('fa-solid');
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 398) 				icon.classList.add('fa-regular');
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 399) 				// deleteMovieFromFirestore(hearts[index].movieTitle);
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 400) 				count--;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 401) 				document.getElementsByClassName('badge')[0].innerHTML = count;
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 402) 			}
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 403) 		});
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 404) 	});
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 405) }
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 406) 
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 407) getMovies(API_URL);
+c3ad4b1e (Christian Graham 2022-11-10 20:07:21 -0500 408)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 412)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 413) var trailerCount = 0;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 414)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 440)                         console.log(data);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 441)        
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 442)                         if (trailerCount < 5) {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 443)                             carouselStuff(data);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 444)                             trailerCount++;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 445)                         }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 446)                        
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 447)                         showSlide(2);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 565)     const slides = document.getElementsByClassName('carousel-item-big-boi');
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 566)    
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 582) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 583)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 584) function carouselStuff(data) {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 585)     const {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 586)         title,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 587)         poster_path,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 588)         vote_average,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 589)         overview,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 590)         backdrop_path,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 591)         release_date,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 592)         runtime,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 593)         id,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 594)         videos,
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 595)     } = data;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 596)     const backdrop_url = POSTER_URL + backdrop_path;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 597)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 598)     const specialChar = id + title;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 599)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 600)    
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 601)     const movieEl = `
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 602)     <div id="${title,id}" class="carousel-item-big-boi w-full ">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 603)     <label for="my-modal-${title,id}" class="btn modal-button" style="height: 502px !important;padding-right: 0px !important;padding-left: 0px !important;margin-right: 0px !important;margin-left: 0px !important;margin-bottom: 10px !important;padding-bottom: 0px !important;width: 1912px !important;" onClick="moveIt(1)">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 604)     <img src="${
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 605)         backdrop_url
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 606)                 }" alt="poster" style="margin-right: auto margin-left: !important;height: 552px !important;width: 1917px !important;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 607)                 border-left-width: 0px;padding-left: 0px;border-right-width: 0px;border-top-width: 0px;"></img>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 608)     </label>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 609) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 610)     <input type="checkbox" class="modal-toggle" id="my-modal-${title,id}" />
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 611)         <div class="modal">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 612)             <div class="modal-box bg-[#000000] from-zinc-900 relative w-full max-w-5xl h-full" id="${title}">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 613)                 <label
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 614)                     for="my-modal-${title,id}"
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 615)                     class="btn btn-sm btn-circle absolute right-2 top-2"
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 616)                     >✕
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 617)                 </label>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 618)                 <div class="card-body" id="${specialChar}"> </div>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 619)            
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 620)             </div>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 621)         </div>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 622)     </div>
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 623)     `;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 624)     document.getElementById('poggers').innerHTML += movieEl;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 625)     getTrailer(videos.results, specialChar);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 626)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 627) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 628)  let number = 0;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 629) async function getTrailer(videos, specialChar) {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 630)  
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 631)     const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 632)     if (videos.length != 0) {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 633)         videos.forEach(vid => {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 634)             if (vid.name == "Official Trailer" || vid.name == "Official Trailer [Subtitled]" || vid.name == "Dub Trailer") {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 635)                 const trailer = YOUTUBE_TRAILER_URL + vid.key;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 636)                 const trailerHTML = `
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 637)                 <iframe width="full" height="500"
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 638)                     src="${trailer}">
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 639)                 <iframe>`;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 640)                 document.getElementById(specialChar).innerHTML = trailerHTML;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 641)             }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 642)         })
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 643)     }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 644)     else  trailerCount--;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 645) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 646) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 647) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 648) function openTab(evt, tabName) {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 649)     // Declare all variables
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 650)     var i, tabcontent, tablinks;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 651) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 652)     if(tabName === 'about') Active();
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 653)   
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 654)     // Get all elements with class="tabcontent" and hide them
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 655)     tabcontent = document.getElementsByClassName("tabcontent");
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 656)     for (i = 0; i < tabcontent.length; i++) {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 657)       tabcontent[i].style.display = "none";
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 658)     }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 659)   
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 660)     // Get all elements with class="tablinks" and remove the class "active"
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 661)     tablinks = document.getElementsByClassName("tablinks");
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 662)     for (i = 0; i < tablinks.length; i++) {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 663)       tablinks[i].className = tablinks[i].className.replace(" active", "");
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 664)     }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 665)   
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 666)     // Show the current tab, and add an "active" class to the link that opened the tab
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 667)     document.getElementById(tabName).style.display = "block";
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 668)     evt.currentTarget.className += " active";
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 669)   }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 670) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 671)   function moveIt(redlight){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 672) 	var slideInterval = setInterval(move, 6000);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 673)     if (redlight == 1) clearInterval(slideInterval);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 674)   }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 675)   function move(){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 676) 	moveSlide(1);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 677)   }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 678) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 679) function userName(){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 680) 	let userNameChanged;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 681) 	userNameChanged = document.getElementById('userName').value;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 682) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 683) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 684) function userBirth(){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 685) 	const dateControl = document.querySelector('input[type="date"]');
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 686) 	userBirthChanged = parseDate(document.getElementById('userBirth').value);
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 687) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 688) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 689) function userGender(){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 690) 	let option;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 691) 	option = document.getElementById('gender').value;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 692) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 693) function userEmail(){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 694) 	let userEmailChanged;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 695) 	userEmailChanged = document.getElementById('userEmail').value;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 696) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 697) function userPassword(){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 698) 	let userPasswordChanged;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 699) 	userPasswordChanged = document.getElementById('pwd').value;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 700) }
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 701) 
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 702) var userObject = {
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 703)     name: 'John Doe',
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 704)     birthday: '06/04/2000',
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 705)     gender: 'Man',
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 706)     email: 'example@example.com',
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 707)     password: 'password'
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 708) };
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 710) function Active(){
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 711)     var e;
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 712)     e = document.getElementById("first");
+f614d546 (Christian Graham 2022-11-10 19:33:20 -0500 713)     e.classList.remove("active");
+^b403e00 (tulsitailor 2022-10-27 20:36:55 -0400 47) - Christian Graham - cgraha37
