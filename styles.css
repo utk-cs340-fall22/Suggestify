@@ -227,4 +227,36 @@ footer p{
   text-align: center;
   margin-top: 15px;
   margin-bottom: 10px;
+#pageTitle {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; 
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-size: 60px;
+}
+
+#genreTags {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; 
+}
+
+.btn.glass.highlight {
+  background-color: purple;
+}
+
+#pageButton{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto; 
 }
