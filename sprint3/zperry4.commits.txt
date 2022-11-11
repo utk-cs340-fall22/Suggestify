@@ -1,0 +1,444 @@
+movies.html
+
+69cca2ac (zperry4  2022-11-09 14:25:09 -0500  97) 		<h1 id="pageTitle"><b>Movies</b></h1>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500  98) 		<div id="genreTags"></div>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500  99) 		<br /><br /><br />
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 104) 		<div class="btn-group" id="pageButton">
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 105) 			<button class="btn" onclick="buttonBackward()">Prev</button>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 106) 			<button class="btn" id="pageNumberButton">
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 107) 				<span id="Number">1</span>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 108) 			</button>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 109) 			<button class="btn" onclick="buttonForward()">Next</button>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 110) 		</div>
+
+tv.html
+
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500  97) 		<h1 id="pageTitle"><b>TV Shows</b></h1>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500  98) 		<div id="genreTags"></div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500  99) 		<br /><br /><br />
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 104) 		<div class="btn-group" id="pageButton">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 105) 			<button class="btn" onclick="buttonBackward()">Prev</button>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 106) 			<button class="btn" id="pageNumberButton">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 107) 				<span id="Number">1</span>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 108) 			</button>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 109) 			<button class="btn" onclick="buttonForward()">Next</button>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 110) 		</div>
+
+styles.CSS
+
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 173) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 174) #pageTitle {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 175)   width: 80%;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 176)   display: flex;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 177)   flex-wrap: wrap;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 178)   justify-content: center;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 179)   align-items: center;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 180)   margin: 10px auto; 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 181)   margin-top: 10px;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 182)   margin-bottom: 40px;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 183)   font-size: 60px;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 184) }
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 185) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 186) #genreTags {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 187)   width: 80%;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 188)   display: flex;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 189)   flex-wrap: wrap;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 190)   justify-content: center;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 191)   align-items: center;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 192)   margin: 10px auto; 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 193) }
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 194) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 195) .btn.glass.highlight {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 196)   background-color: purple;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 197) }
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 198) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 199) #pageButton{
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 200)   width: 80%;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 201)   display: flex;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 202)   flex-wrap: wrap;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 203)   justify-content: center;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 204)   align-items: center;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 205)   margin: 10px auto; 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 206) }
+
+index.js 
+
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 115) const API_URL =
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 125) /* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 126) /* This second call will return even more information about each movie and will call displayMovies on each movie to display them with access to all of the information retrieved */
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 128) 	fetch(url)
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 133) 
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 134) 				/* Append to this response to get multiple things to return in one request (append_to_response=...) */
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 135) 				/* This will get all details, credits, similar movies, and images | Refer to API documentation for other things to append */
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 136) 				const DETAIL_URL =
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 137) 					BASE_URL +
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 139) 					movie.id +
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 141) 					API_KEY +
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 143) 				fetch(DETAIL_URL)
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 152) 						displayMovies(data);
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 153) 					});
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 154) 			});
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 157) 			console.log(error);
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 158) 		});
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 161) /* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 164) 	const {
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 165) 		title,
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 166) 		poster_path,
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 167) 		vote_average,
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 168) 		overview,
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 169) 		backdrop_path,
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 170) 		release_date,
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 171) 		runtime,
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 172) 	} = data;
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 177)             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 178)             <img src="${
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 179) 							POSTER_URL + poster_path
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 180) 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 183)             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 187)                         for="my-modal-${title}"
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 201)                             <p class="info"><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+fb718568 (zperry4  2022-11-08 17:42:31 -0500 224)         </div>`;
+
+movies.js
+
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500  98) 	BASE_URL +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 100) 	API_KEY +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 102) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 109) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 110) /* Global genre array for filtering -- holds the id value of each genre selected by the user */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 111) var selectedGenreFilter = [];
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 115) getGenres(GENRE_URL);
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 118) /* Function will call the API to get all available movie genres -- will then call displayGenres on the returned data */
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 119) function getGenres(url) {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 120) 	fetch(url)
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 124) 			displayGenres(data.genres);
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 125) 		})
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 127) 			console.log(error);
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 128) 		});
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 129) }
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 130) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 131) /* Function will create a button for each of the genres and display them */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 132) /* It also adds the button functionality and the filtering */
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 133) function displayGenres(genres) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 135) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 136) 	for (const element of genres) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 139) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 140) 		/* *** Functionality for clicking a filter to 'activate it' and clicking it again to 'deactivate it' *** */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 141) 		/* On 'click', if the global selectedGenreFilter array is empty, this will store the genre into the array */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 142) 		/* Otherwise, if it already includes the genre in the array, you will loop through and remove it */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 144) 			if (selectedGenreFilter.length == 0) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 145) 				selectedGenreFilter.push(element.id);
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 146) 			} else if (selectedGenreFilter.includes(element.id)) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 147) 				for (var i = 0; i < selectedGenreFilter.length; i++) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 148) 					if (selectedGenreFilter[i] == element.id) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 149) 						selectedGenreFilter.splice(i, 1);
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 150) 					}
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 151) 				}
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 152) 			} else selectedGenreFilter.push(element.id);
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 153) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 154) 			/* Constructs the new URL containing the filters */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 155) 			/* Does this by connecting each genre in the array into one string, seperated by commas and appending it to the end of the API call */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 156) 			const FILTERED_URL =
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 157) 				BASE_URL +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 159) 				API_KEY +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 162) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 164) 			getMovies(FILTERED_URL);
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 165) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 166) 			highlightSelectedFilter();
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 167) 		});
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 168) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 169) 		/* This just constructs the html for each of the filter buttons & inserts them into the genreTags div in movies.html */
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 170) 		buttonEl.innerHTML = `
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 171) 	<button class="btn glass" id="${element.id}"style="margin-bottom: 10px !important; margin-right: 10px !important;">
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 172) 			<p>${element.name}</p>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 173) 		</button>`;
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 174) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 176) 	}
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 177) }
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 178) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 179) /* This function adds the functionality of clicking a filter button and having it highlighted to represent 'active' */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 180) function highlightSelectedFilter() {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 181) 	/* Finds all filter buttons (under the class .btn.glass from daisyUI) and stores them into a variable */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 183) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 184) 	/* If the selected filter button was already highlighted, but deactivated, then this will 'un-highlight' it */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 187) 	});
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 188) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 189) 	/* If there are filters active, this will loop through the global array and add the CSS class 'highlighted' to each button */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 190) 	if (selectedGenreFilter.length != 0) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 193) 		});
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 194) 	}
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 195) }
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 196) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 204) 				/* Append to this response to get multiple things to return in one request */
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 205) 				/* This will get all details, credits, similar movies, and images */
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 206) 				const DETAIL_URL =
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 207) 					BASE_URL +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 209) 					movie.id +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 211) 					API_KEY +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 213) 				fetch(DETAIL_URL)
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 222) 						displayMovies(data);
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 223) 					});
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 224) 			});
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 231) function displayMovies(movie) {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 239) 		runtime,
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 240) 		revenue,
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 242) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 270)                 <p><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 271)               </div>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 272)             </div>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 273)             <div class="flex justify-center w-full py-2 gap-2">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 274)               <a href="#item1${title}" class="btn btn-xs">More Info</a> 
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 275)               <a href="#item2${title}" class="btn btn-xs">See Also</a> 
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 276)               <a href="#item3${title}" class="btn btn-xs">Reviews</a> 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 277)             </div>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 278)           <div class="carousel w-full">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 279)             <div id="item1${title}" class="carousel-item w-full">
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 280)               <div class="card w-96 bg-base-100 shadow-xl">
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 281)                 <div class="card-body">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 282)                   <h1><b>More Info</b></h1>
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 283)                   <p>Revenue: $${revenue}</p>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 284)                 </div>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 285)               </div>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 286)             </div> 
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 287)             <div id="item2${title}" class="carousel-item w-full">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 288)               <div class="card w-96 bg-base-100 shadow-xl">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 289)                 <div class="card-body">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 290)                 <h1><b>See Also</b></h1>
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 291)                 </div>
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 294)             <div id="item3${title}" class="carousel-item w-full">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 295)             <div class="card w-96 bg-base-100 shadow-xl">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 296)               <div class="card-body">
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 297)               <h1><b>Reviews</b></h1>
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 298)               </div>
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 299)             </div>
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 300)           </div> 
+58f23732 (zperry4  2022-11-09 09:12:13 -0500 301)         </div> 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 334) }
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 335) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 336) /* Code required for the page buttons */
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 337) var pageNumber = 1;
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 338) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 339) function buttonForward() {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 340) 	if (pageNumber < 100) {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 341) 		pageNumber++;
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 342) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 344) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 346) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 347) 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the next page */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 348) 		if (selectedGenreFilter.length != 0) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 349) 			const FILTERED_URL =
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 350) 				BASE_URL +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 352) 				API_KEY +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 354) 				pageNumber +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 357) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 359) 			getMovies(FILTERED_URL);
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 360) 		} else {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 361) 			const API_URL =
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 362) 				BASE_URL +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 364) 				API_KEY +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 366) 				pageNumber;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 367) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 368) 			getMovies(API_URL);
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 369) 		}
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 370) 	}
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 371) }
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 372) function buttonBackward() {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 373) 	if (pageNumber > 1) {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 374) 		pageNumber--;
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 375) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 377) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 379) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 380) 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the prev page */
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 381) 		if (selectedGenreFilter.length != 0) {
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 382) 			const FILTERED_URL =
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 383) 				BASE_URL +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 385) 				API_KEY +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 387) 				pageNumber +
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 390) 
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 392) 			getMovies(FILTERED_URL);
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 393) 		} else {
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 394) 			const API_URL =
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 395) 				BASE_URL +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 397) 				API_KEY +
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 399) 				pageNumber;
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 400) 
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 401) 			getMovies(API_URL);
+fa1cf986 (zperry4  2022-11-08 17:30:27 -0500 402) 		}
+2703d041 (zperry4  2022-11-09 12:53:24 -0500 404) }
+
+tv.js 
+
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500  90) /* This can be formatted to include whatever you want -- 'tv/upcoming' is just a placeholder for now */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500  91) const API_URL =
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500  92) 	BASE_URL +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500  94) 	API_KEY +
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500  99) /* After the v= comes the key returned by the api call to get all videos for the tv show */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 103) var selectedGenreFilter = [];
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 106) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 107) getGenres(GENRE_URL);
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500 110) /* Function will call the API to get all available tv genres -- will then call displayGenres on the returned data */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 111) function getGenres(url) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 112) 	fetch(url)
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 116) 			displayGenres(data.genres);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 117) 		})
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 119) 			console.log(error);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 120) 		});
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 121) }
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 122) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 123) /* Function will create a button for each of the genres and display them */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 124) /* It also adds the button functionality and the filtering */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 125) function displayGenres(genres) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 127) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 128) 	for (const element of genres) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 131) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 132) 		/* *** Functionality for clicking a filter to 'activate it' and clicking it again to 'deactivate it' *** */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 133) 		/* On 'click', if the global selectedGenreFilter array is empty, this will store the genre into the array */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 134) 		/* Otherwise, if it already includes the genre in the array, you will loop through and remove it */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 136) 			if (selectedGenreFilter.length == 0) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 137) 				selectedGenreFilter.push(element.id);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 138) 			} else if (selectedGenreFilter.includes(element.id)) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 139) 				for (var i = 0; i < selectedGenreFilter.length; i++) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 140) 					if (selectedGenreFilter[i] == element.id) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 141) 						selectedGenreFilter.splice(i, 1);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 142) 					}
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 143) 				}
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 144) 			} else selectedGenreFilter.push(element.id);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 145) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 146) 			/* Constructs the new URL containing the filters */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 147) 			/* Does this by connecting each genre in the array into one string, seperated by commas and appending it to the end of the API call */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 148) 			const FILTERED_URL =
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 149) 				BASE_URL +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 151) 				API_KEY +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 154) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 156) 			getTvShows(FILTERED_URL);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 157) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 158) 			highlightSelectedFilter();
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 159) 		});
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 160) 
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500 161) 		/* This just constructs the html for each of the filter buttons & inserts them into the genreTags div in tv.html */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 162) 		buttonEl.innerHTML = `
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 163) 	  <button class="btn glass" id="${element.id}"style="margin-bottom: 10px !important; margin-right: 10px !important;">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 164) 			  <p>${element.name}</p>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 165) 		  </button>`;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 166) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 168) 	}
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 169) }
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 170) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 171) /* This function adds the functionality of clicking a filter button and having it highlighted to represent 'active' */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 172) function highlightSelectedFilter() {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 173) 	/* Finds all filter buttons (under the class .btn.glass from daisyUI) and stores them into a variable */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 175) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 176) 	/* If the selected filter button was already highlighted, but deactivated, then this will 'un-highlight' it */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 179) 	});
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 180) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 181) 	/* If there are filters active, this will loop through the global array and add the CSS class 'highlighted' to each button */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 182) 	if (selectedGenreFilter.length != 0) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 185) 		});
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 186) 	}
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 187) }
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 188) 
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500 189) /* Makes an API fetch call to get tv shows with whatever url you want -- this could be for upcoming shows, popular, etc */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 196) 				/* Append to this response to get multiple things to return in one request */
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500 197) 				/* This will get all details, credits, similar tv shows, and images */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 198) 				const DETAIL_URL =
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 199) 					BASE_URL +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 201) 					tv.id +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 203) 					API_KEY +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 205) 				fetch(DETAIL_URL)
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 215) 						displayTvShow(data);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 216) 					});
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 217) 			});
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 224) function displayTvShow(show) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 232) 		revenue,
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 233) 		number_of_seasons,
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 234) 		episode_run_time,
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 235) 	} = show;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 237) 	const backdropURL = POSTER_URL + backdrop_path;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 242) 	showEl.innerHTML = `
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 264)           <p><b>First Air Date:</b> ${first_air_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Seasons:</b> ${number_of_seasons}</p>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 267)       <div class="flex justify-center w-full py-2 gap-2">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 268)         <a href="#item1${name}" class="btn btn-xs">More Info</a> 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 269)         <a href="#item2${name}" class="btn btn-xs">See Also</a> 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 270)         <a href="#item3${name}" class="btn btn-xs">Reviews</a> 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 271)       </div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 272)       <div class="carousel w-full">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 273)         <div id="item1${name}" class="carousel-item w-full">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 274)           <div class="card w-96 bg-base-100 shadow-xl">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 275)             <div class="card-body">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 276)               <h1><b>More Info</b></h1>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 277)               <p>Episode Runtime -- ${episode_run_time[0]} minutes</p>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 278)             </div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 279)           </div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 280)         </div> 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 281)         <div id="item2${name}" class="carousel-item w-full">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 282)           <div class="card w-96 bg-base-100 shadow-xl">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 283)             <div class="card-body">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 284)             <h1><b>See Also</b></h1>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 285)             </div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 286)           </div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 287)         </div> 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 288)         <div id="item3${name}" class="carousel-item w-full">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 289)           <div class="card w-96 bg-base-100 shadow-xl">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 290)             <div class="card-body">
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 291)             <h1><b>Reviews</b></h1>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 292)             </div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 293)           </div>
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 294)         </div> 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 295)       </div> 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 296)   
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 302) 	main.appendChild(showEl);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 329) }
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 331) /* Code required for the page buttons */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 332) var pageNumber = 1;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 333) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 334) function buttonForward() {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 335) 	if (pageNumber < 100) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 336) 		pageNumber++;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 337) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 339) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 341) 
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500 342) 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getTvShows call for the next page */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 343) 		if (selectedGenreFilter.length != 0) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 344) 			const FILTERED_URL =
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 345) 				BASE_URL +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 347) 				API_KEY +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 349) 				pageNumber +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 352) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 353) 			console.log(FILTERED_URL);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 354) 			getTvShows(FILTERED_URL);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 355) 		} else {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 356) 			const API_URL =
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 357) 				BASE_URL +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 359) 				API_KEY +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 361) 				pageNumber;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 362) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 363) 			getTvShows(API_URL);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 364) 		}
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 365) 	}
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 366) }
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 367) function buttonBackward() {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 368) 	if (pageNumber > 1) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 369) 		pageNumber--;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 370) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 372) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 374) 
+dd58cc34 (zperry4  2022-11-09 14:27:04 -0500 375) 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getTvShows call for the prev page */
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 376) 		if (selectedGenreFilter.length != 0) {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 377) 			const FILTERED_URL =
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 378) 				BASE_URL +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 380) 				API_KEY +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 382) 				pageNumber +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 385) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 386) 			console.log(FILTERED_URL);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 387) 			getTvShows(FILTERED_URL);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 388) 		} else {
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 389) 			const API_URL =
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 390) 				BASE_URL +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 392) 				API_KEY +
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 394) 				pageNumber;
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 395) 
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 396) 			getTvShows(API_URL);
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 397) 		}
+8739fce1 (zperry4  2022-11-09 14:24:55 -0500 398) 	}
+^6668569 (mpatel65 2022-10-27 16:57:10 -0400 51) - Zachary Perry - zperry4
+^6668569 (mpatel65 2022-10-27 16:57:10 -0400 51) - Zachary Perry - zperry4
