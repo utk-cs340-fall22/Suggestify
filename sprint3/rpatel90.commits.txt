@@ -1,0 +1,823 @@
+->index.html
+0b7b9935 (rpatel90         2022-10-30 14:36:13 -0400 152) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 153) 		<h1><font size="+100">Trending Movies</font></h1>
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500 154) 		<div class="relative"><div class="carousel" id="movieCarousel" style="height:330px"></div></div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 155) 		<h1><font size="+100">Top Rated Movies</font></h1>		
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500 156) 		<div class="relative"><div class="carousel" id="movieCarousel2" style="height:330px"></div></div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 157) 		<h1><font size="+100">Latest Movies</font></h1>		
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500 158) 		<div class="relative"><div class="carousel" id="movieCarousel7" style="height:330px"></div></div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 159) 		<h1><font size="+100">Movies Now Playing</font></h1>		
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500 160) 		<div class="relative"><div class="carousel" id="movieCarousel6" style="height:330px"></div></div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 161) 		<h1><font size="+100">Trending TV</font></h1>		
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500 162) 		<div class="relative"><div class="carousel" id="movieCarousel3" style="height:330px"></div></div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 163) 		<h1><font size="+100">Top Rated TV</font></h1>		
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500 164) 		<div class="relative"><div class="carousel" id="movieCarousel4" style="height:330px"></div></div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 165) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500 166) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500 167) 		
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500 168) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500 186) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500 187) 		
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 188) 		<!-- <div id="tabs4">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 189) 			<div id="tabs4tabs" class="tabs">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 190) 				<a id="tabs4_1" class="tab tab-lg tab-bordered">Tab 1</a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 191) 				<a id="tabs4_2" class="tab tab-lg tab-bordered">Tab 2</a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 192) 				<a id="tabs4_3" class="tab tab-lg tab-bordered tab-active">Tab 3</a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 193) 			</div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 194) 			<div id="tabs4content">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 195) 				<div id="tabs4_1_content" class="hidden">Tab 1</div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 196) 				<div id="tabs4_2_content" class="hidden">Tab 2</div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 197) 				<div id="tabs4_3_content" class>Tab 3</div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 198) 			</div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 199) 		</div> -->
+
+
+->styles.css
+
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 111)     height: 335px;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 142) 	  width: 960px;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 168)   .carousel-card-body {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 169)     height: 300;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 170)     width: 1000;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 171)   }
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 172) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 173)   .carousel-card {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 174)     width: 700;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 175)   }
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 176)  /*  .carousel-card {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 177)     height: 170px;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 178)     width: 300px;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 179)   } */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 180) 
+
+->index.js
+
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500  115) //const API_URL_ = BASE_URL + '/movie/popular?/similar' + API_KEY + '&language=en-US&page=1';
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  116) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  117) const API_URL = BASE_URL + 'movie/popular?' + API_KEY + '&language=en-US&page=1';
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  118) getTrendingMovies(API_URL);
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  119) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  120) const API_URL2 = BASE_URL + 'movie/top_rated?' + API_KEY + '&language=en-US&page=1';
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  121) getTopMovies(API_URL2);
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  122) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  123) const API_URL3 = BASE_URL + 'tv/popular?' + API_KEY + '&language=en-US&page=1';
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  124) getTrendingTV(API_URL3);
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  125) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  126) const API_URL4 = BASE_URL + 'tv/top_rated?' + API_KEY + '&language=en-US&page=1';
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  127) getTopTV(API_URL4);
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  128) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  129) const API_URL6 = BASE_URL + 'movie/now_playing?' + API_KEY + '&language=en-US&page=1';
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  130) getPlayingMovies(API_URL6);
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  131) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  132) const API_URL7 = BASE_URL + 'movie/upcoming?' + API_KEY + '&language=en-US&page=1';
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  133) getUpcomingMovies(API_URL7);
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  484)         runtime
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  505)                         <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  534)             
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  712) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  713) let slideIndexa = 1;
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  714) showSlidea(slideIndexa);
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  715) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  716) // change slide with the prev/next button
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  717) function moveSlidea(moveStep) {
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  718)     showSlidea((slideIndexa = moveStep + 5));
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  719) }
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  720) // change slide with the dots
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  721) function currentSlidea(n) {
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  722)     showSlidea((slideIndexa = n));
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  723) }
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  724) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  725) function showSlidea(n) {
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  726)     let i;
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  727)     const slidesa = document.getElementsByClassName('carousel-item');
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  728)     const dotsa = document.getElementsByClassName('dot');
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  729) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  730)     if (n > slidesa.length) {
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  731)         slideIndexa = 1;
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  732)     }
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  733) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  734)     if (n < 1) {
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  735)         slideIndexa = slidesa.length;
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  736)     }
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  737) 
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  738)     // hide all slides
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  739)     for (i = 0; i < slidesa.length; i++) {
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  740)         slidesa[i].classList.add('hidden');
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  741)     }
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  742) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  743)     // remove active status from all dots
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  744)     for (i = 0; i < dotsa.length; i++) {
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  745)         dotsa[i].classList.remove('bg-yellow-500');
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  746)         dotsa[i].classList.add('bg-green-600');
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  747)     }
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  748) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  749)     // show the active slide
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  750)     slidesa[slideIndexa - 1].classList.remove('hidden');
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  751) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  752)     // highlight the active dot
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  753)     dotsa[slideIndexa - 1].classList.remove('bg-green-600');
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  754)     dotsa[slideIndexa - 1].classList.add('bg-yellow-500');
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  755) }
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  756) 
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  757) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  758) /* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  759) /* This second call will return even more information about each movie and will call displayMovies on each movie to display them with access to all of the information retrieved */
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  760) function getTrendingMovies(url) {
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  761)     fetch(url)
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  762)       .then((res) => res.json())
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  763)       .then((data) => {
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  764)         data.results.forEach((movie) => {
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  765)           movieCarousel.innerHTML = "";
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  766)   
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  767)           /* Append to this response to get multiple things to return in one request (append_to_response=...) */
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  768)           /* This will get all details, credits, similar movies, and images | Refer to API documentation for other things to append */
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  769)           const DETAIL_URL =
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  770)             BASE_URL +
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  771)             "movie/" +
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  772)             movie.id +
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  773)             "?" +
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  774)             API_KEY +
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  775)             "&language=en-US&append_to_response=videos,credits,similar,images";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  776) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  777)           const TRAILER_URL = 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  778)             BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  779)             "movie/" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  780)             movie.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  781)             "videos?" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  782)             API_KEY;
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  783)           fetch(DETAIL_URL)
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  784)             .then((res) => res.json())
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  785)             .then((data) => {
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  786)               displayTrendingMovies(data);
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  787)             });
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  788)         });
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  789)     })
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  790)     .catch((error) => {
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  791)     console.log(error);
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  792)     });
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  793) }
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500  794) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  795) /* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  796) function displayTrendingMovies(data) {
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  797)     console.log("Movie -- ", data);
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  798)     const {
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  799)         title,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  800)         videos,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  801)         budget,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  802)         revenue,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  803)         genres, 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  804)         status,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  805)         tagline,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  806)         backdrop_path,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  807)         poster_path,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  808)         release_date,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  809)         vote_average,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  810)         runtime,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  811)         overview,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  812)         id
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  813)     } = data;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  814)     
+9da67373 (rpatel90         2022-11-09 13:15:25 -0500  815)     const backdrop_url = POSTER_URL + backdrop_path;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  816)     const specialChar = title + id;
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  817) 
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  818)     const movieEl = `
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  819)         <div class="carousel-item">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  820)             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  821)             <img src="${
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  822)             POSTER_URL + poster_path
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  823)             }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  824)             </label>
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  825) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  826)             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  827)             <div class="modal">
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  828)                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  829)                     <label
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  830)                         for="my-modal-${title}"
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  831)                         class="btn btn-sm btn-circle absolute right-2 top-2"
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  832)                         >✕
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  833)                     </label>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  834)                     <div class="card bg-base-100 shadow-xl image-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  835)                         <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  836)                         <div class="card-body">
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  837)                             <h1 class="card-title style="text-align: center !important;">
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  838)                                 <font size="+100">${title}</font>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  839)                             </h1>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  840)                             <br/>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  841)                             <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  842)                             <p class="info"><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  843)                         </div>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  844)                     </div>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  845) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  846)                     <div class="flex justify-center w-full py-2 gap-2">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  847)                         <a href="#item1${title}" class="btn btn-xs">Details</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  848)                         <a href="#item2${title}" class="btn btn-xs">Reviews</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  849)                         <a href="#item3${title}" class="btn btn-xs">See Also</a>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  850)                     </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  851)                     <div class="carousel w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  852)                         <div id="item1${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  853)                             <div class="carousel-card bg-base-100 shadow-xl">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  854)                                 <div class="carousel-card-body">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  855)                                     <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b><br><br></p>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  856)                                 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  857)                                     <div class="carousel-card-two absolute bottom-0 left-10 bg-base-100 shadow-xl" id="${specialChar}">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  858)                                         <div class="carousel-card-two-body"></div>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  859)                                     </div>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  860)                                 </div>
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  861)                             </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  862)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  863)                             <div id="item2${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  864)                                 <img src="https://placeimg.com/800/200/arch" class="w-full" />
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  865)                             </div>
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  866)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  867)                             <div id="item3${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  868)                                 <img src="https://placeimg.com/800/200/arch" class="w-full" />
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  869)                             </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  870)            
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  871)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  872)             class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  873)             onclick="moveSlidea(-1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  874)             >❮
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  875)             </a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  876)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  877)                 class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  878)                 onclick="moveSlidea(1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  879)                 >❯
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  880)             </a>
+a32809a3 (rpatel90         2022-11-08 10:30:11 -0500  881) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  882)             <div class="" id=${specialChar}> </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  883)         </div>`;
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  884)     movieCarousel.innerHTML += movieEl;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  885)     getTrailer(videos.results, specialChar);
+^77e180e (rpatel90         2022-10-27 11:38:11 -0400  886) }
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  889) function getTopMovies(url) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  890)     fetch(url)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  891)       .then((res) => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  892)       .then((data) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  893)         data.results.forEach((movie) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  894)           movieCarousel2.innerHTML = "";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  895)   
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  896)           /* Append to this response to get multiple things to return in one request (append_to_response=...) */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  897)           /* This will get all details, credits, similar movies, and images | Refer to API documentation for other things to append */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  898)           const DETAIL_URL =
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  899)             BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  900)             "movie/" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  901)             movie.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  902)             "?" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  903)             API_KEY +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  904)             "&language=en-US&append_to_response=videos,credits,similar,images";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  905) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  906)           const TRAILER_URL = 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  907)             BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  908)             "movie/" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  909)             movie.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  910)             "videos?" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  911)             API_KEY;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  912)           fetch(DETAIL_URL)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  913)             .then((res) => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  914)             .then((data) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  915)               displayTopMovies(data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  916)             });
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  917)         });
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  919)     .catch((error) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  920)     console.log(error);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  921)     });
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  925) function displayTopMovies(data) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  926)     console.log("Movie -- ", data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  927)     const {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  928)         title,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  929)         poster_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  930)         backdrop_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  931)         release_date,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  932)         vote_average,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  933)         budget,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  934)         revenue,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  935)         genres, 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  936)         status,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  937)         tagline,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  938)         runtime,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  939)         overview,
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500  940)         videos,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  941)         id
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  942)     } = data;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  945)     const specialChar = title + id;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  947)     const movieEl = `
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  949)             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  950)             <img src="${
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  951)             POSTER_URL + poster_path
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  952)             }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  954)             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  958)                         for="my-modal-${title}"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  963)                         <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  969)                             <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  970)                             <p class="info"><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  975)                     <div class="flex justify-center w-full py-2 gap-2">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  976)                         <a href="#item1${title}" class="btn btn-xs">Details</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  977)                         <a href="#item2${title}" class="btn btn-xs">Reviews</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  978)                         <a href="#item3${title}" class="btn btn-xs">See Also</a>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  979)                     </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  980)                     <div class="carousel w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  981)                         <div id="item1${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  982)                             <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b><br><br></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  983)                         </div>  
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  985)                         <div id="item2${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  986)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  988)                         <div id="item3${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  989)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  991)                         <div id="item4${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  992)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  995) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  997)             </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500  998) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500  999)             
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1000)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1001)             class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1002)             onclick="moveSlide(-1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1003)             >❮
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1004)             </a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1005)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1006)                 class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1007)                 onclick="moveSlide(1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1008)                 >❯
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1009)             </a>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1010) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1011)             <div class="" id=${specialChar}> </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1012)         </div>`;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1013)     movieCarousel2.innerHTML += movieEl;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1014)     getTrailer(videos.results, specialChar);
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1017) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1018) function getPlayingMovies(url) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1019)     fetch(url)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1020)       .then((res) => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1021)       .then((data) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1022)         data.results.forEach((movie) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1023)           movieCarousel6.innerHTML = "";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1024)   
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1025)           /* Append to this response to get multiple things to return in one request (append_to_response=...) */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1026)           /* This will get all details, credits, similar movies, and images | Refer to API documentation for other things to append */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1027)           const DETAIL_URL =
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1028)             BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1029)             "movie/" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1030)             movie.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1031)             "?" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1032)             API_KEY +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1033)             "&language=en-US&append_to_response=videos,credits,similar,images";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1034) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1035)           const TRAILER_URL = 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1036)             BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1037)             "movie/" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1038)             movie.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1039)             "videos?" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1040)             API_KEY;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1041)           fetch(DETAIL_URL)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1042)             .then((res) => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1043)             .then((data) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1044)               displayPlayingMovies(data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1045)             });
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1046)         });
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1047)     })
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1048)     .catch((error) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1049)     console.log(error);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1050)     });
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1051) }
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1053) /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1054) function displayPlayingMovies(data) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1055)     console.log("Movie -- ", data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1056)     const {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1057)         title,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1058)         poster_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1059)         vote_average,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1060)         overview,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1061)         backdrop_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1062)         release_date,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1063)         runtime,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1064)         budget,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1065)         revenue,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1066)         genres, 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1067)         status,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1068)         tagline
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1069)     } = data;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1070)     
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1071)     const backdrop_url = POSTER_URL + backdrop_path;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1072) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1073)     const movieEl = `
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1074)         <div class="carousel-item">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1075)             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1076)             <img src="${
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1077)             POSTER_URL + poster_path
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1078)             }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1079)             </label>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1080)             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1081)             <div class="modal">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1082)                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1083)                     <label
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1084)                         for="my-modal-${title}"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1085)                         class="btn btn-sm btn-circle absolute right-2 top-2"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1086)                         >✕
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1087)                     </label>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1088)                     <div class="card bg-base-100 shadow-xl image-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1089)                         <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1090)                         <div class="card-body">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1091)                             <h1 class="card-title style="text-align: center !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1092)                                 <font size="+100">${title}</font>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1093)                             </h1>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1094)                             <br/>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1095)                             <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1096)                             <p class="info"><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1097)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1098)                     </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1099) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1100) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1101)                     <div class="flex justify-center w-full py-2 gap-2">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1102)                         <a href="#item1${title}" class="btn btn-xs">Details</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1103)                         <a href="#item2${title}" class="btn btn-xs">Reviews</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1104)                         <a href="#item3${title}" class="btn btn-xs">See Also</a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1105)                     </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1106)                     <div class="carousel w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1107)                         <div id="item1${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1108)                             <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1109)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1110)                             <div id="item2${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1111)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1112)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1113)                         <div id="item3${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1114)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1115)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1116)                         <div id="item4${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1117)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1118)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1119)                     </div> 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1120) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1121)                 </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1122)             </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1123) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1124)             
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1125)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1126)             class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1127)             onclick="moveSlide(-1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1128)             >❮
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1129)             </a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1130)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1131)                 class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1132)                 onclick="moveSlide(1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1133)                 >❯
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1134)             </a>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1135)         </div>`;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1136)     movieCarousel6.innerHTML += movieEl;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1138) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1139) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1140) function getUpcomingMovies(url) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1141)     fetch(url)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1142)       .then((res) => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1143)       .then((data) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1144)         data.results.forEach((movie) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1145)           movieCarousel7.innerHTML = "";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1146)   
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1147)           /* Append to this response to get multiple things to return in one request (append_to_response=...) */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1148)           /* This will get all details, credits, similar movies, and images | Refer to API documentation for other things to append */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1149)           const DETAIL_URL =
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1150)             BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1151)             "movie/" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1152)             movie.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1153)             "?" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1154)             API_KEY +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1155)             "&language=en-US&append_to_response=videos,credits,similar,images";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1156) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1157)           const TRAILER_URL = 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1158)             BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1159)             "movie/" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1160)             movie.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1161)             "videos?" +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1162)             API_KEY;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1163)           fetch(DETAIL_URL)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1164)             .then((res) => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1165)             .then((data) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1166)               displayUpcomingMovies(data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1167)             });
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1168)         });
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1169)     })
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1170)     .catch((error) => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1171)     console.log(error);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1172)     });
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1175) /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1176) function displayUpcomingMovies(data) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1177)     console.log("Movie -- ", data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1178)     const {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1179)         title,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1180)         poster_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1181)         vote_average,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1182)         overview,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1183)         backdrop_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1184)         release_date,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1185)         runtime,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1186)         budget,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1187)         revenue,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1188)         genres, 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1189)         status,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1190)         tagline
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1191)     } = data;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1192)     
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1193)     const backdrop_url = POSTER_URL + backdrop_path;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1194) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1195)     const movieEl = `
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1196)         <div class="carousel-item">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1197)             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1198)             <img src="${
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1199)             POSTER_URL + poster_path
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1200)             }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1201)             </label>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1202)             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1203)             <div class="modal">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1204)                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1205)                     <label
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1206)                         for="my-modal-${title}"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1207)                         class="btn btn-sm btn-circle absolute right-2 top-2"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1208)                         >✕
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1209)                     </label>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1210)                     <div class="card bg-base-100 shadow-xl image-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1211)                         <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1212)                         <div class="card-body">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1213)                             <h1 class="card-title style="text-align: center !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1214)                                 <font size="+100">${title}</font>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1215)                             </h1>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1216)                             <br/>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1217)                             <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1218)                             <p class="info"><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1219)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1220)                     </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1221) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1222) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1223)                     <div class="flex justify-center w-full py-2 gap-2">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1224)                         <a href="#item1${title}" class="btn btn-xs">Details</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1225)                         <a href="#item2${title}" class="btn btn-xs">Reviews</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1226)                         <a href="#item3${title}" class="btn btn-xs">See Also</a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1227)                     </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1228)                     <div class="carousel w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1229)                         <div id="item1${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1230)                             <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1231)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1232)                             <div id="item2${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1233)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1234)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1235)                         <div id="item3${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1236)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1237)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1238)                         <div id="item4${title}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1239)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1240)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1241)                     </div> 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1242) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1243)                 </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1244)             </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1245) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1246)             
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1247)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1248)             class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1249)             onclick="moveSlide(-1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1250)             >❮
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1251)             </a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1252)             <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1253)                 class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1254)                 onclick="moveSlide(1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1255)                 >❯
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1256)             </a>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1257)         </div>`;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1258)     movieCarousel7.innerHTML += movieEl;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1261) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1262) function getTrendingTV(url) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1263) 	fetch(url)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1264) 		.then(res => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1265) 		.then(data => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1266) 			console.log('shows: ', data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1267) 			data.results.forEach(tv => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1268)                 movieCarousel3.innerHTML = "";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1269) 				/* Append to this response to get multiple things to return in one request */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1270) 				/* This will get all details, credits, similar tv shows, and images */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1271) 				const DETAIL_URL =
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1272) 					BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1273) 					'tv/' +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1274) 					tv.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1275) 					'?' +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1276) 					API_KEY +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1277) 					'&language=en-US&append_to_response=videos,credits,similar,images,reviews';
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1278) 				fetch(DETAIL_URL)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1279) 					.then(res => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1280) 					.then(data => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1281) 						displayTrendingTV(data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1282) 					});
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1283) 			});
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1284) 		})
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1285) 		.catch(error => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1286) 			console.log(error);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1287) 		});
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1290) /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1291) function displayTrendingTV(data) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1292) 	const {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1293) 		name,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1294) 		poster_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1295) 		vote_average,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1296) 		overview,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1297) 		backdrop_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1298) 		first_air_date,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1299)         budget,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1300) 		revenue,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1301) 		number_of_seasons,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1302) 		episode_run_time,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1303)         tagline
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1304) 	} = data;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1306) 	const backdrop_URL = POSTER_URL + backdrop_path;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1307) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1308) 	const showEl = `
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1309)         <div class="carousel-item">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1310)             <label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1311)             <img src="${
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1312)             POSTER_URL + poster_path
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1313)             }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1314)             </label>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1315)             <input type="checkbox" class="modal-toggle" id="my-modal-${name}" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1316)             <div class="modal">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1317)                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1318)                     <label
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1319)                         for="my-modal-${name}"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1320)                         class="btn btn-sm btn-circle absolute right-2 top-2"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1321)                         >✕
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1322)                     </label>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1323)                     <div class="card bg-base-100 shadow-xl image-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1324)                         <figure> <img src="${backdrop_URL}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1325)                         <div class="card-body">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1326)                             <h1 class="card-title style="text-align: center !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1327)                                 <font size="+100">${name}</font>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1328)                             </h1>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1329)                             <br/>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1330)                             <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1331)                             <p class="info"><b>Release Date:</b> ${first_air_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Episode Runtime:</b> ${episode_run_time} minutes | <b>Seasons: </b>${number_of_seasons}</p>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1332)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1333)                     </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1334) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1335) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1336)                     <div class="flex justify-center w-full py-2 gap-2">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1337)                         <a href="#item1${name}" class="btn btn-xs">Details</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1338)                         <a href="#item2${name}" class="btn btn-xs">Reviews</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1339)                         <a href="#item3${name}" class="btn btn-xs">See Also</a>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1340)                     </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1341)                     <div class="carousel w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1342)                         <div id="item1${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1343)                             <p><b>About This Show</b><br><br><strong>${name}</strong><br>${overview}<br><br><b>Genre:</b> | <b>Type: </b> Show | <b>Status: </b> | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1344)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1345)                             <div id="item2${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1346)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1347)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1348)                         <div id="item3${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1349)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1350)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1351)                         <div id="item4${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1352)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1353)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1354)                     </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1355) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1356)                 </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1357)         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1358) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1359)         
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1360)         <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1361)         class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1362)         onclick="moveSlide(-1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1363)         >❮
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1364)         </a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1365)         <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1366)             class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1367)             onclick="moveSlide(1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1368)             >❯
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1369)         </a>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1370)     </div>`;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1371)     movieCarousel3.innerHTML += showEl;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1372) }
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1373) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1374) /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1375) function getTopTV(url) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1376) 	fetch(url)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1377) 		.then(res => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1378) 		.then(data => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1379) 			console.log('shows: ', data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1380) 			data.results.forEach(tv => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1381)                 movieCarousel4.innerHTML = "";
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1382) 				/* Append to this response to get multiple things to return in one request */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1383) 				/* This will get all details, credits, similar tv shows, and images */
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1384) 				const DETAIL_URL =
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1385) 					BASE_URL +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1386) 					'tv/' +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1387) 					tv.id +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1388) 					'?' +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1389) 					API_KEY +
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1390) 					'&language=en-US&append_to_response=videos,credits,similar,images,reviews';
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1391) 				fetch(DETAIL_URL)
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1392) 					.then(res => res.json())
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1393) 					.then(data => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1394) 						displayTopTV(data);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1395) 					});
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1396) 			});
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1397) 		})
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1398) 		.catch(error => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1399) 			console.log(error);
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1400) 		});
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1401) }
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1402) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1403) /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1404) function displayTopTV(data) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1405) 	const {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1406) 		name,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1407) 		poster_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1408) 		vote_average,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1409) 		overview,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1410) 		backdrop_path,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1411) 		first_air_date,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1412)         budget,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1413) 		revenue,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1414) 		number_of_seasons,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1415) 		episode_run_time,
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1416)         tagline
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1417) 	} = data;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1418) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1419) 	const backdrop_URL = POSTER_URL + backdrop_path;
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1420) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1421) 	const showEl = `
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1422)         <div class="carousel-item">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1423)             <label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1424)             <img src="${
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1425)             POSTER_URL + poster_path
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1426)             }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1427)             </label>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1428)             <input type="checkbox" class="modal-toggle" id="my-modal-${name}" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1429)             <div class="modal">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1430)                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1431)                     <label
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1432)                         for="my-modal-${name}"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1433)                         class="btn btn-sm btn-circle absolute right-2 top-2"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1434)                         >✕
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1435)                     </label>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1436)                     <div class="card bg-base-100 shadow-xl image-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1437)                         <figure> <img src="${backdrop_URL}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1438)                         <div class="card-body">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1439)                             <h1 class="card-title style="text-align: center !important;">
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1440)                                 <font size="+100">${name}</font>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1441)                             </h1>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1442)                             <br/>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1443)                             <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1444)                             <p class="info"><b>Release Date:</b> ${first_air_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Episode Runtime:</b> ${episode_run_time} minutes | <b>Seasons: </b>${number_of_seasons}</p>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1445)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1446)                     </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1447) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1448) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1449)                     <div class="flex justify-center w-full py-2 gap-2">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1450)                         <a href="#item1${name}" class="btn btn-xs">Details</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1451)                         <a href="#item2${name}" class="btn btn-xs">Reviews</a> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1452)                         <a href="#item3${name}" class="btn btn-xs">See Also</a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1453)                     </div>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1454)                     <div class="carousel w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1455)                         <div id="item1${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1456)                             <p><b>About This Show</b><br><br><strong>${name}</strong><br>${overview}<br><br><b>Genre:</b> | <b>Type: </b> Show | <b>Status: </b> | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1457)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1458)                             <div id="item2${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1459)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1460)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1461)                         <div id="item3${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1462)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1463)                         </div> 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1464)                         <div id="item4${name}" class="carousel-item w-full">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1465)                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1466)                         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1467)                     </div> 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1468) 
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1469)                 </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1470)         </div>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1471) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1472)         
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1473)         <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1474)         class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1475)         onclick="moveSlide(-1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1476)         >❮
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1477)         </a>
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1478)         <a
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1479)             class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1480)             onclick="moveSlide(1)"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1481)             >❯
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1482)         </a>
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1483)     </div>`;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1484)     movieCarousel4.innerHTML += showEl;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1485) }
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1486) 
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1487) async function getTrailer(videos, specialChar) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1488)     const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1489)     if (videos.length != 0) {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1490)         videos.forEach(vid => {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1491)             if (vid.name == "Official Trailer" || vid.name == "Official Trailer [Subtitled]" || vid.name == "Dub Trailer" || vid.name == "United States Trailer") {
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1492)                 const trailer = YOUTUBE_TRAILER_URL + vid.key;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1493)                 const trailerHTML = `
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1494)                 <iframe width="500" height="300"
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1495)                     src="${trailer}">
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1496)                 <iframe>`;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1497)                 document.getElementById(specialChar).innerHTML = trailerHTML;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1498)             }
+0de0c5e0 (rpatel90         2022-11-08 09:06:37 -0500 1499)         })
+da347c85 (rpatel90         2022-11-10 21:30:13 -0500 1500)     } else  trailerCount--;
+14c980b8 (rpatel90         2022-11-10 19:03:32 -0500 1501) }  
+^b403e00 (tulsitailor 2022-10-27 20:36:55 -0400 48) - Riya Patel - rpatel90
