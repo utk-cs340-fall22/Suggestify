@@ -488,9 +488,9 @@ function displayMovies(data) {
     const movieEl = `
         <div class="carousel-item relative">
             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${
-                            POSTER_URL + poster_path
-                        }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
+                <img src="${
+                                POSTER_URL + poster_path
+                            }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
             <i class="heart-icon fa-regular fa-heart absolute right-8 bottom-[230px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
@@ -522,6 +522,7 @@ function displayMovies(data) {
                     </div>
  
                     <br/><br/>
+
                     <div class="absolute right-10">
                         <p><b>Trailer</b></p>
                         <div class="card-trailer bg-base-100 shadow-xl image-full">
@@ -797,18 +798,17 @@ function displayTrendingMovies(data) {
     console.log("Movie -- ", data);
     const {
         title,
-        videos,
+        poster_path,
+        vote_average,
+        overview,
+        backdrop_path,
+        release_date,
+        runtime,
         budget,
         revenue,
         genres, 
         status,
         tagline,
-        backdrop_path,
-        poster_path,
-        release_date,
-        vote_average,
-        runtime,
-        overview,
         id
     } = data;
     
@@ -822,7 +822,6 @@ function displayTrendingMovies(data) {
             POSTER_URL + poster_path
             }" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
-
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
             <div class="modal">
                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
@@ -843,6 +842,7 @@ function displayTrendingMovies(data) {
                         </div>
                     </div>
 
+
                     <div class="flex justify-center w-full py-2 gap-2">
                         <a href="#item1${title}" class="btn btn-xs">Details</a> 
                         <a href="#item2${title}" class="btn btn-xs">Reviews</a> 
@@ -861,24 +861,30 @@ function displayTrendingMovies(data) {
                             </div>
                         </div> 
                             <div id="item2${title}" class="carousel-item w-full">
-                                <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                            </div>
+                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
                         </div> 
-                            <div id="item3${title}" class="carousel-item w-full">
-                                <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                            </div> 
-           
+                        <div id="item3${title}" class="carousel-item w-full">
+                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+                        </div> 
+                        <div id="item4${title}" class="carousel-item w-full">
+                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+
+            
             <a
             class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlidea(-1)"
+            onclick="moveSlide(-1)"
             >❮
             </a>
             <a
                 class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-                onclick="moveSlidea(1)"
+                onclick="moveSlide(1)"
                 >❯
             </a>
-
             <div class="" id=${specialChar}> </div> 
         </div>`;
     movieCarousel.innerHTML += movieEl;
@@ -927,22 +933,19 @@ function displayTopMovies(data) {
     const {
         title,
         poster_path,
+        vote_average,
+        overview,
         backdrop_path,
         release_date,
-        vote_average,
+        runtime,
         budget,
         revenue,
         genres, 
         status,
-        tagline,
-        runtime,
-        overview,
-        videos,
-        id
+        tagline
     } = data;
     
     const backdrop_url = POSTER_URL + backdrop_path;
-    const specialChar = title + id;
 
     const movieEl = `
         <div class="carousel-item">
@@ -979,10 +982,9 @@ function displayTopMovies(data) {
                     </div>
                     <div class="carousel w-full">
                         <div id="item1${title}" class="carousel-item w-full">
-                            <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b><br><br></p>
-                        </div>  
-                        
-                        <div id="item2${title}" class="carousel-item w-full">
+                            <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+                        </div> 
+                            <div id="item2${title}" class="carousel-item w-full">
                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
                         </div> 
                         <div id="item3${title}" class="carousel-item w-full">
@@ -1007,11 +1009,8 @@ function displayTopMovies(data) {
                 onclick="moveSlide(1)"
                 >❯
             </a>
-
-            <div class="" id=${specialChar}> </div> 
         </div>`;
     movieCarousel2.innerHTML += movieEl;
-    getTrailer(videos.results, specialChar);
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
