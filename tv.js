@@ -112,7 +112,7 @@ function getGenres(url) {
 	fetch(url)
 		.then(res => res.json())
 		.then(data => {
-			console.log('Genres: ', data.genres);
+			// console.log('Genres: ', data.genres);
 			displayGenres(data.genres);
 		})
 		.catch(error => {
@@ -161,8 +161,8 @@ function displayGenres(genres) {
 		/* This just constructs the html for each of the filter buttons & inserts them into the genreTags div in tv.html */
 		buttonEl.innerHTML = `
 	  <button class="btn glass" id="${element.id}"style="margin-bottom: 10px !important; margin-right: 10px !important;">
-			  <p>${element.name}</p>
-		  </button>`;
+			<p>${element.name}</p>
+		</button>`;
 
 		document.getElementById('genreTags').appendChild(buttonEl);
 	}
@@ -191,7 +191,7 @@ function getTvShows(url) {
 	fetch(url)
 		.then(res => res.json())
 		.then(data => {
-			console.log('shows: ', data);
+			// console.log('shows: ', data);
 			data.results.forEach(tv => {
 				/* Append to this response to get multiple things to return in one request */
 				/* This will get all details, credits, similar tv shows, and images */
@@ -350,7 +350,7 @@ function buttonForward() {
 				'&with_genres=' +
 				encodeURI(selectedGenreFilter.join(','));
 
-			console.log(FILTERED_URL);
+			// console.log(FILTERED_URL);
 			getTvShows(FILTERED_URL);
 		} else {
 			const API_URL =
@@ -383,7 +383,7 @@ function buttonBackward() {
 				'&with_genres=' +
 				encodeURI(selectedGenreFilter.join(','));
 
-			console.log(FILTERED_URL);
+			// console.log(FILTERED_URL);
 			getTvShows(FILTERED_URL);
 		} else {
 			const API_URL =
