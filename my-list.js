@@ -90,6 +90,9 @@ async function deleteMovieFromFirestore(docName) {
 		});
 }
 
+let count = 0;
+let hearts = [];
+
 // take a snapshot of all liked movies from firestore
 getLikedMoviesFromFirestore();
 async function getLikedMoviesFromFirestore() {
@@ -99,6 +102,7 @@ async function getLikedMoviesFromFirestore() {
 		.then(querySnapshot => {
 			querySnapshot.forEach(doc => {
 				// doc.data() is never undefined for query doc snapshots
+				count++;
 				getLikedMoviesFromApi(doc.data());
 			});
 		})
@@ -107,11 +111,9 @@ async function getLikedMoviesFromFirestore() {
 		});
 }
 
-
 const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const BASE_URL = 'https://api.themoviedb.org/3/';
 const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
-
 
 // fetch movie by id from firestore
 function getLikedMoviesFromApi(movieInfo) {
@@ -121,7 +123,15 @@ function getLikedMoviesFromApi(movieInfo) {
 
 	fetch(movieUrl)
 		.then(res => res.json())
-		.then(data => displayMoviesFromFirestore(data));
+		.then(data => {
+			hearts.push({
+				movieId: data.id,
+				movieTitle: data.title,
+				release: data.release_date,
+				description: data.overview,
+			});
+			displayMoviesFromFirestore(data);
+		});
 }
 
 // display movies like movies page
@@ -142,7 +152,6 @@ function displayMoviesFromFirestore(data) {
 	const movieCard = document.getElementById('movieCard');
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
-
 	movieEl.innerHTML = `
     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
         <img src="${
@@ -203,4 +212,19 @@ function displayMoviesFromFirestore(data) {
       </div>
     </div>`;
 	movieCard.appendChild(movieEl);
+
+	/* Heart functionality */
+	let hIcon = document.querySelectorAll('.heart-icon');
+	hIcon.forEach((icon, index) => {
+		document.getElementsByClassName('badge')[0].innerHTML = count;
+		icon.addEventListener('click', () => {
+			deleteMovieFromFirestore(hearts[index].movieTitle);
+			count--;
+			icon.classList.remove('fa-solid');
+			icon.classList.add('fa-regular');
+			setTimeout(() => {
+				location.reload();
+			}, '500');
+		});
+	});
 }
