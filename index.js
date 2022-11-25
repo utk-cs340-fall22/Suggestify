@@ -90,6 +90,25 @@ async function deleteMovieFromFirestore(docName) {
 		});
 }
 
+let count = 0;
+
+getLikedMoviesFromFirestore();
+async function getLikedMoviesFromFirestore() {
+	db.collection('My List')
+		.where('isLiked', '==', 'true')
+		.get()
+		.then(querySnapshot => {
+			querySnapshot.forEach(doc => {
+				// doc.data() is never undefined for query doc snapshots
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			});
+		})
+		.catch(error => {
+			console.log('Error getting documents: ', error);
+		});
+}
+
 /* Login box */
 var x = document.getElementById('login');
 var y = document.getElementById('register');
@@ -477,7 +496,6 @@ function getMovies(url) {
 
 /* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
 function displayMovies(data) {
-	let count = 0;
 	const {
 		title,
 		poster_path,
