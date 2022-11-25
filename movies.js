@@ -90,6 +90,25 @@ async function deleteMovieFromFirestore(docName) {
 		});
 }
 
+let count = 0;
+
+getLikedMoviesFromFirestore();
+async function getLikedMoviesFromFirestore() {
+	db.collection('My List')
+		.where('isLiked', '==', 'true')
+		.get()
+		.then(querySnapshot => {
+			querySnapshot.forEach(doc => {
+				// doc.data() is never undefined for query doc snapshots
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			});
+		})
+		.catch(error => {
+			console.log('Error getting documents: ', error);
+		});
+}
+
 /* This will need to be stored somewhere else at some point for security reasons */
 const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -110,7 +129,6 @@ const GENRE_URL = BASE_URL + 'genre/movie/list?' + API_KEY + '&language=en-US';
 /* Global genre array for filtering -- holds the id value of each genre selected by the user */
 var selectedGenreFilter = [];
 let hearts = [];
-let count = 0;
 
 getGenres(GENRE_URL);
 getMovies(API_URL);
