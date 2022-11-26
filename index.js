@@ -133,7 +133,7 @@ const SEARCH_QUERY = '&query=searchTerm';
 
 const API_URL =
 	BASE_URL + 'movie/popular?' + API_KEY + '&language=en-US&page=1';
-// getTrendingMovies(API_URL);
+getTrendingMovies(API_URL);
 
 const API_URL2 =
 	BASE_URL + 'movie/top_rated?' + API_KEY + '&language=en-US&page=1';
@@ -301,7 +301,6 @@ function displaySearchMovies(movie) {
 }
 
 let hearts = [];
-getMovies(API_URL);
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 /* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
@@ -309,7 +308,7 @@ getMovies(API_URL);
 
 var trailerCount = 0;
 
-function getMovies(url) {
+function getTrendingMovies(url) {
 	fetch(url)
 		.then(res => res.json())
 		.then(data => {
@@ -342,7 +341,7 @@ function getMovies(url) {
 						}
 
 						showSlide(2);
-						displayMovies(data);
+						displayTrendingMovies(data);
 					});
 			});
 		})
@@ -352,7 +351,7 @@ function getMovies(url) {
 }
 
 /* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
-function displayMovies(data) {
+function displayTrendingMovies(data) {
 	const {
 		title,
 		poster_path,
@@ -444,7 +443,7 @@ function displayMovies(data) {
 		}
 	});
 
-  /* Add/Remove movie if heart clicked */
+	/* Add/Remove movie if heart clicked */
 	hIcon.forEach((icon, index) => {
 		icon.addEventListener('click', () => {
 			if (icon.classList.contains('fa-regular')) {
@@ -658,139 +657,6 @@ function showSlidea(n) {
 	// highlight the active dot
 	dotsa[slideIndexa - 1].classList.remove('bg-green-600');
 	dotsa[slideIndexa - 1].classList.add('bg-yellow-500');
-}
-
-/* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
-/* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
-/* This second call will return even more information about each movie and will call displayMovies on each movie to display them with access to all of the information retrieved */
-function getTrendingMovies(url) {
-	fetch(url)
-		.then(res => res.json())
-		.then(data => {
-			data.results.forEach(movie => {
-				movieCarousel.innerHTML = '';
-
-				/* Append to this response to get multiple things to return in one request (append_to_response=...) */
-				/* This will get all details, credits, similar movies, and images | Refer to API documentation for other things to append */
-				const DETAIL_URL =
-					BASE_URL +
-					'movie/' +
-					movie.id +
-					'?' +
-					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images';
-
-				const TRAILER_URL =
-					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
-				fetch(DETAIL_URL)
-					.then(res => res.json())
-					.then(data => {
-						displayTrendingMovies(data);
-					});
-			});
-		})
-		.catch(error => {
-			console.log(error);
-		});
-}
-
-/* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
-function displayTrendingMovies(data) {
-	const {
-		title,
-		poster_path,
-		vote_average,
-		overview,
-		backdrop_path,
-		release_date,
-		runtime,
-		budget,
-		revenue,
-		genres,
-		status,
-		tagline,
-		id,
-	} = data;
-
-	const backdrop_url = POSTER_URL + backdrop_path;
-	const specialChar = title + id;
-
-	const movieEl = `
-        <div class="carousel-item">
-            <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${
-							POSTER_URL + poster_path
-						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
-            </label>
-            <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
-            <div class="modal">
-                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
-                    <label
-                        for="my-modal-${title}"
-                        class="btn btn-sm btn-circle absolute right-2 top-2"
-                        >✕
-                    </label>
-                    <div class="card bg-base-100 shadow-xl image-full">
-                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
-                        <div class="card-body">
-                            <h1 class="card-title style="text-align: center !important;">
-                                <font size="+100">${title}</font>
-                            </h1>
-                            <br/>
-                            <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
-                            <p class="info"><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
-                        </div>
-                    </div>
-
-
-                    <div class="flex justify-center w-full py-2 gap-2">
-                        <a href="#item1${title}" class="btn btn-xs">Details</a> 
-                        <a href="#item2${title}" class="btn btn-xs">Reviews</a> 
-                        <a href="#item3${title}" class="btn btn-xs">See Also</a>
-                    </div>
-                    <div class="carousel w-full">
-                        <div id="item1${title}" class="carousel-item w-full">
-                            <div class="carousel-card bg-base-100 shadow-xl">
-                                <div class="carousel-card-body">
-                                    <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-		genres[0].name
-	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b><br><br></p>
-                                
-                                    <div class="carousel-card-two absolute bottom-0 left-10 bg-base-100 shadow-xl" id="${specialChar}">
-                                        <div class="carousel-card-two-body"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                            <div id="item2${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div> 
-                        <div id="item3${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div> 
-                        <div id="item4${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div>
-                    </div> 
-
-                </div>
-            </div>
-
-            
-            <a
-            class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(-1)"
-            >❮
-            </a>
-            <a
-                class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-                onclick="moveSlide(1)"
-                >❯
-            </a>
-            <div class="" id=${specialChar}> </div> 
-        </div>`;
-	movieCarousel.innerHTML += movieEl;
-	getTrailer(videos.results, specialChar);
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
