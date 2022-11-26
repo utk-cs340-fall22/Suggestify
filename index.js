@@ -46,9 +46,7 @@ async function getMoviesFromFirestore(docName) {
 		.get()
 		.then(doc => {
 			if (doc.exists) {
-				console.log('Document data:', doc.data().isLiked);
-			} else {
-				console.log('No such document!', doc.data());
+				console.log('Found: ', doc.data().title);
 			}
 		})
 		.catch(error => {
@@ -135,7 +133,7 @@ const SEARCH_QUERY = '&query=searchTerm';
 
 const API_URL =
 	BASE_URL + 'movie/popular?' + API_KEY + '&language=en-US&page=1';
-getTrendingMovies(API_URL);
+// getTrendingMovies(API_URL);
 
 const API_URL2 =
 	BASE_URL + 'movie/top_rated?' + API_KEY + '&language=en-US&page=1';
@@ -373,7 +371,7 @@ function displayMovies(data) {
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
-            <i class="heart-icon fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+            <i id="heart-${title}" class="heart-icon fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
             <div class="modal">
                 <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
@@ -419,8 +417,34 @@ function displayMovies(data) {
                     </div>`;
 	movieCarousel.innerHTML += movieEl;
 
-	/* Heart functionality */
+	/* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon');
+	// find all favorited movies from firestore
+	hearts.forEach(heart => {
+		for (let movie in heart) {
+			if (movie == 'movieTitle') {
+				let docName = heart[movie];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
+  /* Add/Remove movie if heart clicked */
 	hIcon.forEach((icon, index) => {
 		icon.addEventListener('click', () => {
 			if (icon.classList.contains('fa-regular')) {
@@ -672,24 +696,24 @@ function getTrendingMovies(url) {
 
 /* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
 function displayTrendingMovies(data) {
-    const {
-        title,
-        poster_path,
-        vote_average,
-        overview,
-        backdrop_path,
-        release_date,
-        runtime,
-        budget,
-        revenue,
-        genres, 
-        status,
-        tagline,
-        id
-    } = data;
-    
-    const backdrop_url = POSTER_URL + backdrop_path;
-    const specialChar = title + id;
+	const {
+		title,
+		poster_path,
+		vote_average,
+		overview,
+		backdrop_path,
+		release_date,
+		runtime,
+		budget,
+		revenue,
+		genres,
+		status,
+		tagline,
+		id,
+	} = data;
+
+	const backdrop_url = POSTER_URL + backdrop_path;
+	const specialChar = title + id;
 
 	const movieEl = `
         <div class="carousel-item">
@@ -859,7 +883,9 @@ function displayTopMovies(data) {
                     </div>
                     <div class="carousel w-full">
                         <div id="item1${title}" class="carousel-item w-full">
-                            <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+                            <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
+		genres[0].name
+	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
                         </div> 
                             <div id="item2${title}" class="carousel-item w-full">
                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
@@ -887,7 +913,7 @@ function displayTopMovies(data) {
                 >❯
             </a>
         </div>`;
-    movieCarousel2.innerHTML += movieEl;
+	movieCarousel2.innerHTML += movieEl;
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
