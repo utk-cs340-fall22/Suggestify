@@ -134,10 +134,12 @@ const SEARCH_QUERY = '&query=searchTerm';
 const API_URL =
 	BASE_URL + 'movie/popular?' + API_KEY + '&language=en-US&page=1';
 getTrendingMovies(API_URL);
+let trendingMovieHearts = [];
 
 const API_URL2 =
 	BASE_URL + 'movie/top_rated?' + API_KEY + '&language=en-US&page=1';
 getTopMovies(API_URL2);
+let topMovieHearts = [];
 
 const API_URL3 = BASE_URL + 'tv/popular?' + API_KEY + '&language=en-US&page=1';
 getTrendingTV(API_URL3);
@@ -149,10 +151,12 @@ getTopTV(API_URL4);
 const API_URL6 =
 	BASE_URL + 'movie/now_playing?' + API_KEY + '&language=en-US&page=1';
 getPlayingMovies(API_URL6);
+let playingMovieHearts = [];
 
 const API_URL7 =
 	BASE_URL + 'movie/upcoming?' + API_KEY + '&language=en-US&page=1';
 getUpcomingMovies(API_URL7);
+let upcomingMovieHearts = [];
 
 const searchURL =
 	BASE_URL + '/search/multi?' + API_KEY + '&language=en-US&page=1&query=';
@@ -272,35 +276,7 @@ function displaySearchMovies(movie) {
       </div>
     </div>`;
 	main.appendChild(movieEl);
-
-	/* Heart functionality */
-	let hIcon = document.querySelectorAll('.heart-icon');
-	hIcon.forEach((icon, index) => {
-		icon.addEventListener('click', () => {
-			if (icon.classList.contains('fa-regular')) {
-				icon.classList.remove('fa-regular');
-				icon.classList.add('fa-solid');
-				addMovieToFirestore(
-					hearts[index].movieId,
-					hearts[index].movieTitle,
-					hearts[index].release,
-					hearts[index].description,
-					'true'
-				);
-				count++;
-				document.getElementsByClassName('badge')[0].innerHTML = count;
-			} else {
-				icon.classList.remove('fa-solid');
-				icon.classList.add('fa-regular');
-				// deleteMovieFromFirestore(hearts[index].movieTitle);
-				count--;
-				document.getElementsByClassName('badge')[0].innerHTML = count;
-			}
-		});
-	});
 }
-
-let hearts = [];
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 /* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
@@ -327,7 +303,7 @@ function getTrendingMovies(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
-						hearts.push({
+						trendingMovieHearts.push({
 							movieId: data.id,
 							movieTitle: data.title,
 							release: data.release_date,
@@ -370,7 +346,7 @@ function displayTrendingMovies(data) {
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
-            <i id="heart-${title}" class="heart-icon fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+            <i id="heart-${title}" class="heart-icon-trending-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
             <div class="modal">
                 <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
@@ -417,9 +393,9 @@ function displayTrendingMovies(data) {
 	movieCarousel.innerHTML += movieEl;
 
 	/* Fill heart if movie exists in firestore */
-	let hIcon = document.querySelectorAll('.heart-icon');
+	let hIcon = document.querySelectorAll('.heart-icon-trending-movies');
 	// find all favorited movies from firestore
-	hearts.forEach(heart => {
+	trendingMovieHearts.forEach(heart => {
 		for (let movie in heart) {
 			if (movie == 'movieTitle') {
 				let docName = heart[movie];
@@ -450,10 +426,10 @@ function displayTrendingMovies(data) {
 				icon.classList.remove('fa-regular');
 				icon.classList.add('fa-solid');
 				addMovieToFirestore(
-					hearts[index].movieId,
-					hearts[index].movieTitle,
-					hearts[index].release,
-					hearts[index].description,
+					trendingMovieHearts[index].movieId,
+					trendingMovieHearts[index].movieTitle,
+					trendingMovieHearts[index].release,
+					trendingMovieHearts[index].description,
 					'true'
 				);
 				count++;
@@ -461,7 +437,7 @@ function displayTrendingMovies(data) {
 			} else {
 				icon.classList.remove('fa-solid');
 				icon.classList.add('fa-regular');
-				deleteMovieFromFirestore(hearts[index].movieTitle);
+				deleteMovieFromFirestore(trendingMovieHearts[index].movieTitle);
 				count--;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			}
@@ -682,6 +658,12 @@ function getTopMovies(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
+            topMovieHearts.push({
+							movieId: data.id,
+							movieTitle: data.title,
+							release: data.release_date,
+							description: data.overview,
+						});
 						displayTopMovies(data);
 					});
 			});
@@ -693,7 +675,6 @@ function getTopMovies(url) {
 
 /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
 function displayTopMovies(data) {
-	// console.log("Movie -- ", data);
 	const {
 		title,
 		poster_path,
@@ -715,15 +696,16 @@ function displayTopMovies(data) {
 	const specialChar = title + id;
 
 	const movieEl = `
-        <div class="carousel-item">
+        <div class="carousel-item relative">
             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
             <img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
+            <i id="heart-${title}" class="heart-icon-top-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
             <div class="modal">
-                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -766,20 +748,61 @@ function displayTopMovies(data) {
 
                 </div>
             </div>
-
-            
-            <a
-            class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(-1)"
-            >❮
-            </a>
-            <a
-                class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-                onclick="moveSlide(1)"
-                >❯
-            </a>
         </div>`;
 	movieCarousel2.innerHTML += movieEl;
+
+	/* Fill heart if movie exists in firestore */
+	let hIcon = document.querySelectorAll('.heart-icon-top-movies');
+	// find all favorited movies from firestore
+	topMovieHearts.forEach(heart => {
+		for (let movie in heart) {
+			if (movie == 'movieTitle') {
+				let docName = heart[movie];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
+	/* Add/Remove movie if heart clicked */
+	hIcon.forEach((icon, index) => {
+		icon.addEventListener('click', () => {
+			if (icon.classList.contains('fa-regular')) {
+				icon.classList.remove('fa-regular');
+				icon.classList.add('fa-solid');
+				addMovieToFirestore(
+					topMovieHearts[index].movieId,
+          topMovieHearts[index].movieTitle,
+					topMovieHearts[index].release,
+					topMovieHearts[index].description,
+					'true'
+				);
+        
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			} else {
+				icon.classList.remove('fa-solid');
+				icon.classList.add('fa-regular');
+				deleteMovieFromFirestore(topMovieHearts[index].movieTitle);
+				count--;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			}      
+		});
+	});
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
@@ -805,6 +828,12 @@ function getPlayingMovies(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
+            playingMovieHearts.push({
+							movieId: data.id,
+							movieTitle: data.title,
+							release: data.release_date,
+							description: data.overview,
+						});
 						displayPlayingMovies(data);
 					});
 			});
@@ -816,7 +845,6 @@ function getPlayingMovies(url) {
 
 /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
 function displayPlayingMovies(data) {
-	// console.log("Movie -- ", data);
 	const {
 		title,
 		poster_path,
@@ -835,15 +863,16 @@ function displayPlayingMovies(data) {
 	const backdrop_url = POSTER_URL + backdrop_path;
 
 	const movieEl = `
-        <div class="carousel-item">
+        <div class="carousel-item relative">
             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
             <img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
+            <i id="heart-${title}" class="heart-icon-playing-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
             <div class="modal">
-                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -886,20 +915,61 @@ function displayPlayingMovies(data) {
 
                 </div>
             </div>
-
-            
-            <a
-            class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(-1)"
-            >❮
-            </a>
-            <a
-                class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-                onclick="moveSlide(1)"
-                >❯
-            </a>
         </div>`;
 	movieCarousel6.innerHTML += movieEl;
+
+  /* Fill heart if movie exists in firestore */
+	let hIcon = document.querySelectorAll('.heart-icon-playing-movies');
+	// find all favorited movies from firestore
+	playingMovieHearts.forEach(heart => {
+		for (let movie in heart) {
+			if (movie == 'movieTitle') {
+				let docName = heart[movie];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
+	/* Add/Remove movie if heart clicked */
+	hIcon.forEach((icon, index) => {
+		icon.addEventListener('click', () => {
+			if (icon.classList.contains('fa-regular')) {
+				icon.classList.remove('fa-regular');
+				icon.classList.add('fa-solid');
+				addMovieToFirestore(
+					playingMovieHearts[index].movieId,
+          playingMovieHearts[index].movieTitle,
+					playingMovieHearts[index].release,
+					playingMovieHearts[index].description,
+					'true'
+				);
+        
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			} else {
+				icon.classList.remove('fa-solid');
+				icon.classList.add('fa-regular');
+				deleteMovieFromFirestore(playingMovieHearts[index].movieTitle);
+				count--;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			}      
+		});
+	});
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
@@ -925,6 +995,12 @@ function getUpcomingMovies(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
+            upcomingMovieHearts.push({
+							movieId: data.id,
+							movieTitle: data.title,
+							release: data.release_date,
+							description: data.overview,
+						});
 						displayUpcomingMovies(data);
 					});
 			});
@@ -936,7 +1012,6 @@ function getUpcomingMovies(url) {
 
 /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
 function displayUpcomingMovies(data) {
-	// console.log("Movie -- ", data);
 	const {
 		title,
 		poster_path,
@@ -955,15 +1030,16 @@ function displayUpcomingMovies(data) {
 	const backdrop_url = POSTER_URL + backdrop_path;
 
 	const movieEl = `
-        <div class="carousel-item">
+        <div class="carousel-item relative">
             <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
             <img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
+            <i id="heart-${title}" class="heart-icon-upcoming-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
             <div class="modal">
-                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -1006,20 +1082,61 @@ function displayUpcomingMovies(data) {
 
                 </div>
             </div>
-
-            
-            <a
-            class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(-1)"
-            >❮
-            </a>
-            <a
-                class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-                onclick="moveSlide(1)"
-                >❯
-            </a>
         </div>`;
 	movieCarousel7.innerHTML += movieEl;
+
+  /* Fill heart if movie exists in firestore */
+	let hIcon = document.querySelectorAll('.heart-icon-upcoming-movies');
+	// find all favorited movies from firestore
+	upcomingMovieHearts.forEach(heart => {
+		for (let movie in heart) {
+			if (movie == 'movieTitle') {
+				let docName = heart[movie];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
+	/* Add/Remove movie if heart clicked */
+	hIcon.forEach((icon, index) => {
+		icon.addEventListener('click', () => {
+			if (icon.classList.contains('fa-regular')) {
+				icon.classList.remove('fa-regular');
+				icon.classList.add('fa-solid');
+				addMovieToFirestore(
+					upcomingMovieHearts[index].movieId,
+          upcomingMovieHearts[index].movieTitle,
+					upcomingMovieHearts[index].release,
+					upcomingMovieHearts[index].description,
+					'true'
+				);
+        
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			} else {
+				icon.classList.remove('fa-solid');
+				icon.classList.add('fa-regular');
+				deleteMovieFromFirestore(upcomingMovieHearts[index].movieTitle);
+				count--;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			}      
+		});
+	});
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
