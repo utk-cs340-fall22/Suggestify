@@ -135,26 +135,26 @@ const SEARCH_QUERY = '&query=searchTerm';
 
 const API_URL =
 	BASE_URL + 'movie/popular?' + API_KEY + '&language=en-US&page=1';
-// getTrendingMovies(API_URL);
+getTrendingMovies(API_URL);
 
 const API_URL2 =
 	BASE_URL + 'movie/top_rated?' + API_KEY + '&language=en-US&page=1';
-// getTopMovies(API_URL2);
+getTopMovies(API_URL2);
 
 const API_URL3 = BASE_URL + 'tv/popular?' + API_KEY + '&language=en-US&page=1';
-// getTrendingTV(API_URL3);
+getTrendingTV(API_URL3);
 
 const API_URL4 =
 	BASE_URL + 'tv/top_rated?' + API_KEY + '&language=en-US&page=1';
-// getTopTV(API_URL4);
+getTopTV(API_URL4);
 
 const API_URL6 =
 	BASE_URL + 'movie/now_playing?' + API_KEY + '&language=en-US&page=1';
-// getPlayingMovies(API_URL6);
+getPlayingMovies(API_URL6);
 
 const API_URL7 =
 	BASE_URL + 'movie/upcoming?' + API_KEY + '&language=en-US&page=1';
-// getUpcomingMovies(API_URL7);
+getUpcomingMovies(API_URL7);
 
 const searchURL =
 	BASE_URL + '/search/multi?' + API_KEY + '&language=en-US&page=1&query=';
@@ -672,7 +672,6 @@ function getTrendingMovies(url) {
 
 /* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
 function displayTrendingMovies(data) {
-    console.log("Movie -- ", data);
     const {
         title,
         poster_path,
