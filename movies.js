@@ -164,7 +164,7 @@ function displayGenres(genres) {
 			main.innerHTML = '';
 			pageNumber = 1;
 			document.getElementById('pageNumberButton').textContent = pageNumber;
-			
+
 			getMovies(FILTERED_URL);
 			highlightSelectedFilter();
 		});
@@ -202,7 +202,6 @@ function getMovies(url) {
 	fetch(url)
 		.then(res => res.json())
 		.then(data => {
-			// console.log('Movies: ', data);
 			data.results.forEach(movie => {
 				/* Append to this response to get multiple things to return in one request */
 				/* This will get all details, credits, similar movies, and images */
@@ -243,7 +242,31 @@ function displayMovies(movie) {
 		revenue,
 	} = movie;
 
-	const backdropURL = POSTER_URL + backdrop_path;
+	var posterURL = null;
+	var backdropURL = null;
+
+	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+	if (backdrop_path != null) {
+		backdropURL = POSTER_URL + backdrop_path;
+		if (poster_path == null) {
+			posterURL = backdropURL;
+		}
+		else if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+		}
+	}
+	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+	/* Otherwise, just sets them equal to blank square */
+	else if (backdrop_path == null) {
+		if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+			backdropURL = posterURL;
+		}
+		else if (poster_path == null) {
+			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+		}
+	}
 
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
@@ -251,7 +274,7 @@ function displayMovies(movie) {
 	movieEl.innerHTML = `
     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
         <img src="${
-					POSTER_URL + poster_path
+					posterURL
 				}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
         </label>
         <i class="heart-icon fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
