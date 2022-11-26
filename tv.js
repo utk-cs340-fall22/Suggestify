@@ -155,7 +155,7 @@ function displayGenres(genres) {
 			main.innerHTML = '';
 			pageNumber = 1;
 			document.getElementById('pageNumberButton').textContent = pageNumber;
-			
+
 			getTvShows(FILTERED_URL);
 			highlightSelectedFilter();
 		});
@@ -236,7 +236,33 @@ function displayTvShow(show) {
 		episode_run_time,
 	} = show;
 
-	const backdropURL = POSTER_URL + backdrop_path;
+	if (poster_path == null && backdrop_path != null || poster_path != null && backdrop_path == null) console.log(show);
+
+	var posterURL = null;
+	var backdropURL = null;
+
+	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+	if (backdrop_path != null) {
+		backdropURL = POSTER_URL + backdrop_path;
+		if (poster_path == null) {
+			posterURL = backdropURL;
+		}
+		else if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+		}
+	}
+	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+	/* Otherwise, just sets them equal to blank square */
+	else if (backdrop_path == null) {
+		if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+			backdropURL = posterURL;
+		}
+		else if (poster_path == null) {
+			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+		}
+	}
 
 	const showEl = document.createElement('div');
 	showEl.classList.add('show');
@@ -244,7 +270,7 @@ function displayTvShow(show) {
 	showEl.innerHTML = `
 	<label for="${name}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
 		<img src="${
-			POSTER_URL + poster_path
+			posterURL
 		}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
 		</label>
     <i class="heart-icon fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
