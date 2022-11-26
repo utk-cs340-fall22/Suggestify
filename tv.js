@@ -153,8 +153,10 @@ function displayGenres(genres) {
 				selectedGenreFilter.join(',');
 
 			main.innerHTML = '';
+			pageNumber = 1;
+			document.getElementById('pageNumberButton').textContent = pageNumber;
+			
 			getTvShows(FILTERED_URL);
-
 			highlightSelectedFilter();
 		});
 

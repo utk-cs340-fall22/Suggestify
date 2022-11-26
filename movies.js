@@ -160,9 +160,12 @@ function displayGenres(genres) {
 				'&language=en-US&sort_by=popularity.desc&page=1&with_genres=' +
 				selectedGenreFilter.join(',');
 
+			/* Reset the page to be empty, reset pageNumber value & value displayed, & call getMovies w/ new URL */
 			main.innerHTML = '';
+			pageNumber = 1;
+			document.getElementById('pageNumberButton').textContent = pageNumber;
+			
 			getMovies(FILTERED_URL);
-
 			highlightSelectedFilter();
 		});
 
@@ -369,6 +372,7 @@ function buttonForward() {
 		}
 	}
 }
+
 function buttonBackward() {
 	if (pageNumber > 1) {
 		pageNumber--;
