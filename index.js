@@ -13,33 +13,33 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
-// addMovieToFirestore('Black Adam', '2022/11/7', 'a superhero', 'true');
-async function addMovieToFirestore(
-	movieId,
-	movieTitle,
+// addItemToFirestore('Black Adam', '2022/11/7', 'a superhero', 'movie/tv');
+async function addItemToFirestore(
+	itemId,
+	itemTitle,
 	releaseDate,
-	overview,
-	liked
+	itemOverview,
+	type
 ) {
 	db.collection('My List')
-		.doc(movieTitle)
+		.doc(itemTitle)
 		.set({
-			id: movieId,
-			overview: overview,
+			id: itemId,
+			overview: itemOverview,
 			release_date: releaseDate,
-			title: movieTitle,
-			isLiked: liked,
+			title: itemTitle,
+			category: type,
 		})
 		.then(() => {
-			console.log('Document successfully written!', movieTitle);
+			console.log('Document successfully written!', itemTitle);
 		})
 		.catch(error => {
 			console.error('Error writing document: ', error);
 		});
 }
 
-// getMoviesFromFirestore('Terrifier 2');
-async function getMoviesFromFirestore(docName) {
+// getItemFromFirestore('Black Adam');
+async function getItemFromFirestore(docName) {
 	var docRef = db.collection('My List').doc(docName);
 
 	docRef
@@ -64,7 +64,7 @@ async function updateMovieFromFirestore(docName, newValue) {
 			title: newValue,
 			// release_date: 'newValue',
 			// overview: 'newValue',
-			// isLiked: 'newValue',
+			// category: 'newValue',
 		})
 		.then(() => {
 			console.log('Document successfully updated!', docName);
@@ -75,8 +75,8 @@ async function updateMovieFromFirestore(docName, newValue) {
 		});
 }
 
-// deleteMovieFromFirestore('movie name');
-async function deleteMovieFromFirestore(docName) {
+// deleteItemFromFirestore('name');
+async function deleteItemFromFirestore(docName) {
 	db.collection('My List')
 		.doc(docName)
 		.delete()
@@ -93,7 +93,24 @@ let count = 0;
 getLikedMoviesFromFirestore();
 async function getLikedMoviesFromFirestore() {
 	db.collection('My List')
-		.where('isLiked', '==', 'true')
+		.where('category', '==', 'movie')
+		.get()
+		.then(querySnapshot => {
+			querySnapshot.forEach(doc => {
+				// doc.data() is never undefined for query doc snapshots
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			});
+		})
+		.catch(error => {
+			console.log('Error getting documents: ', error);
+		});
+}
+
+getLikedTvFromFirestore();
+async function getLikedTvFromFirestore() {
+	db.collection('My List')
+		.where('category', '==', 'tv')
 		.get()
 		.then(querySnapshot => {
 			querySnapshot.forEach(doc => {
@@ -143,10 +160,12 @@ let topMovieHearts = [];
 
 const API_URL3 = BASE_URL + 'tv/popular?' + API_KEY + '&language=en-US&page=1';
 getTrendingTV(API_URL3);
+let trendingTvHearts = [];
 
 const API_URL4 =
 	BASE_URL + 'tv/top_rated?' + API_KEY + '&language=en-US&page=1';
 getTopTV(API_URL4);
+let topTvHearts = [];
 
 const API_URL6 =
 	BASE_URL + 'movie/now_playing?' + API_KEY + '&language=en-US&page=1';
@@ -425,19 +444,19 @@ function displayTrendingMovies(data) {
 			if (icon.classList.contains('fa-regular')) {
 				icon.classList.remove('fa-regular');
 				icon.classList.add('fa-solid');
-				addMovieToFirestore(
+				addItemToFirestore(
 					trendingMovieHearts[index].movieId,
 					trendingMovieHearts[index].movieTitle,
 					trendingMovieHearts[index].release,
 					trendingMovieHearts[index].description,
-					'true'
+					'movie'
 				);
 				count++;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			} else {
 				icon.classList.remove('fa-solid');
 				icon.classList.add('fa-regular');
-				deleteMovieFromFirestore(trendingMovieHearts[index].movieTitle);
+				deleteItemFromFirestore(trendingMovieHearts[index].movieTitle);
 				count--;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			}
@@ -658,7 +677,7 @@ function getTopMovies(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
-            topMovieHearts.push({
+						topMovieHearts.push({
 							movieId: data.id,
 							movieTitle: data.title,
 							release: data.release_date,
@@ -784,23 +803,23 @@ function displayTopMovies(data) {
 			if (icon.classList.contains('fa-regular')) {
 				icon.classList.remove('fa-regular');
 				icon.classList.add('fa-solid');
-				addMovieToFirestore(
+				addItemToFirestore(
 					topMovieHearts[index].movieId,
-          topMovieHearts[index].movieTitle,
+					topMovieHearts[index].movieTitle,
 					topMovieHearts[index].release,
 					topMovieHearts[index].description,
-					'true'
+					'movie'
 				);
-        
+
 				count++;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			} else {
 				icon.classList.remove('fa-solid');
 				icon.classList.add('fa-regular');
-				deleteMovieFromFirestore(topMovieHearts[index].movieTitle);
+				deleteItemFromFirestore(topMovieHearts[index].movieTitle);
 				count--;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
-			}      
+			}
 		});
 	});
 }
@@ -828,7 +847,7 @@ function getPlayingMovies(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
-            playingMovieHearts.push({
+						playingMovieHearts.push({
 							movieId: data.id,
 							movieTitle: data.title,
 							release: data.release_date,
@@ -918,7 +937,7 @@ function displayPlayingMovies(data) {
         </div>`;
 	movieCarousel6.innerHTML += movieEl;
 
-  /* Fill heart if movie exists in firestore */
+	/* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-playing-movies');
 	// find all favorited movies from firestore
 	playingMovieHearts.forEach(heart => {
@@ -951,23 +970,23 @@ function displayPlayingMovies(data) {
 			if (icon.classList.contains('fa-regular')) {
 				icon.classList.remove('fa-regular');
 				icon.classList.add('fa-solid');
-				addMovieToFirestore(
+				addItemToFirestore(
 					playingMovieHearts[index].movieId,
-          playingMovieHearts[index].movieTitle,
+					playingMovieHearts[index].movieTitle,
 					playingMovieHearts[index].release,
 					playingMovieHearts[index].description,
-					'true'
+					'movie'
 				);
-        
+
 				count++;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			} else {
 				icon.classList.remove('fa-solid');
 				icon.classList.add('fa-regular');
-				deleteMovieFromFirestore(playingMovieHearts[index].movieTitle);
+				deleteItemFromFirestore(playingMovieHearts[index].movieTitle);
 				count--;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
-			}      
+			}
 		});
 	});
 }
@@ -995,7 +1014,7 @@ function getUpcomingMovies(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
-            upcomingMovieHearts.push({
+						upcomingMovieHearts.push({
 							movieId: data.id,
 							movieTitle: data.title,
 							release: data.release_date,
@@ -1085,7 +1104,7 @@ function displayUpcomingMovies(data) {
         </div>`;
 	movieCarousel7.innerHTML += movieEl;
 
-  /* Fill heart if movie exists in firestore */
+	/* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-upcoming-movies');
 	// find all favorited movies from firestore
 	upcomingMovieHearts.forEach(heart => {
@@ -1118,23 +1137,23 @@ function displayUpcomingMovies(data) {
 			if (icon.classList.contains('fa-regular')) {
 				icon.classList.remove('fa-regular');
 				icon.classList.add('fa-solid');
-				addMovieToFirestore(
+				addItemToFirestore(
 					upcomingMovieHearts[index].movieId,
-          upcomingMovieHearts[index].movieTitle,
+					upcomingMovieHearts[index].movieTitle,
 					upcomingMovieHearts[index].release,
 					upcomingMovieHearts[index].description,
-					'true'
+					'movie'
 				);
-        
+
 				count++;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			} else {
 				icon.classList.remove('fa-solid');
 				icon.classList.add('fa-regular');
-				deleteMovieFromFirestore(upcomingMovieHearts[index].movieTitle);
+				deleteItemFromFirestore(upcomingMovieHearts[index].movieTitle);
 				count--;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
-			}      
+			}
 		});
 	});
 }
@@ -1159,6 +1178,12 @@ function getTrendingTV(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
+            trendingTvHearts.push({
+              tvId: data.id,
+              tvName: data.name,
+              first_air_date: data.first_air_date,
+              description: data.overview,
+            });
 						displayTrendingTV(data);
 					});
 			});
@@ -1187,15 +1212,16 @@ function displayTrendingTV(data) {
 	const backdrop_URL = POSTER_URL + backdrop_path;
 
 	const showEl = `
-        <div class="carousel-item">
+        <div class="carousel-item relative">
             <label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
             <img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
+            <i id="heart-${name}" class="heart-icon-trending-tv fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${name}" />
             <div class="modal">
-                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${name}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -1233,23 +1259,63 @@ function displayTrendingTV(data) {
                             <img src="https://placeimg.com/800/200/arch" class="w-full" />
                         </div>
                     </div> 
-
                 </div>
         </div>
-
-        
-        <a
-        class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-        onclick="moveSlide(-1)"
-        >❮
-        </a>
-        <a
-            class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(1)"
-            >❯
-        </a>
     </div>`;
 	movieCarousel3.innerHTML += showEl;
+
+  /* Fill heart if tv exists in firestore */
+	let hIcon = document.querySelectorAll('.heart-icon-trending-tv');
+	// find all favorited movies from firestore
+	trendingTvHearts.forEach(heart => {
+		for (let tv in heart) {
+			if (tv == 'tvName') {
+				let docName = heart[tv];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
+	/* Add/Remove movie if heart clicked */
+	hIcon.forEach((icon, index) => {
+		icon.addEventListener('click', () => {
+			if (icon.classList.contains('fa-regular')) {
+				icon.classList.remove('fa-regular');
+				icon.classList.add('fa-solid');
+				addItemToFirestore(
+					trendingTvHearts[index].tvId,
+					trendingTvHearts[index].tvName,
+					trendingTvHearts[index].first_air_date,
+					trendingTvHearts[index].description,
+					'tv'
+				);
+
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			} else {
+				icon.classList.remove('fa-solid');
+				icon.classList.add('fa-regular');
+				deleteItemFromFirestore(trendingTvHearts[index].tvName);
+				count--;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			}
+		});
+	});
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
@@ -1272,6 +1338,12 @@ function getTopTV(url) {
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
+            topTvHearts.push({
+              tvId: data.id,
+              tvName: data.name,
+              first_air_date: data.first_air_date,
+              description: data.overview,
+            });
 						displayTopTV(data);
 					});
 			});
@@ -1300,15 +1372,16 @@ function displayTopTV(data) {
 	const backdrop_URL = POSTER_URL + backdrop_path;
 
 	const showEl = `
-        <div class="carousel-item">
+        <div class="carousel-item relative">
             <label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
             <img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
+            <i id="heart-${name}" class="heart-icon-top-tv fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${name}" />
             <div class="modal">
-                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${name}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -1349,20 +1422,61 @@ function displayTopTV(data) {
 
                 </div>
         </div>
-
-        
-        <a
-        class="absolute left-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-        onclick="moveSlide(-1)"
-        >❮
-        </a>
-        <a
-            class="absolute right-0 top-1/2 p-4 -translate-y-4 bg-black/30 hover:bg-black/50 text-white hover:text-amber-500 cursor-pointer"
-            onclick="moveSlide(1)"
-            >❯
-        </a>
     </div>`;
 	movieCarousel4.innerHTML += showEl;
+
+  /* Fill heart if tv exists in firestore */
+	let hIcon = document.querySelectorAll('.heart-icon-top-tv');
+	// find all favorited movies from firestore
+	topTvHearts.forEach(heart => {
+		for (let tv in heart) {
+			if (tv == 'tvName') {
+				let docName = heart[tv];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
+	/* Add/Remove movie if heart clicked */
+	hIcon.forEach((icon, index) => {
+		icon.addEventListener('click', () => {
+			if (icon.classList.contains('fa-regular')) {
+				icon.classList.remove('fa-regular');
+				icon.classList.add('fa-solid');
+				addItemToFirestore(
+					topTvHearts[index].tvId,
+					topTvHearts[index].tvName,
+					topTvHearts[index].first_air_date,
+					topTvHearts[index].description,
+					'tv'
+				);
+
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			} else {
+				icon.classList.remove('fa-solid');
+				icon.classList.add('fa-regular');
+				deleteItemFromFirestore(topTvHearts[index].tvName);
+				count--;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			}
+		});
+	});
 }
 
 async function getTrailer(videos, specialChar) {
