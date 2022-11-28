@@ -151,7 +151,7 @@ function displayMovieFromFirestore(data) {
 
 	const backdropURL = POSTER_URL + backdrop_path;
 
-	const movieCard = document.getElementById('card');
+	const movieCard = document.getElementById('movie');
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
 	movieEl.innerHTML = `
@@ -287,7 +287,7 @@ function displayTvFromFirestore(data) {
 
 	const backdropURL = POSTER_URL + backdrop_path;
 
-	const showCard = document.getElementById('card');
+	const tvCard = document.getElementById('tv');
 	const showEl = document.createElement('div');
 	showEl.classList.add('show');
 
@@ -351,7 +351,7 @@ function displayTvFromFirestore(data) {
       </div>
       </div>
 	</div>`;
-	showCard.appendChild(showEl);
+	tvCard.appendChild(showEl);
 
 	/* Heart functionality */
 	let hIcon = document.querySelectorAll('.heart-icon-tv');
