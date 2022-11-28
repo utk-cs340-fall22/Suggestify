@@ -230,6 +230,7 @@ function getMovies(url) {
 
 function displayMovies(movie) {
 	const {
+		id,
 		title,
 		poster_path,
 		vote_average,
@@ -238,9 +239,14 @@ function displayMovies(movie) {
 		release_date,
 		runtime,
 		revenue,
+		tagline,
+		videos,
 	} = movie;
 
+	console.log(movie);
+
 	const backdropURL = POSTER_URL + backdrop_path;
+	const specialChar = id + title;
 
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
@@ -252,7 +258,7 @@ function displayMovies(movie) {
 				}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
         </label>
         <i class="heart-icon fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
-        <input type="checkbox" id="${title}" class="modal-toggle" />
+        <input type="checkbox" id="${title}" class="modal-toggle"/>
         <div class="modal">
           <div class="modal-box w-full max-w-5xl h-full">
             <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
@@ -264,8 +270,7 @@ function displayMovies(movie) {
                 <font size="+100">${title}</font> 
                 </h1>
                 <br/>
-                <h3> <b> Overview </b> </h3>
-                <p>${overview}</p>
+                <p>${tagline}</p>
                 <br/><br/>
                 <p><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
               </div>
@@ -277,24 +282,31 @@ function displayMovies(movie) {
             </div>
           <div class="carousel w-full">
             <div id="item1${title}" class="carousel-item w-full">
-              <div class="card w-96 bg-base-100 shadow-xl">
+              <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
                 <div class="card-body">
-                  <h1><b>More Info</b></h1>
-                  <p>Revenue: $${revenue}</p>
+                  <h1><b>Description</b></h1>
+				  <p>${overview}</p>
+				  </br>
+				  <p><b>Revenue:</b> $${revenue}</p>
+				  <p><b>Watch Providers:</b> $${revenue}</p>
+				  <div class="card-body" id="${specialChar}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 40px !important;"> </div>
+				  <br/>
                 </div>
               </div>
             </div> 
             <div id="item2${title}" class="carousel-item w-full">
-              <div class="card w-96 bg-base-100 shadow-xl">
+			<div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
                 <div class="card-body">
-                <h1><b>See Also</b></h1>
+                	<h1><b>See Also</b></h1>
                 </div>
               </div>
             </div> 
             <div id="item3${title}" class="carousel-item w-full">
-            <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
               <div class="card-body">
-              <h1><b>Reviews</b></h1>
+              	<h1><b>Reviews</b></h1>
+
+
               </div>
             </div>
           </div> 
@@ -305,6 +317,12 @@ function displayMovies(movie) {
       </div>
     </div>`;
 	main.appendChild(movieEl);
+
+	setTimeout(function () {
+		getTrailer(videos.results, specialChar);
+	}, 5);
+
+	// getTrailer(videos.results, specialChar);
 
 	/* Heart functionality */
 	let hIcon = document.querySelectorAll('.heart-icon');
@@ -369,6 +387,7 @@ function buttonForward() {
 		}
 	}
 }
+
 function buttonBackward() {
 	if (pageNumber > 1) {
 		pageNumber--;
@@ -401,4 +420,39 @@ function buttonBackward() {
 			getMovies(API_URL);
 		}
 	}
+}
+
+async function getTrailer(videos, specialChar) {
+	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+	if (videos.length != 0) {
+		videos.forEach(vid => {
+			if (
+				vid.name == 'Official Trailer' ||
+				vid.name == 'Official Trailer [Subtitled]' ||
+				vid.name == 'Dub Trailer' ||
+				vid.name == 'United States Trailer' ||
+				vid.name == 'Official Promo'
+			) {
+				const trailer = YOUTUBE_TRAILER_URL + vid.key;
+				const trailerHTML = `
+                <iframe width="300" height="200"
+                    src="${trailer}">
+                </iframe>`;
+				document.getElementById(specialChar).innerHTML = trailerHTML;
+			}
+		});
+	} 
+}
+
+
+function getWatchProviders() {
+
+}
+
+function getReviews() {
+
+}
+
+function getSimilarMovies() {
+	
 }
