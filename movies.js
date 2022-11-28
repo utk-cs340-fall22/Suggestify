@@ -251,6 +251,8 @@ function displayMovies(movie) {
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
 
+	/* Loop through similar / reviews and display */
+
 	movieEl.innerHTML = `
     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
         <img src="${
@@ -320,7 +322,9 @@ function displayMovies(movie) {
 
 	setTimeout(function () {
 		getTrailer(videos.results, specialChar);
-	}, 5);
+	}, 10);
+
+	
 
 	// getTrailer(videos.results, specialChar);
 
@@ -444,15 +448,7 @@ async function getTrailer(videos, specialChar) {
 	} 
 }
 
+/* /movie/{movie_id}/watch/providers */
+function getWatchProviders(id) {
 
-function getWatchProviders() {
-
-}
-
-function getReviews() {
-
-}
-
-function getSimilarMovies() {
-	
 }
