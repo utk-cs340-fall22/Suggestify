@@ -209,7 +209,7 @@ function getMovies(url) {
 					movie.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images,reviews';
+					'&language=en-US&append_to_response=videos,credits,similar,images,reviews,watch/providers';
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
@@ -241,14 +241,15 @@ function displayMovies(movie) {
 		revenue,
 		tagline,
 		videos,
-		reviews
+		reviews,
 	} = movie;
-
-	console.log(movie);
+	
+	// console.log(movie);
 
 	const backdropURL = POSTER_URL + backdrop_path;
 	const specialChar = id + title;
 	const specialChar2 = title + id;
+	const specialChar3 = runtime + title + id;
 
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
@@ -304,6 +305,12 @@ function displayMovies(movie) {
                 <div class="card-body">
                 	<h1><b>See Also</b></h1>
 					<hr>
+					<div>
+						<div style="height:500px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+							<p style="margin-left: 30px !important;">
+							</p>
+						</div>
+					</div>
                 </div>
               </div>
             </div> 
@@ -330,6 +337,7 @@ function displayMovies(movie) {
 	}, 10);
 
 	/* Get watch providers */
+	getWatchProviders(movie["watch/providers"].results["US"], specialChar3);
 	/* Get Similar movies */
 	getReviews(reviews.results, specialChar2);
 
@@ -432,6 +440,7 @@ function buttonBackward() {
 	}
 }
 
+/* */
 async function getTrailer(videos, specialChar) {
 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
 	if (videos.length != 0) {
@@ -454,11 +463,31 @@ async function getTrailer(videos, specialChar) {
 	} 
 }
 
-/* /movie/{movie_id}/watch/providers */
+/* */
 function getWatchProviders(providers, key) {
+	console.log(providers);
 
+	/* If the movie has providers / places to rent / watch */
+	if (providers != null) {
+
+		/* If they are streaming, where to watch */
+		/* May need to insert into two different places within the main html -- meaning, have a row for streaming / row to rent */
+		if (providers.flatrate != null) {
+
+		}
+
+		/* Where to rent */
+		if (providers.rent != null) {
+
+		}
+	}
+	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
+	else {
+
+	}
 }
 
+/* Get and display 3 reviews left for a movie -- if none, display none */
 function getReviews(reviews, key) {
 	var counter = 0;
 	if (reviews.length != 0) {
