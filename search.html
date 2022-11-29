@@ -1,0 +1,127 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Search</title>
+		<link rel="stylesheet" type="text/css" href="search.css" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+		<script src="search.js" defer></script>
+	</head>
+	<body>
+		<div class="view">
+			<nav class="navabar">
+				<form  id="form">
+					<input type="text" placeholder="Search" id="search" class="search">
+				</form>
+			</nav>
+
+			<main id="main"></main>
+		</div>
+	</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title> Search </title>
+		<link rel="stylesheet" href="styles.css" />
+		<script
+			src="https://kit.fontawesome.com/4ea5866b14.js"
+			crossorigin="anonymous"
+		></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+		<script src="search.js" defer></script>
+	</head>
+	<body>
+		<nav class="navbar bg-[#21252b] text-slate-300 sticky top-0 z-50">
+			<div class="navbar-start">
+				<div class="dropdown">
+					<label tabindex="0" class="btn btn-ghost btn-circle">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h7"
+							/>
+						</svg>
+					</label>
+					<ul
+						tabindex="0"
+						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
+					>
+						<li><a href="movies.html">Movies</a></li>
+						<li><a href="tv.html">Tv Shows</a></li>
+						<li><a href="my-list.html">My List</a></li>
+						<li><a href="settings.html" class="mt-[12rem]">Settings</a></li>
+						<li><a href="login.html">Account</a></li>
+					</ul>
+				</div>
+				<div>
+					<a href="movies.html" class="btn btn-ghost normal-case text-l"
+						>Movies</a
+					>
+					<a href="tv.html" class="btn btn-ghost normal-case text-l"
+						>Tv Shows</a
+					>
+				</div>
+			</div>
+			<div class="navbar-center">
+				<a href="index.html" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+			</div>
+			<div class="navbar-end">
+				<div>
+					<a href="my-list.html" class="btn btn-ghost normal-case mr-8 text-l">
+						My List</a
+					>
+				</div>
+				<button class="btn btn-ghost btn-circle mr-4">
+					<div>
+						<a href="login.html">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="0.5"
+								stroke="currentColor"
+								class="w-12 h-12"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+								/>
+							</svg>
+						</a>
+					</div>
+				</button>
+			</div>
+		</nav>
+
+		<form  id="form">
+			<input type="text" value="Refresh" placeholder="Search" id="search" class="search">
+		</form>
+
+		<main id="main" class="mt-5"></main>
+	</body>
+</html>

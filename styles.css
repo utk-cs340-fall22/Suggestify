@@ -45,51 +45,27 @@ img:hover {
 	bottom: 5px;
 	right: 5px;
 }
-/* .container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-@media (min-width: 1280px) {
-  .container {
-      max-width: 100% !important;
-  }
-} */
 
 main{
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+
 .search{
   background-color: #373338;
+  margin-top: 5%;
+  margin-left: 40%;
   border: 2px solid white;
-  padding:0.5rem 1rem;
+  padding:0.5rem 2rem;
   border-radius: 50px;
   font-size: 1rem;
   color:rgb(16, 10, 10);
   font-family: inherit;
 }
 
-/* .pagination{
-  display:flex;
-  margin:10px 30px;
-  align-items: center;
-  justify-content: center;
-  color:white;
-}
 
-.page{
-  padding:20px;
-  cursor:pointer;
-}
-
-.page.disabled{
-  cursor:not-allowed;
-  color:grey;
-} */
 .search:focus{
   outline:0;
   background-color: white;

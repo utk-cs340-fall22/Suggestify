@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Login</title>
 		<link rel="stylesheet" type="text/css" href="loginstyles.css" />
-		<script src="index.js" defer></script>
+		<script src="login.js" defer></script>
 	</head>
 	<body>
 		<div class="hero">
@@ -23,17 +23,17 @@
 				</div>
 				<form id="login" class="input-group">
 					<input type="text" class="input-field" placeholder="Username" id="email" required />
-					<input type="text" class="input-field" placeholder="Password" id="psw" required />
+					<input type="password" class="input-field" placeholder="Password" id="psw" required />
 					<input type="checkbox" class="check-box" />
 					<span>Remember Password</span>
 					<button type="submit" class="submit-btn" id="loginEmailPassword" >Log in</button>
 				</form>
 				<form id="register" class="input-group">
-					<input type="email" class="input-field"  placeholder="Email address" id="email" required />
-					<input type="text" class="input-field" placeholder="Password" id="psw" required />
+					<input type="email" class="input-field" placeholder="Email address" id="createEmail" required />
+					<input type="password" class="input-field" placeholder="Password" id="creatPsw" required />
 					<input type="checkbox" class="check-box" />
 					<span>I agree to the terms & conditions</span>
-					<button type="submit" class="submit-btn" id="createUser"> Register</button>
+					<button type="submit" class="submit-btn" id="createUser"><a href="" id="log">Register</a></button>
 					
 				</form>
 			</div>
@@ -43,8 +43,6 @@
 		<script type="module">
 			// Import the functions you need from the SDKs you need
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-  			import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
-			//import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
 			import { getAuth, 
 					onAuthStateChanged,
 					connectAuthEmulator,
@@ -60,20 +58,29 @@
 		  
 			// Your web app's Firebase configuration
 			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			// const firebaseConfig = {
+			//   apiKey: "AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg",
+			//   authDomain: "suggestify-6b974.firebaseapp.com",
+			//   projectId: "suggestify-6b974",
+			//   storageBucket: "suggestify-6b974.appspot.com",
+			//   messagingSenderId: "287553553595",
+			//   appId: "1:287553553595:web:c5e8adde4ca305cfaad59e",
+			//   measurementId: "G-30270TW59M"
+			// };
 			const firebaseConfig = {
-			  apiKey: "AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg",
-			  authDomain: "suggestify-6b974.firebaseapp.com",
-			  projectId: "suggestify-6b974",
-			  storageBucket: "suggestify-6b974.appspot.com",
-			  messagingSenderId: "287553553595",
-			  appId: "1:287553553595:web:c5e8adde4ca305cfaad59e",
-			  measurementId: "G-30270TW59M"
+				apiKey: 'AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg',
+				authDomain: 'suggestify-6b974.firebaseapp.com',
+				databaseURL: 'https://suggestify-6b974-default-rtdb.firebaseio.com',
+				projectId: 'suggestify-6b974',
+				storageBucket: 'suggestify-6b974.appspot.com',
+				messagingSenderId: '287553553595',
+				appId: '1:287553553595:web:c5e8adde4ca305cfaad59e',
+				measurementId: 'G-30270TW59M',
 			};
 			
 			
 			// Initialize Firebase
 			const app = initializeApp(firebaseConfig);
-			const analytics = getAnalytics(app);
 			const googleProvider = new GoogleAuthProvider(app);
 			const facebookProvider = new FacebookAuthProvider(app);
 			const auth = getAuth(app);
@@ -87,26 +94,31 @@
 				.then((userCredential) => {
 					// Signed in 
 					const user = userCredential.user;
-					// ...
-					alert('User signed in successfully')
+					const log = document.createElement('a');
+					log.setAttribute('href', 'index.html');
+					log.click();
+					// alert('User signed in successfully')
 				})
 				.catch((error) => {
 					const errorCode = error.code;
 					const errorMessage = error.message;
+					alert('Incorrect password');
 				});
 			});
 
 			createUser.addEventListener('click', (e) => {
 				e.preventDefault();
-				var email = document.getElementById('email').value;
-				var password = document.getElementById('psw').value;
+				var email = document.getElementById('createEmail').value;
+				var password = document.getElementById('creatPsw').value;
 				// var log_user = document.getElementById('log').href;
 				createUserWithEmailAndPassword(auth, email, password)
 					.then((userCredential) => {
 						// Signed in 
 						const user = userCredential.user;
-						// ...
-						alert('user created successfully');
+						const goToLog = document.createElement('a');
+						goToLog.setAttribute('href', 'login.html');
+						goToLog.click();
+						// alert('user created successfully');
 					})
 					.catch((error) => {
 						const errorCode = error.code;
@@ -115,8 +127,6 @@
 						alert(errorMessage);
 					});
 			});
-
-			
 			
 			googleLogIn.addEventListener('click', (e) => {
 				e.preventDefault();
@@ -126,9 +136,12 @@
 						// This gives you a Google Access Token. You can use it to access Google APIs.
 						const credential = GoogleAuthProvider.credentialFromResult(result);
 						const token = credential.accessToken;
+						
 
 						// The signed-in user info.
 						const user = result.user;
+						Console.log(user);
+						
 					}).catch((error) => {
 						// Handle Errors here.
 						const errorCode = error.code;
