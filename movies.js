@@ -249,9 +249,9 @@ function displayMovies(movie) {
 	
 
 	const backdropURL = POSTER_URL + backdrop_path;
-	const specialChar = id + title;
-	const specialChar2 = title + id;
-	const specialChar3 = runtime + title + id;
+	const specialCharTrailer = id + title;
+	const specialCharReviews = title + id;
+	const specialCharWatchProviders = runtime + title + id;
 	let movieGenre = '';
 	let movieRevenue = '';
 	let movieBudget = '';
@@ -322,7 +322,7 @@ function displayMovies(movie) {
 					<b>Budget</b>: ${movieBudget} |
 					<b>Revenue</b>: ${movieRevenue}
 				  </p>
-				  <p id="${specialChar3}" style="
+				  <p id="${specialCharWatchProviders}" style="
 				  		display: flex !important;
 						flex-direction: row !important;
 						flex-wrap: wrap !important;
@@ -330,14 +330,14 @@ function displayMovies(movie) {
 						align-items: center !important;">
 						<b>Watch Providers: &nbsp; </b>
 				  </p>
-				  <div class="card-body" id="${specialChar}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 20px !important;"> </div>
+				  <div class="card-body" id="${specialCharTrailer}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 20px !important;"> </div>
 				  <br/>
                 </div>
               </div>
             </div> 
             <div id="item3${title}" class="carousel-item w-full">
             <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
-              <div class="card-body" id="${specialChar2}" style="padding-top: 0px !important;">
+              <div class="card-body" id="${specialCharReviews}" style="padding-top: 0px !important;">
               	<h1><b>Reviews</b></h1>
 				<hr>
               </div>
@@ -366,13 +366,13 @@ function displayMovies(movie) {
 	main.appendChild(movieEl);
 
 	setTimeout(function () {
-		getTrailer(videos.results, specialChar);
+		getTrailer(videos.results, specialCharTrailer);
 	}, 10);
 
 	/* Get watch providers */
-	getWatchProviders(movie["watch/providers"].results["US"], specialChar3);
+	getWatchProviders(movie["watch/providers"].results["US"], specialCharWatchProviders);
 	/* Get Similar movies */
-	getReviews(reviews.results, specialChar2);
+	getReviews(reviews.results, specialCharReviews);
 
 
 	/* Heart functionality */
@@ -423,8 +423,6 @@ function buttonForward() {
 				pageNumber +
 				'&with_genres=' +
 				encodeURI(selectedGenreFilter.join(','));
-
-			// console.log(FILTERED_URL);
 			getMovies(FILTERED_URL);
 		} else {
 			const API_URL =
@@ -457,8 +455,6 @@ function buttonBackward() {
 				pageNumber +
 				'&with_genres=' +
 				encodeURI(selectedGenreFilter.join(','));
-
-			// console.log(FILTERED_URL);
 			getMovies(FILTERED_URL);
 		} else {
 			const API_URL =
@@ -474,7 +470,7 @@ function buttonBackward() {
 }
 
 /* */
-async function getTrailer(videos, specialChar) {
+async function getTrailer(videos, specialCharTrailer) {
 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
 	if (videos.length != 0) {
 		videos.forEach(vid => {
@@ -491,13 +487,13 @@ async function getTrailer(videos, specialChar) {
                 <iframe width="300" height="200"
                     src="${trailer}">
                 </iframe>`;
-				document.getElementById(specialChar).innerHTML = trailerHTML;
+				document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
 			}
 		});
 	} 
 }
 
-async function getWatchProviders(providers, key) {
+async function getWatchProviders(providers, specialCharWatchProviders) {
 	const providerURL = 'https://image.tmdb.org/t/p/original/';
 
 	/* If the movie has providers / places to rent / watch, it will display the logo */
@@ -512,7 +508,7 @@ async function getWatchProviders(providers, key) {
 					"/>	
 				</div>
 				`;
-				document.getElementById(key).innerHTML += providerHtml;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
 			})
 		}
 		if (providers.rent != null) {
@@ -525,7 +521,7 @@ async function getWatchProviders(providers, key) {
 					"/>
 				</div>
 				`;
-				document.getElementById(key).innerHTML += providerHtml;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
 			})
 		}
 		else if (providers.buy != null) {
@@ -538,7 +534,7 @@ async function getWatchProviders(providers, key) {
 					"/>
 				</div>
 				`;
-				document.getElementById(key).innerHTML += providerHtml;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
 			})
 		}
 		else if (providers.ads != null) {
@@ -551,7 +547,7 @@ async function getWatchProviders(providers, key) {
 					"/>
 				</div>
 				`;
-				document.getElementById(key).innerHTML += providerHtml;	
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;	
 			})
 		}
 	}
@@ -561,12 +557,12 @@ async function getWatchProviders(providers, key) {
 		<div>
 			None at this time
 		</div>`;
-		document.getElementById(key).innerHTML += providerHtml;
+		document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
 	}
 }
 
 /* Get and display 3 reviews left for a movie -- if none, display none */
-async function getReviews(reviews, key) {
+async function getReviews(reviews, specialCharReviews) {
 	let counter = 0;
 	if (reviews.length != 0) {
 		reviews.forEach(rev => {
@@ -580,7 +576,7 @@ async function getReviews(reviews, key) {
 					</p>
 					</div>
 				</div>`;
-				document.getElementById(key).innerHTML += reviewHtml;
+				document.getElementById(specialCharReviews).innerHTML += reviewHtml;
 				counter++;
 			}
 		})
@@ -592,6 +588,6 @@ async function getReviews(reviews, key) {
 				<b>No Reviews</b>
 			</p>
 		</div>`;
-		document.getElementById(key).innerHTML += reviewHtml;
+		document.getElementById(specialCharReviews).innerHTML += reviewHtml;
 	}
 }
