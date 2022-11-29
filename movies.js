@@ -294,7 +294,7 @@ function displayMovies(movie) {
                   <h1><b>Description</b></h1>
 				  <p>${overview}</p>
 				  </br>
-				  <p><b>Watch Providers:</b> Placeholder</p>
+				  <p id="${specialChar3}"><b>Watch Providers:</b> Placeholder</p>
 				  <div class="card-body" id="${specialChar}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 40px !important;"> </div>
 				  <br/>
                 </div>
@@ -464,6 +464,11 @@ async function getTrailer(videos, specialChar) {
 }
 
 /* */
+
+/*TODO: 
+	Need to get correct URL for png
+	Account for "ads"
+	Insert all within a line in the original HTML */
 function getWatchProviders(providers, key) {
 	console.log(providers);
 
@@ -473,7 +478,16 @@ function getWatchProviders(providers, key) {
 		/* If they are streaming, where to watch */
 		/* May need to insert into two different places within the main html -- meaning, have a row for streaming / row to rent */
 		if (providers.flatrate != null) {
-
+			providers.flatrate.forEach(prov => {
+				if (prov.provider_name != "Netflix basic with Ads") {
+					const providerHtml = `
+					<div>
+						<img src="${prov.logo_path}"/>
+					</div>
+					`;
+					document.getElementById(key).innerHTML += providerHtml;
+				}
+			})
 		}
 
 		/* Where to rent */
