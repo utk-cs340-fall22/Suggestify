@@ -144,7 +144,7 @@ function displayGenres(genres) {
 			if (selectedGenreFilter.length == 0) {
 				selectedGenreFilter.push(element.id);
 			} else if (selectedGenreFilter.includes(element.id)) {
-				for (var i = 0; i < selectedGenreFilter.length; i++) {
+				for (let i = 0; i < selectedGenreFilter.length; i++) {
 					if (selectedGenreFilter[i] == element.id) {
 						selectedGenreFilter.splice(i, 1);
 					}
@@ -238,18 +238,40 @@ function displayMovies(movie) {
 		backdrop_path,
 		release_date,
 		runtime,
+		budget,
 		revenue,
 		tagline,
 		videos,
 		reviews,
+		genres,
+		status,
 	} = movie;
 	
-	// console.log(movie);
 
 	const backdropURL = POSTER_URL + backdrop_path;
 	const specialChar = id + title;
 	const specialChar2 = title + id;
 	const specialChar3 = runtime + title + id;
+	let movieGenre = '';
+	let movieRevenue = '';
+	let movieBudget = '';
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
+
+	if (revenue == 0) {
+		movieRevenue = "N/A";
+	} else {
+		movieRevenue = "$" + revenue;
+	}
+
+	if (budget == 0) {
+		movieBudget = "N/A";
+
+	} else {
+		movieBudget = "$" + budget;
+	}
 
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
@@ -281,49 +303,60 @@ function displayMovies(movie) {
               </div>
             </div>
             <div class="flex justify-center w-full py-2 gap-2">
-              <a href="#item1${title}" class="btn btn-xs">More Info</a> 
-              <a href="#item2${title}" class="btn btn-xs">See Also</a> 
+              <a href="#item1${title}" class="btn btn-xs">Details</a> 
               <a href="#item3${title}" class="btn btn-xs">Reviews</a> 
+			  <a href="#item2${title}" class="btn btn-xs">See Also</a> 
             </div>
           <div class="carousel w-full">
             <div id="item1${title}" class="carousel-item w-full">
-              <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
-                <div class="card-body">
-				  <h1><b>More Info</b></h1>
+              <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important;">
+                <div class="card-body" style="padding-top: 0px !important;">
+				  <h1><b>About this movie</b></h1>
 				  <hr>
                   <h1><b>Description</b></h1>
 				  <p>${overview}</p>
 				  </br>
-				  <p id="${specialChar3}"><b>Watch Providers:</b> Placeholder</p>
-				  <div class="card-body" id="${specialChar}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 40px !important;"> </div>
+				  <p>
+				  	<b>Genre</b>: ${movieGenre} |
+					<b>Status</b>: ${status} |
+					<b>Budget</b>: ${movieBudget} |
+					<b>Revenue</b>: ${movieRevenue}
+				  </p>
+				  <p id="${specialChar3}" style="
+				  		display: flex !important;
+						flex-direction: row !important;
+						flex-wrap: wrap !important;
+						justify-content: flex-start !important;
+						align-items: center !important;">
+						<b>Watch Providers: &nbsp; </b>
+				  </p>
+				  <div class="card-body" id="${specialChar}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 20px !important;"> </div>
 				  <br/>
-                </div>
-              </div>
-            </div> 
-            <div id="item2${title}" class="carousel-item w-full">
-			<div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
-                <div class="card-body">
-                	<h1><b>See Also</b></h1>
-					<hr>
-					<div>
-						<div style="height:500px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
-							<p style="margin-left: 30px !important;">
-							</p>
-						</div>
-					</div>
                 </div>
               </div>
             </div> 
             <div id="item3${title}" class="carousel-item w-full">
             <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
-
-              <div class="card-body" id="${specialChar2}">
+              <div class="card-body" id="${specialChar2}" style="padding-top: 0px !important;">
               	<h1><b>Reviews</b></h1>
 				<hr>
-
               </div>
             </div>
           </div> 
+		  <div id="item2${title}" class="carousel-item w-full">
+		  <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
+			  <div class="card-body" style="padding-top: 0px !important;">
+				  <h1><b>See Also</b></h1>
+				  <hr>
+				  <div>
+					  <div style="height:500px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+						  <p style="margin-left: 30px !important;">
+						  </p>
+					  </div>
+				  </div>
+			  </div>
+			</div>
+		  </div> 
         </div> 
         <div class="modal-action">
           <label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
@@ -370,7 +403,7 @@ function displayMovies(movie) {
 }
 
 /* Code required for the page buttons */
-var pageNumber = 1;
+let pageNumber = 1;
 
 function buttonForward() {
 	if (pageNumber < 100) {
@@ -450,7 +483,8 @@ async function getTrailer(videos, specialChar) {
 				vid.name == 'Official Trailer [Subtitled]' ||
 				vid.name == 'Dub Trailer' ||
 				vid.name == 'United States Trailer' ||
-				vid.name == 'Official Promo'
+				vid.name == 'Official Promo' || 
+				vid.iso_639_1 == 'en' && vid.iso_3166_1 == 'US'
 			) {
 				const trailer = YOUTUBE_TRAILER_URL + vid.key;
 				const trailerHTML = `
@@ -463,47 +497,77 @@ async function getTrailer(videos, specialChar) {
 	} 
 }
 
-/* */
+async function getWatchProviders(providers, key) {
+	const providerURL = 'https://image.tmdb.org/t/p/original/';
 
-/*TODO: 
-	Need to get correct URL for png
-	Account for "ads"
-	Insert all within a line in the original HTML */
-function getWatchProviders(providers, key) {
-	console.log(providers);
-
-	/* If the movie has providers / places to rent / watch */
+	/* If the movie has providers / places to rent / watch, it will display the logo */
 	if (providers != null) {
-
-		/* If they are streaming, where to watch */
-		/* May need to insert into two different places within the main html -- meaning, have a row for streaming / row to rent */
 		if (providers.flatrate != null) {
-			providers.flatrate.forEach(prov => {
-				if (prov.provider_name != "Netflix basic with Ads") {
-					const providerHtml = `
-					<div>
-						<img src="${prov.logo_path}"/>
-					</div>
-					`;
-					document.getElementById(key).innerHTML += providerHtml;
-				}
+			providers.flatrate.forEach(prov => {	
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>	
+				</div>
+				`;
+				document.getElementById(key).innerHTML += providerHtml;
 			})
 		}
-
-		/* Where to rent */
 		if (providers.rent != null) {
-
+			providers.rent.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(key).innerHTML += providerHtml;
+			})
+		}
+		else if (providers.buy != null) {
+			providers.buy.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(key).innerHTML += providerHtml;
+			})
+		}
+		else if (providers.ads != null) {
+			providers.ads.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(key).innerHTML += providerHtml;	
+			})
 		}
 	}
 	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
 	else {
-
+		const providerHtml = `
+		<div>
+			None at this time
+		</div>`;
+		document.getElementById(key).innerHTML += providerHtml;
 	}
 }
 
 /* Get and display 3 reviews left for a movie -- if none, display none */
-function getReviews(reviews, key) {
-	var counter = 0;
+async function getReviews(reviews, key) {
+	let counter = 0;
 	if (reviews.length != 0) {
 		reviews.forEach(rev => {
 			if (counter < 3) {
