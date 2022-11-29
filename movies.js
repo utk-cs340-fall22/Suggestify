@@ -241,12 +241,14 @@ function displayMovies(movie) {
 		revenue,
 		tagline,
 		videos,
+		reviews
 	} = movie;
 
 	console.log(movie);
 
 	const backdropURL = POSTER_URL + backdrop_path;
 	const specialChar = id + title;
+	const specialChar2 = title + id;
 
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
@@ -286,11 +288,12 @@ function displayMovies(movie) {
             <div id="item1${title}" class="carousel-item w-full">
               <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
                 <div class="card-body">
+				  <h1><b>More Info</b></h1>
+				  <hr>
                   <h1><b>Description</b></h1>
 				  <p>${overview}</p>
 				  </br>
-				  <p><b>Revenue:</b> $${revenue}</p>
-				  <p><b>Watch Providers:</b> $${revenue}</p>
+				  <p><b>Watch Providers:</b> Placeholder</p>
 				  <div class="card-body" id="${specialChar}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 40px !important;"> </div>
 				  <br/>
                 </div>
@@ -300,14 +303,16 @@ function displayMovies(movie) {
 			<div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
                 <div class="card-body">
                 	<h1><b>See Also</b></h1>
+					<hr>
                 </div>
               </div>
             </div> 
             <div id="item3${title}" class="carousel-item w-full">
             <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
-              <div class="card-body">
-              	<h1><b>Reviews</b></h1>
 
+              <div class="card-body" id="${specialChar2}">
+              	<h1><b>Reviews</b></h1>
+				<hr>
 
               </div>
             </div>
@@ -324,9 +329,10 @@ function displayMovies(movie) {
 		getTrailer(videos.results, specialChar);
 	}, 10);
 
-	
+	/* Get watch providers */
+	/* Get Similar movies */
+	getReviews(reviews.results, specialChar2);
 
-	// getTrailer(videos.results, specialChar);
 
 	/* Heart functionality */
 	let hIcon = document.querySelectorAll('.heart-icon');
@@ -449,6 +455,36 @@ async function getTrailer(videos, specialChar) {
 }
 
 /* /movie/{movie_id}/watch/providers */
-function getWatchProviders(id) {
+function getWatchProviders(providers, key) {
 
+}
+
+function getReviews(reviews, key) {
+	var counter = 0;
+	if (reviews.length != 0) {
+		reviews.forEach(rev => {
+			if (counter < 3) {
+				const reviewHtml = `
+				<div>
+					<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
+					<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+					<p style="margin-left: 30px !important;">
+						${rev.content}
+					</p>
+					</div>
+				</div>`;
+				document.getElementById(key).innerHTML += reviewHtml;
+				counter++;
+			}
+		})
+	}
+	else {
+		const reviewHtml = `
+		<div>
+			<p>
+				<b>No Reviews</b>
+			</p>
+		</div>`;
+		document.getElementById(key).innerHTML += reviewHtml;
+	}
 }
