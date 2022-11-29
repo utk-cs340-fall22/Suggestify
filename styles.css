@@ -58,11 +58,6 @@ img:hover {
   }
 } */
 
-main{
-  display:flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 .search{
   background-color: #373338;
   border: 2px solid white;
@@ -178,7 +173,7 @@ main{
     width: 300px;
   } */
 
-  main{
+  main, #tv{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;
