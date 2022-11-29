@@ -108,8 +108,8 @@ function login() {
 }
 
 /* This will need to be stored somewhere else at some point for security reasons */
-const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const BASE_URL = 'https://api.themoviedb.org/3/';
+const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const SEARCH_QUERY = '&query=searchTerm';
 /* This can be formatted to include whatever you want -- 'movie/upcoming' is just a placeholder for now */
 //const API_URL_ = BASE_URL + '/movie/popular?/similar' + API_KEY + '&language=en-US&page=1';
@@ -118,7 +118,7 @@ const API_URL =
 	BASE_URL + 'movie/popular?' + API_KEY + '&language=en-US&page=1';
 getTrendingMovies(API_URL);
 
-const API_URL2 =
+/* const API_URL2 =
 	BASE_URL + 'movie/top_rated?' + API_KEY + '&language=en-US&page=1';
 getTopMovies(API_URL2);
 
@@ -135,7 +135,7 @@ getPlayingMovies(API_URL6);
 
 const API_URL7 =
 	BASE_URL + 'movie/upcoming?' + API_KEY + '&language=en-US&page=1';
-getUpcomingMovies(API_URL7);
+getUpcomingMovies(API_URL7); */
 
 const searchURL =
 	BASE_URL + '/search/multi?' + API_KEY + '&language=en-US&page=1&query=';
@@ -762,7 +762,7 @@ function showSlidea(n) {
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 /* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
 /* This second call will return even more information about each movie and will call displayMovies on each movie to display them with access to all of the information retrieved */
-function getTrendingMovies(url) {
+function getTrendingMovies(url, urlone) {
 	fetch(url)
 		.then(res => res.json())
 		.then(data => {
@@ -777,10 +777,8 @@ function getTrendingMovies(url) {
 					movie.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images';
+					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images';
 
-				const TRAILER_URL =
-					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
@@ -788,6 +786,7 @@ function getTrendingMovies(url) {
 					});
 			});
 		})
+
 		.catch(error => {
 			console.log(error);
 		});
@@ -795,25 +794,32 @@ function getTrendingMovies(url) {
 
 /* Passed a movie, which will contain all of the needed information about the individual movie (runtime, videos, etc) */
 function displayTrendingMovies(data) {
-    console.log("Movie -- ", data);
-    const {
-        title,
+	const {
+		title,
         poster_path,
         vote_average,
         overview,
         backdrop_path,
         release_date,
         runtime,
+		reviews,
         budget,
         revenue,
         genres, 
         status,
         tagline,
+		videos,
+		credits,
+		similar,
         id
     } = data;
-    
+
     const backdrop_url = POSTER_URL + backdrop_path;
     const specialChar = title + id;
+    const specialCharReviews = id + title;
+	const specialCharSimilar = id + title + '&';
+	const specialCharCast = id + title + '/';
+	
 
 	const movieEl = `
         <div class="carousel-item">
@@ -823,7 +829,7 @@ function displayTrendingMovies(data) {
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
             </label>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
-            <div class="modal">
+            <div class="modal" onClick=getTrailer>
                 <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
@@ -852,25 +858,44 @@ function displayTrendingMovies(data) {
                         <div id="item1${title}" class="carousel-item w-full">
                             <div class="carousel-card bg-base-100 shadow-xl">
                                 <div class="carousel-card-body">
-                                    <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-		genres[0].name
-	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b><br><br></p>
-                                
-                                    <div class="carousel-card-two absolute bottom-0 left-10 bg-base-100 shadow-xl" id="${specialChar}">
-                                        <div class="carousel-card-two-body"></div>
-                                    </div>
+                                    <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${genres[0].name} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br></p>
+									
+									<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+										<div id="${specialCharCast}">
+											<p><b>Cast: </b></p>
+										</div>
+										
+										<p><b>Trailer: </b><br><br></p>
+									
+										<div class="carousel-card-two relative bottom-0 right-1 bg-base-100 shadow-xl" style="width: 400px; height: 250px;" id="${specialChar}">
+											<div class="carousel-card-two-body"></div>
+										</div>
+									</div>
                                 </div>
                             </div>
                         </div> 
-                            <div id="item2${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+
+                        <div id="item2${title}" class="carousel-item w-full">
+							<div class="carousel-card-three bg-base-100 shadow-xl">
+								<div class="carousel-card-three-body">
+									<div class="carousel-card-four relative bottom-0 left-1 bg-base-100 shadow-xl" id="${specialCharReviews}">
+										<div class="carousel-card-four-body"></div>
+									</div>
+								</div>
+							</div>
                         </div> 
+
                         <div id="item3${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+							<div class="carousel-card-five bg-base-100 shadow-xl">
+								<div class="carousel-card-five-body">
+									<div class="carousel-card-six bg-base-100 shadow-xl flex justify-center" id="${specialCharSimilar}" style="flex-wrap:wrap">
+										<div class="carousel-card-six-body">
+										</div>
+									</div>
+								</div>
+							</div>
                         </div> 
-                        <div id="item4${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div>
+						
                     </div> 
 
                 </div>
@@ -887,10 +912,17 @@ function displayTrendingMovies(data) {
                 onclick="moveSlide(1)"
                 >❯
             </a>
-            <div class="" id=${specialChar}> </div> 
+            
+  
         </div>`;
 	movieCarousel.innerHTML += movieEl;
-	getTrailer(videos.results, specialChar);
+	setTimeout(function () {
+		getTrailer(videos.results, specialChar);
+	}, 10);
+	
+	getReviews(reviews.results, specialCharReviews);
+	getSimilar(similar.results, specialCharSimilar);
+	getCast(credits.cast, specialCharCast);
 }
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
@@ -1499,4 +1531,48 @@ async function getTrailer(videos, specialChar) {
 			}
 		});
 	} else trailerCount--;
+}
+
+async function getCast(credits, specialChar) {
+	let i = 0;
+	if (credits.length != 5) {
+		credits.forEach(cred => {
+			if (i != 5) {
+				const castHTML = `
+					<p>${cred.name}</p>
+				`
+
+				document.getElementById(specialChar).innerHTML += castHTML;
+				i++;
+			}
+		})
+	}
+}
+
+async function getReviews(reviews, specialChar) {
+	if (reviews.length != 0) {
+		reviews.forEach(rev => {
+			const reviewHTML = `
+			<div>
+				<p><b>${rev.author}</b><br>${rev.content}<div class="divider"></div></p>
+			</div>`;
+
+			document.getElementById(specialChar).innerHTML += reviewHTML;
+		})
+	}
+}
+
+async function getSimilar(movies, specialChar) {
+	if (movies.length != 0) {
+		movies.forEach(mov => {
+			const similarHTML = `
+				<label for="${mov.title}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+					<img src="${POSTER_URL + mov.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+					<span class="tooltiptext"><b>${mov.title}</b><br>${mov.vote_average}/10</span>
+				</label>
+				`;
+
+			document.getElementById(specialChar).innerHTML += similarHTML;
+		})
+	}
 }
