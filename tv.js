@@ -236,8 +236,6 @@ function displayTvShow(show) {
 		episode_run_time,
 	} = show;
 
-	if (poster_path == null && backdrop_path != null || poster_path != null && backdrop_path == null) console.log(show);
-
 	var posterURL = null;
 	var backdropURL = null;
 
