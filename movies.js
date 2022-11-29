@@ -13,13 +13,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
-// addMovieToFirestore('Black Adam', '2022/11/7', 'a superhero', 'true');
+// addMovieToFirestore('Black Adam', '2022/11/7', 'a superhero', 'movie');
 async function addMovieToFirestore(
 	movieId,
 	movieTitle,
 	releaseDate,
 	overview,
-	liked
+	type
 ) {
 	db.collection('My List')
 		.doc(movieTitle)
@@ -28,10 +28,10 @@ async function addMovieToFirestore(
 			overview: overview,
 			release_date: releaseDate,
 			title: movieTitle,
-			isLiked: liked,
+			category: type,
 		})
 		.then(() => {
-			console.log('Document successfully written - 1!', movieTitle);
+			console.log('Document successfully written!', movieTitle);
 		})
 		.catch(error => {
 			console.error('Error writing document: ', error);
@@ -46,7 +46,7 @@ async function getMoviesFromFirestore(docName) {
 		.get()
 		.then(doc => {
 			if (doc.exists) {
-				console.log('Document data:', doc.data().isLiked);
+				console.log('Document data:', doc.data());
 			} else {
 				console.log('No such document!', doc.data());
 			}
@@ -66,7 +66,7 @@ async function updateMovieFromFirestore(docName, newValue) {
 			title: newValue,
 			// release_date: 'newValue',
 			// overview: 'newValue',
-			// isLiked: 'newValue',
+			// category: 'newValue',
 		})
 		.then(() => {
 			console.log('Document successfully updated!', docName);
@@ -90,6 +90,24 @@ async function deleteMovieFromFirestore(docName) {
 		});
 }
 
+let count = 0;
+
+getLikedMoviesFromFirestore();
+async function getLikedMoviesFromFirestore() {
+	db.collection('My List')
+		.get()
+		.then(querySnapshot => {
+			querySnapshot.forEach(doc => {
+				// doc.data() is never undefined for query doc snapshots
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			});
+		})
+		.catch(error => {
+			console.log('Error getting documents: ', error);
+		});
+}
+
 /* This will need to be stored somewhere else at some point for security reasons */
 const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -110,7 +128,6 @@ const GENRE_URL = BASE_URL + 'genre/movie/list?' + API_KEY + '&language=en-US';
 /* Global genre array for filtering -- holds the id value of each genre selected by the user */
 var selectedGenreFilter = [];
 let hearts = [];
-let count = 0;
 
 getGenres(GENRE_URL);
 getMovies(API_URL);
@@ -160,10 +177,11 @@ function displayGenres(genres) {
 				'&language=en-US&sort_by=popularity.desc&page=1&with_genres=' +
 				selectedGenreFilter.join(',');
 
+
 			/* Reset the page to be empty, reset pageNumber value & value displayed, & call getMovies w/ new URL */
-			main.innerHTML = '';
 			pageNumber = 1;
 			document.getElementById('pageNumberButton').textContent = pageNumber;
+      document.getElementById('movie').innerHTML = '';
 
 			getMovies(FILTERED_URL);
 			highlightSelectedFilter();
@@ -199,6 +217,7 @@ function highlightSelectedFilter() {
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 function getMovies(url) {
+  hearts = [];
 	fetch(url)
 		.then(res => res.json())
 		.then(data => {
@@ -268,16 +287,14 @@ function displayMovies(movie) {
 		}
 	}
 
-	const movieEl = document.createElement('div');
-	movieEl.classList.add('movie');
-
-	movieEl.innerHTML = `
+	const movieCard = document.getElementById('movie');
+	const movieEl = `
     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
         <img src="${
 					posterURL
 				}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
         </label>
-        <i class="heart-icon fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+        <i id="heart-${title}" class="heart-icon fa-regular fa-heart relative bottom-[-320px] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
         <input type="checkbox" id="${title}" class="modal-toggle" />
         <div class="modal">
           <div class="modal-box w-full max-w-5xl h-full">
@@ -330,10 +347,37 @@ function displayMovies(movie) {
         </div>
       </div>
     </div>`;
-	main.appendChild(movieEl);
-
-	/* Heart functionality */
+	
+    movieCard.innerHTML += movieEl;
+  
+  /* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon');
+
+	// find all favorited movies from firestore
+	hearts.forEach(heart => {
+		for (let movie in heart) {
+			if (movie == 'movieTitle') {
+				let docName = heart[movie];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
 	hIcon.forEach((icon, index) => {
 		icon.addEventListener('click', () => {
 			if (icon.classList.contains('fa-regular')) {
@@ -344,14 +388,14 @@ function displayMovies(movie) {
 					hearts[index].movieTitle,
 					hearts[index].release,
 					hearts[index].description,
-					'true'
+					'movie'
 				);
 				count++;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			} else {
 				icon.classList.remove('fa-solid');
 				icon.classList.add('fa-regular');
-				// deleteMovieFromFirestore(hearts[index].movieTitle);
+				deleteMovieFromFirestore(hearts[index].movieTitle);
 				count--;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			}
@@ -368,7 +412,7 @@ function buttonForward() {
 
 		document.getElementById('pageNumberButton').textContent = pageNumber;
 
-		main.innerHTML = '';
+    document.getElementById('movie').innerHTML = '';
 
 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the next page */
 		if (selectedGenreFilter.length != 0) {
@@ -402,7 +446,7 @@ function buttonBackward() {
 
 		document.getElementById('pageNumberButton').textContent = pageNumber;
 
-		main.innerHTML = '';
+    document.getElementById('movie').innerHTML = '';
 
 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getMovies call for the prev page */
 		if (selectedGenreFilter.length != 0) {
