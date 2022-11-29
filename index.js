@@ -90,27 +90,9 @@ async function deleteItemFromFirestore(docName) {
 
 let count = 0;
 
-getLikedMoviesFromFirestore();
-async function getLikedMoviesFromFirestore() {
+getCountOfItemsFromFirestore();
+async function getCountOfItemsFromFirestore() {
 	db.collection('My List')
-		.where('category', '==', 'movie')
-		.get()
-		.then(querySnapshot => {
-			querySnapshot.forEach(doc => {
-				// doc.data() is never undefined for query doc snapshots
-				count++;
-				document.getElementsByClassName('badge')[0].innerHTML = count;
-			});
-		})
-		.catch(error => {
-			console.log('Error getting documents: ', error);
-		});
-}
-
-getLikedTvFromFirestore();
-async function getLikedTvFromFirestore() {
-	db.collection('My List')
-		.where('category', '==', 'tv')
 		.get()
 		.then(querySnapshot => {
 			querySnapshot.forEach(doc => {
