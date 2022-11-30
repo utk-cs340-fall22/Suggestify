@@ -49,7 +49,6 @@
 					createUserWithEmailAndPassword, 
 					signInWithRedirect, getRedirectResult, 
 					GoogleAuthProvider, 
-					FacebookAuthProvider 
 				} from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
 			
 			const firebaseConfig = {
@@ -67,7 +66,6 @@
 			// Initialize Firebase
 			const app = initializeApp(firebaseConfig);
 			const googleProvider = new GoogleAuthProvider(app);
-			const facebookProvider = new FacebookAuthProvider(app);
 			const auth = getAuth(app);
 			
 			loginEmailPassword.addEventListener('click', (e)=> {
