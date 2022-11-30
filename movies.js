@@ -257,24 +257,29 @@ function displayMovies(movie) {
 	const specialCharCreditsCast = title + runtime + id;
 	const specialCharCreditsCrew = id + runtime + title + release_date;
 	let movieGenre = '';
-	let movieRevenue = '';
-	let movieBudget = '';
+	let formattedRevenue = '';
+	let formattedBudget = '';
+
+	const formatter= new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
 
 	genres.forEach(genre => {
 		movieGenre += genre.name + ", ";
 	})
 
 	if (revenue == 0) {
-		movieRevenue = "N/A";
+		formattedRevenue = "N/A";
 	} else {
-		movieRevenue = "$" + revenue;
+		formattedRevenue = formatter.format(revenue);
 	}
 
 	if (budget == 0) {
-		movieBudget = "N/A";
+		formattedBudget = "N/A";
 
 	} else {
-		movieBudget = "$" + budget;
+		formattedBudget = formatter.format(budget);
 	}
 
 	const movieEl = document.createElement('div');
@@ -322,8 +327,8 @@ function displayMovies(movie) {
 						<p>
 							<b>Genre</b>: ${movieGenre} |
 						  	<b>Status</b>: ${status} |
-						  	<b>Budget</b>: ${movieBudget} |
-						  	<b>Revenue</b>: ${movieRevenue}
+						  	<b>Budget</b>: ${formattedBudget} |
+						  	<b>Revenue</b>: ${formattedRevenue}
 						</p>
 						<br>
 						<p id="${specialCharWatchProviders}" style="
