@@ -15,9 +15,12 @@ Group name: Suggestify
 * [tv.js](tv.js)
 * [my-list.html](my-list.html)
 * [my-list.js](my-list.js)
+* [credits.html](credits.html)
 * [styles.css](styles.css)
 * [README.md](README.md)
 * [scripts/blame.sh](scripts/blame.sh)
+* [sus.png](sus.png)
+* [tmdb.svg](tmdb.svg)
 
 ## What you accomplished
 
@@ -26,4 +29,5 @@ Group name: Suggestify
 * Fixed a lot of bugs that occured because of how asyncronous code works (lost some hair in the process).
 * Added a new page that fetches data from database and displays in two different sections - movies and tv-shows.
 * Upon initial page load, movies/tv-shows that are already in database will have a filled heart to signal its existence in database.
+* Created credits page to credit API that we used for this project.
 * Updated the git blame script so only sprint 4 commits are accepted.
