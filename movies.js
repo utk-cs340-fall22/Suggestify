@@ -245,6 +245,7 @@ function displayMovies(movie) {
 		reviews,
 		genres,
 		status,
+		similar
 	} = movie;
 	
 
@@ -252,6 +253,7 @@ function displayMovies(movie) {
 	const specialCharTrailer = id + title;
 	const specialCharReviews = title + id;
 	const specialCharWatchProviders = runtime + title + id;
+	const specialCharSimilar = id + title + runtime;
 	let movieGenre = '';
 	let movieRevenue = '';
 	let movieBudget = '';
@@ -336,28 +338,10 @@ function displayMovies(movie) {
               </div>
             </div> 
             <div id="item3${title}" class="carousel-item w-full">
-            <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
-              <div class="card-body" id="${specialCharReviews}" style="padding-top: 0px !important;">
-              	<h1><b>Reviews</b></h1>
-				<hr>
-              </div>
-            </div>
-          </div> 
+				<div id="${specialCharReviews}"></div>
+			</div> 
 		  <div id="item2${title}" class="carousel-item w-full">
-		  <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important">
-			  <div class="card-body" style="padding-top: 0px !important;">
-				  <h1><b>See Also</b></h1>
-				  <hr>
-				  <div>
-					  <div style="height:500px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
-						  <p style="margin-left: 30px !important;">
-						  </p>
-					  </div>
-				  </div>
-			  </div>
-			</div>
-		  </div> 
-        </div> 
+			<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
         <div class="modal-action">
           <label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
         </div>
@@ -369,10 +353,9 @@ function displayMovies(movie) {
 		getTrailer(videos.results, specialCharTrailer);
 	}, 10);
 
-	/* Get watch providers */
 	getWatchProviders(movie["watch/providers"].results["US"], specialCharWatchProviders);
-	/* Get Similar movies */
 	getReviews(reviews.results, specialCharReviews);
+	getSimilar(similar.results, specialCharSimilar);
 
 
 	/* Heart functionality */
@@ -566,7 +549,7 @@ async function getReviews(reviews, specialCharReviews) {
 	let counter = 0;
 	if (reviews.length != 0) {
 		reviews.forEach(rev => {
-			if (counter < 3) {
+			
 				const reviewHtml = `
 				<div>
 					<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
@@ -578,16 +561,26 @@ async function getReviews(reviews, specialCharReviews) {
 				</div>`;
 				document.getElementById(specialCharReviews).innerHTML += reviewHtml;
 				counter++;
-			}
+			
 		})
 	}
 	else {
-		const reviewHtml = `
-		<div>
-			<p>
-				<b>No Reviews</b>
-			</p>
-		</div>`;
-		document.getElementById(specialCharReviews).innerHTML += reviewHtml;
+		const reviewHtml = `<p><b>N/A</b></p>`;
+		document.getElementById(specialCharReviews).innerHTML = reviewHtml;
+	}
+}
+
+async function getSimilar(movies, specialCharSimilar) {
+	if (movies.length != 0) {
+		movies.forEach(mov => {
+			const similarHTML = `
+				<label for="${mov.title}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+					<img src="${POSTER_URL + mov.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+					<span class="tooltiptext"><b>${mov.title}</b><br>${mov.vote_average}/10</span>
+				</label>
+				`;
+
+			document.getElementById(specialCharSimilar).innerHTML += similarHTML;
+		})
 	}
 }
