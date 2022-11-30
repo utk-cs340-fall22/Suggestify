@@ -260,6 +260,7 @@ function displayMovies(movie) {
 	let formattedRevenue = '';
 	let formattedBudget = '';
 
+	/* Formats the revenue and budget into USD */
 	const formatter= new Intl.NumberFormat('en-US', {
 		style: 'currency',
 		currency: 'USD',
@@ -364,11 +365,13 @@ function displayMovies(movie) {
       	</div>
     </div>`;
 	main.appendChild(movieEl);
-
+	
+	/* Used to help improve load time of trailers */
 	setTimeout(function () {
 		getTrailer(videos.results, specialCharTrailer);
 	}, 5);
 
+	/* Call all functions with their respective specialChar id used within the html */
 	getWatchProviders(movie["watch/providers"].results["US"], specialCharWatchProviders);
 	getDirector(credits.crew, specialCharCreditsCrew);
 	getCast(credits.cast, specialCharCreditsCast);
@@ -469,7 +472,7 @@ function buttonBackward() {
 	}
 }
 
-/* */
+/* Gets a trailer for the movie */
 async function getTrailer(videos, specialCharTrailer) {
 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
 	if (videos.length != 0) {
@@ -495,6 +498,7 @@ async function getTrailer(videos, specialCharTrailer) {
 	} 
 }
 
+/* Gets the first 10 people listed in the cast */
 async function getCast(cast, specialCharCreditsCast) {
 	let castCount = 0;
 	let shouldBreak = false;
@@ -514,6 +518,7 @@ async function getCast(cast, specialCharCreditsCast) {
 	});
 }
 
+/* Gets the director of the film to display */
 async function getDirector(crew, specialCharCreditsCrew) {
 	let shouldBreak = false;
 
@@ -529,6 +534,7 @@ async function getDirector(crew, specialCharCreditsCrew) {
 	});
 }
 
+/* Gets all watch providers and display's their logo */
 async function getWatchProviders(providers, specialCharWatchProviders) {
 	const providerURL = 'https://image.tmdb.org/t/p/original/';
 
