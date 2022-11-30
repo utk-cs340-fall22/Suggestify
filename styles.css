@@ -52,7 +52,6 @@ main{
   justify-content: center;
 }
 
-
 .search{
   background-color: #373338;
   margin-top: 5%;
@@ -154,7 +153,7 @@ main{
     width: 300px;
   } */
 
-  main{
+  main, #tv{
     display:flex;
     flex-wrap: wrap;
     justify-content: center;

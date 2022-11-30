@@ -52,4 +52,4 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 
 ## License
 
-*Suggestify is available under the MIT license. See the LICENSE file for more info*
+Suggestify is available under the MIT license. See the [LICENSE](https://github.com/utk-cs340-fall22/suggestify.github.io/blob/main/LICENSE) for more info
