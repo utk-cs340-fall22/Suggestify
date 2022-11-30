@@ -245,15 +245,17 @@ function displayMovies(movie) {
 		reviews,
 		genres,
 		status,
-		similar
+		similar,
+		credits
 	} = movie;
-	
 
 	const backdropURL = POSTER_URL + backdrop_path;
 	const specialCharTrailer = id + title;
 	const specialCharReviews = title + id;
 	const specialCharWatchProviders = runtime + title + id;
 	const specialCharSimilar = id + title + runtime;
+	const specialCharCreditsCast = title + runtime + id;
+	const specialCharCreditsCrew = id + runtime + title + release_date;
 	let movieGenre = '';
 	let movieRevenue = '';
 	let movieBudget = '';
@@ -277,8 +279,6 @@ function displayMovies(movie) {
 
 	const movieEl = document.createElement('div');
 	movieEl.classList.add('movie');
-
-	/* Loop through similar / reviews and display */
 
 	movieEl.innerHTML = `
     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
@@ -309,54 +309,66 @@ function displayMovies(movie) {
               <a href="#item3${title}" class="btn btn-xs">Reviews</a> 
 			  <a href="#item2${title}" class="btn btn-xs">See Also</a> 
             </div>
-          <div class="carousel w-full">
-            <div id="item1${title}" class="carousel-item w-full">
-              <div class="card w-96 bg-base-100 shadow-xl" style="width: 1000px !important; height: 500px !important;">
-                <div class="card-body" style="padding-top: 0px !important;">
-				  <h1><b>About this movie</b></h1>
-				  <hr>
-                  <h1><b>Description</b></h1>
-				  <p>${overview}</p>
-				  </br>
-				  <p>
-				  	<b>Genre</b>: ${movieGenre} |
-					<b>Status</b>: ${status} |
-					<b>Budget</b>: ${movieBudget} |
-					<b>Revenue</b>: ${movieRevenue}
-				  </p>
-				  <p id="${specialCharWatchProviders}" style="
-				  		display: flex !important;
-						flex-direction: row !important;
-						flex-wrap: wrap !important;
-						justify-content: flex-start !important;
-						align-items: center !important;">
-						<b>Watch Providers: &nbsp; </b>
-				  </p>
-				  <div class="card-body" id="${specialCharTrailer}" style="width: 364px !important; right: auto !important; padding: 0px !important; margin-top: 20px !important;"> </div>
-				  <br/>
-                </div>
-              </div>
-            </div> 
-            <div id="item3${title}" class="carousel-item w-full">
+        	<div class="carousel w-full">
+				<div id="item1${title}" class="carousel-item w-full">
+					<div class="carousel-card bg-base-100 shadow-xl" style="height: 1600px !important;">
+						<div class="carousel-card-body">
+						<h1><b>About this movie</b></h1>
+						<hr>
+						<br>
+						<h1><b>Description</b></h1>
+						<p>${overview}</p>
+						<br>
+						<p>
+							<b>Genre</b>: ${movieGenre} |
+						  	<b>Status</b>: ${status} |
+						  	<b>Budget</b>: ${movieBudget} |
+						  	<b>Revenue</b>: ${movieRevenue}
+						</p>
+						<br>
+						<p id="${specialCharWatchProviders}" style="
+								display: flex !important;
+							  	flex-direction: row !important;
+							  	flex-wrap: wrap !important;
+							  	justify-content: flex-start !important;
+							  	align-items: center !important;">
+							  	<b>Watch Providers</b>: &nbsp;
+						</p>
+						<br>
+						<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+							<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>
+						</div>
+						<br>
+						<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+							<p id="${specialCharCreditsCast}"><b>Cast</b>: </p>
+						</div>
+						<br>
+						<h2 style="text-align: center;"><b>Trailer</b></h2>
+						<div class="card-body" style="width: 900px; height: 500px; text-align: center;" id="${specialCharTrailer}"> </div>
+					</div>
+				</div>
+			</div> 
+			<div id="item3${title}" class="carousel-item w-full">
 				<div id="${specialCharReviews}"></div>
 			</div> 
-		  <div id="item2${title}" class="carousel-item w-full">
-			<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
-        <div class="modal-action">
-          <label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-        </div>
-      </div>
+		  	<div id="item2${title}" class="carousel-item w-full">
+				<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
+			<div class="modal-action">
+          		<label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+        	</div>
+      	</div>
     </div>`;
 	main.appendChild(movieEl);
 
 	setTimeout(function () {
 		getTrailer(videos.results, specialCharTrailer);
-	}, 10);
+	}, 5);
 
 	getWatchProviders(movie["watch/providers"].results["US"], specialCharWatchProviders);
+	getDirector(credits.crew, specialCharCreditsCrew);
+	getCast(credits.cast, specialCharCreditsCast);
 	getReviews(reviews.results, specialCharReviews);
 	getSimilar(similar.results, specialCharSimilar);
-
 
 	/* Heart functionality */
 	let hIcon = document.querySelectorAll('.heart-icon');
@@ -467,13 +479,49 @@ async function getTrailer(videos, specialCharTrailer) {
 			) {
 				const trailer = YOUTUBE_TRAILER_URL + vid.key;
 				const trailerHTML = `
-                <iframe width="300" height="200"
-                    src="${trailer}">
+                <iframe 
+					style="text-align:center; width: 900px; height: 400px"
+                    src="${trailer}"
+					allowfullscreen >
                 </iframe>`;
 				document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
 			}
 		});
 	} 
+}
+
+async function getCast(cast, specialCharCreditsCast) {
+	let castCount = 0;
+	let shouldBreak = false;
+
+	cast.forEach(person => {
+		if (shouldBreak) {
+			return;
+		}
+		if (castCount < 10) {
+			const castMember = `${person.name} | `;
+			document.getElementById(specialCharCreditsCast).innerHTML += castMember;
+			castCount++;
+		}
+		else if (castCount >= 10) {
+			shouldBreak = true;
+		}
+	});
+}
+
+async function getDirector(crew, specialCharCreditsCrew) {
+	let shouldBreak = false;
+
+	crew.forEach(person => {
+		if (shouldBreak) {
+			return;
+		}
+		if (person.job == "Director") {
+			const director = `${person.name}`;
+			document.getElementById(specialCharCreditsCrew).innerHTML += director;
+			shouldBreak = true;
+		}
+	});
 }
 
 async function getWatchProviders(providers, specialCharWatchProviders) {
@@ -546,22 +594,18 @@ async function getWatchProviders(providers, specialCharWatchProviders) {
 
 /* Get and display 3 reviews left for a movie -- if none, display none */
 async function getReviews(reviews, specialCharReviews) {
-	let counter = 0;
 	if (reviews.length != 0) {
 		reviews.forEach(rev => {
-			
-				const reviewHtml = `
-				<div>
-					<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
-					<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+			const reviewHtml = `
+			<div>
+				<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
+				<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
 					<p style="margin-left: 30px !important;">
 						${rev.content}
 					</p>
-					</div>
-				</div>`;
-				document.getElementById(specialCharReviews).innerHTML += reviewHtml;
-				counter++;
-			
+				</div>
+			</div>`;
+			document.getElementById(specialCharReviews).innerHTML += reviewHtml;
 		})
 	}
 	else {
