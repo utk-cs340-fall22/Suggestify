@@ -18,7 +18,7 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-		<script src="tv.js" defer></script>
+		<script src="index.js" defer></script>
 	</head>
 	<body>
 		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
@@ -49,7 +49,6 @@
 						<li><a href="my-list.html">My List</a></li>
 						<li><a href="settings.html" class="mt-[12rem]">Settings</a></li>
 						<li><a href="login.html">Account</a></li>
-            <li><a href="credits.html">Credits</a></li>
 					</ul>
 				</div>
 				<div>
@@ -64,9 +63,12 @@
 			<div class="navbar-center">
 				<a href="index.html" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
 			</div>
+
 			<div class="navbar-end">
-        <div> 
-					<a href="search.html" class="btn btn-ghost normal-case mr-8 text-l">Search</a>
+				<div>
+					<a href="search.html" class="btn btn-ghost normal-case mr-8 text-l"
+						>Search</a
+					>
 				</div>
 				<div>
 					<a href="my-list.html" class="btn btn-ghost normal-case mr-8 text-l">
@@ -77,27 +79,18 @@
 				<button class="btn btn-ghost btn-circle mr-4">
 					<div>
 						<a href="login.html">
-              <img class="w-12 h-12" src="sus.png" alt="sussy">
+							<img class="w-12 h-12" src="sus.png" alt="sussy" />
 						</a>
 					</div>
 				</button>
 			</div>
 		</nav>
-		<br /><br /><br />
-		<br />
-		<h1 id="pageTitle"><b>TV Shows</b></h1>
-		<div id="genreTags"></div>
-		<br /><br /><br />
-		<main
-			id="tv"
-			style="margin-left: 88px !important; margin-right: 50px !important"
-		></main>
-		<div class="btn-group" id="pageButton">
-			<button class="btn" onclick="buttonBackward()">Prev</button>
-			<button class="btn" id="pageNumberButton">
-				<span id="Number">1</span>
-			</button>
-			<button class="btn" onclick="buttonForward()">Next</button>
+		<div class="h-[800px] flex justify-center items-center flex-col">
+      <div class="text-2xl">This product uses the TMDB API but is not endorsed or certified by <u>TMDB</u></div>
+      <div class="text-2xl">Watch Providers in modal box are provided by <u>JustWatch</u></div>
+      <a href="https://www.themoviedb.org/">
+        <img class="w-[500px] h-[500px] mb-[50px] border-none" src="tmdb.svg" alt="" />
+      </a>
 		</div>
-	</body>
+  </body>
 </html>
