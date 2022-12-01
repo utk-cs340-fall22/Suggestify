@@ -120,10 +120,14 @@
 ->  my-list.html
 
 79fe8d0a (mpatel65    2022-11-30 18:27:29 -0500  52)             <li><a href="credits.html">Credits</a></li>
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  70)         <div> 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  71) 					<a href="search.html" class="btn btn-ghost normal-case mr-8 text-l">Search</a>
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  72) 				</div>
 
 ->  search.html
 
 79fe8d0a (mpatel65    2022-11-30 18:27:29 -0500  52)             <li><a href="credits.html">Credits</a></li>
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  72) 					<span class="badge badge-error absolute text-l right-[100px]"></span>
 
 ->  tv.html
 
@@ -606,6 +610,180 @@
 ^7da774a (mpatel65      2022-11-16 17:10:36 -0500 473) 		}
 ^7da774a (mpatel65      2022-11-16 17:10:36 -0500 474) 	}
 ^7da774a (mpatel65      2022-11-16 17:10:36 -0500 475) }
+
+->  search.js
+
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   1) const firebaseConfig = {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   2) 	apiKey: 'AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   3) 	authDomain: 'suggestify-6b974.firebaseapp.com',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   4) 	databaseURL: 'https://suggestify-6b974-default-rtdb.firebaseio.com',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   5) 	projectId: 'suggestify-6b974',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   6) 	storageBucket: 'suggestify-6b974.appspot.com',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   7) 	messagingSenderId: '287553553595',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   8) 	appId: '1:287553553595:web:c5e8adde4ca305cfaad59e',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500   9) 	measurementId: 'G-30270TW59M',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  10) };
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  11) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  12) /* Initialize app with firebase firestore */
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  13) firebase.initializeApp(firebaseConfig);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  14) var db = firebase.firestore();
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  15) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  16) // addMovieToFirestore('Black Adam', '2022/11/7', 'a superhero', 'movie/tv');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  17) async function addMovieToFirestore(
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  18) 	itemId,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  19) 	itemTitle,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  20) 	releaseDate,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  21) 	itemOverview,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  22) 	type
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  23) ) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  24) 	db.collection('My List')
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  25) 		.doc(itemTitle)
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  26) 		.set({
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  27) 			id: itemId,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  28) 			overview: itemOverview,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  29) 			release_date: releaseDate,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  30) 			title: itemTitle,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  31) 			category: type,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  32) 		})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  33) 		.then(() => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  34) 			console.log('Document successfully written!', itemTitle);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  35) 		})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  36) 		.catch(error => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  37) 			console.error('Error writing document: ', error);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  38) 		});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  39) }
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  40) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  41) // getItemFromFirestore('Black Adam');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  42) async function getItemFromFirestore(docName) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  43) 	var docRef = db.collection('My List').doc(docName);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  44) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  45) 	docRef
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  46) 		.get()
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  47) 		.then(doc => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  48) 			if (doc.exists) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  49) 				console.log('Found: ', doc.data().title);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  50) 			}
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  51) 		})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  52) 		.catch(error => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  53) 			console.log('Error getting document:', error);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  54) 		});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  55) }
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  56) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  57) // updateMovieFromFirestore('Black Adam', 'new value');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  58) async function updateMovieFromFirestore(docName, newValue) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  59) 	var docRef = db.collection('My List').doc(docName);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  60) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  61) 	return docRef
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  62) 		.update({
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  63) 			// only one field at a time can be updated
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  64) 			title: newValue,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  65) 			// release_date: 'newValue',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  66) 			// overview: 'newValue',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  67) 			// category: 'newValue',
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  68) 		})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  69) 		.then(() => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  70) 			console.log('Document successfully updated!', docName);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  71) 		})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  72) 		.catch(error => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  73) 			// The document probably doesn't exist.
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  74) 			console.error('Error updating document: ', error);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  75) 		});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  76) }
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  77) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  78) // deleteMovieFromFirestore('name');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  79) async function deleteMovieFromFirestore(docName) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  80) 	db.collection('My List')
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  81) 		.doc(docName)
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  82) 		.delete()
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  83) 		.then(() => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  84) 			console.log('Document successfully deleted!', docName);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  85) 		})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  86) 		.catch(error => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  87) 			console.error('Error removing document: ', error);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  88) 		});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  89) }
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  90) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  91) let count = 0;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  92) let hearts = [];
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  93) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  94) getCountOfItemsFromFirestore();
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  95) async function getCountOfItemsFromFirestore() {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  96) 	db.collection('My List')
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  97) 		.get()
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  98) 		.then(querySnapshot => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500  99) 			querySnapshot.forEach(doc => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 100) 				// doc.data() is never undefined for query doc snapshots
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 101) 				count++;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 102) 				document.getElementsByClassName('badge')[0].innerHTML = count;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 103) 			});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 104) 		})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 105) 		.catch(error => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 106) 			console.log('Error getting documents: ', error);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 107) 		});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 108) }
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 109) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 142)             hearts.push({
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 143) 							movieId: data.id,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 144) 							movieTitle: data.title,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 145) 							release: data.release_date,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 146) 							description: data.overview,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 147) 						});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 173) 	const movieCard = document.getElementById('main');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 174) 	const movieEl = `
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 180)         <i id="heart-${title}" class="heart-icon fa-regular fa-heart relative bottom-[-320px] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 234)     movieCard.innerHTML += movieEl;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 235) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 236)   /* Fill heart if movie exists in firestore */
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 237) 	let hIcon = document.querySelectorAll('.heart-icon');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 238) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 239) 	// find all favorited movies from firestore
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 240) 	hearts.forEach(heart => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 241) 		for (let movie in heart) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 242) 			if (movie == 'movieTitle') {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 243) 				let docName = heart[movie];
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 244) 				var docRef = db.collection('My List').doc(docName);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 245) 				docRef
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 246) 					.get()
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 247) 					.then(doc => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 248) 						if (doc.exists) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 249) 							hIcon.forEach(icon => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 250) 								if (icon.id == `heart-${docName}`) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 251) 									icon.classList.remove('fa-regular');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 252) 									icon.classList.add('fa-solid');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 253) 								}
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 254) 							});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 255) 						}
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 256) 					})
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 257) 					.catch(error => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 258) 						console.log('Error getting document:', error);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 259) 					});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 260) 			}
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 261) 		}
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 262) 	});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 263) 
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 264) 	hIcon.forEach((icon, index) => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 265) 		icon.addEventListener('click', () => {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 266) 			if (icon.classList.contains('fa-regular')) {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 267) 				icon.classList.remove('fa-regular');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 268) 				icon.classList.add('fa-solid');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 269) 				addMovieToFirestore(
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 270) 					hearts[index].movieId,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 271) 					hearts[index].movieTitle,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 272) 					hearts[index].release,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 273) 					hearts[index].description,
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 274) 					'movie'
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 275) 				);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 276) 				count++;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 277) 				document.getElementsByClassName('badge')[0].innerHTML = count;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 278) 			} else {
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 279) 				icon.classList.remove('fa-solid');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 280) 				icon.classList.add('fa-regular');
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 281) 				deleteMovieFromFirestore(hearts[index].movieTitle);
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 282) 				count--;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 283) 				document.getElementsByClassName('badge')[0].innerHTML = count;
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 284) 			}
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 285) 		});
+65531c25 (mpatel65    2022-11-30 19:14:26 -0500 286) 	});
 
 ->  tv.js
 
