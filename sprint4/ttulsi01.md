@@ -1,7 +1,7 @@
 # Sprint 4
-Name: Tulsi Tailor
-Github id = ttulsi01
-Group name = Suggestify
+Name: Tulsi Tailor \
+Github id = ttulsi01 \
+Group name = Suggestify \
 
 # Files you worked on
 * [login.html](https://github.com/utk-cs340-fall22/suggestify.github.io/blob/main/index.html)
