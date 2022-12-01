@@ -151,6 +151,9 @@ const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
 
 var trailerCount = 0;
 
+/* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
+/* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
+/* This second call will return even more information about each movie and will call displayMovies on each movie to display them with access to all of the information retrieved */
 function getTrendingMovies(url) {
 	fetch(url)
 		.then(res => res.json())
@@ -166,7 +169,8 @@ function getTrendingMovies(url) {
 					movie.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images';
+					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images,watch/providers';
+
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
@@ -176,18 +180,11 @@ function getTrendingMovies(url) {
 							release: data.release_date,
 							description: data.overview,
 						});
-						// console.log(data);
-
-						if (trailerCount < 5) {
-							carouselStuff(data);
-							trailerCount++;
-						}
-
-						showSlide(2);
 						displayTrendingMovies(data);
 					});
 			});
 		})
+
 		.catch(error => {
 			console.log(error);
 		});
@@ -197,14 +194,61 @@ function getTrendingMovies(url) {
 function displayTrendingMovies(data) {
 	const {
 		title,
-		poster_path,
-		vote_average,
-		overview,
-		backdrop_path,
-		release_date,
-		runtime,
-	} = data;
-	const backdrop_url = POSTER_URL + backdrop_path;
+        poster_path,
+        vote_average,
+        overview,
+        backdrop_path,
+        release_date,
+        runtime,
+		reviews,
+        budget,
+        revenue,
+        genres, 
+        status,
+        tagline,
+		videos,
+		credits,
+		similar,
+        id
+    } = data;
+
+    const backdrop_url = POSTER_URL + backdrop_path;
+    const specialChar = title + id;
+    const specialCharReviews = id + title;
+	const specialCharSimilar = id + title + '&';
+	const specialCharCast = id + title + '/';
+	const specialCharWatchProviders = id + title + '.';
+	
+	let movieGenre = '';
+	let formattedRevenue = '';
+	let formattedBudget = '';
+
+	/* Formats the revenue and budget into USD */
+	const formatter= new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
+
+	if (revenue == 0) {
+		formattedRevenue = "N/A";
+	} else {
+		formattedRevenue = formatter.format(revenue);
+	}
+
+	if (budget == 0) {
+		formattedBudget = "N/A";
+
+	} else {
+		formattedBudget = formatter.format(budget);
+	}
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
 
 	const movieEl = `
         <div class="carousel-item relative">
@@ -215,8 +259,8 @@ function displayTrendingMovies(data) {
             </label>
             <i id="heart-${title}" class="heart-icon-trending-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
-            <div class="modal">
-                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+            <div class="modal" onClick=getTrailer>
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -229,35 +273,82 @@ function displayTrendingMovies(data) {
                                 <font size="+100">${title}</font>
                             </h1>
                             <br/>
-                            <h3><b>Overview</b></h3>
-                            <p>${overview}</p>
-                            <br /><br />
+                            <p>${tagline}<br><br><br><br><br><br><br><br><br></p>
                             <p class="info"><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
                         </div>
                     </div>
- 
-                    <div class="tabs tabs-center">
-                        <a class="tab tab-lg tab-bordered">See Also</a>
-                        <a class="tab tab-lg tab-bordered tab-active">More Info</a>
-                        <a class="tab tab-lg tab-bordered">Reviews</a>
-                    </div>
- 
-                    <br/><br/>
 
-                    <div class="absolute right-10">
-                        <p><b>Trailer</b></p>
-                        <div class="card-trailer bg-base-100 shadow-xl image-full">
-                            <figure><img src="${backdrop_url}" alt="trailer" style="!important; height: 170 !important; width: 300px"/></figure>
-                           
-                            <div class="card-trailer-body">
-                                <button class="trailer-btn btn-circle">▶</button>
+
+                    <div class="flex justify-center w-full py-2 gap-2">
+                        <a href="#item1${title}" class="btn btn-xs">Details</a> 
+                        <a href="#item2${title}" class="btn btn-xs">Reviews</a> 
+                        <a href="#item3${title}" class="btn btn-xs">See Also</a>
+                    </div>
+                    <div class="carousel w-full">
+                        <div id="item1${title}" class="carousel-item w-full">
+                            <div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
+                                <div class="carousel-card-body">
+                                    <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre(s):</b> ${movieGenre} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${formattedBudget} | <b>Revenue:</b> ${formattedRevenue}<br><br></p>
+									
+									<div class="flex">
+										<p id="${specialCharWatchProviders}" style="
+												flex-wrap: wrap !important;
+												justify-content: flex-start !important;
+												align-items: center !important;">
+												<b>Watch Providers: &nbsp; </b>
+										</p>
+									</div>
+
+									<br><br>
+									
+									<div class="flex2 " style="flex-wrap:wrap; height:400px;">	
+										<div class="mr-40" id="${specialCharCast}">
+											<p><b>Cast: </b></p>
+										</div>
+										
+										<div>
+											<p><b>Trailer: </b></p>
+											<div class="carousel-card-two ml-20 relative bottom-0 bg-base-100 shadow-xl" style="width: 400px; height: 250px;" id="${specialChar}"></div>
+										</div>
+									</div>
                                 </div>
-                                </div> 
-            
                             </div>
-                        </div>
-                    </div>`;
+                        </div> 
+
+                        <div id="item2${title}" class="carousel-item w-full">
+							<div class="carousel-card-three bg-base-100 shadow-xl">
+								<div class="carousel-card-three-body">
+									<div class="carousel-card-four relative bottom-0 left-1 bg-base-100 shadow-xl" id="${specialCharReviews}">
+										<div class="carousel-card-four-body"></div>
+									</div>
+								</div>
+							</div>
+                        </div> 
+
+                        <div id="item3${title}" class="carousel-item w-full">
+							<div class="carousel-card-five bg-base-100 shadow-xl">
+								<div class="carousel-card-five-body">
+									<div class="carousel-card-six bg-base-100 shadow-xl flex justify-center" id="${specialCharSimilar}" style="flex-wrap:wrap">
+										<div class="carousel-card-six-body">
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div> 
+						
+                    </div> 
+
+                </div>
+            </div>
+        </div>`;
+		
 	movieCarousel.innerHTML += movieEl;
+	
+	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+	setTimeout(function () { getTrailer(videos.results, specialChar); }, 10);
+	getCast(credits.cast, specialCharCast);
+	getReviews(reviews.results, specialCharReviews);
+	getSimilar(similar.results, specialCharSimilar);
 
 	/* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-trending-movies');
@@ -518,10 +609,8 @@ function getTopMovies(url) {
 					movie.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images';
+					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images,watch/providers';
 
-				const TRAILER_URL =
-					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
@@ -544,35 +633,73 @@ function getTopMovies(url) {
 function displayTopMovies(data) {
 	const {
 		title,
-		poster_path,
-		backdrop_path,
-		release_date,
-		vote_average,
-		budget,
-		revenue,
-		genres,
-		status,
-		tagline,
-		runtime,
-		overview,
+        poster_path,
+        vote_average,
+        overview,
+        backdrop_path,
+        release_date,
+        runtime,
+		reviews,
+        budget,
+        revenue,
+        genres, 
+        status,
+        tagline,
 		videos,
-		id,
-	} = data;
+		credits,
+		similar,
+        id
+    } = data;
 
-	const backdrop_url = POSTER_URL + backdrop_path;
-	const specialChar = title + id;
+    const backdrop_url = POSTER_URL + backdrop_path;
+    const specialChar = title + id;
+    const specialCharReviews = id + title;
+	const specialCharSimilar = id + title + '&&';
+	const specialCharCast = id + title + '//';
+	const specialCharWatchProviders = id + title + '..';
+	let movieGenre = '';
+
+	let formattedRevenue = '';
+	let formattedBudget = '';
+
+	/* Formats the revenue and budget into USD */
+	const formatter= new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
+
+	if (revenue == 0) {
+		formattedRevenue = "N/A";
+	} else {
+		formattedRevenue = formatter.format(revenue);
+	}
+
+	if (budget == 0) {
+		formattedBudget = "N/A";
+
+	} else {
+		formattedBudget = formatter.format(budget);
+	}
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
 
 	const movieEl = `
         <div class="carousel-item relative">
-            <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${
+			<label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+			<img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
-            </label>
+			</label>
             <i id="heart-${title}" class="heart-icon-top-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
-            <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
-            <div class="modal">
-                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+			<input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
+            <div class="modal" onClick=getTrailer>
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -598,25 +725,70 @@ function displayTopMovies(data) {
                     </div>
                     <div class="carousel w-full">
                         <div id="item1${title}" class="carousel-item w-full">
-                            <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-		genres[0].name
-	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+							<div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
+                                <div class="carousel-card-body">
+                                    <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${movieGenre} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${formattedBudget} | <b>Revenue:</b> $${formattedRevenue}<br><br></p>
+									
+									<div class="flex">
+										<p id="${specialCharWatchProviders}" style="
+												flex-wrap: wrap !important;
+												justify-content: flex-start !important;
+												align-items: center !important;">
+												<b>Watch Providers: &nbsp; </b>
+										</p>
+									</div>
+
+									<br><br>
+									
+									<div class="flex2 " style="flex-wrap:wrap; height:400px;">	
+										<div class="mr-40" id="${specialCharCast}">
+											<p><b>Cast: </b></p>
+											
+										</div>
+										
+										<div>
+											<p><b>Trailer: </b></p>
+											<div class="carousel-card-two ml-20 relative bottom-0 bg-base-100 shadow-xl" style="width: 400px; height: 250px;" id="${specialChar}"></div>
+										</div>
+									</div>
+                                </div>
+                            </div>
                         </div> 
-                            <div id="item2${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+
+                        <div id="item2${title}" class="carousel-item w-full">
+							<div class="carousel-card-three bg-base-100 shadow-xl">
+								<div class="carousel-card-three-body">
+									<div class="carousel-card-four relative bottom-0 left-1 bg-base-100 shadow-xl" id="${specialCharReviews}">
+										<div class="carousel-card-four-body"></div>
+									</div>
+								</div>
+							</div>
                         </div> 
+
                         <div id="item3${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+							<div class="carousel-card-five bg-base-100 shadow-xl">
+								<div class="carousel-card-five-body">
+									<div class="carousel-card-six bg-base-100 shadow-xl flex justify-center" id="${specialCharSimilar}" style="flex-wrap:wrap">
+										<div class="carousel-card-six-body">
+										</div>
+									</div>
+								</div>
+							</div>
                         </div> 
-                        <div id="item4${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div>
+						
                     </div> 
 
                 </div>
             </div>
         </div>`;
+		
 	movieCarousel2.innerHTML += movieEl;
+	
+	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+	setTimeout(function () { getTrailer(videos.results, specialChar); }, 10);
+	getCast(credits.cast, specialCharCast);
+	getReviews(reviews.results, specialCharReviews);
+	getSimilar(similar.results, specialCharSimilar);
 
 	/* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-top-movies');
@@ -688,7 +860,7 @@ function getPlayingMovies(url) {
 					movie.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images';
+					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images,watch/providers';
 
 				const TRAILER_URL =
 					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
@@ -714,32 +886,73 @@ function getPlayingMovies(url) {
 function displayPlayingMovies(data) {
 	const {
 		title,
-		poster_path,
-		vote_average,
-		overview,
-		backdrop_path,
-		release_date,
-		runtime,
-		budget,
-		revenue,
-		genres,
-		status,
-		tagline,
-	} = data;
+        poster_path,
+        vote_average,
+        overview,
+        backdrop_path,
+        release_date,
+        runtime,
+		reviews,
+        budget,
+        revenue,
+        genres, 
+        status,
+        tagline,
+		videos,
+		credits,
+		similar,
+        id
+    } = data;
 
-	const backdrop_url = POSTER_URL + backdrop_path;
+    const backdrop_url = POSTER_URL + backdrop_path;
+    const specialChar = title + id;
+    const specialCharReviews = id + title;
+	const specialCharSimilar = id + title + '&&&';
+	const specialCharCast = id + title + '///';
+	const specialCharWatchProviders = id + title + '...';
+	let movieGenre = '';
+
+	let formattedRevenue = '';
+	let formattedBudget = '';
+
+	/* Formats the revenue and budget into USD */
+	const formatter= new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
+
+	if (revenue == 0) {
+		formattedRevenue = "N/A";
+	} else {
+		formattedRevenue = formatter.format(revenue);
+	}
+
+	if (budget == 0) {
+		formattedBudget = "N/A";
+
+	} else {
+		formattedBudget = formatter.format(budget);
+	}
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
 
 	const movieEl = `
         <div class="carousel-item relative">
-            <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${
+			<label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+			<img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
-            </label>
+			</label>
             <i id="heart-${title}" class="heart-icon-playing-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
-            <div class="modal">
-                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+            <div class="modal" onClick=getTrailer>
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -765,25 +978,70 @@ function displayPlayingMovies(data) {
                     </div>
                     <div class="carousel w-full">
                         <div id="item1${title}" class="carousel-item w-full">
-                            <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-		genres[0].name
-	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+							<div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
+                                <div class="carousel-card-body">
+                                    <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${movieGenre} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${formattedBudget} | <b>Revenue:</b> ${formattedRevenue}<br><br></p>
+									
+									<div class="flex">
+										<p id="${specialCharWatchProviders}" style="
+												flex-wrap: wrap;
+												justify-content: flex-start !important;
+												align-items: center !important;">
+												<b>Watch Providers: ; </b>
+										</p>
+									</div>
+
+									<br><br>
+									
+									<div class="flex2 " style="flex-wrap:wrap; height:400px;">	
+										<div class="mr-40" id="${specialCharCast}">
+											<p><b>Cast: </b></p>
+											
+										</div>
+										
+										<div>
+											<p><b>Trailer: </b></p>
+											<div class="carousel-card-two ml-20 relative bottom-0 bg-base-100 shadow-xl" style="width: 400px; height: 250px;" id="${specialChar}"></div>
+										</div>
+									</div>
+                                </div>
+                            </div>
                         </div> 
-                            <div id="item2${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+
+                        <div id="item2${title}" class="carousel-item w-full">
+							<div class="carousel-card-three bg-base-100 shadow-xl">
+								<div class="carousel-card-three-body">
+									<div class="carousel-card-four relative bottom-0 left-1 bg-base-100 shadow-xl" id="${specialCharReviews}">
+										<div class="carousel-card-four-body"></div>
+									</div>
+								</div>
+							</div>
                         </div> 
+
                         <div id="item3${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+							<div class="carousel-card-five bg-base-100 shadow-xl">
+								<div class="carousel-card-five-body">
+									<div class="carousel-card-six bg-base-100 shadow-xl flex justify-center" id="${specialCharSimilar}" style="flex-wrap:wrap">
+										<div class="carousel-card-six-body">
+										</div>
+									</div>
+								</div>
+							</div>
                         </div> 
-                        <div id="item4${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div>
+						
                     </div> 
 
                 </div>
             </div>
         </div>`;
+		
 	movieCarousel6.innerHTML += movieEl;
+	
+	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+	setTimeout(function () { getTrailer(videos.results, specialChar); }, 10);
+	getCast(credits.cast, specialCharCast);
+	getReviews(reviews.results, specialCharReviews);
+	getSimilar(similar.results, specialCharSimilar);
 
 	/* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-playing-movies');
@@ -855,7 +1113,7 @@ function getUpcomingMovies(url) {
 					movie.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images';
+					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images,watch/providers';
 
 				const TRAILER_URL =
 					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
@@ -881,32 +1139,73 @@ function getUpcomingMovies(url) {
 function displayUpcomingMovies(data) {
 	const {
 		title,
-		poster_path,
-		vote_average,
-		overview,
-		backdrop_path,
-		release_date,
-		runtime,
-		budget,
-		revenue,
-		genres,
-		status,
-		tagline,
-	} = data;
+        poster_path,
+        vote_average,
+        overview,
+        backdrop_path,
+        release_date,
+        runtime,
+		reviews,
+        budget,
+        revenue,
+        genres, 
+        status,
+        tagline,
+		videos,
+		credits,
+		similar,
+        id
+    } = data;
 
-	const backdrop_url = POSTER_URL + backdrop_path;
+    const backdrop_url = POSTER_URL + backdrop_path;
+    const specialChar = title + id;
+    const specialCharReviews = id + title;
+	const specialCharSimilar = id + title + '&&&&';
+	const specialCharCast = id + title + '////';
+	const specialCharWatchProviders = id + title + '....';
+	let movieGenre = '';
+
+	let formattedRevenue = '';
+	let formattedBudget = '';
+
+	/* Formats the revenue and budget into USD */
+	const formatter= new Intl.NumberFormat('en-US', {
+		style: 'currency',
+		currency: 'USD',
+	})
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
+
+	if (revenue == 0) {
+		formattedRevenue = "N/A";
+	} else {
+		formattedRevenue = formatter.format(revenue);
+	}
+
+	if (budget == 0) {
+		formattedBudget = "N/A";
+
+	} else {
+		formattedBudget = formatter.format(budget);
+	}
+
+	genres.forEach(genre => {
+		movieGenre += genre.name + ", ";
+	})
 
 	const movieEl = `
         <div class="carousel-item relative">
-            <label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${
+			<label for="my-modal-${title}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+			<img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
-            </label>
+			</label>
             <i id="heart-${title}" class="heart-icon-upcoming-movies fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${title}" />
-            <div class="modal">
-                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+            <div class="modal" onClick=getTrailer>
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${title}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
@@ -931,26 +1230,71 @@ function displayUpcomingMovies(data) {
                         <a href="#item3${title}" class="btn btn-xs">See Also</a>
                     </div>
                     <div class="carousel w-full">
-                        <div id="item1${title}" class="carousel-item w-full">
-                            <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-		genres[0].name
-	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+						<div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
+                            <div class="carousel-card bg-base-100 shadow-xl">
+                                <div class="carousel-card-body">
+                                    <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${movieGenre} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${formattedBudget} | <b>Revenue:</b> ${formattedRevenue}<br><br></p>
+									
+									<div class="flex">
+										<p id="${specialCharWatchProviders}" style="
+												flex-wrap: wrap;
+												justify-content: flex-start !important;
+												align-items: center !important;">
+												<b>Watch Providers: ; </b>
+										</p>
+									</div>
+
+									<br><br>
+									
+									<div class="flex2 " style="flex-wrap:wrap; height:400px;">	
+										<div class="mr-40" id="${specialCharCast}">
+											<p><b>Cast: </b></p>
+											
+										</div>
+										
+										<div>
+											<p><b>Trailer: </b></p>
+											<div class="carousel-card-two ml-20 relative bottom-0 bg-base-100 shadow-xl" style="width: 400px; height: 250px;" id="${specialChar}"></div>
+										</div>
+									</div>
+                                </div>
+                            </div>
                         </div> 
-                            <div id="item2${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+
+                        <div id="item2${title}" class="carousel-item w-full">
+							<div class="carousel-card-three bg-base-100 shadow-xl">
+								<div class="carousel-card-three-body">
+									<div class="carousel-card-four relative bottom-0 left-1 bg-base-100 shadow-xl" id="${specialCharReviews}">
+										<div class="carousel-card-four-body"></div>
+									</div>
+								</div>
+							</div>
                         </div> 
+
                         <div id="item3${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+							<div class="carousel-card-five bg-base-100 shadow-xl">
+								<div class="carousel-card-five-body">
+									<div class="carousel-card-six bg-base-100 shadow-xl flex justify-center" id="${specialCharSimilar}" style="flex-wrap:wrap">
+										<div class="carousel-card-six-body">
+										</div>
+									</div>
+								</div>
+							</div>
                         </div> 
-                        <div id="item4${title}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div>
+						
                     </div> 
 
                 </div>
             </div>
         </div>`;
+		
 	movieCarousel7.innerHTML += movieEl;
+	
+	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+	setTimeout(function () { getTrailer(videos.results, specialChar); }, 10);
+	getCast(credits.cast, specialCharCast);
+	getReviews(reviews.results, specialCharReviews);
+	getSimilar(similar.results, specialCharSimilar);
 
 	/* Fill heart if movie exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-upcoming-movies');
@@ -1022,23 +1366,23 @@ function getTrendingTV(url) {
 					tv.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images,reviews';
+					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images,watch/providers';
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
-            trendingTvHearts.push({
-              tvId: data.id,
-              tvName: data.name,
-              first_air_date: data.first_air_date,
-              description: data.overview,
-            });
-						displayTrendingTV(data);
-					});
-			});
-		})
-		.catch(error => {
-			console.log(error);
+            			trendingTvHearts.push({
+						tvId: data.id,
+						tvName: data.name,
+						first_air_date: data.first_air_date,
+						description: data.overview,
+            		});
+					displayTrendingTV(data);
+				});
 		});
+	})
+	.catch(error => {
+		console.log(error);
+	});
 }
 
 /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
@@ -1052,31 +1396,48 @@ function displayTrendingTV(data) {
 		first_air_date,
 		budget,
 		revenue,
+		reviews,
+		status,
+		videos,
+		credits,
+		genres,
+		similar,
+		id,
 		number_of_seasons,
 		episode_run_time,
 		tagline,
 	} = data;
 
-	const backdrop_URL = POSTER_URL + backdrop_path;
+    const backdrop_url = POSTER_URL + backdrop_path;
+    const specialChar = name + id;
+    const specialCharReviews = id + name;
+	const specialCharSimilar = id + name + '&&&&&';
+	const specialCharCast = id + name + '/////';
+	const specialCharWatchProviders = id + name + '.....';
+	let tvGenre = '';
+
+	genres.forEach(genre => {
+		tvGenre += genre.name + ", ";
+	})
 
 	const showEl = `
         <div class="carousel-item relative">
-            <label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${
+			<label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+			<img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
-            </label>
+			</label>
             <i id="heart-${name}" class="heart-icon-trending-tv fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${name}" />
             <div class="modal">
-                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${name}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
                         >✕
                     </label>
                     <div class="card bg-base-100 shadow-xl image-full">
-                        <figure> <img src="${backdrop_URL}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
                         <div class="card-body">
                             <h1 class="card-title style="text-align: center !important;">
                                 <font size="+100">${name}</font>
@@ -1093,24 +1454,70 @@ function displayTrendingTV(data) {
                         <a href="#item2${name}" class="btn btn-xs">Reviews</a> 
                         <a href="#item3${name}" class="btn btn-xs">See Also</a>
                     </div>
-                    <div class="carousel w-full">
+                    
+					<div class="carousel w-full">
                         <div id="item1${name}" class="carousel-item w-full">
-                            <p><b>About This Show</b><br><br><strong>${name}</strong><br>${overview}<br><br><b>Genre:</b> | <b>Type: </b> Show | <b>Status: </b> | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
+							<div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
+                                <div class="carousel-card-body">
+                                    <p><b>About This Show</b><br><br><strong>${name}</strong><br>${overview}<br><br><b>Genre:</b> ${tvGenre} | <b>Type: </b> Show | <b>Status: </b>${status}<br><br></p>
+									
+									<div class="flex">
+										<p id="${specialCharWatchProviders}" style="
+												flex-wrap: wrap;
+												justify-content: flex-start !important;
+												align-items: center !important;">
+												<b>Watch Providers: ; </b>
+										</p>
+									</div>
+
+									<br><br>
+									
+									<div class="flex2 " style="flex-wrap:wrap; height:400px;">	
+										<div class="mr-40" id="${specialCharCast}">
+											<p><b>Cast: </b></p>
+											
+										</div>
+										
+										<div>
+											<p><b>Trailer: </b></p>
+											<div class="carousel-card-two ml-20 relative bottom-0 bg-base-100 shadow-xl" style="width: 400px; height: 250px;" id="${specialChar}"></div>
+										</div>
+									</div>
+                                </div>
+                            </div>
                         </div> 
-                            <div id="item2${name}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+                        
+						<div id="item2${name}" class="carousel-item w-full">
+							<div class="carousel-card-three bg-base-100 shadow-xl">
+								<div class="carousel-card-three-body">
+									<div class="carousel-card-four relative bottom-0 left-1 bg-base-100 shadow-xl" id="${specialCharReviews}">
+										<div class="carousel-card-four-body"></div>
+									</div>
+								</div>
+							</div>
                         </div> 
+
                         <div id="item3${name}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
+							<div class="carousel-card-five bg-base-100 shadow-xl">
+								<div class="carousel-card-five-body">
+									<div class="carousel-card-six bg-base-100 shadow-xl flex justify-center" id="${specialCharSimilar}" style="flex-wrap:wrap">
+										<div class="carousel-card-six-body"></div>
+									</div>
+								</div>
+							</div>
                         </div> 
-                        <div id="item4${name}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div>
                     </div> 
                 </div>
+			</div>
         </div>
     </div>`;
+
 	movieCarousel3.innerHTML += showEl;
+	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+	setTimeout(function () { getTrailer(videos.results, specialChar); }, 10);
+	getCast(credits.cast, specialCharCast);
+	getReviews(reviews.results, specialCharReviews);
+	getSimilarTV(similar.results, specialCharSimilar);
 
   /* Fill heart if tv exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-trending-tv');
@@ -1182,7 +1589,7 @@ function getTopTV(url) {
 					tv.id +
 					'?' +
 					API_KEY +
-					'&language=en-US&append_to_response=videos,credits,similar,images,reviews';
+					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images,watch/providers';
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
@@ -1192,13 +1599,13 @@ function getTopTV(url) {
               first_air_date: data.first_air_date,
               description: data.overview,
             });
-						displayTopTV(data);
-					});
+				displayTopTV(data);
 			});
-		})
-		.catch(error => {
-			console.log(error);
 		});
+	})
+	.catch(error => {
+		console.log(error);
+	});
 }
 
 /* Will loop through the data returned by the previous API call & display various pieces of info in HTML */
@@ -1212,31 +1619,48 @@ function displayTopTV(data) {
 		first_air_date,
 		budget,
 		revenue,
+		reviews,
+		status,
+		videos,
+		credits,
+		genres,
+		similar,
+		id,
 		number_of_seasons,
 		episode_run_time,
 		tagline,
 	} = data;
 
-	const backdrop_URL = POSTER_URL + backdrop_path;
+    const backdrop_url = POSTER_URL + backdrop_path;
+    const specialChar = name + id;
+    const specialCharReviews = id + name;
+	const specialCharSimilar = id + name + '&&&&&&';
+	const specialCharCast = id + name + '//////';
+	const specialCharWatchProviders = id + name + '......';
+	let tvGenre = '';
+
+	genres.forEach(genre => {
+		tvGenre += genre.name + ", ";
+	})
 
 	const showEl = `
         <div class="carousel-item relative">
-            <label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
-            <img src="${
+			<label for="my-modal-${name}" class="btn modal-button" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 200px !important;">
+				<img src="${
 							POSTER_URL + poster_path
 						}" alt="poster" style="margin-right: 0px !important; height: 300px !important; width: 200px !important;">
-            </label>
+			</label>
             <i id="heart-${name}" class="heart-icon-top-tv fa-regular fa-heart absolute right-8 bottom-[80px] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
             <input type="checkbox" class="modal-toggle" id="my-modal-${name}" />
             <div class="modal">
-                <div class="modal-box bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
+                <div class="modal-box bg-gradient-to-t bg-gradient-to-t from-zinc-900 relative w-full max-w-5xl h-full">
                     <label
                         for="my-modal-${name}"
                         class="btn btn-sm btn-circle absolute right-2 top-2"
                         >✕
                     </label>
                     <div class="card bg-base-100 shadow-xl image-full">
-                        <figure> <img src="${backdrop_URL}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
+                        <figure> <img src="${backdrop_url}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 960px !important;"></img> </figure>
                         <div class="card-body">
                             <h1 class="card-title style="text-align: center !important;">
                                 <font size="+100">${name}</font>
@@ -1253,25 +1677,70 @@ function displayTopTV(data) {
                         <a href="#item2${name}" class="btn btn-xs">Reviews</a> 
                         <a href="#item3${name}" class="btn btn-xs">See Also</a>
                     </div>
-                    <div class="carousel w-full">
+                    
+					<div class="carousel w-full">
                         <div id="item1${name}" class="carousel-item w-full">
-                            <p><b>About This Show</b><br><br><strong>${name}</strong><br>${overview}<br><br><b>Genre:</b> | <b>Type: </b> Show | <b>Status: </b> | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
-                        </div> 
-                            <div id="item2${name}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div> 
-                        <div id="item3${name}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div> 
-                        <div id="item4${name}" class="carousel-item w-full">
-                            <img src="https://placeimg.com/800/200/arch" class="w-full" />
-                        </div>
-                    </div> 
+							<div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
+                                <div class="carousel-card-body">
+                                    <p><b>About This Show</b><br><br><strong>${name}</strong><br>${overview}<br><br><b>Genre:</b> ${tvGenre} | <b>Type: </b> Show | <b>Status: </b>${status}<br><br></p>
+									
+									<div class="flex">
+										<p id="${specialCharWatchProviders}" style="
+												flex-wrap: wrap;
+												justify-content: flex-start !important;
+												align-items: center !important;">
+												<b>Watch Providers: ; </b>
+										</p>
+									</div>
 
+									<br><br>
+									
+									<div class="flex2 " style="flex-wrap:wrap; height:400px;">	
+										<div class="mr-40" id="${specialCharCast}">
+											<p><b>Cast: </b></p>
+											
+										</div>
+										
+										<div>
+											<p><b>Trailer: </b></p>
+											<div class="carousel-card-two ml-20 relative bottom-0 bg-base-100 shadow-xl" style="width: 400px; height: 250px;" id="${specialChar}"></div>
+										</div>
+									</div>
+                                </div>
+                            </div>
+                        </div> 
+                        
+						<div id="item2${name}" class="carousel-item w-full">
+							<div class="carousel-card-three bg-base-100 shadow-xl">
+								<div class="carousel-card-three-body">
+									<div class="carousel-card-four relative bottom-0 left-1 bg-base-100 shadow-xl" id="${specialCharReviews}">
+										<div class="carousel-card-four-body"></div>
+									</div>
+								</div>
+							</div>
+                        </div> 
+
+                        <div id="item3${name}" class="carousel-item w-full">
+							<div class="carousel-card-five bg-base-100 shadow-xl">
+								<div class="carousel-card-five-body">
+									<div class="carousel-card-six bg-base-100 shadow-xl flex justify-center" id="${specialCharSimilar}" style="flex-wrap:wrap">
+										<div class="carousel-card-six-body"></div>
+									</div>
+								</div>
+							</div>
+                        </div> 
+                    </div> 
                 </div>
+			</div>
         </div>
     </div>`;
+
 	movieCarousel4.innerHTML += showEl;
+	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+	setTimeout(function () { getTrailer(videos.results, specialChar); }, 10);
+	getCast(credits.cast, specialCharCast);
+	getReviews(reviews.results, specialCharReviews);
+	getSimilarTV(similar.results, specialCharSimilar);
 
   /* Fill heart if tv exists in firestore */
 	let hIcon = document.querySelectorAll('.heart-icon-top-tv');
@@ -1327,6 +1796,74 @@ function displayTopTV(data) {
 	});
 }
 
+async function getWatchProviders(providers, specialCharWatchProviders) {
+	const providerURL = 'https://image.tmdb.org/t/p/original/';
+
+	/* If the movie has providers / places to rent / watch, it will display the logo */
+	if (providers != null) {
+		if (providers.flatrate != null) {
+			providers.flatrate.forEach(prov => {	
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>	
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+			})
+		}
+		if (providers.rent != null) {
+			providers.rent.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+			})
+		}
+		else if (providers.buy != null) {
+			providers.buy.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+			})
+		}
+		else if (providers.ads != null) {
+			providers.ads.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;	
+			})
+		}
+	}
+	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
+	else {
+		const providerHtml = `
+		<div>
+			None at this time
+		</div>`;
+		document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+	}
+}
+
 async function getTrailer(videos, specialChar) {
 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
 	if (videos.length != 0) {
@@ -1340,10 +1877,63 @@ async function getTrailer(videos, specialChar) {
 				const trailer = YOUTUBE_TRAILER_URL + vid.key;
 				const trailerHTML = `
                 <iframe width="500" height="300"
-                    src="${trailer}">
+                    src="${trailer}"
+					allowfullscreen>
                 <iframe>`;
 				document.getElementById(specialChar).innerHTML = trailerHTML;
 			}
 		});
 	} else trailerCount--;
+}
+
+async function getCast(credits, specialChar) {
+	let i = 0;
+	if (credits.length != 5) {
+		credits.forEach(cred => {
+			if (i != 5) {
+				const castHTML = ` <p>${cred.name}</p> `;
+				document.getElementById(specialChar).innerHTML += castHTML;
+				i++;
+			}
+		})
+	}
+}
+
+async function getReviews(reviews, specialChar) {
+	if (reviews.length != 0) {
+		reviews.forEach(rev => {
+			const reviewHTML = ` <div> <p><b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b><br>${rev.content}<div class="divider"></div></p> </div> `;
+			document.getElementById(specialChar).innerHTML += reviewHTML;
+		})
+	}
+}
+
+async function getSimilar(movies, specialChar) {
+	if (movies.length != 0) {
+		movies.forEach(mov => {
+			const similarHTML = `
+				<label for="${mov.title}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+					<img src="${POSTER_URL + mov.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+					<span class="tooltiptext"><b>${mov.title}</b><br>${mov.vote_average}/10</span>
+				</label>
+				`;
+
+			document.getElementById(specialChar).innerHTML += similarHTML;
+		})
+	}
+}
+
+async function getSimilarTV(tv, specialChar) {
+	if (tv.length != 0) {
+		tv.forEach(tvs => {
+			const similarHTML = `
+				<label for="${tvs.name}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+					<img src="${POSTER_URL + tvs.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+					<span class="tooltiptext"><b>${tvs.name}</b><br>${tvs.vote_average}/10</span>
+				</label>
+				`;
+
+			document.getElementById(specialChar).innerHTML += similarHTML;
+		})
+	}
 }
