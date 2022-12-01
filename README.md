@@ -1,5 +1,7 @@
 # Project Name: Suggestify
 
+**Note: The website is slow when initial loading because of youtube trailers inside of modal popup.**
+
 ## Summary
 
 The project would be an application where users will be able to find a movie or tv show that they would like to watch according to their mood and choice at that time.
@@ -13,6 +15,7 @@ Oftentimes, people sit down by themselves or with a group of friends, and they e
 - Frontend: HTML, CSS, JS, Tailwind CSS, DaisyUI
 - Backend: Firebase
 - API: TMDB - <https://www.themoviedb.org/documentation/api>
+
 
 ## Installation
 
@@ -34,7 +37,7 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 
 ## Images
 
-### Home Page
+### Figma Design
 
 ![Landing page design](landing_page_design.png)
 
@@ -45,6 +48,13 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 ### Search page
 ![Search Page 1](search_page.png)
 ![Search page 2](search_page2.png)
+### Watchlist Feature
+![My-list page](watchlist-page-img.png)
+![My-list page modal](watchlist-modal-img.png)
+
+## Presentation slides
+
+[Demo Slides](SuggestifyDemo.pdf)
 
 ## Contributors (Name & Github ID)
 

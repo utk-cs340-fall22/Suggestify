@@ -1,0 +1,112 @@
+~ index.html ~
+
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  23) 	<body onload="moveIt(0)">
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500 122) 				<li><a href="settings.html">Settings</a></li>
+
+~ settings.html ~
+
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  37)           <h1>Account Info</h1>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  44)           <br>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  45)           <br>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  46)           <h2>Password Reset</h2><br>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  47)           <input type="email" placeholder="example@example.com" id="userEmail"> <input type="submit" value="Send Email" id="resetPassword" onclick="">
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  51)           <h1> Suggestify is a student-led project that aims to reduce entertainment related indecision. </h1>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  52)           <h1> Big thanks to Hollywood and Ballywood for producing the world class entertainment presented on this website.</h1>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  53)           <h1> Any questions, comments, or concerns may be directed to our super genius Manan Patel at mpatel65@vols.utk.edu ❤️.</h1>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  57) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  58)     <script type="module">
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  59) 			// Import the functions you need from the SDKs you need
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  60) 			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  61)   	//	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  62) 			//import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  63)         import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  64) 			
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  65) 			// TODO: Add SDKs for Firebase products that you want to use
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  66) 			// https://firebase.google.com/docs/web/setup#available-libraries
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  67) 		  
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  68) 			// Your web app's Firebase configuration
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  69) 			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  70) 			const firebaseConfig = {
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  71) 			  apiKey: "AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg",
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  72) 			  authDomain: "suggestify-6b974.firebaseapp.com",
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  73) 			  projectId: "suggestify-6b974",
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  74) 			  storageBucket: "suggestify-6b974.appspot.com",
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  75) 			  messagingSenderId: "287553553595",
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  76) 			  appId: "1:287553553595:web:c5e8adde4ca305cfaad59e",
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  77) 			  measurementId: "G-30270TW59M"
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  78) 			};
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  79) 			
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  80) 			// Initialize Firebase
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  81) 			const app = initializeApp(firebaseConfig);
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  82) 			// const analytics = getAnalytics(app);
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  83) 			const auth = getAuth(app);
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  84) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  85)       resetPassword.addEventListener('click', (e)=> {
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  86) 				e.preventDefault();
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  87)         var Email = document.getElementById('userEmail').value;
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  88)         sendPasswordResetEmail(auth, Email)
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  89)         .then(() => {
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  90)           // Password reset email sent!
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  91)           // ..
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  92)           alert('Great Success!')
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  93)         })
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  94)         .catch((error) => {
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  95)           const errorCode = error.code;
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  96)           const errorMessage = error.message;
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  97)           // ..
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  98)           alert('Great Tragedy')
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  99)         });
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500 100)       });
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500 101) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500 102)     </script>
+
+~ index.js ~
+
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500 103) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500 104) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  183) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  184) 						if (data.videos.results.length != 0 && trailerCount < 5) {
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  185) 							data.videos.results.forEach(vid => {
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  186) 								if (
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  187) 									vid.name == 'Official Trailer' ||
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  188) 									vid.name == 'Official Trailer [Subtitled]' ||
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  189) 									vid.name == 'Dub Trailer' ||
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  190) 									vid.name == 'United States Trailer'
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  191) 								) {
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  192) 									carouselStuff(data);
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  193) 									trailerCount++;
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  194) 								}
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  195) 							});
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  196) 						}
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  197) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  460) 		vote_average,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  461) 		budget,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  462) 		revenue,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  463) 		genres,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  464) 		status,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  465) 		tagline,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  467) 		overview,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  469) 		id,
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  473) 	const specialChar = id + title + '%';
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  475)     <div id="${title,id}" class="carousel-item-big-boi w-full ">
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  476)     <label for="my-modal-${title,id}" class="btn modal-button" style="height: 502px !important;padding-right: 0px !important;padding-left: 0px !important;margin-right: 0px !important;margin-left: 0px !important;margin-bottom: 0px !important;padding-bottom: 0px !important;width: 100% !important;" onClick="moveIt(1)">
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  477)     <img src="${
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  478)         backdrop_url
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  479)                 }" alt="poster" style="margin-right: auto; margin-left: auto; !important;height: 100% !important;overflow: hidden !important;width: 100% !important;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  483)     <input type="checkbox" class="modal-toggle" id="my-modal-${title,id}" />
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  487)                     for="my-modal-${title,id}"
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  489)                     onclick="moveIt(0)">✕
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  492) 				<div style="color:white;">
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  493) 				<h1 class="card-title" style="text-align: center !important;">
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  494) 					<font size="+100">${title}</font> 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  495) 				</h1>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  496) 				<br/>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  498) 				<p><h3> <b> Overview </b> </h3><br>${overview}<br><br><b>Genre:</b> ${
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  499) 					genres[0].name
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  500) 				} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  501) 				</div>
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  533) var slideInterval;
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  534) 
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  536) 	
+55a40d3d (Christian Graham 2022-11-30 23:32:47 -0500  538) 	else slideInterval = setInterval(move, 8000);
+^7cb679a (rpatel90    2022-11-10 21:36:50 -0500 47) - Christian Graham - cgraha37

@@ -1,0 +1,48 @@
+# Product Requirements Document
+
+    Name: Riya Patel
+    Product Name: Suggestify
+
+# Background
+
+    The problem we aimed to solve with this website is helping people find movies/tv shows that 
+    they want to watch and be easily able to keep track of them. It's aimed to make finding the 
+    perfect movie/tv show that the user is in the mood for super easy and intuivtive so that they
+    can spend less time searching and more time watching.
+
+# Project Overview
+
+    With the number of movies and tv shows out there, combined with the sheer number of streaming
+    platforms, these days, it can be hard (if not impossible) to find and decide on what you want
+    to watch. Whether you're watching alone or with a group of friends or with family, you shouldn't
+    waste time searching for the perfect movie or show. With Suggestify, you can easily browse all
+    movies and tv shows available on every platform and add your favorites to your personal list.
+    The website makes it easy to see what movies and shows are trending and also filter based on 
+    genres. It's designed to be used by anyone and everyone.
+
+# Features
+
+    1. Register: As a new user, I want to register with my credentials so that the system can remember me and my data such as my list of saved movies and tv shows.
+
+    2. Login: As a registered user, I want to log in with my username and password so that the system can authenticate me and I can access all my saved information at any time.
+
+    3. MyList: As a registered user, I want to be able to see all of my saved movies and tv shows in one place so I can browse them later.
+
+    4. Carousels: As a user, I want to be able to see which movies and tv shows are new and trending so that I can add them to my list.
+    
+    5. Search: As a user, I want to be able to search for movies and shows based on actors and titles so that I can add them to my list.
+
+    6. Modal: As a user, I want to be able to see information about the movie or tv show in a pop-up box so that I can decide if I want to add it to my list.
+
+    7. Movie/TV show: As a user, I want to be able to see all the movies and tv shows in one place and be able to filter them based on the genre that I want to watch.
+
+    8. Reviews: As a user, I want to see the reviews others have left about the movie or tv show after they watched it so that I can decide if I want to add it to my list.
+
+    9. See Also: As a user, I want to be able to see similar movies or shows to the one I clicked on so that I can find more movies or shows to my liking and add them to my list.
+
+# Technologies to be used
+
+    Frontend: HTML, CSS, JS, Tailwind CSS, DaisyUI, React
+    Backend: Firebase
+    Hosted on GitHub
+    API: TMDB - https://www.themoviedb.org/documentation/api
