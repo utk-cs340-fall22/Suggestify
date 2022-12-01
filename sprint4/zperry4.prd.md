@@ -26,6 +26,7 @@ The purpose of Suggestify is to help users discover new movies and shows to watc
 
 ### Technologies
 ---
-FrontEnd - ReactJS or AngularJS, Typscript, CSS/Tailwind, UI Library(Bootstrap 4)
-BackEnd - Firebase (Mainly for Authentication), Node.js
-DataBase - PostgreSQL
+- FrontEnd - ReactJS or AngularJS, Typscript, CSS/Tailwind, UI Library(Bootstrap 4)
+- BackEnd - Firebase (Mainly for Authentication), Node.js
+- DataBase - PostgreSQL
+- API - TMDB (the movie database)
