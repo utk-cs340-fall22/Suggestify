@@ -1,0 +1,45 @@
+# Product Requirements Document
+
+    Name: Tulsi Tailor
+    Product Name: Suggestify
+
+# Background
+
+    Often, when people sit down to watch a movie or series they end up wasting their half of time 
+    deciding which show they want to watch. So, we came up with an application where a user can 
+    find a movie or series that they would like to watch according to their mood and choice at that time. 
+
+# Project Overview
+
+    Oftentimes, people sit down by themselves or with a group of friends, and they end up spending 
+    too long trying to find the perfect movie or show to watch by sifting through Google and all of 
+    their streaming services. This project would help users quickly find something to watch based 
+    on the user’s inputs. The application will be designed to be used by anyone.
+
+# Features
+
+    1. Register: As a new user, I want to register by creating an email and password so that the system can remember me and my data.
+
+    2. Login: As a registered user, I want to log in with my username and password so that the system can authenticate me and I can trust it.
+
+    3. Google login: As a new user, I want to log in as a third party via my existing google account.
+
+    4. Reset password: As a registered user, I want to be able to occasionally change my password so that I can keep it secure.
+    
+    5. Search: As a user, I want to search for movies and series of my interest.
+
+    6. Carousel: As a user, I want to look out for a wide variety of trending movies/series, top-rated movies/series, and the latest movies/series.
+
+    7. Movie/TV show: As a user, I want to select a movie based on my mood. For instance documentary, fantasy, drama, romance,...
+
+    8. Trailor: As a user, I want to watch a trailer of the movie/show to see if I like it. 
+
+    9. Modal box: As a user, I want to read a review, watch a trailor, and find similar movies to see if the movie is good.
+
+    10. 
+
+# Technologies to be used
+
+    Frontend: HTML, CSS, JS, Tailwind CSS, DaisyUI, React
+    Backend: Firebase
+    API: TMDB - https://www.themoviedb.org/documentation/api
