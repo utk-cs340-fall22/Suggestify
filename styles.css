@@ -98,6 +98,15 @@ main{
   justify-content:center;
 }
 
+.flex2 {
+  display:flex;
+  /* margin-right: 10px; */
+}
+
+.carousel-card-two{
+  object-position: left;
+}
+
 .search{
   background-color: #373338;
   border: 2px solid white;
