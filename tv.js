@@ -263,8 +263,6 @@ function displayTvShow(show) {
 		credits,
 	} = show;
 
-
-	const backdropURL = POSTER_URL + backdrop_path;
 	const specialCharTrailer = id + name + status + "oisbdo abdo";
 	const specialCharReviews = name + id + name + id;
 	const specialCharWatchProviders = episode_run_time + name + id + id;
@@ -277,8 +275,8 @@ function displayTvShow(show) {
 		showGenre += genre.name + ", ";
 	})
 
-	var posterURL = null;
-	var backdropURL = null;
+	let posterURL = null;
+	let backdropURL = null;
 
 	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
 	if (backdrop_path != null) {
@@ -353,14 +351,12 @@ function displayTvShow(show) {
 					<b>Number of Episodes</b>: ${number_of_episodes}
 					</p>
 					<br>
-					<p id="${specialCharWatchProviders}" style="
+					<div id="${specialCharWatchProviders}" style="
 							display: flex !important;
-								flex-direction: row !important;
-								flex-wrap: wrap !important;
-								justify-content: flex-start !important;
-								align-items: center !important;">
-								<b>Watch Providers</b>: &nbsp;
-					</p>
+							flex-direction: row !important;
+							flex-wrap: wrap !important;">
+							<b>Watch Providers</b>: &nbsp;
+					</div>
 					<br>
 					<div class="flex column-gap:100px" style="flex-wrap:wrap">	
 						<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>

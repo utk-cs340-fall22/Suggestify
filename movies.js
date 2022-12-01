@@ -271,7 +271,7 @@ function displayMovies(movie) {
 	} = movie;
 
 
-	const backdropURL = POSTER_URL + backdrop_path;
+	
 	const specialCharTrailer = id + title;
 	const specialCharReviews = title + id;
 	const specialCharWatchProviders = runtime + title + id;
@@ -305,9 +305,8 @@ function displayMovies(movie) {
 		formattedBudget = formatter.format(budget);
 	}
 
-	var posterURL = null;
-	var backdropURL = null;
-
+	let posterURL = null;
+	let backdropURL = null;
 
 	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
 	if (backdrop_path != null) {
@@ -379,14 +378,14 @@ function displayMovies(movie) {
 						  	<b>Revenue</b>: ${formattedRevenue}
 						</p>
 						<br>
-						<p id="${specialCharWatchProviders}" style="
+						<div id="${specialCharWatchProviders}" style="
 								display: flex !important;
 							  	flex-direction: row !important;
 							  	flex-wrap: wrap !important;
 							  	justify-content: flex-start !important;
 							  	align-items: center !important;">
 							  	<b>Watch Providers</b>: &nbsp;
-						</p>
+						</div>
 						<br>
 						<div class="flex column-gap:100px" style="flex-wrap:wrap">	
 							<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>
