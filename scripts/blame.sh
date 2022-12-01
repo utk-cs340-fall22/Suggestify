@@ -45,7 +45,7 @@ graham="Graham"
 # done
 
 # # Christian
-# for FILE in *.html *.css *.js README.md
-# do
-#   git blame --since=2.weeks -w $FILE | grep -e "$christianGithub" -e "$graham" >> sprint4/$christianNetid.commits.txt
-# done
+ for FILE in *.html *.css *.js README.md
+ do
+ git blame --since=2.weeks -w $FILE | grep -e "$christianGithub" -e "$graham" >> sprint4/$christianNetid.commits.txt
+done
