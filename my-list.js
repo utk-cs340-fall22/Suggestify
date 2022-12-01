@@ -605,7 +605,7 @@ function displayTvFromFirestore(data) {
 			posterURL
 		}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
 		</label>
-    <i id="heart-${name}" class="heart-icon fa-regular fa-heart relative bottom-[-320px] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+    <i id="heart-${name}" class="heart-icon-tv fa-solid fa-heart relative bottom-[-320px] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
     <input type="checkbox" id="${name + id}" class="modal-toggle" />
 
     <div class="modal">
