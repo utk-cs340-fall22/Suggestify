@@ -1,0 +1,521 @@
+
+-> login.html
+
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  80) 					const log = document.createElement('a');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  81) 					log.setAttribute('href', 'index.html');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  82) 					log.click();
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  83) 					// alert('User signed in successfully')
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 101) 						const goToLog = document.createElement('a');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 102) 						goToLog.setAttribute('href', 'login.html');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 103) 						goToLog.click();
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 104) 						// alert('user created successfully');
+eb69ea48 (tulsitailor 2022-11-30 14:08:39 -0500 119) 						const gLogIn = document.createElement('a');
+eb69ea48 (tulsitailor 2022-11-30 14:08:39 -0500 120) 						gLogIn.setAttribute('href', 'index.html');
+eb69ea48 (tulsitailor 2022-11-30 14:08:39 -0500 121) 						gLogIn.click();
+
+-> search.html
+
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  1) <!DOCTYPE html>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  2) <html lang="en">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  3) 	<head>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  4) 		<meta charset="UTF-8" />
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  5) 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  6) 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  7) 		<title> Search </title>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  8) 		<link rel="stylesheet" href="styles.css" />
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  9) 		<script
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 10) 			src="https://kit.fontawesome.com/4ea5866b14.js"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 11) 			crossorigin="anonymous"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 12) 		></script>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 13) 		<link
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 14) 			href="https://cdn.jsdelivr.net/npm/daisyui@2.31.0/dist/full.css"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 15) 			rel="stylesheet"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 16) 			type="text/css"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 17) 		/>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 18) 		<script src="https://cdn.tailwindcss.com"></script>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 19) 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 20) 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 21) 		<script src="search.js" defer></script>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 22) 	</head>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 23) 	<body>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 24) 		<nav class="navbar bg-[#21252b] text-slate-300 sticky top-0 z-50">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 25) 			<div class="navbar-start">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 26) 				<div class="dropdown">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 27) 					<label tabindex="0" class="btn btn-ghost btn-circle">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 28) 						<svg
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 29) 							xmlns="http://www.w3.org/2000/svg"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 30) 							class="h-5 w-5"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 31) 							fill="none"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 32) 							viewBox="0 0 24 24"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 33) 							stroke="currentColor"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 34) 						>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 35) 							<path
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 36) 								stroke-linecap="round"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 37) 								stroke-linejoin="round"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 38) 								stroke-width="2"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 39) 								d="M4 6h16M4 12h16M4 18h7"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 40) 							/>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 41) 						</svg>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 42) 					</label>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 43) 					<ul
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 44) 						tabindex="0"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 45) 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 46) 					>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 47) 						<li><a href="movies.html">Movies</a></li>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 48) 						<li><a href="tv.html">Tv Shows</a></li>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 49) 						<li><a href="my-list.html">My List</a></li>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 50) 						<li><a href="settings.html" class="mt-[12rem]">Settings</a></li>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 51) 						<li><a href="login.html">Account</a></li>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 53) 					</ul>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 54) 				</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 55) 				<div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 56) 					<a href="movies.html" class="btn btn-ghost normal-case text-l"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 57) 						>Movies</a
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 58) 					>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 59) 					<a href="tv.html" class="btn btn-ghost normal-case text-l"
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 60) 						>Tv Shows</a
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 61) 					>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 62) 				</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 63) 			</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 64) 			<div class="navbar-center">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 65) 				<a href="index.html" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 66) 			</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 67) 			<div class="navbar-end">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 68) 				<div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 69) 					<a href="my-list.html" class="btn btn-ghost normal-case mr-8 text-l">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 70) 						My List</a
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 71) 					>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 73) 				</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 74) 				<button class="btn btn-ghost btn-circle mr-4">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 75) 					<div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 76) 						<a href="login.html">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 78) 						</a>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 79) 					</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 80) 				</button>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 81) 			</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 82) 		</nav>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 83) 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 84) 		<form  id="form">
+eb69ea48 (tulsitailor 2022-11-30 14:08:39 -0500 85) 			<input type="text" placeholder="Search" id="search" class="search">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 86) 		</form>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 87) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 88) 		<main
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 89) 			id="movie"
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 90) 			style="margin-left: 88px !important; margin-right: 50px !important"
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 91) 		></main>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 92) 	</body>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 93) </html>
+
+-> styles.css
+
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  54) 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  57)   margin-top: 5%;
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  58)   margin-left: 40%;
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  60)   padding:0.5rem 2rem;
+
+-> login.js
+
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  1) 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  2) /* Login box */
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  3) var x = document.getElementById('login');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  4) var y = document.getElementById('register');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  5) var z = document.getElementById('btn');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  6)  
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  7) function register() {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  8)     x.style.left = '-400px';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500  9)     y.style.left = '50px';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 10)     z.style.left = '110px';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 11) }
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 12)  
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 13) function login() {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 14)     x.style.left = '50px';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 15)     y.style.left = '450px';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 16)     z.style.left = '0';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 17) }
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 18) 
+
+-> search.js
+
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 110) 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 111) const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 112) const BASE_URL = 'https://api.themoviedb.org/3/';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 113) const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 114) const SEARCH_QUERY = '&query=searchTerm';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 115) const searchURL = BASE_URL + '/search/multi?' + API_KEY + '&language=en-US&page=1&query=';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 116) 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 117) const form = document.getElementById('form');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 118) form.addEventListener('submit', (e) => {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 119)     e.preventDefault();
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 120) 	document.getElementById('movie').innerHTML = '';
+0f0928e9 (tulsitailor 2022-11-30 20:38:45 -0500 121)   	hearts = [];
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 122)     const searchTerm = search.value;
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 123)     const url = searchURL + searchTerm + '&include_adult=false';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 124)     if(searchTerm){
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 125)         fetch(url)
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 126) 		.then(res => res.json())
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 127) 		.then(data => {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 128) 			// console.log('Movies: ', data);
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 129) 			data.results.forEach(movie => {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 130)                 search.innerHTML = "";
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 131) 				/* Append to this response to get multiple things to return in one request */
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 132) 				/* This will get all details, credits, similar movies, and images */
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 133) 				const DETAIL_URL =
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 134) 					BASE_URL +
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 135) 					'movie/' +
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 136) 					movie.id +
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 137) 					'?' +
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 138) 					API_KEY +
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 139) 					'&language=en-US&append_to_response=videos,credits,similar,images,reviews,watch/providers';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 140) 				fetch(DETAIL_URL)
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 141) 					.then(res => res.json())
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 142) 					.then(data => {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 149) 						displaySearchMovies(data);
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 150) 					});
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 151) 			});
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 152) 		})
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 153) 		.catch(error => {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 154) 			console.log(error);
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 155) 		});
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 156)     }
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 157) 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 158) })
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 159) 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 160) function displaySearchMovies(movie) {
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 161) 	const {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 162) 		id,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 163) 		title,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 164) 		poster_path,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 165) 		vote_average,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 166) 		overview,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 167) 		backdrop_path,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 168) 		release_date,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 169) 		runtime,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 170) 		budget,
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 171) 		revenue,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 172) 		tagline,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 173) 		videos,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 174) 		reviews,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 175) 		genres,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 176) 		status,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 177) 		similar,
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 178) 		credits
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 179) 	} = movie;
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 180) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 181) 	const specialCharTrailer = id + title;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 182) 	const specialCharReviews = title + id;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 183) 	const specialCharWatchProviders = runtime + title + id;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 184) 	const specialCharSimilar = id + title + runtime;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 185) 	const specialCharCreditsCast = title + runtime + id;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 186) 	const specialCharCreditsCrew = id + runtime + title + release_date;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 187) 	let movieGenre = '';
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 188) 	let formattedRevenue = '';
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 189) 	let formattedBudget = '';
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 190) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 191) 	/* Formats the revenue and budget into USD */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 192) 	const formatter= new Intl.NumberFormat('en-US', {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 193) 		style: 'currency',
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 194) 		currency: 'USD',
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 195) 	})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 196) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 197) 	genres.forEach(genre => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 198) 		movieGenre += genre.name + ", ";
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 199) 	})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 200) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 201) 	if (revenue == 0) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 202) 		formattedRevenue = "N/A";
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 203) 	} else {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 204) 		formattedRevenue = formatter.format(revenue);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 205) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 206) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 207) 	if (budget == 0) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 208) 		formattedBudget = "N/A";
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 209) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 210) 	} else {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 211) 		formattedBudget = formatter.format(budget);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 212) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 213) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 214) 	let posterURL = null;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 215) 	let backdropURL = null;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 216) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 217) 	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 218) 	if (backdrop_path != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 219) 		backdropURL = POSTER_URL + backdrop_path;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 220) 		if (poster_path == null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 221) 			posterURL = backdropURL;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 222) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 223) 		else if (poster_path != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 224) 			posterURL = POSTER_URL + poster_path;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 225) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 226) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 227) 	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 228) 	/* Otherwise, just sets them equal to blank square */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 229) 	else if (backdrop_path == null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 230) 		if (poster_path != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 231) 			posterURL = POSTER_URL + poster_path;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 232) 			backdropURL = posterURL;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 233) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 234) 		else if (poster_path == null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 235) 			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 236) 			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 237) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 238) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 239) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 240) 	const movieCard = document.getElementById('movie');
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 242)     <label for="${title}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 243)         <img src="${
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 244) 					posterURL
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 245) 				}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 246)         </label>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 248)         <input type="checkbox" id="${title}" class="modal-toggle" />
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 249)         <div class="modal">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 250)           <div class="modal-box w-full max-w-5xl h-full">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 251)             <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 252)               <figure>            
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 253)                 <img src="${backdropURL}" alt="backDrop" style="width: 970px !important; height: 500px !important; margin-right: 0px !important; border-radius: 0px !important; border-width: 0px !important; padding: 1px 0px 1px 1px !important;"></img>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 254)               </figure>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 255)               <div class="card-body">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 256)                 <h1 class="card-title" style="text-align: center !important;">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 257)                 <font size="+100">${title}</font> 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 258)                 </h1>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 259)                 <br/>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 260)                 <p>${tagline}</p>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 261)                 <br/><br/>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 262)                 <p><b>Release Date:</b> ${release_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Runtime:</b> ${runtime} minutes</p>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 263)               </div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 264)             </div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 265)             <div class="flex justify-center w-full py-2 gap-2">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 266)               <a href="#item1${title}" class="btn btn-xs">Details</a> 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 267)               <a href="#item3${title}" class="btn btn-xs">Reviews</a> 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 268) 			  <a href="#item2${title}" class="btn btn-xs">See Also</a> 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 269)             </div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 270)         	<div class="carousel w-full">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 271) 				<div id="item1${title}" class="carousel-item w-full">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 272) 					<div class="carousel-card bg-base-100 shadow-xl" style="height: 1600px !important;">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 273) 						<div class="carousel-card-body">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 274) 						<h1><b>About this movie</b></h1>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 275) 						<hr>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 276) 						<br>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 277) 						<h1><b>Description</b></h1>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 278) 						<p>${overview}</p>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 279) 						<br>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 280) 						<p>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 281) 							<b>Genre</b>: ${movieGenre} |
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 282) 						  	<b>Status</b>: ${status} |
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 283) 						  	<b>Budget</b>: ${formattedBudget} |
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 284) 						  	<b>Revenue</b>: ${formattedRevenue}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 285) 						</p>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 286) 						<br>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 287) 						<div id="${specialCharWatchProviders}" style="
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 288) 								display: flex !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 289) 							  	flex-direction: row !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 290) 							  	flex-wrap: wrap !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 291) 							  	justify-content: flex-start !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 292) 							  	align-items: center !important;">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 293) 							  	<b>Watch Providers</b>: &nbsp;
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 294) 						</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 295) 						<br>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 296) 						<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 297) 							<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 298) 						</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 299) 						<br>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 300) 						<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 301) 							<p id="${specialCharCreditsCast}"><b>Cast</b>: </p>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 302) 						</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 303) 						<br>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 304) 						<h2 style="text-align: center;"><b>Trailer</b></h2>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 305) 						<div class="card-body" style="width: 900px; height: 500px; text-align: center;" id="${specialCharTrailer}"> </div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 306) 					</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 307) 				</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 308) 			</div> 
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 309) 			<div id="item3${title}" class="carousel-item w-full">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 310) 				<div id="${specialCharReviews}"></div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 311) 			</div> 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 312) 		  	<div id="item2${title}" class="carousel-item w-full">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 313) 				<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 314) 			</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 315) 			<div class="modal-action">
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 316)           		<label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 317)         	</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 318)       	</div>
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 319)     </div>`;
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 320)     
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 323) 	/* Used to help improve load time of trailers */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 324) 	setTimeout(function () {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 325) 		getTrailer(videos.results, specialCharTrailer);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 326) 	}, 5);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 327) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 328) 	/* Call all functions with their respective specialChar id used within the html */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 329) 	getWatchProviders(movie["watch/providers"].results["US"], specialCharWatchProviders);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 330) 	getDirector(credits.crew, specialCharCreditsCrew);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 331) 	getCast(credits.cast, specialCharCreditsCast);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 332) 	getReviews(reviews.results, specialCharReviews);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 333) 	getSimilar(similar.results, specialCharSimilar);
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 334)   
+6d9e73a1 (tulsitailor 2022-11-29 14:21:43 -0500 386) }
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 387) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 388) async function getTrailer(videos, specialCharTrailer) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 389) 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 390) 	if (videos.length != 0) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 391) 		videos.forEach(vid => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 392) 			if (
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 393) 				vid.name == 'Official Trailer' ||
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 394) 				vid.name == 'Official Trailer [Subtitled]' ||
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 395) 				vid.name == 'Dub Trailer' ||
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 396) 				vid.name == 'United States Trailer' ||
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 397) 				vid.name == 'Official Promo' || 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 398) 				vid.iso_639_1 == 'en' && vid.iso_3166_1 == 'US'
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 399) 			) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 400) 				const trailer = YOUTUBE_TRAILER_URL + vid.key;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 401) 				const trailerHTML = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 402)                 <iframe 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 403) 					style="text-align:center; width: 900px; height: 400px"
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 404)                     src="${trailer}"
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 405) 					allowfullscreen >
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 406)                 </iframe>`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 407) 				document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 408) 			}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 409) 		});
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 410) 	} 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 411) }
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 412) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 413) /* Gets the first 10 people listed in the cast */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 414) async function getCast(cast, specialCharCreditsCast) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 415) 	let castCount = 0;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 416) 	let shouldBreak = false;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 417) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 418) 	cast.forEach(person => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 419) 		if (shouldBreak) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 420) 			return;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 421) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 422) 		if (castCount < 10) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 423) 			const castMember = `${person.name} | `;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 424) 			document.getElementById(specialCharCreditsCast).innerHTML += castMember;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 425) 			castCount++;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 426) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 427) 		else if (castCount >= 10) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 428) 			shouldBreak = true;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 429) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 430) 	});
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 431) }
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 432) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 433) /* Gets the director of the film to display */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 434) async function getDirector(crew, specialCharCreditsCrew) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 435) 	let shouldBreak = false;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 436) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 437) 	crew.forEach(person => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 438) 		if (shouldBreak) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 439) 			return;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 440) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 441) 		if (person.job == "Director") {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 442) 			const director = `${person.name}`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 443) 			document.getElementById(specialCharCreditsCrew).innerHTML += director;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 444) 			shouldBreak = true;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 445) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 446) 	});
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 447) }
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 448) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 449) /* Gets all watch providers and display's their logo */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 450) async function getWatchProviders(providers, specialCharWatchProviders) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 451) 	const providerURL = 'https://image.tmdb.org/t/p/original/';
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 452) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 453) 	/* If the movie has providers / places to rent / watch, it will display the logo */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 454) 	if (providers != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 455) 		if (providers.flatrate != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 456) 			providers.flatrate.forEach(prov => {	
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 457) 				const providerHtml = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 458) 				<div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 459) 					<img src="${providerURL + prov.logo_path}" style="
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 460) 					height: 50px !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 461) 					width: 50px !important;    
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 462) 					"/>	
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 463) 				</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 464) 				`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 465) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 466) 			})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 467) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 468) 		if (providers.rent != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 469) 			providers.rent.forEach(prov => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 470) 				const providerHtml = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 471) 				<div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 472) 					<img src="${providerURL + prov.logo_path}" style="
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 473) 					height: 50px !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 474) 					width: 50px !important;    
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 475) 					"/>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 476) 				</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 477) 				`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 478) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 479) 			})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 480) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 481) 		else if (providers.buy != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 482) 			providers.buy.forEach(prov => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 483) 				const providerHtml = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 484) 				<div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 485) 					<img src="${providerURL + prov.logo_path}" style="
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 486) 					height: 50px !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 487) 					width: 50px !important;    
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 488) 					"/>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 489) 				</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 490) 				`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 491) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 492) 			})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 493) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 494) 		else if (providers.ads != null) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 495) 			providers.ads.forEach(prov => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 496) 				const providerHtml = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 497) 				<div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 498) 					<img src="${providerURL + prov.logo_path}" style="
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 499) 					height: 50px !important;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 500) 					width: 50px !important;    
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 501) 					"/>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 502) 				</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 503) 				`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 504) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;	
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 505) 			})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 506) 		}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 507) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 508) 	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 509) 	else {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 510) 		const providerHtml = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 511) 		<div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 512) 			None at this time
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 513) 		</div>`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 514) 		document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 515) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 516) }
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 517) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 518) /* Get and display 3 reviews left for a movie -- if none, display none */
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 519) async function getReviews(reviews, specialCharReviews) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 520) 	if (reviews.length != 0) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 521) 		reviews.forEach(rev => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 522) 			const reviewHtml = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 523) 			<div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 524) 				<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 525) 				<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 526) 					<p style="margin-left: 30px !important;">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 527) 						${rev.content}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 528) 					</p>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 529) 				</div>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 530) 			</div>`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 531) 			document.getElementById(specialCharReviews).innerHTML += reviewHtml;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 532) 		})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 533) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 534) 	else {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 535) 		const reviewHtml = `<p><b>N/A</b></p>`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 536) 		document.getElementById(specialCharReviews).innerHTML = reviewHtml;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 537) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 538) }
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 539) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 540) async function getSimilar(movies, specialCharSimilar) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 541) 	if (movies.length != 0) {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 542) 		movies.forEach(mov => {
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 543) 			const similarHTML = `
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 544) 				<label for="${mov.title}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 545) 					<img src="${POSTER_URL + mov.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 546) 					<span class="tooltiptext"><b>${mov.title}</b><br>${mov.vote_average}/10</span>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 547) 				</label>
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 548) 				`;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 549) 
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 550) 			document.getElementById(specialCharSimilar).innerHTML += similarHTML;
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 551) 		})
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 552) 	}
+8c293410 (tulsitailor 2022-11-30 22:16:48 -0500 553) }
