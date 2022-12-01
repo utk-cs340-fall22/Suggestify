@@ -34,29 +34,73 @@
 
       <div class="rightbox">
         <div id="account" class="profile tabcontent">
-          <h1>Personal Info</h1>
+          <h1>Account Info</h1>
           <h2>Full Name</h2><br>
           <input type="name" placeholder="John Doe" id="userName"> <input type="submit" onclick="pass()">
           <h2>Birthday</h2><br>
           <input type="date" id="start userBirth" name="trip-start"
        value="2018-07-22"
        min="1918-01-01" max="2022-12-31"> <input type="submit" onclick="userBirth(userObject)">
-          <h2>Gender</h2><br>
-          <select id="gender">
-            <option value="Man">Man</option>
-            <option value="Women">Woman</option>
-            <option value="Non-Binary">Non-Binary</option>
-          </select> <input type="submit" onclick="userGender(userObject)">
-          <h2>Email</h2><br>
-          <input type="email" placeholder="example@example.com" id="userEmail"> <input type="submit" onclick="userEmail(userObject)">
-          <h2>Password</h2><br>
-          <input type="password" placeholder="(⌐■_■)" value ="" id="pwd" name="pwd" minlength="8"> <input type="submit" onclick="userPassword(userObject)"><br><br>
+          <br>
+          <br>
+          <h2>Password Reset</h2><br>
+          <input type="email" placeholder="example@example.com" id="userEmail"> <input type="submit" value="Send Email" id="resetPassword" onclick="">
         </div>
         <div id="about" class="profile tabcontent">
           <h1>About Us & Credits</h1>
-          <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde deserunt, architecto harum quam neque similique corporis quaerat, quas, odio omnis voluptates est ullam. Soluta in aperiam, dignissimos ipsa fuga dolorum.</h1>
+          <h1> Suggestify is a student-led project that aims to reduce entertainment related indecision. </h1>
+          <h1> Big thanks to Hollywood and Ballywood for producing the world class entertainment presented on this website.</h1>
+          <h1> Any questions, comments, or concerns may be directed to our super genius Manan Patel at mpatel65@vols.utk.edu ❤️.</h1>
         </div>
       </div>
     </div>
+
+    <script type="module">
+			// Import the functions you need from the SDKs you need
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+  	//	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+			//import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+        import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+			
+			// TODO: Add SDKs for Firebase products that you want to use
+			// https://firebase.google.com/docs/web/setup#available-libraries
+		  
+			// Your web app's Firebase configuration
+			// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+			const firebaseConfig = {
+			  apiKey: "AIzaSyDGTFXLcJqWM4F3yWUXc4QalVBkT2Xg6Rg",
+			  authDomain: "suggestify-6b974.firebaseapp.com",
+			  projectId: "suggestify-6b974",
+			  storageBucket: "suggestify-6b974.appspot.com",
+			  messagingSenderId: "287553553595",
+			  appId: "1:287553553595:web:c5e8adde4ca305cfaad59e",
+			  measurementId: "G-30270TW59M"
+			};
+			
+			// Initialize Firebase
+			const app = initializeApp(firebaseConfig);
+			// const analytics = getAnalytics(app);
+			const auth = getAuth(app);
+
+      resetPassword.addEventListener('click', (e)=> {
+				e.preventDefault();
+        var Email = document.getElementById('userEmail').value;
+        sendPasswordResetEmail(auth, Email)
+        .then(() => {
+          // Password reset email sent!
+          // ..
+          alert('Great Success!')
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+          alert('Great Tragedy')
+        });
+      });
+
+    </script>
+
+
   </body>
 </html>
