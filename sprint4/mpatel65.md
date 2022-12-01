@@ -15,6 +15,8 @@ Group name: Suggestify
 * [tv.js](tv.js)
 * [my-list.html](my-list.html)
 * [my-list.js](my-list.js)
+* [search.html](search.html)
+* [search.js](search.js)
 * [credits.html](credits.html)
 * [styles.css](styles.css)
 * [README.md](README.md)
@@ -30,4 +32,5 @@ Group name: Suggestify
 * Added a new page that fetches data from database and displays in two different sections - movies and tv-shows.
 * Upon initial page load, movies/tv-shows that are already in database will have a filled heart to signal its existence in database.
 * Created credits page to credit API that we used for this project.
+* Added heart functionality to search results as well.
 * Updated the git blame script so only sprint 4 commits are accepted.
