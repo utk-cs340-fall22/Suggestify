@@ -1115,8 +1115,6 @@ function getUpcomingMovies(url) {
 					API_KEY +
 					'&language=en-US&append_to_response=videos,reviews,similar,credits,similar,images,watch/providers';
 
-				const TRAILER_URL =
-					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
 				fetch(DETAIL_URL)
 					.then(res => res.json())
 					.then(data => {
@@ -1230,9 +1228,9 @@ function displayUpcomingMovies(data) {
                         <a href="#item3${title}" class="btn btn-xs">See Also</a>
                     </div>
                     <div class="carousel w-full">
-						<div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
-                            <div class="carousel-card bg-base-100 shadow-xl">
-                                <div class="carousel-card-body">
+						<div id="item1${title}" class="carousel-item w-full">
+							<div class="carousel-card bg-base-100 shadow-xl" style="height:700px;">
+                            	<div class="carousel-card-body">
                                     <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${movieGenre} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${formattedBudget} | <b>Revenue:</b> ${formattedRevenue}<br><br></p>
 									
 									<div class="flex">
