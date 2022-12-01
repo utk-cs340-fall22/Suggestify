@@ -117,7 +117,8 @@ const searchURL = BASE_URL + '/search/multi?' + API_KEY + '&language=en-US&page=
 const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-
+	document.getElementById('main').innerHTML = '';
+  	hearts = [];
     const searchTerm = search.value;
     const url = searchURL + searchTerm + '&include_adult=false';
     if(searchTerm){
