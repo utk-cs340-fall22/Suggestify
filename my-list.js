@@ -545,25 +545,69 @@ function displayTvFromFirestore(data) {
 		overview,
 		backdrop_path,
 		first_air_date,
-		revenue,
 		number_of_seasons,
+		number_of_episodes,
 		episode_run_time,
+		status,
+		genres,
+		tagline,
+		videos,
+		reviews,
+		similar,
+		id,
+		credits,
 	} = data;
 
-	const backdropURL = POSTER_URL + backdrop_path;
+	const specialCharTrailer = id + name + status + "oisbdo abdo";
+	const specialCharReviews = name + id + name + id;
+	const specialCharWatchProviders = episode_run_time + name + id + id;
+	const specialCharSimilar = id + name + episode_run_time + id;
+	const specialCharCreditsCast = id + name + episode_run_time + status;
+	const specialCharCreditsCrew = id + episode_run_time + name + tagline;
+	let showGenre = '';
 
-	const tvCard = document.getElementById('tv');
-	const showEl = document.createElement('div');
-	showEl.classList.add('show');
+	genres.forEach(genre => {
+		showGenre += genre.name + ", ";
+	})
 
-	showEl.innerHTML = `
-	<label for="${name}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+	let posterURL = null;
+	let backdropURL = null;
+
+	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+	if (backdrop_path != null) {
+		backdropURL = POSTER_URL + backdrop_path;
+		if (poster_path == null) {
+			posterURL = backdropURL;
+		}
+		else if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+		}
+	}
+	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+	/* Otherwise, just sets them equal to blank square */
+	else if (backdrop_path == null) {
+		if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+			backdropURL = posterURL;
+		}
+		else if (poster_path == null) {
+			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+		}
+	}
+
+
+	const showCard = document.getElementById('tv');
+
+	const showEl = `
+	<label for="${name + id}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
 		<img src="${
-			POSTER_URL + poster_path
+			posterURL
 		}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
 		</label>
-    <i class="heart-icon-tv fa-solid fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
-    <input type="checkbox" id="${name}" class="modal-toggle" />
+    <i id="heart-${name}" class="heart-icon fa-regular fa-heart relative bottom-[-320px] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+    <input type="checkbox" id="${name + id}" class="modal-toggle" />
+
     <div class="modal">
       <div class="modal-box w-full max-w-5xl h-full">
         <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
@@ -575,48 +619,74 @@ function displayTvFromFirestore(data) {
           <font size="+100">${name}</font> 
           </h1>
           <br/>
-          <h3> <b> Overview </b> </h3>
-          <p>${overview}</p>
+          <p>${tagline}</p>
           <br/><br/>
           <p><b>First Air Date:</b> ${first_air_date} | <b>Rating:</b> ${vote_average} / 10 | <b>Seasons:</b> ${number_of_seasons}</p>
         </div>
       </div>
       <div class="flex justify-center w-full py-2 gap-2">
-        <a href="#item1${name}" class="btn btn-xs">More Info</a> 
-        <a href="#item2${name}" class="btn btn-xs">See Also</a> 
-        <a href="#item3${name}" class="btn btn-xs">Reviews</a> 
+        <a href="#item1${name + id}" class="btn btn-xs">More Info</a>
+		<a href="#item3${name + id}" class="btn btn-xs">Reviews</a> 
+        <a href="#item2${name + id}" class="btn btn-xs">See Also</a> 
       </div>
-      <div class="carousel w-full">
-        <div id="item1${name}" class="carousel-item w-full">
-          <div class="card w-96 bg-base-100 shadow-xl">
-            <div class="card-body">
-              <h1><b>More Info</b></h1>
-              <p>Episode Runtime -- ${episode_run_time[0]} minutes</p>
-            </div>
-          </div>
-        </div> 
-        <div id="item2${name}" class="carousel-item w-full">
-          <div class="card w-96 bg-base-100 shadow-xl">
-            <div class="card-body">
-            <h1><b>See Also</b></h1>
-            </div>
-          </div>
-        </div> 
-        <div id="item3${name}" class="carousel-item w-full">
-          <div class="card w-96 bg-base-100 shadow-xl">
-            <div class="card-body">
-            <h1><b>Reviews</b></h1>
-            </div>
-          </div>
-        </div> 
-      </div> 
-  
-      <div class="modal-action">
-          <label for="${name}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-      </div>
-      </div>
+	  <div class="carousel w-full">
+	  <div id="item1${name + id}" class="carousel-item w-full">
+		  	<div class="carousel-card bg-base-100 shadow-xl" style="height: 1600px !important;">
+				<div class="carousel-card-body">
+					<h1><b>About this show</b></h1>
+					<hr>
+					<br>
+					<h1><b>Description</b></h1>
+					<p>${overview}</p>
+					<br>
+					<p>
+					<b>Genre</b>: ${showGenre} |
+					<b>Status</b>: ${status} |
+					<b>Number of Episodes</b>: ${number_of_episodes}
+					</p>
+					<br>
+					<div id="${specialCharWatchProviders}" style="
+							display: flex !important;
+							flex-direction: row !important;
+							flex-wrap: wrap !important;">
+							<b>Watch Providers</b>: &nbsp;
+					</div>
+					<br>
+					<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+						<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>
+					</div>
+					<br>
+					<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+						<p id="${specialCharCreditsCast}"><b>Cast</b>: </p>
+					</div>
+			  		<br>
+			  		<h2 style="text-align: center;"><b>Trailer</b></h2>
+			  		<div class="card-body" style="width: 900px; height: 500px; text-align: center;" id="${specialCharTrailer}"> </div>
+		  		</div>
+	  		</div>
+  		</div> 
+  		<div id="item3${name + id}" class="carousel-item w-full">
+			<div id="${specialCharReviews}"></div>
+		</div> 
+		<div id="item2${name + id}" class="carousel-item w-full">
+			<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
+		</div>
+		<div class="modal-action">
+			<label for="${name + id}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+		</div>
 	</div>`;
-	tvCard.appendChild(showEl);
+  showCard.innerHTML += showEl;
+
+	setTimeout(function () {
+		getTrailer(videos.results, specialCharTrailer);
+	}, 5);
+
+	/* Call all functions with their respective specialChar id used within the html */
+	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+	getDirector(credits.crew, specialCharCreditsCrew);
+	getCast(credits.cast, specialCharCreditsCast);
+	getReviews(reviews.results, specialCharReviews);
+	getSimilar(similar.results, specialCharSimilar);
 
 	/* Heart functionality */
 	let hIcon = document.querySelectorAll('.heart-icon-tv');
@@ -632,4 +702,181 @@ function displayTvFromFirestore(data) {
 			}, '500');
 		});
 	});
+}
+
+async function getTrailer(videos, specialCharTrailer) {
+	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+	if (videos.length != 0) {
+		videos.forEach(vid => {
+			if (
+				vid.name == 'Official Trailer' ||
+				vid.name == 'Official Trailer [Subtitled]' ||
+				vid.name == 'Dub Trailer' ||
+				vid.name == 'United States Trailer' ||
+				vid.name == 'Official Promo' || 
+				vid.iso_639_1 == 'en' && vid.iso_3166_1 == 'US'
+			) {
+				const trailer = YOUTUBE_TRAILER_URL + vid.key;
+				const trailerHTML = `
+                <iframe 
+					style="text-align:center; width: 900px; height: 600px"
+                    src="${trailer}"
+					allowfullscreen >
+                </iframe>`;
+				document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+			}
+		});
+	} 
+	else {
+		const trailerHTML = `<p style="text-align:center;>No Trailer Available</p>`;
+		document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+	}
+}
+
+/* Gets the first 10 people listed in the cast */
+async function getCast(cast, specialCharCreditsCast) {
+	let castCount = 0;
+	let shouldBreak = false;
+
+	cast.forEach(person => {
+		if (shouldBreak) {
+			return;
+		}
+		if (castCount < 10) {
+			const castMember = `${person.name} | `;
+			document.getElementById(specialCharCreditsCast).innerHTML += castMember;
+			castCount++;
+		}
+		else if (castCount >= 10) {
+			shouldBreak = true;
+		}
+	});
+}
+
+/* Gets the director of the film to display */
+async function getDirector(crew, specialCharCreditsCrew) {
+	let shouldBreak = false;
+
+	if (crew.length != 0) {
+		crew.forEach(person => {
+			if (shouldBreak) {
+				return;
+			}
+			if (person.job == "Director" || person.known_for_department == "Directing") {
+				const director = `${person.name}`;
+				document.getElementById(specialCharCreditsCrew).innerHTML += director;
+				shouldBreak = true;
+			}
+		});
+	}
+	else {
+		const director = `N/A`;
+		document.getElementById(specialCharCreditsCrew).innerHTML += director;
+	}
+}
+
+/* Gets all watch providers and display's their logo */
+async function getWatchProviders(providers, specialCharWatchProviders) {
+	const providerURL = 'https://image.tmdb.org/t/p/original/';
+
+	/* If the show has providers / places to rent / watch, it will display the logo */
+	if (providers != null) {
+		if (providers.flatrate != null) {
+			providers.flatrate.forEach(prov => {	
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>	
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+			})
+		}
+		if (providers.rent != null) {
+			providers.rent.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+			})
+		}
+		else if (providers.buy != null) {
+			providers.buy.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+			})
+		}
+		else if (providers.ads != null) {
+			providers.ads.forEach(prov => {
+				const providerHtml = `
+				<div>
+					<img src="${providerURL + prov.logo_path}" style="
+					height: 50px !important;
+					width: 50px !important;    
+					"/>
+				</div>
+				`;
+				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;	
+			})
+		}
+	}
+	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
+	else {
+		const providerHtml = `
+		<div>
+			None at this time
+		</div>`;
+		document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+	}
+}
+
+/* Get and display 3 reviews left for a show -- if none, display none */
+async function getReviews(reviews, specialCharReviews) {
+	if (reviews.length != 0) {
+		reviews.forEach(rev => {
+			const reviewHtml = `
+			<div>
+				<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
+				<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+					<p style="margin-left: 30px !important;">
+						${rev.content}
+					</p>
+				</div>
+			</div>`;
+			document.getElementById(specialCharReviews).innerHTML += reviewHtml;
+		})
+	}
+	else {
+		const reviewHtml = `<p><b>N/A</b></p>`;
+		document.getElementById(specialCharReviews).innerHTML = reviewHtml;
+	}
+}
+
+async function getSimilar(show, specialCharSimilar) {
+	if (show.length != 0) {
+		show.forEach(s => {
+			const similarHTML = `
+				<label for="${s.name}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+					<img src="${POSTER_URL + s.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+					<span class="tooltiptext"><b>${s.name}</b><br>${s.vote_average}/10</span>
+				</label>
+				`;
+
+			document.getElementById(specialCharSimilar).innerHTML += similarHTML;
+		})
+	}
 }

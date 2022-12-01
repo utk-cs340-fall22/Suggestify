@@ -33,4 +33,5 @@ Group name: Suggestify
 * Upon initial page load, movies/tv-shows that are already in database will have a filled heart to signal its existence in database.
 * Created credits page to credit API that we used for this project.
 * Added heart functionality to search results as well.
+* Added more info inside each modal for movies and tv shows.
 * Updated the git blame script so only sprint 4 commits are accepted.
