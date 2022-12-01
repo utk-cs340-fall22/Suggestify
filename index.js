@@ -180,6 +180,21 @@ function getTrendingMovies(url) {
 							release: data.release_date,
 							description: data.overview,
 						});
+
+						if (data.videos.results.length != 0 && trailerCount < 5) {
+							data.videos.results.forEach(vid => {
+								if (
+									vid.name == 'Official Trailer' ||
+									vid.name == 'Official Trailer [Subtitled]' ||
+									vid.name == 'Dub Trailer' ||
+									vid.name == 'United States Trailer'
+								) {
+									carouselStuff(data);
+									trailerCount++;
+								}
+							});
+						}
+
 						displayTrendingMovies(data);
 					});
 			});
@@ -440,46 +455,57 @@ function carouselStuff(data) {
 	const {
 		title,
 		poster_path,
-		vote_average,
-		overview,
 		backdrop_path,
 		release_date,
+		vote_average,
+		budget,
+		revenue,
+		genres,
+		status,
+		tagline,
 		runtime,
-		id,
+		overview,
 		videos,
+		id,
 	} = data;
 	const backdrop_url = POSTER_URL + backdrop_path;
 
-	const specialChar = id + title;
+	const specialChar = id + title + '%';
 	const movieEl = `
-                <div id="${(title, id)}" class="carousel-item-big-boi w-full ">
-                <label for="my-modal-${
-									(title, id)
-								}" class="btn modal-button" style="height: 502px !important;padding-right: 0px !important;padding-left: 0px !important;margin-right: 0px !important;margin-left: 0px !important;margin-bottom: 10px !important;padding-bottom: 0px !important;width: 1912px !important;" onClick="moveIt(1)">
-                <img src="${backdrop_url}" alt="poster" style="margin-right: auto margin-left: !important;height: 552px !important;width: 1917px !important;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;
-                            border-left-width: 0px;padding-left: 0px;border-right-width: 0px;border-top-width: 0px;"></img>
+    <div id="${title,id}" class="carousel-item-big-boi w-full ">
+    <label for="my-modal-${title,id}" class="btn modal-button" style="height: 502px !important;padding-right: 0px !important;padding-left: 0px !important;margin-right: 0px !important;margin-left: 0px !important;margin-bottom: 0px !important;padding-bottom: 0px !important;width: 100% !important;" onClick="moveIt(1)">
+    <img src="${
+        backdrop_url
+                }" alt="poster" style="margin-right: auto; margin-left: auto; !important;height: 100% !important;overflow: hidden !important;width: 100% !important;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;
+                border-left-width: 0px;padding-left: 0px;border-right-width: 0px;border-top-width: 0px;"></img>
+    </label>
+
+    <input type="checkbox" class="modal-toggle" id="my-modal-${title,id}" />
+        <div class="modal">
+            <div class="modal-box bg-[#000000] from-zinc-900 relative w-full max-w-5xl h-full" id="${title}">
+                <label
+                    for="my-modal-${title,id}"
+                    class="btn btn-sm btn-circle absolute right-2 top-2"
+                    onclick="moveIt(0)">✕
                 </label>
-            
-                <input type="checkbox" class="modal-toggle" id="my-modal-${
-									(title, id)
-								}" />
-                    <div class="modal">
-                        <div class="modal-box bg-[#000000] from-zinc-900 relative w-full max-w-5xl h-full" id="${title}">
-                            <label
-                                for="my-modal-${(title, id)}"
-                                class="btn btn-sm btn-circle absolute right-2 top-2"
-                                >✕
-                            </label>
-                            <div class="card-body" id="${specialChar}"> </div>
-                       
-                        </div>
-                    </div>
-                </div>
-                `;
+                <div class="card-body" id="${specialChar}"></div>
+				<div style="color:white;">
+				<h1 class="card-title" style="text-align: center !important;">
+					<font size="+100">${title}</font> 
+				</h1>
+				<br/>
+				
+				<p><h3> <b> Overview </b> </h3><br>${overview}<br><br><b>Genre:</b> ${
+					genres[0].name
+				} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>
+				</div>
+            </div>
+        </div>
+    </div>
+    `;
 	document.getElementById('poggers').innerHTML += movieEl;
 	getTrailer(videos.results, specialChar);
 }
-let number = 0;
 
 function openTab(evt, tabName) {
 	// Declare all variables
@@ -504,9 +530,12 @@ function openTab(evt, tabName) {
 	evt.currentTarget.className += ' active';
 }
 
+var slideInterval;
+
 function moveIt(redlight) {
-	var slideInterval = setInterval(move, 6000);
+	
 	if (redlight == 1) clearInterval(slideInterval);
+	else slideInterval = setInterval(move, 8000);
 }
 function move() {
 	moveSlide(1);
