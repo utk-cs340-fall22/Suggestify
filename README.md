@@ -42,6 +42,10 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 
 ![Login Page](login_page.png)
 
+### Search page
+![Search Page 1](search_page.png)
+![Search page 2](search_page2.png)
+
 ## Contributors (Name & Github ID)
 
 - Christian Graham - cgraha37
