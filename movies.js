@@ -359,6 +359,7 @@ function displayMovies(movie) {
 			</div> 
 		  	<div id="item2${title}" class="carousel-item w-full">
 				<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
+			</div>
 			<div class="modal-action">
           		<label for="${title}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
         	</div>
