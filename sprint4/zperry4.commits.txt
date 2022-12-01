@@ -1,0 +1,647 @@
+
+---> movies.js 
+
+adc9fb16 (zperry4       2022-11-26 11:30:19 -0600 181) 			/* Reset the page to be empty, reset pageNumber value & value displayed, & call getMovies w/ new URL */
+adc9fb16 (zperry4       2022-11-26 11:30:19 -0600 182) 			pageNumber = 1;
+adc9fb16 (zperry4       2022-11-26 11:30:19 -0600 183) 			document.getElementById('pageNumberButton').textContent = pageNumber;
+adc9fb16 (zperry4       2022-11-26 11:30:19 -0600 186) 			getMovies(FILTERED_URL);
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 233) 					'&language=en-US&append_to_response=videos,credits,similar,images,reviews,watch/providers';
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 254) 		id,
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 264) 		tagline,
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 265) 		videos,
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 266) 		reviews,
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 311) 	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 312) 	if (backdrop_path != null) {
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 313) 		backdropURL = POSTER_URL + backdrop_path;
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 314) 		if (poster_path == null) {
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 315) 			posterURL = backdropURL;
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 316) 		}
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 317) 		else if (poster_path != null) {
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 318) 			posterURL = POSTER_URL + poster_path;
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 319) 		}
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 320) 	}
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 321) 	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 322) 	/* Otherwise, just sets them equal to blank square */
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 323) 	else if (backdrop_path == null) {
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 324) 		if (poster_path != null) {
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 325) 			posterURL = POSTER_URL + poster_path;
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 326) 			backdropURL = posterURL;
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 327) 		}
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 328) 		else if (poster_path == null) {
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 329) 			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 330) 			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 331) 		}
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 332) 	}
+d7d9f970 (zperry4       2022-11-26 12:21:20 -0600 338) 					posterURL
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 354)                 <p>${tagline}</p>
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 371) 						<h1><b>Description</b></h1>
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 372) 						<p>${overview}</p>
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 418) 	setTimeout(function () {
+f1e3bed1 (zperry4       2022-11-28 17:00:54 -0500 421) 
+f1e3bed1 (zperry4       2022-11-28 17:00:54 -0500 428)   
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 516) 
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 548) 
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 551) 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 552) 	if (videos.length != 0) {
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 553) 		videos.forEach(vid => {
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 554) 			if (
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 555) 				vid.name == 'Official Trailer' ||
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 556) 				vid.name == 'Official Trailer [Subtitled]' ||
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 557) 				vid.name == 'Dub Trailer' ||
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 558) 				vid.name == 'United States Trailer' ||
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 561) 			) {
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 562) 				const trailer = YOUTUBE_TRAILER_URL + vid.key;
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 563) 				const trailerHTML = `
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 568)                 </iframe>`;
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 570) 			}
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 571) 		});
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 572) 	} 
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 573) }
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 574) 
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 614) 
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 616) 	if (providers != null) {
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 617) 		if (providers.flatrate != null) {
+8734e484 (zperry4       2022-11-29 10:35:16 -0500 618) 			providers.flatrate.forEach(prov => {	
+8734e484 (zperry4       2022-11-29 10:35:16 -0500 619) 				const providerHtml = `
+8734e484 (zperry4       2022-11-29 10:35:16 -0500 620) 				<div>
+8734e484 (zperry4       2022-11-29 10:35:16 -0500 625) 				</div>
+8734e484 (zperry4       2022-11-29 10:35:16 -0500 626) 				`;
+8734e484 (zperry4       2022-11-29 10:35:16 -0500 628) 			})
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 629) 		}
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 630) 		if (providers.rent != null) {
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 668) 		}
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 669) 	}
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 670) 	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 671) 	else {
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 677) 	}
+d945ab12 (zperry4       2022-11-28 16:50:18 -0500 678) }
+1719f429 (zperry4       2022-11-29 10:18:44 -0500 680) /* Get and display 3 reviews left for a movie -- if none, display none */
+
+---> tv.js 
+
+adc9fb16 (zperry4       2022-11-26 11:30:19 -0600 173) 			pageNumber = 1;
+adc9fb16 (zperry4       2022-11-26 11:30:19 -0600 174) 			document.getElementById('pageNumberButton').textContent = pageNumber;
+adc9fb16 (zperry4       2022-11-26 11:30:19 -0600 177) 			getTvShows(FILTERED_URL);
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 280) 
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 281) 	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 282) 	if (backdrop_path != null) {
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 283) 		backdropURL = POSTER_URL + backdrop_path;
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 284) 		if (poster_path == null) {
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 285) 			posterURL = backdropURL;
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 286) 		}
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 287) 		else if (poster_path != null) {
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 288) 			posterURL = POSTER_URL + poster_path;
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 289) 		}
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 290) 	}
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 291) 	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 292) 	/* Otherwise, just sets them equal to blank square */
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 293) 	else if (backdrop_path == null) {
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 294) 		if (poster_path != null) {
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 295) 			posterURL = POSTER_URL + poster_path;
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 296) 			backdropURL = posterURL;
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 297) 		}
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 298) 		else if (poster_path == null) {
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 299) 			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 300) 			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 301) 		}
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 302) 	}
+542d04ae (zperry4       2022-11-26 12:25:20 -0600 311) 			posterURL
+^7cb679a (rpatel90    2022-11-10 21:36:50 -0500 51) - Zachary Perry - zperry4
+
+
+---> movies.html
+
+72e39faa (Zac Perry   2022-11-29 17:48:41 -0500  88) 		<h1 id="pageTitle"> <p>&#127909; <b>Movies</b> &#127909;</p> </h1>
+72e39faa (Zac Perry   2022-11-29 17:48:41 -0500  90) 		<br /><br />
+
+
+---> tv.html
+
+937f0a1b (Zac Perry   2022-11-29 17:49:18 -0500  88) 		<h1 id="pageTitle"><p>&#128250; <b>TV Shows</b> &#128250;</p></h1>
+
+
+---> styles.css
+
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 252) 
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 253) .tooltip {
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 254)   position: relative;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 255)   display: inline-block;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 256) }
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 257) 
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 258) /* Tooltip text */
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 259) .tooltip .tooltiptext {
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 260)   visibility: hidden;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 261)   background-color: rgba(0, 0, 0, 0.7);
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 262)   color: #fff;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 263)   text-align: center;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 264)   padding: 5px 0;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 265)   border-radius: 6px;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 266) 
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 267)   width: 190px;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 268)   top: 70%;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 269)   left: 50%;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 270)   margin-left: -95px;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 271) 
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 272)   position: absolute;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 273)   z-index: 1;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 274) }
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 275) 
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 276) /* Show the tooltip text when you mouse over the tooltip container */
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 277) .tooltip:hover .tooltiptext {
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 278)   visibility: visible;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 279) }
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 280) 
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 281) .modal-button-one {
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 282)   display:flex;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 283)   flex-wrap:wrap;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 284)   justify-content:center;
+96cc12c6 (Zac Perry   2022-11-29 19:11:28 -0500 285) }
+
+
+---> movies.js
+
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 164) 				for (let i = 0; i < selectedGenreFilter.length; i++) {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 262) 		budget,
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 267) 		genres,
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 268) 		status,
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 269) 		similar,
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 270) 		credits
+2af6f091 (Zachary Perry 2022-11-30 20:36:02 -0500 273) 
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 274) 	
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 275) 	const specialCharTrailer = id + title;
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 276) 	const specialCharReviews = title + id;
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 277) 	const specialCharWatchProviders = runtime + title + id;
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 278) 	const specialCharSimilar = id + title + runtime;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 279) 	const specialCharCreditsCast = title + runtime + id;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 280) 	const specialCharCreditsCrew = id + runtime + title + release_date;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 281) 	let movieGenre = '';
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 282) 	let formattedRevenue = '';
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 283) 	let formattedBudget = '';
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 284) 
+771464d9 (Zac Perry     2022-11-30 18:23:01 -0500 285) 	/* Formats the revenue and budget into USD */
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 286) 	const formatter= new Intl.NumberFormat('en-US', {
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 287) 		style: 'currency',
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 288) 		currency: 'USD',
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 289) 	})
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 290) 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 291) 	genres.forEach(genre => {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 292) 		movieGenre += genre.name + ", ";
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 293) 	})
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 294) 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 295) 	if (revenue == 0) {
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 296) 		formattedRevenue = "N/A";
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 297) 	} else {
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 298) 		formattedRevenue = formatter.format(revenue);
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 299) 	}
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 300) 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 301) 	if (budget == 0) {
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 302) 		formattedBudget = "N/A";
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 303) 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 304) 	} else {
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 305) 		formattedBudget = formatter.format(budget);
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 306) 	}
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 308) 	let posterURL = null;
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 309) 	let backdropURL = null;
+2af6f091 (Zachary Perry 2022-11-30 20:36:02 -0500 310) 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 360)               <a href="#item1${title}" class="btn btn-xs">Details</a> 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 362) 			  <a href="#item2${title}" class="btn btn-xs">See Also</a> 
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 366) 					<div class="carousel-card bg-base-100 shadow-xl" style="height: 1600px !important;">
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 367) 						<div class="carousel-card-body">
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 368) 						<h1><b>About this movie</b></h1>
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 369) 						<hr>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 370) 						<br>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 373) 						<br>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 374) 						<p>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 375) 							<b>Genre</b>: ${movieGenre} |
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 376) 						  	<b>Status</b>: ${status} |
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 377) 						  	<b>Budget</b>: ${formattedBudget} |
+a3d531df (Zac Perry     2022-11-30 18:19:52 -0500 378) 						  	<b>Revenue</b>: ${formattedRevenue}
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 379) 						</p>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 380) 						<br>
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 381) 						<div id="${specialCharWatchProviders}" style="
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 382) 								display: flex !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 383) 							  	flex-direction: row !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 384) 							  	flex-wrap: wrap !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 385) 							  	justify-content: flex-start !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 386) 							  	align-items: center !important;">
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 387) 							  	<b>Watch Providers</b>: &nbsp;
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 388) 						</div>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 389) 						<br>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 390) 						<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 391) 							<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 392) 						</div>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 393) 						<br>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 394) 						<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 395) 							<p id="${specialCharCreditsCast}"><b>Cast</b>: </p>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 396) 						</div>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 397) 						<br>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 398) 						<h2 style="text-align: center;"><b>Trailer</b></h2>
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 399) 						<div class="card-body" style="width: 900px; height: 500px; text-align: center;" id="${specialCharTrailer}"> </div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 402) 			</div> 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 403) 			<div id="item3${title}" class="carousel-item w-full">
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 404) 				<div id="${specialCharReviews}"></div>
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 407) 				<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
+2ce94d87 (Zac Perry     2022-11-30 19:18:42 -0500 408) 			</div>
+771464d9 (Zac Perry     2022-11-30 18:23:01 -0500 417) 	/* Used to help improve load time of trailers */
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 419) 		getTrailer(videos.results, specialCharTrailer);
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 420) 	}, 5);
+771464d9 (Zac Perry     2022-11-30 18:23:01 -0500 422) 	/* Call all functions with their respective specialChar id used within the html */
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 423) 	getWatchProviders(movie["watch/providers"].results["US"], specialCharWatchProviders);
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 424) 	getDirector(credits.crew, specialCharCreditsCrew);
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 425) 	getCast(credits.cast, specialCharCreditsCast);
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 426) 	getReviews(reviews.results, specialCharReviews);
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 427) 	getSimilar(similar.results, specialCharSimilar);
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 483) let pageNumber = 1;
+771464d9 (Zac Perry     2022-11-30 18:23:01 -0500 549) /* Gets a trailer for the movie */
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 550) async function getTrailer(videos, specialCharTrailer) {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 559) 				vid.name == 'Official Promo' || 
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 560) 				vid.iso_639_1 == 'en' && vid.iso_3166_1 == 'US'
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 564)                 <iframe 
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 565) 					style="text-align:center; width: 900px; height: 400px"
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 566)                     src="${trailer}"
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 567) 					allowfullscreen >
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 569) 				document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+771464d9 (Zac Perry     2022-11-30 18:23:01 -0500 575) /* Gets the first 10 people listed in the cast */
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 576) async function getCast(cast, specialCharCreditsCast) {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 577) 	let castCount = 0;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 578) 	let shouldBreak = false;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 579) 
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 580) 	cast.forEach(person => {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 581) 		if (shouldBreak) {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 582) 			return;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 583) 		}
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 584) 		if (castCount < 10) {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 585) 			const castMember = `${person.name} | `;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 586) 			document.getElementById(specialCharCreditsCast).innerHTML += castMember;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 587) 			castCount++;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 588) 		}
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 589) 		else if (castCount >= 10) {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 590) 			shouldBreak = true;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 591) 		}
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 592) 	});
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 593) }
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 594) 
+771464d9 (Zac Perry     2022-11-30 18:23:01 -0500 595) /* Gets the director of the film to display */
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 596) async function getDirector(crew, specialCharCreditsCrew) {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 597) 	let shouldBreak = false;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 598) 
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 599) 	crew.forEach(person => {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 600) 		if (shouldBreak) {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 601) 			return;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 602) 		}
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 603) 		if (person.job == "Director") {
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 604) 			const director = `${person.name}`;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 605) 			document.getElementById(specialCharCreditsCrew).innerHTML += director;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 606) 			shouldBreak = true;
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 607) 		}
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 608) 	});
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 609) }
+13f93f3c (Zac Perry     2022-11-30 17:35:13 -0500 610) 
+771464d9 (Zac Perry     2022-11-30 18:23:01 -0500 611) /* Gets all watch providers and display's their logo */
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 612) async function getWatchProviders(providers, specialCharWatchProviders) {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 613) 	const providerURL = 'https://image.tmdb.org/t/p/original/';
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 615) 	/* If the movie has providers / places to rent / watch, it will display the logo */
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 621) 					<img src="${providerURL + prov.logo_path}" style="
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 622) 					height: 50px !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 623) 					width: 50px !important;    
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 624) 					"/>	
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 627) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 631) 			providers.rent.forEach(prov => {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 632) 				const providerHtml = `
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 633) 				<div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 634) 					<img src="${providerURL + prov.logo_path}" style="
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 635) 					height: 50px !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 636) 					width: 50px !important;    
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 637) 					"/>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 638) 				</div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 639) 				`;
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 640) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 641) 			})
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 642) 		}
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 643) 		else if (providers.buy != null) {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 644) 			providers.buy.forEach(prov => {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 645) 				const providerHtml = `
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 646) 				<div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 647) 					<img src="${providerURL + prov.logo_path}" style="
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 648) 					height: 50px !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 649) 					width: 50px !important;    
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 650) 					"/>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 651) 				</div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 652) 				`;
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 653) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 654) 			})
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 655) 		}
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 656) 		else if (providers.ads != null) {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 657) 			providers.ads.forEach(prov => {
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 658) 				const providerHtml = `
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 659) 				<div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 660) 					<img src="${providerURL + prov.logo_path}" style="
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 661) 					height: 50px !important;
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 662) 					width: 50px !important;    
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 663) 					"/>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 664) 				</div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 665) 				`;
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 666) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;	
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 667) 			})
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 672) 		const providerHtml = `
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 673) 		<div>
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 674) 			None at this time
+d3db142c (Zac Perry     2022-11-29 17:49:10 -0500 675) 		</div>`;
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 676) 		document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 679) 
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 681) async function getReviews(reviews, specialCharReviews) {
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 682) 	if (reviews.length != 0) {
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 683) 		reviews.forEach(rev => {
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 684) 			const reviewHtml = `
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 685) 			<div>
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 686) 				<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 687) 				<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 688) 					<p style="margin-left: 30px !important;">
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 689) 						${rev.content}
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 690) 					</p>
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 691) 				</div>
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 692) 			</div>`;
+8b3ab84b (Zac Perry     2022-11-29 18:37:43 -0500 693) 			document.getElementById(specialCharReviews).innerHTML += reviewHtml;
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 694) 		})
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 695) 	}
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 696) 	else {
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 697) 		const reviewHtml = `<p><b>N/A</b></p>`;
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 698) 		document.getElementById(specialCharReviews).innerHTML = reviewHtml;
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 699) 	}
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 700) }
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 701) 
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 702) async function getSimilar(movies, specialCharSimilar) {
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 703) 	if (movies.length != 0) {
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 704) 		movies.forEach(mov => {
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 705) 			const similarHTML = `
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 706) 				<label for="${mov.title}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 707) 					<img src="${POSTER_URL + mov.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 708) 					<span class="tooltiptext"><b>${mov.title}</b><br>${mov.vote_average}/10</span>
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 709) 				</label>
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 710) 				`;
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 711) 
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 712) 			document.getElementById(specialCharSimilar).innerHTML += similarHTML;
+96cc12c6 (Zac Perry     2022-11-29 19:11:28 -0500 713) 		})
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 714) 	}
+318566eb (Zac Perry     2022-11-28 19:20:04 -0500 715) }
+
+
+---> tv.js
+
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 225) 					'&language=en-US&append_to_response=videos,credits,similar,images,reviews,watch/providers';
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 254) 		number_of_episodes,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 256) 		status,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 257) 		genres,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 258) 		tagline,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 259) 		videos,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 260) 		reviews,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 261) 		similar,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 262) 		id,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 263) 		credits,
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 266) 	const specialCharTrailer = id + name + status + "oisbdo abdo";
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 267) 	const specialCharReviews = name + id + name + id;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 268) 	const specialCharWatchProviders = episode_run_time + name + id + id;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 269) 	const specialCharSimilar = id + name + episode_run_time + id;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 270) 	const specialCharCreditsCast = id + name + episode_run_time + status;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 271) 	const specialCharCreditsCrew = id + episode_run_time + name + tagline;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 272) 	let showGenre = '';
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 273) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 274) 	genres.forEach(genre => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 275) 		showGenre += genre.name + ", ";
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 276) 	})
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 278) 	let posterURL = null;
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 279) 	let backdropURL = null;
+2af6f091 (Zachary Perry 2022-11-30 20:36:02 -0500 304) 
+2af6f091 (Zachary Perry 2022-11-30 20:36:02 -0500 307) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 309) 	<label for="${name + id}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 315)     <input type="checkbox" id="${name + id}" class="modal-toggle" />
+2af6f091 (Zachary Perry 2022-11-30 20:36:02 -0500 316) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 328)           <p>${tagline}</p>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 334)         <a href="#item1${name + id}" class="btn btn-xs">More Info</a>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 335) 		<a href="#item3${name + id}" class="btn btn-xs">Reviews</a> 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 336)         <a href="#item2${name + id}" class="btn btn-xs">See Also</a> 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 339) 	  <div id="item1${name + id}" class="carousel-item w-full">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 340) 		  	<div class="carousel-card bg-base-100 shadow-xl" style="height: 1600px !important;">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 341) 				<div class="carousel-card-body">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 342) 					<h1><b>About this show</b></h1>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 343) 					<hr>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 344) 					<br>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 345) 					<h1><b>Description</b></h1>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 346) 					<p>${overview}</p>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 347) 					<br>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 348) 					<p>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 349) 					<b>Genre</b>: ${showGenre} |
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 350) 					<b>Status</b>: ${status} |
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 351) 					<b>Number of Episodes</b>: ${number_of_episodes}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 352) 					</p>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 353) 					<br>
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 354) 					<div id="${specialCharWatchProviders}" style="
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 355) 							display: flex !important;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 356) 							flex-direction: row !important;
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 357) 							flex-wrap: wrap !important;">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 358) 							<b>Watch Providers</b>: &nbsp;
+ecd16d09 (Zac Perry     2022-11-30 21:02:24 -0500 359) 					</div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 360) 					<br>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 361) 					<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 362) 						<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 364) 					<br>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 365) 					<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 366) 						<p id="${specialCharCreditsCast}"><b>Cast</b>: </p>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 368) 			  		<br>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 369) 			  		<h2 style="text-align: center;"><b>Trailer</b></h2>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 370) 			  		<div class="card-body" style="width: 900px; height: 500px; text-align: center;" id="${specialCharTrailer}"> </div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 374)   		<div id="item3${name + id}" class="carousel-item w-full">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 375) 			<div id="${specialCharReviews}"></div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 377) 		<div id="item2${name + id}" class="carousel-item w-full">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 378) 			<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 381) 			<label for="${name + id}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 386) 	setTimeout(function () {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 387) 		getTrailer(videos.results, specialCharTrailer);
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 388) 	}, 5);
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 389) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 390) 	/* Call all functions with their respective specialChar id used within the html */
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 391) 	getWatchProviders(show["watch/providers"].results["US"], specialCharWatchProviders);
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 392) 	getDirector(credits.crew, specialCharCreditsCrew);
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 393) 	getCast(credits.cast, specialCharCreditsCast);
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 394) 	getReviews(reviews.results, specialCharReviews);
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 395) 	getSimilar(similar.results, specialCharSimilar);
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 396) 
+2af6f091 (Zachary Perry 2022-11-30 20:36:02 -0500 398) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 520) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 521) async function getTrailer(videos, specialCharTrailer) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 522) 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 523) 	if (videos.length != 0) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 524) 		videos.forEach(vid => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 525) 			if (
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 526) 				vid.name == 'Official Trailer' ||
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 527) 				vid.name == 'Official Trailer [Subtitled]' ||
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 528) 				vid.name == 'Dub Trailer' ||
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 529) 				vid.name == 'United States Trailer' ||
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 530) 				vid.name == 'Official Promo' || 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 531) 				vid.iso_639_1 == 'en' && vid.iso_3166_1 == 'US'
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 532) 			) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 533) 				const trailer = YOUTUBE_TRAILER_URL + vid.key;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 534) 				const trailerHTML = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 535)                 <iframe 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 536) 					style="text-align:center; width: 900px; height: 600px"
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 537)                     src="${trailer}"
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 538) 					allowfullscreen >
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 539)                 </iframe>`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 540) 				document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 541) 			}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 542) 		});
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 543) 	} 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 544) 	else {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 545) 		const trailerHTML = `<p style="text-align:center;>No Trailer Available</p>`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 546) 		document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 547) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 548) }
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 549) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 550) /* Gets the first 10 people listed in the cast */
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 551) async function getCast(cast, specialCharCreditsCast) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 552) 	let castCount = 0;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 553) 	let shouldBreak = false;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 554) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 555) 	cast.forEach(person => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 556) 		if (shouldBreak) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 557) 			return;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 558) 		}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 559) 		if (castCount < 10) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 560) 			const castMember = `${person.name} | `;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 561) 			document.getElementById(specialCharCreditsCast).innerHTML += castMember;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 562) 			castCount++;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 563) 		}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 564) 		else if (castCount >= 10) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 565) 			shouldBreak = true;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 566) 		}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 567) 	});
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 568) }
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 569) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 570) /* Gets the director of the film to display */
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 571) async function getDirector(crew, specialCharCreditsCrew) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 572) 	let shouldBreak = false;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 573) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 574) 	if (crew.length != 0) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 575) 		crew.forEach(person => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 576) 			if (shouldBreak) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 577) 				return;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 578) 			}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 579) 			if (person.job == "Director" || person.known_for_department == "Directing") {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 580) 				const director = `${person.name}`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 581) 				document.getElementById(specialCharCreditsCrew).innerHTML += director;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 582) 				shouldBreak = true;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 583) 			}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 584) 		});
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 585) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 586) 	else {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 587) 		const director = `N/A`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 588) 		document.getElementById(specialCharCreditsCrew).innerHTML += director;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 589) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 590) }
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 591) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 592) /* Gets all watch providers and display's their logo */
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 593) async function getWatchProviders(providers, specialCharWatchProviders) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 594) 	const providerURL = 'https://image.tmdb.org/t/p/original/';
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 595) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 596) 	/* If the show has providers / places to rent / watch, it will display the logo */
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 597) 	if (providers != null) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 598) 		if (providers.flatrate != null) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 599) 			providers.flatrate.forEach(prov => {	
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 600) 				const providerHtml = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 601) 				<div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 602) 					<img src="${providerURL + prov.logo_path}" style="
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 603) 					height: 50px !important;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 604) 					width: 50px !important;    
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 605) 					"/>	
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 606) 				</div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 607) 				`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 608) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 609) 			})
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 610) 		}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 611) 		if (providers.rent != null) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 612) 			providers.rent.forEach(prov => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 613) 				const providerHtml = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 614) 				<div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 615) 					<img src="${providerURL + prov.logo_path}" style="
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 616) 					height: 50px !important;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 617) 					width: 50px !important;    
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 618) 					"/>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 619) 				</div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 620) 				`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 621) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 622) 			})
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 623) 		}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 624) 		else if (providers.buy != null) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 625) 			providers.buy.forEach(prov => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 626) 				const providerHtml = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 627) 				<div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 628) 					<img src="${providerURL + prov.logo_path}" style="
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 629) 					height: 50px !important;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 630) 					width: 50px !important;    
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 631) 					"/>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 632) 				</div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 633) 				`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 634) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 635) 			})
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 636) 		}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 637) 		else if (providers.ads != null) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 638) 			providers.ads.forEach(prov => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 639) 				const providerHtml = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 640) 				<div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 641) 					<img src="${providerURL + prov.logo_path}" style="
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 642) 					height: 50px !important;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 643) 					width: 50px !important;    
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 644) 					"/>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 645) 				</div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 646) 				`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 647) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;	
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 648) 			})
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 649) 		}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 650) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 651) 	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 652) 	else {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 653) 		const providerHtml = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 654) 		<div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 655) 			None at this time
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 656) 		</div>`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 657) 		document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 658) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 659) }
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 660) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 661) /* Get and display 3 reviews left for a show -- if none, display none */
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 662) async function getReviews(reviews, specialCharReviews) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 663) 	if (reviews.length != 0) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 664) 		reviews.forEach(rev => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 665) 			const reviewHtml = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 666) 			<div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 667) 				<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 668) 				<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 669) 					<p style="margin-left: 30px !important;">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 670) 						${rev.content}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 671) 					</p>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 672) 				</div>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 673) 			</div>`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 674) 			document.getElementById(specialCharReviews).innerHTML += reviewHtml;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 675) 		})
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 676) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 677) 	else {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 678) 		const reviewHtml = `<p><b>N/A</b></p>`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 679) 		document.getElementById(specialCharReviews).innerHTML = reviewHtml;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 680) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 681) }
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 682) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 683) async function getSimilar(show, specialCharSimilar) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 684) 	if (show.length != 0) {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 685) 		show.forEach(s => {
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 686) 			const similarHTML = `
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 687) 				<label for="${s.name}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 688) 					<img src="${POSTER_URL + s.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 689) 					<span class="tooltiptext"><b>${s.name}</b><br>${s.vote_average}/10</span>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 690) 				</label>
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 691) 				`;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 692) 
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 693) 			document.getElementById(specialCharSimilar).innerHTML += similarHTML;
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 694) 		})
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 695) 	}
+fa831208 (Zac Perry     2022-11-30 19:24:04 -0500 696) }
+^7cb679a (rpatel90    2022-11-10 21:36:50 -0500 51) - Zachary Perry - zperry4
