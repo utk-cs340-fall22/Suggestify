@@ -13,8 +13,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 
-// addTvToFirestore('Chucky', '2021-09-12', 'Chucky is back!', 'false');
-async function addTvToFirestore(tvId, tvTitle, releaseDate, overview, liked) {
+// addTvToFirestore('Chucky', '2021-09-12', 'Chucky is back!', 'tv');
+async function addTvToFirestore(tvId, tvTitle, releaseDate, overview, type) {
 	db.collection('My List')
 		.doc(tvTitle)
 		.set({
@@ -22,7 +22,7 @@ async function addTvToFirestore(tvId, tvTitle, releaseDate, overview, liked) {
 			overview: overview,
 			release_date: releaseDate,
 			title: tvTitle,
-			isLiked: liked,
+			category: type,
 		})
 		.then(() => {
 			console.log('Document successfully written!', tvTitle);
@@ -40,7 +40,7 @@ async function getTvFromFirestore(docName) {
 		.get()
 		.then(doc => {
 			if (doc.exists) {
-				console.log('Document data:', doc.data().isLiked);
+				console.log('Document data:', doc.data());
 			} else {
 				console.log('No such document!', doc.data());
 			}
@@ -60,7 +60,7 @@ async function updateTvFromFirestore(docName, newValue) {
 			title: newValue,
 			// release_date: 'newValue',
 			// overview: 'newValue',
-			// isLiked: 'newValue',
+			// category: 'newValue',
 		})
 		.then(() => {
 			console.log('Document successfully updated!', docName);
@@ -84,6 +84,24 @@ async function deleteTvFromFirestore(docName) {
 		});
 }
 
+let count = 0;
+
+getLikedTvFromFirestore();
+async function getLikedTvFromFirestore() {
+	db.collection('My List')
+		.get()
+		.then(querySnapshot => {
+			querySnapshot.forEach(doc => {
+				// doc.data() is never undefined for query doc snapshots
+				count++;
+				document.getElementsByClassName('badge')[0].innerHTML = count;
+			});
+		})
+		.catch(error => {
+			console.log('Error getting documents: ', error);
+		});
+}
+
 /* This will need to be stored somewhere else at some point for security reasons */
 const API_KEY = 'api_key=bb1d4e0661af455e02af1ea99fb85fcb';
 const BASE_URL = 'https://api.themoviedb.org/3/';
@@ -102,7 +120,6 @@ const GENRE_URL = BASE_URL + 'genre/tv/list?' + API_KEY + '&language=en-US';
 
 var selectedGenreFilter = [];
 let hearts = [];
-let count = 0;
 
 getGenres(GENRE_URL);
 getTvShows(API_URL);
@@ -152,9 +169,12 @@ function displayGenres(genres) {
 				'&language=en-US&sort_by=popularity.desc&page=1&with_genres=' +
 				selectedGenreFilter.join(',');
 
-			main.innerHTML = '';
-			getTvShows(FILTERED_URL);
 
+			pageNumber = 1;
+			document.getElementById('pageNumberButton').textContent = pageNumber;
+      document.getElementById('tv').innerHTML = '';
+      
+			getTvShows(FILTERED_URL);
 			highlightSelectedFilter();
 		});
 
@@ -188,6 +208,7 @@ function highlightSelectedFilter() {
 
 /* Makes an API fetch call to get tv shows with whatever url you want -- this could be for upcoming shows, popular, etc */
 function getTvShows(url) {
+  hearts = [];
 	fetch(url)
 		.then(res => res.json())
 		.then(data => {
@@ -242,6 +263,7 @@ function displayTvShow(show) {
 		credits,
 	} = show;
 
+
 	const backdropURL = POSTER_URL + backdrop_path;
 	const specialCharTrailer = id + name + status + "oisbdo abdo";
 	const specialCharReviews = name + id + name + id;
@@ -255,17 +277,45 @@ function displayTvShow(show) {
 		showGenre += genre.name + ", ";
 	})
 
-	const showEl = document.createElement('div');
-	showEl.classList.add('show');
+	var posterURL = null;
+	var backdropURL = null;
 
-	showEl.innerHTML = `
+	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+	if (backdrop_path != null) {
+		backdropURL = POSTER_URL + backdrop_path;
+		if (poster_path == null) {
+			posterURL = backdropURL;
+		}
+		else if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+		}
+	}
+	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+	/* Otherwise, just sets them equal to blank square */
+	else if (backdrop_path == null) {
+		if (poster_path != null) {
+			posterURL = POSTER_URL + poster_path;
+			backdropURL = posterURL;
+		}
+		else if (poster_path == null) {
+			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+		}
+	}
+
+
+	const showCard = document.getElementById('tv');
+
+
+	const showEl = `
 	<label for="${name + id}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
 		<img src="${
-			POSTER_URL + poster_path
+			posterURL
 		}" alt="poster" style="margin-right: 0px !important; height: 400px !important; width: 250px !important;">
 		</label>
-    <i class="heart-icon fa-regular fa-heart relative bottom-[4rem] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+    <i id="heart-${name}" class="heart-icon fa-regular fa-heart relative bottom-[-320px] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
     <input type="checkbox" id="${name + id}" class="modal-toggle" />
+
     <div class="modal">
       <div class="modal-box w-full max-w-5xl h-full">
         <div class="card w-96 bg-base-100 shadow-xl image-full" style="width: 970px !important; height: 400px !important;">
@@ -335,7 +385,7 @@ function displayTvShow(show) {
 			<label for="${name + id}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
 		</div>
 	</div>`;
-	main.appendChild(showEl);
+  showCard.innerHTML += showEl;
 
 	setTimeout(function () {
 		getTrailer(videos.results, specialCharTrailer);
@@ -348,8 +398,35 @@ function displayTvShow(show) {
 	getReviews(reviews.results, specialCharReviews);
 	getSimilar(similar.results, specialCharSimilar);
 
-	/* Heart functionality */
+  /* Fill heart if movie exists in firestore */
+
 	let hIcon = document.querySelectorAll('.heart-icon');
+
+	// find all favorited movies from firestore
+	hearts.forEach(heart => {
+		for (let tv in heart) {
+			if (tv == 'tvTitle') {
+				let docName = heart[tv];
+				var docRef = db.collection('My List').doc(docName);
+				docRef
+					.get()
+					.then(doc => {
+						if (doc.exists) {
+							hIcon.forEach(icon => {
+								if (icon.id == `heart-${docName}`) {
+									icon.classList.remove('fa-regular');
+									icon.classList.add('fa-solid');
+								}
+							});
+						}
+					})
+					.catch(error => {
+						console.log('Error getting document:', error);
+					});
+			}
+		}
+	});
+
 	hIcon.forEach((icon, index) => {
 		icon.addEventListener('click', () => {
 			if (icon.classList.contains('fa-regular')) {
@@ -360,14 +437,14 @@ function displayTvShow(show) {
 					hearts[index].tvTitle,
 					hearts[index].release,
 					hearts[index].description,
-					'true'
+					'tv'
 				);
 				count++;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			} else {
 				icon.classList.remove('fa-solid');
 				icon.classList.add('fa-regular');
-				// deleteTvFromFirestore(hearts[index].tvTitle);
+				deleteTvFromFirestore(hearts[index].tvTitle);
 				count--;
 				document.getElementsByClassName('badge')[0].innerHTML = count;
 			}
@@ -384,7 +461,7 @@ function buttonForward() {
 
 		document.getElementById('pageNumberButton').textContent = pageNumber;
 
-		main.innerHTML = '';
+    document.getElementById('tv').innerHTML = '';
 
 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getTvShows call for the next page */
 		if (selectedGenreFilter.length != 0) {
@@ -417,7 +494,7 @@ function buttonBackward() {
 
 		document.getElementById('pageNumberButton').textContent = pageNumber;
 
-		main.innerHTML = '';
+		document.getElementById('tv').innerHTML = '';
 
 		/* Will check to see if there are any filters applied. If so, it will construct the FILTERED_URL for the getTvShows call for the prev page */
 		if (selectedGenreFilter.length != 0) {

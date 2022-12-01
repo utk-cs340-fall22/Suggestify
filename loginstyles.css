@@ -91,18 +91,6 @@
     color: linear-gradient(to right,#6629bb, #eca30f);
 }
 
-.facebook-btn{
-    width: 15%;
-    cursor: pointer;
-    display: inline-block;
-    margin: auto;
-    background: transparent;
-    border: 0;
-    outline: none;
-    border-radius: 30px;
-    color: linear-gradient(to right,#6629bb, #eca30f);
-}
-
 .input-group {
 	top: 180px;
 	position: absolute;

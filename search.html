@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Suggestify</title>
+		<title> Search </title>
 		<link rel="stylesheet" href="styles.css" />
 		<script
 			src="https://kit.fontawesome.com/4ea5866b14.js"
@@ -18,10 +18,10 @@
 		<script src="https://cdn.tailwindcss.com"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-		<script src="tv.js" defer></script>
+		<script src="search.js" defer></script>
 	</head>
 	<body>
-		<nav class="navbar bg-[#21252b] text-slate-300 fixed top-0">
+		<nav class="navbar bg-[#21252b] text-slate-300 sticky top-0 z-50">
 			<div class="navbar-start">
 				<div class="dropdown">
 					<label tabindex="0" class="btn btn-ghost btn-circle">
@@ -45,7 +45,7 @@
 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-[#21252b] rounded-box w-52"
 					>
 						<li><a href="movies.html">Movies</a></li>
-						<li><a href="tv.html">TV Shows</a></li>
+						<li><a href="tv.html">Tv Shows</a></li>
 						<li><a href="my-list.html">My List</a></li>
 						<li><a href="settings.html" class="mt-[12rem]">Settings</a></li>
 						<li><a href="login.html">Account</a></li>
@@ -57,7 +57,7 @@
 						>Movies</a
 					>
 					<a href="tv.html" class="btn btn-ghost normal-case text-l"
-						>TV Shows</a
+						>Tv Shows</a
 					>
 				</div>
 			</div>
@@ -65,9 +65,6 @@
 				<a href="index.html" class="btn btn-ghost normal-case text-2xl">Suggestify</a>
 			</div>
 			<div class="navbar-end">
-        <div> 
-					<a href="search.html" class="btn btn-ghost normal-case mr-8 text-l">Search</a>
-				</div>
 				<div>
 					<a href="my-list.html" class="btn btn-ghost normal-case mr-8 text-l">
 						My List</a
@@ -77,27 +74,30 @@
 				<button class="btn btn-ghost btn-circle mr-4">
 					<div>
 						<a href="login.html">
-              <img class="w-12 h-12" src="sus.png" alt="sussy">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="0.5"
+								stroke="currentColor"
+								class="w-12 h-12"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
+								/>
+							</svg>
 						</a>
 					</div>
 				</button>
 			</div>
 		</nav>
-		<br /><br /><br />
-		<br />
-		<h1 id="pageTitle"><p>&#128250; <b>TV Shows</b> &#128250;</p></h1>
-		<div id="genreTags"></div>
-		<br /><br /><br />
-		<main
-			id="tv"
-			style="margin-left: 88px !important; margin-right: 50px !important"
-		></main>
-		<div class="btn-group" id="pageButton">
-			<button class="btn" onclick="buttonBackward()">Prev</button>
-			<button class="btn" id="pageNumberButton">
-				<span id="Number">1</span>
-			</button>
-			<button class="btn" onclick="buttonForward()">Next</button>
-		</div>
+
+		<form  id="form">
+			<input type="text" placeholder="Search" id="search" class="search">
+		</form>
+
+		<main id="main" class="mt-5"></main>
 	</body>
 </html>
