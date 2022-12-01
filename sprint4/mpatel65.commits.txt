@@ -153,81 +153,72 @@
 ^7da774a (mpatel65    2022-11-16 17:10:36 -0500  136) 	BASE_URL + 'movie/now_playing?' + API_KEY + '&language=en-US&page=1';
 ^7da774a (mpatel65    2022-11-16 17:10:36 -0500  140) const API_URL7 =
 ^7da774a (mpatel65    2022-11-16 17:10:36 -0500  141) 	BASE_URL + 'movie/upcoming?' + API_KEY + '&language=en-US&page=1';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  179) 						// console.log(data);
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  205) 		runtime,
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  364)                 <div id="${(title, id)}" class="carousel-item-big-boi w-full ">
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  365)                 <label for="my-modal-${
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  366) 									(title, id)
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  367) 								}" class="btn modal-button" style="height: 502px !important;padding-right: 0px !important;padding-left: 0px !important;margin-right: 0px !important;margin-left: 0px !important;margin-bottom: 10px !important;padding-bottom: 0px !important;width: 1912px !important;" onClick="moveIt(1)">
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  368)                 <img src="${backdrop_url}" alt="poster" style="margin-right: auto margin-left: !important;height: 552px !important;width: 1917px !important;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  372)                 <input type="checkbox" class="modal-toggle" id="my-modal-${
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  373) 									(title, id)
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  374) 								}" />
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  378)                                 for="my-modal-${(title, id)}"
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  400) 	tabcontent = document.getElementsByClassName('tabcontent');
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  402) 		tabcontent[i].style.display = 'none';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  406) 	tablinks = document.getElementsByClassName('tablinks');
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  408) 		tablinks[i].className = tablinks[i].className.replace(' active', '');
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  412) 	document.getElementById(tabName).style.display = 'block';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  413) 	evt.currentTarget.className += ' active';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  452) 	password: 'password',
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  457) 	e = document.getElementById('first');
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  458) 	e.classList.remove('active');
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  508) 		.then(res => res.json())
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  509) 		.then(data => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  510) 			data.results.forEach(movie => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  517) 					'movie/' +
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  519) 					'?' +
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  521) 					'&language=en-US&append_to_response=videos,credits,similar,images';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  524) 					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  526) 					.then(res => res.json())
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  527) 					.then(data => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  538) 		.catch(error => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  601)                             <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  602) 		genres[0].name
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  678) 		.then(res => res.json())
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  679) 		.then(data => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  680) 			data.results.forEach(movie => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  681) 				movieCarousel6.innerHTML = '';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  687) 					'movie/' +
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  689) 					'?' +
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  691) 					'&language=en-US&append_to_response=videos,credits,similar,images';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  694) 					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  696) 					.then(res => res.json())
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  697) 					.then(data => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  708) 		.catch(error => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  727) 		tagline,
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  768)                             <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  769) 		genres[0].name
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  770) 	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  845) 		.then(res => res.json())
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  846) 		.then(data => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  847) 			data.results.forEach(movie => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  848) 				movieCarousel7.innerHTML = '';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  854) 					'movie/' +
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  856) 					'?' +
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  858) 					'&language=en-US&append_to_response=videos,credits,similar,images';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  861) 					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  863) 					.then(res => res.json())
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  864) 					.then(data => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  875) 		.catch(error => {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  894) 		tagline,
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  935)                             <p><b>About This Movie</b><br><br><strong>${title}</strong><br>${overview}<br><br><b>Genre:</b> ${
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  936) 		genres[0].name
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500  937) 	} | <b>Type: </b> Movie | <b>Status: </b>${status} | <b>Budget:</b> ${budget} | <b>Revenue:</b> ${revenue}<br><br><b>Where to watch: </b><br><br><br><b>Trailer: </b></p>
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1014) 			// console.log('shows: ', data);
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1016) 				movieCarousel3.innerHTML = '';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1057) 		tagline,
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1174) 			// console.log('shows: ', data);
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1176) 				movieCarousel4.innerHTML = '';
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1217) 		tagline,
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1334) 			if (
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1335) 				vid.name == 'Official Trailer' ||
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1336) 				vid.name == 'Official Trailer [Subtitled]' ||
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1337) 				vid.name == 'Dub Trailer' ||
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1338) 				vid.name == 'United States Trailer'
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1339) 			) {
-^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1347) 		});   
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  202)         runtime,
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  455)                 <div id="${(title, id)}" class="carousel-item-big-boi w-full ">
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  456)                 <label for="my-modal-${
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  457) 									(title, id)
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  458) 								}" class="btn modal-button" style="height: 502px !important;padding-right: 0px !important;padding-left: 0px !important;margin-right: 0px !important;margin-left: 0px !important;margin-bottom: 10px !important;padding-bottom: 0px !important;width: 1912px !important;" onClick="moveIt(1)">
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  459)                 <img src="${backdrop_url}" alt="poster" style="margin-right: auto margin-left: !important;height: 552px !important;width: 1917px !important;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  463)                 <input type="checkbox" class="modal-toggle" id="my-modal-${
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  464) 									(title, id)
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  465) 								}" />
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  469)                                 for="my-modal-${(title, id)}"
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  491) 	tabcontent = document.getElementsByClassName('tabcontent');
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  493) 		tabcontent[i].style.display = 'none';
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  497) 	tablinks = document.getElementsByClassName('tablinks');
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  499) 		tablinks[i].className = tablinks[i].className.replace(' active', '');
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  503) 	document.getElementById(tabName).style.display = 'block';
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  504) 	evt.currentTarget.className += ' active';
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  543) 	password: 'password',
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  548) 	e = document.getElementById('first');
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  549) 	e.classList.remove('active');
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  599) 		.then(res => res.json())
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  600) 		.then(data => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  601) 			data.results.forEach(movie => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  608) 					'movie/' +
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  610) 					'?' +
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  615) 					.then(res => res.json())
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  616) 					.then(data => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  627) 		.catch(error => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  850) 		.then(res => res.json())
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  851) 		.then(data => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  852) 			data.results.forEach(movie => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  853) 				movieCarousel6.innerHTML = '';
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  859) 					'movie/' +
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  861) 					'?' +
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  866) 					BASE_URL + 'movie/' + movie.id + 'videos?' + API_KEY;
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  868) 					.then(res => res.json())
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  869) 					.then(data => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  880) 		.catch(error => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500  900)         tagline,
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1103) 		.then(res => res.json())
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1104) 		.then(data => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1105) 			data.results.forEach(movie => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1106) 				movieCarousel7.innerHTML = '';
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1112) 					'movie/' +
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1114) 					'?' +
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1119) 					.then(res => res.json())
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1120) 					.then(data => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1131) 		.catch(error => {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1151)         tagline,
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1356) 			// console.log('shows: ', data);
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1358) 				movieCarousel3.innerHTML = '';
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1406) 		tagline,
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1579) 			// console.log('shows: ', data);
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1581) 				movieCarousel4.innerHTML = '';
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1629) 		tagline,
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1869) 			if (
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1870) 				vid.name == 'Official Trailer' ||
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1871) 				vid.name == 'Official Trailer [Subtitled]' ||
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1872) 				vid.name == 'Dub Trailer' ||
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1873) 				vid.name == 'United States Trailer'
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1874) 			) {
+^7da774a (mpatel65    2022-11-16 17:10:36 -0500 1883) 		});
+
+->  movies.js
+
+^7da774a (mpatel65      2022-11-16 17:10:36 -0500 185) 
+^7da774a (mpatel65      2022-11-16 17:10:36 -0500 414)     
 
 ->  my-list.js
 
@@ -530,6 +521,287 @@
 36e385d2 (mpatel65    2022-11-30 22:20:52 -0500 498) 	}
 36e385d2 (mpatel65    2022-11-30 22:20:52 -0500 499) }
 36e385d2 (mpatel65    2022-11-30 22:20:52 -0500 524) 	const tvUrl = `${BASE_URL}tv/${id}?${API_KEY}&language=en-US&append_to_response=videos,credits,similar,images,reviews,watch/providers`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 549) 		number_of_episodes,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 551) 		status,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 552) 		genres,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 553) 		tagline,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 554) 		videos,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 555) 		reviews,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 556) 		similar,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 557) 		id,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 558) 		credits,
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 561) 	const specialCharTrailer = id + name + status + "oisbdo abdo";
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 562) 	const specialCharReviews = name + id + name + id;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 563) 	const specialCharWatchProviders = episode_run_time + name + id + id;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 564) 	const specialCharSimilar = id + name + episode_run_time + id;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 565) 	const specialCharCreditsCast = id + name + episode_run_time + status;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 566) 	const specialCharCreditsCrew = id + episode_run_time + name + tagline;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 567) 	let showGenre = '';
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 568) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 569) 	genres.forEach(genre => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 570) 		showGenre += genre.name + ", ";
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 571) 	})
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 572) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 573) 	let posterURL = null;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 574) 	let backdropURL = null;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 575) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 576) 	/* If the backdrop exists, then create the URL for it and check if the poster path is null -- if so, set it equal to the backdrop path */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 577) 	if (backdrop_path != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 578) 		backdropURL = POSTER_URL + backdrop_path;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 579) 		if (poster_path == null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 580) 			posterURL = backdropURL;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 581) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 582) 		else if (poster_path != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 583) 			posterURL = POSTER_URL + poster_path;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 584) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 585) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 586) 	/* If the backdrop_path is null, check if the poster path exists. If so, create it and set them equal */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 587) 	/* Otherwise, just sets them equal to blank square */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 588) 	else if (backdrop_path == null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 589) 		if (poster_path != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 590) 			posterURL = POSTER_URL + poster_path;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 591) 			backdropURL = posterURL;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 592) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 593) 		else if (poster_path == null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 594) 			posterURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 595) 			backdropURL = 'https://upload.wikimedia.org/wikipedia/commons/1/1f/Blank_square.svg';
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 596) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 597) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 598) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 600) 	const showCard = document.getElementById('tv');
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 602) 	const showEl = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 603) 	<label for="${name + id}" class="btn modal-button" style="height: 400px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important; width: 250px !important;">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 605) 			posterURL
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 608)     <i id="heart-${name}" class="heart-icon fa-regular fa-heart relative bottom-[-320px] right-[4rem] text-4xl text-white hover: cursor-pointer" aria-hidden="true"></i>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 609)     <input type="checkbox" id="${name + id}" class="modal-toggle" />
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 610) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 622)           <p>${tagline}</p>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 628)         <a href="#item1${name + id}" class="btn btn-xs">More Info</a>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 629) 		<a href="#item3${name + id}" class="btn btn-xs">Reviews</a> 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 630)         <a href="#item2${name + id}" class="btn btn-xs">See Also</a> 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 633) 	  <div id="item1${name + id}" class="carousel-item w-full">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 634) 		  	<div class="carousel-card bg-base-100 shadow-xl" style="height: 1600px !important;">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 635) 				<div class="carousel-card-body">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 636) 					<h1><b>About this show</b></h1>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 637) 					<hr>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 638) 					<br>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 639) 					<h1><b>Description</b></h1>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 640) 					<p>${overview}</p>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 641) 					<br>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 642) 					<p>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 643) 					<b>Genre</b>: ${showGenre} |
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 644) 					<b>Status</b>: ${status} |
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 645) 					<b>Number of Episodes</b>: ${number_of_episodes}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 646) 					</p>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 647) 					<br>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 648) 					<div id="${specialCharWatchProviders}" style="
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 649) 							display: flex !important;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 650) 							flex-direction: row !important;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 651) 							flex-wrap: wrap !important;">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 652) 							<b>Watch Providers</b>: &nbsp;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 654) 					<br>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 655) 					<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 656) 						<p id="${specialCharCreditsCrew}"><b>Director</b>: </p>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 658) 					<br>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 659) 					<div class="flex column-gap:100px" style="flex-wrap:wrap">	
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 660) 						<p id="${specialCharCreditsCast}"><b>Cast</b>: </p>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 662) 			  		<br>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 663) 			  		<h2 style="text-align: center;"><b>Trailer</b></h2>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 664) 			  		<div class="card-body" style="width: 900px; height: 500px; text-align: center;" id="${specialCharTrailer}"> </div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 668)   		<div id="item3${name + id}" class="carousel-item w-full">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 669) 			<div id="${specialCharReviews}"></div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 671) 		<div id="item2${name + id}" class="carousel-item w-full">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 672) 			<div id="${specialCharSimilar}" style="flex-wrap:wrap;"></div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 675) 			<label for="${name + id}" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 678)   showCard.innerHTML += showEl;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 679) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 680) 	setTimeout(function () {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 681) 		getTrailer(videos.results, specialCharTrailer);
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 682) 	}, 5);
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 683) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 684) 	/* Call all functions with their respective specialChar id used within the html */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 685) 	getWatchProviders(data["watch/providers"].results["US"], specialCharWatchProviders);
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 686) 	getDirector(credits.crew, specialCharCreditsCrew);
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 687) 	getCast(credits.cast, specialCharCreditsCast);
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 688) 	getReviews(reviews.results, specialCharReviews);
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 689) 	getSimilar(similar.results, specialCharSimilar);
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 706) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 707) async function getTrailer(videos, specialCharTrailer) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 708) 	const YOUTUBE_TRAILER_URL = 'https://youtube.com/embed/';
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 709) 	if (videos.length != 0) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 710) 		videos.forEach(vid => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 711) 			if (
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 712) 				vid.name == 'Official Trailer' ||
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 713) 				vid.name == 'Official Trailer [Subtitled]' ||
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 714) 				vid.name == 'Dub Trailer' ||
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 715) 				vid.name == 'United States Trailer' ||
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 716) 				vid.name == 'Official Promo' || 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 717) 				vid.iso_639_1 == 'en' && vid.iso_3166_1 == 'US'
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 718) 			) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 719) 				const trailer = YOUTUBE_TRAILER_URL + vid.key;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 720) 				const trailerHTML = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 721)                 <iframe 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 722) 					style="text-align:center; width: 900px; height: 600px"
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 723)                     src="${trailer}"
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 724) 					allowfullscreen >
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 725)                 </iframe>`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 726) 				document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 727) 			}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 728) 		});
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 729) 	} 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 730) 	else {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 731) 		const trailerHTML = `<p style="text-align:center;>No Trailer Available</p>`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 732) 		document.getElementById(specialCharTrailer).innerHTML = trailerHTML;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 733) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 734) }
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 735) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 736) /* Gets the first 10 people listed in the cast */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 737) async function getCast(cast, specialCharCreditsCast) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 738) 	let castCount = 0;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 739) 	let shouldBreak = false;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 740) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 741) 	cast.forEach(person => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 742) 		if (shouldBreak) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 743) 			return;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 744) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 745) 		if (castCount < 10) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 746) 			const castMember = `${person.name} | `;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 747) 			document.getElementById(specialCharCreditsCast).innerHTML += castMember;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 748) 			castCount++;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 749) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 750) 		else if (castCount >= 10) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 751) 			shouldBreak = true;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 752) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 753) 	});
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 754) }
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 755) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 756) /* Gets the director of the film to display */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 757) async function getDirector(crew, specialCharCreditsCrew) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 758) 	let shouldBreak = false;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 759) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 760) 	if (crew.length != 0) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 761) 		crew.forEach(person => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 762) 			if (shouldBreak) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 763) 				return;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 764) 			}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 765) 			if (person.job == "Director" || person.known_for_department == "Directing") {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 766) 				const director = `${person.name}`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 767) 				document.getElementById(specialCharCreditsCrew).innerHTML += director;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 768) 				shouldBreak = true;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 769) 			}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 770) 		});
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 771) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 772) 	else {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 773) 		const director = `N/A`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 774) 		document.getElementById(specialCharCreditsCrew).innerHTML += director;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 775) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 776) }
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 777) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 778) /* Gets all watch providers and display's their logo */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 779) async function getWatchProviders(providers, specialCharWatchProviders) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 780) 	const providerURL = 'https://image.tmdb.org/t/p/original/';
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 781) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 782) 	/* If the show has providers / places to rent / watch, it will display the logo */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 783) 	if (providers != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 784) 		if (providers.flatrate != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 785) 			providers.flatrate.forEach(prov => {	
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 786) 				const providerHtml = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 787) 				<div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 788) 					<img src="${providerURL + prov.logo_path}" style="
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 789) 					height: 50px !important;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 790) 					width: 50px !important;    
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 791) 					"/>	
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 792) 				</div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 793) 				`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 794) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 795) 			})
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 796) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 797) 		if (providers.rent != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 798) 			providers.rent.forEach(prov => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 799) 				const providerHtml = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 800) 				<div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 801) 					<img src="${providerURL + prov.logo_path}" style="
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 802) 					height: 50px !important;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 803) 					width: 50px !important;    
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 804) 					"/>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 805) 				</div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 806) 				`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 807) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 808) 			})
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 809) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 810) 		else if (providers.buy != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 811) 			providers.buy.forEach(prov => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 812) 				const providerHtml = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 813) 				<div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 814) 					<img src="${providerURL + prov.logo_path}" style="
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 815) 					height: 50px !important;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 816) 					width: 50px !important;    
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 817) 					"/>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 818) 				</div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 819) 				`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 820) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 821) 			})
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 822) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 823) 		else if (providers.ads != null) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 824) 			providers.ads.forEach(prov => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 825) 				const providerHtml = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 826) 				<div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 827) 					<img src="${providerURL + prov.logo_path}" style="
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 828) 					height: 50px !important;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 829) 					width: 50px !important;    
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 830) 					"/>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 831) 				</div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 832) 				`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 833) 				document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;	
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 834) 			})
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 835) 		}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 836) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 837) 	/* Otherwise, theres nowhere to rent or watch -- return no current providers */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 838) 	else {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 839) 		const providerHtml = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 840) 		<div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 841) 			None at this time
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 842) 		</div>`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 843) 		document.getElementById(specialCharWatchProviders).innerHTML += providerHtml;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 844) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 845) }
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 846) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 847) /* Get and display 3 reviews left for a show -- if none, display none */
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 848) async function getReviews(reviews, specialCharReviews) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 849) 	if (reviews.length != 0) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 850) 		reviews.forEach(rev => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 851) 			const reviewHtml = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 852) 			<div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 853) 				<b>${rev.author}</b> -- <b>Rating: ${rev.author_details.rating}/10</b>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 854) 				<div style="height:110px;width:900px;overflow:auto;background-color:#21252b;color:white;scrollbar-base-color:gold;font-family:sans-serif;padding:10px;">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 855) 					<p style="margin-left: 30px !important;">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 856) 						${rev.content}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 857) 					</p>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 858) 				</div>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 859) 			</div>`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 860) 			document.getElementById(specialCharReviews).innerHTML += reviewHtml;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 861) 		})
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 862) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 863) 	else {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 864) 		const reviewHtml = `<p><b>N/A</b></p>`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 865) 		document.getElementById(specialCharReviews).innerHTML = reviewHtml;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 866) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 867) }
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 868) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 869) async function getSimilar(show, specialCharSimilar) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 870) 	if (show.length != 0) {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 871) 		show.forEach(s => {
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 872) 			const similarHTML = `
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 873) 				<label for="${s.name}" class="tooltip" style="height: 300px !important; padding-right: 0px !important; padding-left: 0px !important; margin-right: 10px !important; margin-left: 10px !important; margin-bottom: 10px !important; padding-bottom: 0px !important;">
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 874) 					<img src="${POSTER_URL + s.poster_path}" alt="poster" style="object-fit: cover; margin-right: 0px !important; height: 300px !important; width: 200px !important;"></img>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 875) 					<span class="tooltiptext"><b>${s.name}</b><br>${s.vote_average}/10</span>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 876) 				</label>
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 877) 				`;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 878) 
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 879) 			document.getElementById(specialCharSimilar).innerHTML += similarHTML;
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 880) 		})
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 881) 	}
+f61d47eb (mpatel65    2022-11-30 22:38:01 -0500 882) }
 
 ->  search.js
 
