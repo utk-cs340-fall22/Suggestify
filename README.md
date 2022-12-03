@@ -22,7 +22,7 @@ Oftentimes, people sit down by themselves or with a group of friends, and they e
 ### Clone the repository
 
 ```text
-git clone git@github.com:utk-cs340-fall22/Suggestify.git
+git clone git@github.com:utk-cs340-fall22/suggestify.github.io.git
 ```
 
 ### Open File
