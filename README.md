@@ -52,6 +52,14 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 ![My-list page](watchlist-page-img.png)
 ![My-list page modal](watchlist-modal-img.png)
 
+### Movies Page with Filtering
+![MoviePage](<img width="1276" alt="moviePage" src="https://user-images.githubusercontent.com/97002490/205456352-8545ee5e-01e9-4e2a-9488-c9e3c8cf0fbc.png">
+)
+![MoviePageModal]()
+### Tv Show Page with Filtering
+![TvPage]()
+![TvPageModal]()
+
 ## Presentation slides
 
 [Demo Slides](SuggestifyDemo.pdf)
