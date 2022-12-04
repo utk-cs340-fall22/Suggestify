@@ -47,6 +47,7 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 
 ##  Main Page
 ![Main Page](main_page.jpg)
+![Modal Box](modal_box.jpg)
 
 ### Search page
 ![Search Page 1](search_page.png)
