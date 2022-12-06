@@ -70,8 +70,7 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 ![About Us Tab](about.jpg)
 
 ## Presentation slides
-
-[Demo Slides](SuggestifyDemo.pdf)
+[Demo Slides](Suggestify Demo.pdf)
 
 ## Contributors (Name & Github ID)
 
