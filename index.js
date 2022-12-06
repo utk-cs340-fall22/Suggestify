@@ -150,6 +150,7 @@ const POSTER_URL = 'https://image.tmdb.org/t/p/original/';
 /* This second call will return even more information about each movie and will call displayMovies on each movie to display them with access to all of the information retrieved */
 
 var trailerCount = 0;
+var slideCount = 0;
 
 /* Makes an API fetch call to get movies with whatever url you want -- this could be for upcoming movies, popular, etc */
 /* This will fetch the URL passed to it and will retrieve a list of movies. It will then loop through each movie, use its ID to construct the DETAIL_URL, and make another API call */
@@ -181,7 +182,7 @@ function getTrendingMovies(url) {
 							description: data.overview,
 						});
 
-						if (data.videos.results.length != 0 && trailerCount < 5) {
+						if (data.videos.results.length != 0 && slideCount < 5) {
 							data.videos.results.forEach(vid => {
 								if (
 									vid.name == 'Official Trailer' ||
@@ -190,7 +191,7 @@ function getTrendingMovies(url) {
 									vid.name == 'United States Trailer'
 								) {
 									carouselStuff(data);
-									trailerCount++;
+									slideCount++;
 								}
 							});
 						}
