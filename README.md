@@ -38,14 +38,9 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 ## Images
 
 ### Figma Design
-
 ![Landing page design](landing_page_design.png)
 
-### Login Page
-
-![Login Page](login_page.png)
-
-##  Main Page
+###  Main Page
 ![Main Page](main_page.jpg)
 ![Modal Box](modal_box.jpg)
 
@@ -63,17 +58,28 @@ Suggestify is being hosted using GitHub Pages. Visit this URL: <https://utk-cs34
 ![TvPage](tvShowPage.png)
 ![TvPageModal](tvShowPageModal.png)
 
+### Spotlight Carousel
+![SpotlightCarousel1](spotlight1.jpg)
+![SpotlightCarousel2](spotlight2.jpg)
+
+### Login Page
+![Login Page](login_page.png)
+
+### Settings Page
+![Account Tab](account.jpg)
+![About Us Tab](about.jpg)
+
 ## Presentation slides
 
 [Demo Slides](SuggestifyDemo.pdf)
 
 ## Contributors (Name & Github ID)
 
-- Christian Graham - cgraha37
 - Riya Patel - rpatel90
 - Manan Patel - manan-dev
 - Tulsi Tailor - ttulsi01
 - Zachary Perry - zperry4
+- Christian Graham - cgraha37
 
 ## License
 
